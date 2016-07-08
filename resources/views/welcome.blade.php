@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5 hchs brance</div>
+                <div class="title">Laravel 5 hchs branch</div>
             </div>
         </div>
     </body>
