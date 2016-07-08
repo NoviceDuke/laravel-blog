@@ -38,7 +38,11 @@
     <body>
         <div class="container">
             <div class="content">
+<<<<<<< HEAD
                 <div class="title">Laravel 5 Mcunoobs</div>
+=======
+                <div class="title">Laravel 5 hchs branch</div>
+>>>>>>> origin/hchs_branch
             </div>
         </div>
     </body>
