@@ -39,7 +39,7 @@
         <div class="container">
             <div class="content">
 
-                <div class="title">Laravel 5 Mcunoobs 123</div>
+                <div class="title">Laravel 5 hchs sss</div>
 
                 
             </div>
