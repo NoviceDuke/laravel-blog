@@ -18,7 +18,7 @@ class PostSeeder extends Seeder
       	 'author_email'	   	=> 		'g9308370@hotmail.com',
       	 'title'            =>      'Seeder自動建立標題',
          'content'          =>      'asdwqsxxxxmmmmm!!!!!我在測試Seeder自動建立content',
-         'tags'             => 		'這裡應該使用Array，但是我不會用',
+         'tags'             => 		'測試用tag',
          'pic_url'          => 		'www.google.com',
         	    
       ]);
