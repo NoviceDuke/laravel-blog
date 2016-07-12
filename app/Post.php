@@ -9,4 +9,5 @@ class Post extends Model
         protected $fillable = [
         'author_email', 'title', 'content','tags','pic_url'
     ];
+    
 }

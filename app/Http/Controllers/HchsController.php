@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Post;
 use App\Http\Requests;
 
 class HchsController extends Controller
@@ -15,7 +15,9 @@ class HchsController extends Controller
     //
     public function index(){
 
-    	return view('hchs.index');
+        $posts = Post::all();
+        // return var_dump($posts);
+    	return view('hchs.index',compact('posts'));
 
     }
 }
