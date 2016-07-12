@@ -1,9 +1,8 @@
 @extends('hchs/app')
 @section('content')
    
-
-             <div class="row">
-			      <div class="col s8">
+            <!--Static Cut Left Panel 75%-->
+            <div style="width: 75%;float:left;">
 						<!--Card-->
 					    <div class="card medium hoverable">
 					      <div class="card-image waves-effect waves-block waves-light">
@@ -21,20 +20,27 @@
 					    </div>
 					    </div>
 					    <!--Card-->
-			      </div>
-			      <div class="col s4">
+			</div>     
+			<!--Static Cut Left Panel 75%-->
+			<!--Static Cut Right Panel 22%-->
+			<div style="width: 22%;float:right;">
 			      	    <div class="card medium hoverable">
-			      	    	 <div class="collection">
+			      	    	<div class="collection">
 							    <a href="#!" class="collection-item">Alan<span class="badge">1</span></a>
-							    <a href="#!" class="collection-item">Alan<span class="new badge">4</span></a>
-							    <a href="#!" class="collection-item">Alan</a>
-							    <a href="#!" class="collection-item">Alan<span class="badge">14</span></a>
-							 </div>
-			      	    </div>
-			      </div>
-			 </div>
-			 
+							    <a href="#!" class="collection-item">Marry<span class="new badge">4</span></a>
+							    <a href="#!" class="collection-item">Jason</a>
+							    <a href="#!" class="collection-item">Whatever<span class="badge">14</span></a>
+							</div>
+							<div style="text-align:center;">
+								   <i class="large material-icons" style="margin-top:50px;">perm_identity</i>
+							</div>
 
+			      	    </div>
+			      	    
+			      
+			</div>
+			<!--Static Cut Right Panel 22%-->
+            
 
 
              <!--三個一排的Card 垃圾寫法-->
@@ -95,6 +101,7 @@
 					    </div>
 				 </div>
 				 </div>
+
 				 @endif
 			 @endforeach
 			<!--三個一排的Card 垃圾寫法-->

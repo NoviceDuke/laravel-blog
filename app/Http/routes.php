@@ -11,6 +11,7 @@
 |
 */
 Route::get('/hchs','HchsController@index');
+Route::get('/trace','HchsController@trace');
 
 
 Route::get('/', function () {
