@@ -23,7 +23,7 @@
         <!--  Top Navigation  -->
 		<nav>
 		  <div class="nav-wrapper">
-		    <a href="" class="brand-logo">　Blog Using Material Design Trace</a>
+		    <a href="" class="brand-logo">Blog Using Material Design Trace</a>
 		    <ul id="nav-mobile" class="right hide-on-med-and-down">
 		      <li><a href="">item1</a></li>
 		      <li><a href="">item2</a></li>
