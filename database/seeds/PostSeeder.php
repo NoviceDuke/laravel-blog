@@ -19,10 +19,12 @@ class PostSeeder extends Seeder
             Post::create([
 
             'author_email'     =>      $faker->email,
-            'title'            =>      $faker->realText(rand(10,15)),
+            'title'            =>      $faker->unique()->realText(rand(10,15)),
             'content'          =>      $faker->realText($maxNbChars = 200, $indexSize = 2),
             'tags'             =>      '測試用tag',
             'pic_url'          =>      $faker->url,
+            'slug'             =>      $faker->unique()->slug,
+
                 
       ]);
 

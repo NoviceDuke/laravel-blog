@@ -23,4 +23,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //關聯資料庫  一個使用者 對 多個文章
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
 }
