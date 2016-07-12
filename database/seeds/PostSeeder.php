@@ -12,15 +12,20 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create('zh_TW');
         DB::table('posts')->delete();
-        Post::create([
+        foreach (range(1,10) as $index) 
+        {
+            Post::create([
 
-      	 'author_email'	   	=> 		'g9308370@hotmail.com',
-      	 'title'            =>      'Seeder自動建立標題',
-         'content'          =>      'asdwqsxxxxmmmmm!!!!!我在測試Seeder自動建立content',
-         'tags'             => 		'測試用tag',
-         'pic_url'          => 		'www.google.com',
-        	    
+            'author_email'     =>      $faker->email,
+            'title'            =>      'Seeder自動建立標題',
+            'content'          =>      $faker->realText($maxNbChars = 200, $indexSize = 2),
+            'tags'             =>      '測試用tag',
+            'pic_url'          =>      $faker->url,
+                
       ]);
+
+        }
     }
 }
