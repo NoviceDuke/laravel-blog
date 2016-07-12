@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('pic_url')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
+            $table->foreign('author_email')->references('email')->on('users');
         });
     }
 
