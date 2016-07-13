@@ -14,6 +14,6 @@ Route::get('/hchs','HchsController@index');
 Route::get('/trace','HchsController@trace');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('about', 'PagesController@getAbout');
+
+Route::get('/', 'PagesController@getIndex');
