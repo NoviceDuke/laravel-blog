@@ -12,7 +12,7 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-         Schema::create('posts', function (Blueprint $table) {
+            Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('author_email');
             $table->string('title')->unique();
@@ -21,6 +21,8 @@ class CreatePostsTable extends Migration
             $table->string('pic_url')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
+
+            //foreign Key Set
             $table->foreign('author_email')->references('email')->on('users');
         });
     }
