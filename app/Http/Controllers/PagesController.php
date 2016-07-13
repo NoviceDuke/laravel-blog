@@ -9,11 +9,11 @@ class PagesController extends Controller
 {
 	
 	public function getIndex()	{
-		return view('welcome');
+		return view('pages.welcome');
 
 	}
 
 	public function getAbout()	{
-		return view('about');
+		return view('pages.about');
 	}
 }
