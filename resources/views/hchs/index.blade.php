@@ -50,7 +50,7 @@
 				 <div class="col s4">
 				 		<div class="card medium hoverable">
 					      <div class="card-image waves-effect waves-block waves-light">
-					      <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
+					      <img class="activator" src="{{$post->pic_url}}">
 					      </div>
 					      <div class="card-content">
 					      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
@@ -68,7 +68,7 @@
 				 <div class="col s4">
 				 <div class="card medium hoverable">
 					      <div class="card-image waves-effect waves-block waves-light">
-					      <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
+					      <img class="activator" src="{{$post->pic_url}}">
 					      </div>
 					      <div class="card-content">
 					      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
@@ -86,7 +86,7 @@
 				 <div class="col s4">
 				 <div class="card medium hoverable">
 					      <div class="card-image waves-effect waves-block waves-light">
-					      <img class="activator" src="http://materializecss.com/images/sample-1.jpg">
+					      <img class="activator" src="{{$post->pic_url}}">
 					      </div>
 					      <div class="card-content">
 					      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
