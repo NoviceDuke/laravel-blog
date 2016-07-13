@@ -23,6 +23,13 @@ class UserSeeder extends Seeder
                 'name'  => 'duke',
                 'password' => '123456',
             ]);
+
+
+        foreach(DB::table("users")->get() as $user) {
+        DB::table("users")
+        ->where("id", $user->id)
+        ->update(array("password"=>Hash::make($user->password)));
+        }
     }
 
     

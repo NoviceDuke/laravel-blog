@@ -16,4 +16,7 @@ Route::get('/trace','HchsController@trace');
 
 Route::get('about', 'PagesController@getAbout');
 
-Route::get('/', 'PagesController@getIndex');
+
+Route::auth();
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
