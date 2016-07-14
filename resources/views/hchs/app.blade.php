@@ -7,7 +7,7 @@
         {!! Html::script('materialize/js/materialize.js')!!}
         {!! Html::style('materialize/css/materialize.css')!!}
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+ 
         <!--Scripts Start-->
         <script type="text/javascript">
         	$(document).ready(function(){
