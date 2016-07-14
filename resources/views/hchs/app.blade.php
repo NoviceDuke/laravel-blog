@@ -24,18 +24,27 @@
 
     <body background="png/hchs_background.png">
         <!--  Top Navigation  -->
-		<nav>
-		  <div class="nav-wrapper">
-		    <a href="" class="brand-logo">Blog Using Material Design Trace</a>
-		    <ul id="nav-mobile" class="right hide-on-med-and-down">
-		      <li><a href="">item1</a></li>
-		      <li><a href="">item2</a></li>
-		      <li><a href="">item3<span class="new badge">4</span></a></li>
-		      
-		    </ul>
-		  </div>
-		</nav>
-		<!--  Top Navigation  -->
+          <nav>
+            <div class="nav-wrapper blue-grey darken-2">
+              <a href="#!" class="brand-logo">Leja Logo</a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="logout">Log out</a></li>
+              </ul>
+
+            <!--Mobile DropDown Button-->
+            <a class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">
+            <i class="material-icons">menu</i>
+            <i class="mdi-navigation-arrow-drop-down right"></i>
+            </a>
+            <ul id='dropdown1' class='dropdown-content'>
+                 <li><a href="/">Home</a></li>
+                 <li><a href="logout">Log out</a></li>
+            </ul>
+            <!--Mobile DropDown Button-->
+            </div>
+          </nav>
+		    <!--  Top Navigation  -->
 
 
         <!--  Floating Button -->

@@ -39,7 +39,7 @@
         <div class="container">
             <div class="content">
 
-                <div class="title">MCU noobs</div>
+                <div class="title">Defaul Page</div>
                 
             </div>
         </div>
