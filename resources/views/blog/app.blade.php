@@ -34,7 +34,7 @@
 
             <!--Mobile DropDown Button-->
             <a class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">
-            <i class="material-icons">menu</i>
+            <i class="material-icons" style="margin-left:10px;">menu</i>
             <i class="mdi-navigation-arrow-drop-down right"></i>
             </a>
             <ul id='dropdown1' class='dropdown-content'>
@@ -50,7 +50,7 @@
         <!--  Floating Button -->
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
 		    <a class="btn-floating btn-large red">
-		      <i class="large material-icons">mode_edit</i>
+		      <i class="large material-icons" >mode_edit</i>
 		    </a>
 		    <ul>
 		      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>

@@ -10,7 +10,7 @@ class HchsController extends Controller
 {
 	public function __construct()
 	{
-	
+	   
 	}
     //
     public function index(){
@@ -22,9 +22,9 @@ class HchsController extends Controller
     }
      public function trace(){
 
-    $posts = Post::all();
-        // return var_dump($posts);
-    return view('hchs.trace',compact('posts'));
+        $posts = Post::all();
+            // return var_dump($posts);
+        return view('hchs.trace',compact('posts'));
 
     }
 }

@@ -1,4 +1,4 @@
-@extends('hchs/app')
+@extends('blog/app')
 @section('content')
 
     <div style="width: 80%;float:left;background-color:red;">content</div>
