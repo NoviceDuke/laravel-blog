@@ -1,4 +1,4 @@
-@extends('hchs.app')
+@extends('hchs.html')
 
 @section('content')
 <div class="container">

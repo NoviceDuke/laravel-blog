@@ -26,7 +26,7 @@
         <!--  Top Navigation  -->
           <nav>
             <div class="nav-wrapper blue-grey darken-2">
-              <a href="#!" class="brand-logo">Leja Logo</a>
+              <a href="#!" class="brand-logo">HCHS's Blog</a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
                 <li><a href="logout">Log out</a></li>
