@@ -1,8 +1,8 @@
 @extends('hchs/app')
 @section('content')
-   
+   			<div class="row">
             <!--Static Cut Left Panel 75%-->
-            <div style="width: 75%;float:left;">
+            <div class="col s12 m9">
 						<!--Card-->
 					    <div class="card medium hoverable">
 					      <div class="card-image waves-effect waves-block waves-light">
@@ -23,7 +23,7 @@
 			</div>     
 			<!--Static Cut Left Panel 75%-->
 			<!--Static Cut Right Panel 22%-->
-			<div style="width: 22%;float:right;">
+			<div class="col s12 m3">
 			      	    <div class="card medium hoverable">
 			      	    	<div class="collection">
 							    <a href="#!" class="collection-item">Alan<span class="badge">1</span></a>
@@ -40,14 +40,14 @@
 			      
 			</div>
 			<!--Static Cut Right Panel 22%-->
-            
+            </div>
 
 
              <!--三個一排的Card 垃圾寫法-->
 			 @foreach($posts as $key=>$post)
 				 @if($key%3==0)
 				 <div class="row">
-				 <div class="col s4">
+				 <div class="col s12 m4">
 				 		<div class="card medium hoverable">
 					      <div class="card-image waves-effect waves-block waves-light">
 					      <img class="activator" src="{{$post->pic_url}}">
@@ -65,7 +65,7 @@
 					    </div>
 				 </div>
 				 @elseif($key%3==1)
-				 <div class="col s4">
+				 <div class="col s12 m4">
 				 <div class="card medium hoverable">
 					      <div class="card-image waves-effect waves-block waves-light">
 					      <img class="activator" src="{{$post->pic_url}}">
@@ -83,7 +83,7 @@
 					    </div>
 				 </div>
 				 @else
-				 <div class="col s4">
+				 <div class="col s12 m4">
 				 <div class="card medium hoverable">
 					      <div class="card-image waves-effect waves-block waves-light">
 					      <img class="activator" src="{{$post->pic_url}}">
