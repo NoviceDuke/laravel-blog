@@ -1,5 +1,4 @@
-@extends('hchs.html')
-
+@extends('hchs.html') 
 @section('content')
 <div class="container">
     <div class="row" style="margin-top:50px;">    
