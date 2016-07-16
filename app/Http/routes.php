@@ -10,13 +10,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/blog','BlogHomeController@index');
+// blog RESTful route
+Route::resource('blog','BlogHomeController@index');
 Route::get('/trace','BlogHomeController@trace');
 
 
+// backen RESTful route
+Route::resource('backend','BackendController');
+
+
+// duke's route
 Route::get('about', 'PagesController@getAbout');
 
-
+// default auth and home route
 Route::auth();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
