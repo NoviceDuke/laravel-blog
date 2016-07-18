@@ -1,4 +1,61 @@
-123456
+<!--Card-->
+<div class="card medium hoverable">
+	<div class="card-image waves-effect waves-block waves-light">
+	<img class="activator" src="http://materializecss.com/images/sample-1.jpg">
+	</div>
+	<div class="card-content">
+	<span class="card-title  grey-text text-darken-4 ">Card Title
+	<i class="card-title material-icons right activator">more_vert</i></span>
+
+	</div>
+	<div class="card-reveal">
+	<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+	<p>Static  Here is some more information</p>
+	<a clss="left" href="http://www.google.com">more</a>
+	</div>
+</div>
+<!--Card-->
+@foreach($posts as $key=>$post)
+
+<div class="row">
+	<div class="col s12 m6">
+        <div class="card small">
+		    <div class="card-image waves-effect waves-block waves-light">
+		    	<img class="activator" src="{{$post->pic_url}}">
+		    </div>
+		    <div class="card-content">
+		    	<span class="card-title activator grey-text text-darken-4">{{$post->title}}<i class="material-icons right">more_vert</i></span>
+		      	<p><a href="#">more</a></p>
+		    </div>
+		    <div class="card-reveal">
+		      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+		      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+		    </div>
+		</div>
+	</div>
+	<div class="col s12 m6">
+        <div class="card-panel teal">
+          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          I am convenient because I require little markup to use effectively. 
+          </span>
+        </div>
+        <div class="card-panel grey lighten-5 z-depth-1" style="margin-top:25px;">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                This is a square image. Add the "circle" class to it to make it appear circular.
+              </span>
+            </div>
+          </div>
+        </div>
+	</div>
+</div>
+
+@endforeach
 
 
 
