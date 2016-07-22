@@ -1,5 +1,5 @@
 <!--Card-->
-<div class="card medium hoverable">
+<!-- <div class="card medium hoverable">
 	<div class="card-image waves-effect waves-block waves-light">
 	<img class="activator" src="http://materializecss.com/images/sample-1.jpg">
 	</div>
@@ -13,8 +13,42 @@
 	<p>Static  Here is some more information</p>
 	<a clss="left" href="http://www.google.com">more</a>
 	</div>
-</div>
+</div> -->
 <!--Card-->
+<div class="slider-section">
+<div class="slider">
+  <ul class="slides">
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
+      <div class="caption center-align">
+        <h3>This is our big Tagline!</h3>
+        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
+      <div class="caption left-align">
+        <h3>Left Aligned Caption</h3>
+        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+      <div class="caption right-align">
+        <h3>Right Aligned Caption</h3>
+        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
+      <div class="caption center-align">
+        <h3>This is our big Tagline!</h3>
+        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>
 @foreach($posts as $key=>$post)
 
 <div class="row">
@@ -25,7 +59,7 @@
 		    </div>
 		    <div class="card-content">
 		    	<span class="card-title activator grey-text text-darken-4">{{$post->title}}<i class="material-icons right">more_vert</i></span>
-		      	<p><a href="#">more</a></p>
+		      	<p><a href="{{url('/post/'.$post->slug)}}">more</a></p>
 		    </div>
 		    <div class="card-reveal">
 		      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
@@ -37,7 +71,7 @@
         <div class="card-panel teal">
           <span class="white-text">I am a very simple card. I am good at containing small bits of information.
           I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-          I am convenient because I require little markup to use effectively. 
+          I am convenient because I require little markup to use effectively.
           </span>
         </div>
         <div class="card-panel grey lighten-5 z-depth-1" style="margin-top:25px;">
@@ -74,7 +108,7 @@
 		      <div class="card-content">
 		      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
 		      <i class="card-title material-icons right activator">more_vert</i></span>
-		      
+
 		      </div>
 		      <div class="card-reveal">
 		      <span class="card-title grey-text text-darken-4">{{$post->title}}<i class="material-icons right">close</i></span>
@@ -92,7 +126,7 @@
 		      <div class="card-content">
 		      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
 		      <i class="card-title material-icons right activator">more_vert</i></span>
-		      
+
 		      </div>
 		      <div class="card-reveal">
 		      <span class="card-title grey-text text-darken-4">{{$post->title}}<i class="material-icons right">close</i></span>
@@ -110,7 +144,7 @@
 		      <div class="card-content">
 		      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
 		      <i class="card-title material-icons right activator">more_vert</i></span>
-		      
+
 		      </div>
 		      <div class="card-reveal">
 		      <span class="card-title grey-text text-darken-4">{{$post->title}}<i class="material-icons right">close</i></span>
