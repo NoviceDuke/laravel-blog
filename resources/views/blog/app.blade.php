@@ -6,7 +6,7 @@
         {!! Html::script('https://code.jquery.com/jquery-2.1.1.min.js')!!}
         {!! Html::script('materialize/js/materialize.js')!!}
         {!! Html::style('materialize/css/materialize.css')!!}
-        {!! Html::style('css/hchs-style.css')!!}
+        {!! Html::style(elixir('css/blog-styles.css'))!!}
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!--Scripts Start-->
