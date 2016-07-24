@@ -59,7 +59,7 @@
 		    </div>
 		    <div class="card-content">
 		    	<span class="card-title activator grey-text text-darken-4">{{$post->title}}<i class="material-icons right">more_vert</i></span>
-		      	<p><a href="{{url('/post/'.$post->slug)}}">more</a></p>
+		      	<p><a href="{{url($post->path())}}">more</a></p>
 		    </div>
 		    <div class="card-reveal">
 		      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>

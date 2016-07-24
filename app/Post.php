@@ -10,11 +10,16 @@ class Post extends Model
             'author_email', 'title', 'content','tags','pic_url','slug'
     ];
 
-
-
     // 關聯資料庫  一篇文章 對 多個回覆留言
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany('App\Comment');
+    }
+
+    // 在當下的Post新增一筆回覆留言
+    public function addComment(Comment $comment)
+    {
+        return $this->comments()->save($comment);
     }
 
     // 反向資料庫關聯 文章屬於使用者
@@ -23,4 +28,12 @@ class Post extends Model
     {
         return $this->belongsTo('App\User','author_email');
     }
+
+    // 回傳post/$slug路徑
+    public function path()
+    {
+        return '/post/'.$this->slug;
+    }
+
+
 }
