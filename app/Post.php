@@ -21,7 +21,7 @@ class Post extends Model
     /**
      *  在當下的Post新增一筆回覆留言
      *
-     *  @var Comment::Class
+     *  @param Comment::Class
      */
     public function addComment(Comment $comment)
     {

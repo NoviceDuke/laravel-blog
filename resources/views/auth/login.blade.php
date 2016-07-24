@@ -1,14 +1,13 @@
-@extends('blog.html') 
+@extends('blog.html')
 @section('content')
 <div class="container">
-    <div class="row" style="margin-top:50px;">    
+    <div class="row" style="margin-top:50px;">
         <form class="col s12" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
             <div class="row">
             <div class="input-field col s12">
-                <label for="email">E-Mail Address</label>
+                <label for="email" data-error="wrong"  data-success="right">E-Mail Address</label>
                 <input id="email" type="email" class="validate" name="email" value="">
-                    
             </div>
             </div>
             <div class="row">
@@ -34,7 +33,7 @@
                 <label for="remember">Remember Me</label>
             </p>
 
-            
+
             <div class="row">
                 <div class="col s12">
                     <button type="submit" class="waves-effect waves-light btn">
@@ -45,7 +44,7 @@
                     -->
                 </div>
             </div>
-        </form>  
+        </form>
     </div>
 </div>
 @endsection

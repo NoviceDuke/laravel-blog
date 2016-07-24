@@ -35,7 +35,7 @@ class User extends Authenticatable
     /**
      * 於當下使用者新增一個Post文章.
      *
-     * @var Post::Class
+     * @param Post::Class
      */
     public function addPost(Post $post)
     {
