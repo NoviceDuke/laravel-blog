@@ -51,9 +51,15 @@
 
         <!--  Floating Button -->
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+            @if(Request::is('post/create'))
+            <a class="btn-floating btn-large blue" onclick="post_create_submit();">
+                <i class="large material-icons floating-fix" >done</i>
+            </a>
+            @else
 		    <a class="btn-floating btn-large red">
-		      <i class="large material-icons floating-fix" >view_headline</i>
+		        <i class="large material-icons floating-fix" >view_headline</i>
 		    </a>
+            @endif
 		    <ul>
                 @if(Request::is('blog'))
 		        <li><a class="btn-floating blue" href="{{url('post/create')}}">

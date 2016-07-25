@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Http\Controllers\Controller;
 use App\Post;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -36,6 +37,20 @@ class PostController extends Controller
      */
     public function create()
     {
+        return view('blog.post.create');
+    }
+
+    /**
+     *   store a new post .
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'date' => 'required',
+            'content' => 'required',
+        ]);
+
         return view('blog.post.create');
     }
 }
