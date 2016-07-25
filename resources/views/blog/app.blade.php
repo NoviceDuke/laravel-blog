@@ -7,18 +7,12 @@
         {!! Html::script('materialize/js/materialize.js')!!}
         {!! Html::style('materialize/css/materialize.css')!!}
         {!! Html::style(elixir('css/blog-styles.css'))!!}
+        {!! Html::script(url('js/blog-styles.js'))!!}
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!--Scripts Start-->
         <script type="text/javascript">
-        	$(document).ready(function(){
-    			    $("#btn-floating-green").click(function(){
-    			        $('html,body').animate({
-    			        	scrollTop: 0
-    			        },750);
-    			    });
-              $('.slider').slider({full_width: true});
-			    });
+            //empty now
         </script>
         <!--Scripts End-->
 

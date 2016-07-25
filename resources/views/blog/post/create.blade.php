@@ -31,20 +31,17 @@
         </div>
         </div>
     </div>
-    @if(count($errors))
-        @foreach ($errors->all() as $error)
-            {{$error}}
-        @endforeach
-    @endif
 
     <script>
-    $('.datepicker').pickadate({
-          selectMonths: true, // Creates a dropdown to control month
-          selectYears: 2 // Creates a dropdown of 15 years to control year
+    $(document).ready(function() {
+        var errors_count = {{count($errors)}};
+        if (errors_count > 0)
+        {
+            // var error = {{json_encode($errors->toArray())}};
+            @foreach($errors->all() as $error)
+                Materialize.toast('123', 4000);
+            @endforeach
+        }
     });
-    function post_create_submit()
-    {
-       document.getElementById('post_create_form').submit();
-    }
     </script>
 @stop

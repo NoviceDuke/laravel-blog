@@ -15,4 +15,7 @@ elixir(function(mix) {
     // original elixir mix sass. I don't need this  sass(bootstrap)
     // mix.sass('app.scss');
     mix.sass('blog-styles.scss').version('css/blog-styles.css');
+    mix.scripts([
+        'blog-styles.js',
+    ],'public/js/blog-styles.js');
 });
