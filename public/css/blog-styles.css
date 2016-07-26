@@ -1,0 +1,35 @@
+html {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; }
+
+/*blog.app.blade.php*/
+.nav-fix {
+  position: absolute;
+  top: auto;
+  margin-left: 5px;
+  margin-right: 5px; }
+
+.float-position {
+  bottom: 45px;
+  right: 24px; }
+
+.floating-fix {
+  margin-top: 1.2px; }
+
+/*blog.post.show.blade.php*/
+.card-image-fix {
+  height: 90%; }
+
+/*blog.post.create.blade.php*/
+.card-panel-container {
+  margin-left: 25px;
+  margin-right: 25px; }
+
+.toast-error {
+  background-color: #ef5350; }
+
+/*blog.leftSide.blade.php*/
+.slider-section {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+/*# sourceMappingURL=blog-styles.css.map */

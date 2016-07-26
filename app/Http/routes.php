@@ -11,13 +11,17 @@
 |
 */
 // blog RESTful route
-Route::resource('blog','BlogHomeController@index');
-Route::get('/trace','BlogHomeController@trace');
 
-
-// backen RESTful route
-Route::resource('backend','BackendController');
-
+// Controllers Within The "App\Http\Controllers\Blog" Namespace
+Route::group(['namespace' => 'Blog'], function () {
+    Route::resource('blog', 'BlogHomeController');
+    Route::resource('post', 'PostController');
+});
+// Controllers Within The "App\Http\Controllers\Blog" Namespace
+Route::group(['namespace' => 'backend'], function () {
+    // backen RESTful route
+    Route::resource('backend', 'BackendController');
+});
 
 // duke's route
 Route::get('about', 'PagesController@getAbout');

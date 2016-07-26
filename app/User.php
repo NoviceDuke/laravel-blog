@@ -24,8 +24,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    //關聯資料庫  一個使用者 對 多個文章
-    public function posts(){
+    /**
+     * 關聯資料庫  一個使用者 對 多個文章.
+     */
+    public function posts()
+    {
         return $this->hasMany('App\Post');
+    }
+
+    /**
+     * 於當下使用者新增一個Post文章.
+     *
+     * @param Post::Class
+     */
+    public function addPost(Post $post)
+    {
+        return $this->posts()->save($post);
     }
 }

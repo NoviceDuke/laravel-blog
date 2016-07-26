@@ -12,5 +12,10 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    // original elixir mix sass. I don't need this  sass(bootstrap)
+    // mix.sass('app.scss');
+    mix.sass('blog-styles.scss','public/css/blog-styles.css');
+    mix.scripts([
+        'blog-styles.js',
+    ],'public/js/blog-styles.js');
 });

@@ -7,14 +7,12 @@ class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-            Schema::create('posts', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('author_email');
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('title')->unique();
             $table->text('content');
             $table->string('tags')->nullable();
@@ -23,14 +21,12 @@ class CreatePostsTable extends Migration
             $table->timestamps();
 
             //foreign Key Set
-            $table->foreign('author_email')->references('email')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
