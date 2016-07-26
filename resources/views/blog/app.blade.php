@@ -17,7 +17,6 @@
             //empty now
         </script>
         <!--Scripts End-->
-
     </head>
 
     <body background="png/hchs_background.png">
