@@ -22,15 +22,15 @@ $(document).ready(function() {
 });
 
 /* blog.post.create.blade.php */
-$('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 2 // Creates a dropdown of 15 years to control year
+$(document).ready(function() {
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 2 // Creates a dropdown of 15 years to control year
+    });
+    function post_create_submit() {
+        document.getElementById('post_create_form').submit();
+    }
 });
-
-function post_create_submit() {
-    document.getElementById('post_create_form').submit();
-}
-
 $(window).load(function(e) {
     if ($("toast").length)
         Materialize.toast($('toast').data("error"), 4000, 'toast-error');
