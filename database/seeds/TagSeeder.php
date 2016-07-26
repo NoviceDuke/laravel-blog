@@ -7,8 +7,6 @@ class TagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -16,10 +14,9 @@ class TagSeeder extends Seeder
 
         Tag::create([
 
-      	 'name'	   	=> 		'測試用tag',
-      	 'frenquency'    =>      '1',
-        	    
-      ]);
+           'name' => '測試用tag',
+           'frenquency' => '1',
 
+      ]);
     }
 }

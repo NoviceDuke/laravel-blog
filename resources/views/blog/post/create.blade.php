@@ -20,11 +20,11 @@
                     <input id="pic_url" type="text" class="validate">
                 </div>
             </div>
-            <input type="date" class="datepicker">
+                <input name="date" type="date" class="datepicker">
             <div class="row">
                 <div class="input-field col s12">
                     <label for="content">Content</label>
-                  <textarea id="content" class="materialize-textarea"></textarea>
+                    <textarea name="content" id="content" class="materialize-textarea"></textarea>
                 </div>
             </div>
         </form>

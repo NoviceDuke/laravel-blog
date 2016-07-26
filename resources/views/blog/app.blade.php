@@ -6,7 +6,7 @@
         {!! Html::script('https://code.jquery.com/jquery-2.1.1.min.js')!!}
         {!! Html::script('materialize/js/materialize.js')!!}
         {!! Html::style('materialize/css/materialize.css')!!}
-        {!! Html::style(elixir('css/blog-styles.css'))!!}
+        {!! Html::style(url('css/blog-styles.css'))!!}
         {!! Html::style(url('css/animate.min.css'))!!}
         {!! Html::script(url('js/blog-styles.js'))!!}
 
@@ -24,7 +24,7 @@
         <!--  Top Navigation  -->
         <nav class="blue-grey darken-2">
             <div class="nav-wrapper nav-fix blue-grey darken-2">
-              <a href="#!" class="brand-logo">HCHS's Blog</a>
+              <a href="{{url('/')}}}" class="brand-logo">HCHS's Blog</a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{url('/')}}">Home</a></li>
                 <li><a href="{{url('/logout')}}">Log out</a></li>
@@ -46,15 +46,19 @@
 
 
         <!--  Floating Button -->
-        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <div class="fixed-action-btn float-position">
             @if(Request::is('post/create'))
             <a id="post_create_submit" class="btn-floating btn-large blue" onclick="post_create_submit();">
-                <i id="post_create_icon" class="large material-icons floating-fix" >done</i>
+                <i class="large material-icons floating-fix" >done</i>
             </a>
-            @else
-		    <a class="btn-floating btn-large red">
+            @elseif(Request::is('blog'))
+		    <a id="float_menu" class="btn-floating btn-large red">
 		        <i class="large material-icons floating-fix" >view_headline</i>
 		    </a>
+            @else
+            <a id="float_previous" href="{{URL::previous()}}" class="btn-floating btn-large green">
+                <i class="large material-icons floating-fix" >chevron_left</i>
+            </a>
             @endif
 		    <ul>
                 @if(Request::is('blog'))

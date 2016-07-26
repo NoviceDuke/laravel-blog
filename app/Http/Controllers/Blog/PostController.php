@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -50,7 +51,11 @@ class PostController extends Controller
             'date' => 'required',
             'content' => 'required',
         ]);
+        $post = new Post($request->all());
+        $post->slug = $request->title.'-'.Auth::id();
 
-        return view('blog.post.create');
+        Auth::user()->addPost($post);
+
+        return redirect('/post/'.$post->slug);
     }
 }

@@ -8,12 +8,10 @@ class PostSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
-        $users_email = User::all()->lists('email')->toArray();
+        $user_ids = User::all()->lists('id')->toArray();
         $faker = Faker\Factory::create('zh_TW');
 
         //預設圖片位置，來自http://www.freeimages.com/
@@ -29,23 +27,20 @@ class PostSeeder extends Seeder
          'http://images.freeimages.com/images/previews/022/light-play-1-1621526.jpg',
          'http://images.freeimages.com/images/previews/583/flashlight-blue-play-1182481.jpg',
          'http://images.freeimages.com/images/previews/e21/broken-glass-1423483.jpg',
-         'http://images.freeimages.com/images/previews/626/flashlight-and-led-1-1195025.jpg'
+         'http://images.freeimages.com/images/previews/626/flashlight-and-led-1-1195025.jpg',
         ];
 
         DB::table('posts')->delete();
-        foreach (range(1,10) as $index) 
-        {
-
+        foreach (range(1, 10) as $index) {
             Post::create([
-            'author_email'     =>      $faker->randomElement($users_email),
-            'title'            =>      $faker->unique()->realText(rand(10,15)),
-            'content'          =>      $faker->realText($maxNbChars = 200, $indexSize = 2),
-            'tags'             =>      '測試用tag',
-            'pic_url'          =>      $faker->randomElement($array_pic_url),
-            'slug'             =>      $faker->unique()->slug,
-            
-      ]);
+            'user_id' => $faker->randomElement($user_ids),
+            'title' => $faker->unique()->realText(rand(10, 15)),
+            'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+            'tags' => '測試用tag',
+            'pic_url' => $faker->randomElement($array_pic_url),
+            'slug' => $faker->unique()->slug,
 
+      ]);
         }
     }
 }

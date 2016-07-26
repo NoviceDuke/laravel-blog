@@ -7,30 +7,24 @@ class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
-
-            User::create([
+        User::create([
                 'email' => 'g9308370@hotmail.com',
-                'name'  => 'hchs',
+                'name' => 'hchs',
                 'password' => '123456',
             ]);
-            User::create([
+        User::create([
                 'email' => 'duke00360753@gmail.com',
-                'name'  => 'duke',
+                'name' => 'duke',
                 'password' => '123456',
             ]);
 
-
-        foreach(DB::table("users")->get() as $user) {
-        DB::table("users")
-        ->where("id", $user->id)
-        ->update(array("password"=>Hash::make($user->password)));
+        foreach (DB::table('users')->get() as $user) {
+            DB::table('users')
+        ->where('id', $user->id)
+        ->update(array('password' => Hash::make($user->password)));
         }
     }
-
-    
 }

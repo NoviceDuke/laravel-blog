@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-            'author_email', 'title', 'content', 'tags', 'pic_url', 'slug',
+            'user_id', 'title', 'content', 'tags', 'pic_url', 'slug',
     ];
 
     /**
@@ -34,7 +34,7 @@ class Post extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'author_email');
+        return $this->belongsTo('App\User');
     }
 
     /**
