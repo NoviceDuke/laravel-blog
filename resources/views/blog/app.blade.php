@@ -23,7 +23,7 @@
         <!--  Top Navigation  -->
         <nav class="blue-grey darken-2">
             <div class="nav-wrapper nav-fix blue-grey darken-2">
-              <a href="{{url('/')}}}" class="brand-logo">HCHS's Blog</a>
+              <a href="{{url('/')}}" class="brand-logo">HCHS's Blog</a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{url('/')}}">Home</a></li>
                 <li><a href="{{url('/logout')}}">Log out</a></li>
