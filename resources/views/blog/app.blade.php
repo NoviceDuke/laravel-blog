@@ -7,7 +7,9 @@
         {!! Html::script('materialize/js/materialize.js')!!}
         {!! Html::style('materialize/css/materialize.css')!!}
         {!! Html::style(elixir('css/blog-styles.css'))!!}
+        {!! Html::style(url('css/animate.min.css'))!!}
         {!! Html::script(url('js/blog-styles.js'))!!}
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!--Scripts Start-->
@@ -46,8 +48,8 @@
         <!--  Floating Button -->
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
             @if(Request::is('post/create'))
-            <a class="btn-floating btn-large blue" onclick="post_create_submit();">
-                <i class="large material-icons floating-fix" >done</i>
+            <a id="post_create_submit" class="btn-floating btn-large blue" onclick="post_create_submit();">
+                <i id="post_create_icon" class="large material-icons floating-fix" >done</i>
             </a>
             @else
 		    <a class="btn-floating btn-large red">

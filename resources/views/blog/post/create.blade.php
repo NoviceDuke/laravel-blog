@@ -31,17 +31,7 @@
         </div>
         </div>
     </div>
-
-    <script>
-    $(document).ready(function() {
-        var errors_count = {{count($errors)}};
-        if (errors_count > 0)
-        {
-            // var error = {{json_encode($errors->toArray())}};
-            @foreach($errors->all() as $error)
-                Materialize.toast('123', 4000);
-            @endforeach
-        }
-    });
-    </script>
+    @if(count($errors)>0)
+            <toast data-error='{{$errors->first()}}'></toast>
+    @endif
 @stop
