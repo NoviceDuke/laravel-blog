@@ -35,7 +35,6 @@
     @endif
 
 
-
     {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
     <script>
     var editor_config = {
