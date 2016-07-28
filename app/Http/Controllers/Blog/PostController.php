@@ -42,16 +42,6 @@ class PostController extends Controller
     }
 
     /**
-     *   show the post create view.
-     */
-    public function edit($slug)
-    {
-        $titlew=where
-
-        return view(edit);
-    }
-
-    /**
      *   store a new post .
      */
     public function store(Request $request)
