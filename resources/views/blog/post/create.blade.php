@@ -33,6 +33,9 @@
     @if(count($errors)>0)
             <toast data-error='{{$errors->first()}}'></toast>
     @endif
+
+
+       
     {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
     <script>
     var editor_config = {
