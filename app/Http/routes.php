@@ -23,7 +23,7 @@ Route::resource('backend', 'BackendController');
 
 // duke's route
 Route::get('about', 'PagesController@getAbout');
-
+Route::get('article-backend','ArticleController@show');
 // default auth and home route
 Route::auth();
 Route::get('/', 'HomeController@index');
