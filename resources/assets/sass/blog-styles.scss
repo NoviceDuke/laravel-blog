@@ -1,6 +1,31 @@
 html {
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
+/*All Page Maybe Used*/
+.border-top-red{
+    border-top: 2px solid #e54e7e;
+}
+.border-top-blue{
+    border-top: 2px solid #5c6bc0;
+}
+.category-container{
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
+    background: #f9f9f9;
+}
+.category-container-title{
+    background: #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
+    font-size: 22px;
+    line-height: 25px;
+    text-align: center;
+    margin-bottom: 0;
+    padding: 15px 15px 18px;
+}
+.category-card-fix{
+    margin: 20px 20px 20px;
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,.1);
+}
+
 /*blog.app.blade.php*/
 .nav-fix {
     position: absolute;
