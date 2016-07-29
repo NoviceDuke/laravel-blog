@@ -15,7 +15,7 @@ html {
 .category-container-title{
     background: #ffffff;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
-    font-size: 22px;
+    font-size: 20px;
     line-height: 25px;
     text-align: center;
     margin-bottom: 0;
@@ -62,4 +62,20 @@ html {
 .slider-section {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+/*blog.rightSide.blade.php*/
+.border-right-red {
+    border-right: 5px solid #e54e7e;
+}
+.border-right-blue {
+    border-right: 5px solid #5c6bc0;
+}
+.border-right-yellow {
+    border-right: 5px solid #f57f17;
+}
+.title-fix{
+    margin-bottom: -5px;
+}
+.collection-fix{
+    border:!important;
 }

@@ -1,11 +1,9 @@
-<div class="card medium hoverable">
-	<div class="collection">
-    <a href="#!" class="collection-item">Alan<span class="badge">1</span></a>
-    <a href="#!" class="collection-item">Marry<span class="new badge">4</span></a>
-    <a href="#!" class="collection-item">Jason</a>
-    <a href="#!" class="collection-item">Whatever<span class="badge">14</span></a>
-	</div>
-	<div style="text-align:center;">
-		   <i class="large material-icons" style="margin-top:50px;">perm_identity</i>
+
+<div class="category-container">
+	<h3 class="category-container-title title-fix">Categories</h3>
+	<div class="collection collection-fix">
+		<a href="#!" class="collection-item border-right-red grey-text">{{$categories[0]->name}}</a>
+		<a href="#!" class="collection-item border-right-blue grey-text">{{$categories[1]->name}}</a>
+		<a href="#!" class="collection-item border-right-yellow grey-text">{{$categories[2]->name}}</a>
 	</div>
 </div>
