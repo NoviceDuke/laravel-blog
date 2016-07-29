@@ -32,11 +32,18 @@ html {
   margin: 20px 20px; }
 
 /*blog.app.blade.php*/
-.nav-fix {
+.logo-fix {
+  font-size: 25px !important; }
+
+.nav-height-fix {
+  height: 55px;
+  line-height: 55px; }
+
+.nav-content-fix {
   position: absolute;
   top: auto;
-  margin-left: 5px;
-  margin-right: 5px; }
+  margin-left: 15px;
+  margin-right: 15px; }
 
 .float-position {
   bottom: 45px;
