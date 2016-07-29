@@ -28,7 +28,7 @@ class PostController extends Controller
         $post = Post::all()->where('slug', $slug)->first();
         if (!$post) {
             return abort(403, 'Slug位置錯誤');
-        }
+        } 
 
         return view('blog.post.show', compact('post'));
     }
