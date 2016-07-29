@@ -6,7 +6,7 @@
             <div class="row">
             	<div class="col m12">
                     <div class="card medium category-card-fix">
-            		    <div class="card-image waves-effect waves-block waves-light">
+            		    <div class="category-img-fix card-image waves-effect waves-block waves-light">
             		    	<img class="activator" src="{{$post->pic_url}}">
             		    </div>
             		    <div class="card-content">

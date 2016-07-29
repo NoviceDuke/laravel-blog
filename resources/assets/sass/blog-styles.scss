@@ -25,6 +25,9 @@ html {
     margin: 20px 20px 20px;
     box-shadow: 0 0px 0px 0 rgba(0,0,0,.1);
 }
+.category-img-fix{
+    max-height: 50% !important;
+}
 
 /*blog.app.blade.php*/
 .nav-fix {
