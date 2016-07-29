@@ -31,7 +31,7 @@ class PostSeeder extends Seeder
         ];
 
         DB::table('posts')->delete();
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 50) as $index) {
             Post::create([
             'user_id' => $faker->randomElement($user_ids),
             'title' => $faker->unique()->realText(rand(10, 15)),
