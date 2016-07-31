@@ -12,13 +12,19 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
+            'name' => 'Lyrics',
+        ]);
+        Category::create([
             'name' => 'Music',
         ]);
         Category::create([
             'name' => 'Code',
         ]);
         Category::create([
-            'name' => 'Lyrics',
+            'name' => 'Server',
+        ]);
+        Category::create([
+            'name' => 'Android',
         ]);
 
         // 隨機取得15篇文章，隨機加入某個分類
