@@ -1,9 +1,17 @@
 /*Define All Colors*/
 $colors: (purple : #7e57c2, red : #e54e7e, blue : #5c6bc0, yellow : #f57f17, green : #43a047, brown : #795548,);
+@function color($key) {
+     @if map-has-key($colors, $key){
+        @return map-get($colors, $key);
+    }
+    @warn "Unknown `#{$key}` in $colors.";
+    @return null;
+}
+
+/*All Page Maybe Used*/
 html {
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
-/*All Page Maybe Used*/
 @each $header,$color in $colors {
     .border-top-#{$header} {
         border-top: 2px solid $color;
