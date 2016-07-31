@@ -53,11 +53,11 @@ html {
   padding: 15px 15px 18px; }
 
 .category-card-fix {
-  margin: 20px;
+  margin: 20px 35px;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1); }
 
 .category-img-fix {
-  max-height: 50% !important; }
+  max-height: 200px !important; }
 
 .category-video-fix {
   margin: 20px; }
@@ -65,6 +65,10 @@ html {
 /*blog.app.blade.php*/
 .logo-fix {
   font-size: 25px !important; }
+
+.nav-icon-fix {
+  height: 55px !important;
+  line-height: 55px !important; }
 
 .nav-height-fix {
   height: 55px;

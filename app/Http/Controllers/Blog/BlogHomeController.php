@@ -10,21 +10,22 @@ class BlogHomeController extends Controller
 {
     public function __construct()
     {
+        $categories = Category::all();
+        view()->share(compact('categories'));
         $this->middleware('auth');
     }
 
     public function index()
     {
-        $posts = Post::take(5)->get();
-        $categories = Category::all();
-        // return var_dump($posts);
-        return view('blog.index', compact('posts', 'categories'));
+        $newPosts = Post::query()->orderBy('created_at', 'DESC')->take(4)->get();
+
+        return view('blog.index', compact('newPosts'));
     }
 
     public function trace()
     {
         $posts = Post::all();
-            // return var_dump($posts);
+
         return view('blog.trace', compact('posts'));
     }
 }

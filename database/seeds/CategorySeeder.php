@@ -15,16 +15,16 @@ class CategorySeeder extends Seeder
             'name' => 'Lyrics',
         ]);
         Category::create([
-            'name' => 'Music',
-        ]);
-        Category::create([
-            'name' => 'Code',
-        ]);
-        Category::create([
             'name' => 'Server',
         ]);
         Category::create([
+            'name' => 'PHP',
+        ]);
+        Category::create([
             'name' => 'Android',
+        ]);
+        Category::create([
+            'name' => 'Music',
         ]);
 
         // 隨機取得15篇文章，隨機加入某個分類

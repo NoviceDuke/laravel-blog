@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $categories = Category::all();
+        view()->share(compact('categories'));
+    }
     /**
      *   Post index view
      *   not any route to here now.
@@ -28,7 +34,7 @@ class PostController extends Controller
         $post = Post::all()->where('slug', $slug)->first();
         if (!$post) {
             return abort(403, 'Slug位置錯誤');
-        } 
+        }
 
         return view('blog.post.show', compact('post'));
     }

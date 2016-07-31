@@ -25,7 +25,7 @@
             <div class="nav-wrapper blue-grey darken-2 nav-content-fix">
               <a href="{{url('/')}}" class="brand-logo logo-fix">HCHS's Blog</a>
               <ul class="right hide-on-med-and-down">
-                <li><a href="{{url('/')}}"><i class="material-icons">home</i></a></li>
+                <li><a href="{{url('/')}}"><i class="material-icons nav-icon-fix">home</i></a></li>
                 <li><a href="{{url('/logout')}}">Log out</a></li>
               </ul>
 
