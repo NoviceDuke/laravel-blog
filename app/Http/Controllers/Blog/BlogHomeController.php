@@ -18,8 +18,9 @@ class BlogHomeController extends Controller
     public function index()
     {
         $newPosts = Post::query()->orderBy('created_at', 'DESC')->take(4)->get();
+        $lyricPosts = Category::where('name', 'Lyrics')->first()->posts()->get();
 
-        return view('blog.index', compact('newPosts'));
+        return view('blog.index', compact('newPosts', 'lyricPosts'));
     }
 
     public function trace()
