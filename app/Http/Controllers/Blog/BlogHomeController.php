@@ -17,10 +17,11 @@ class BlogHomeController extends Controller
 
     public function index()
     {
-        $newPosts = Post::query()->orderBy('created_at', 'DESC')->take(4)->get();
+        $newPosts = Post::query()->orderBy('created_at', 'DESC')->take(2)->get();
         $lyricPosts = Category::where('name', 'Lyrics')->first()->posts()->get();
+        $phpPosts = Category::where('name', 'PHP')->first()->posts()->get();
 
-        return view('blog.index', compact('newPosts', 'lyricPosts'));
+        return view('blog.index', compact('newPosts', 'lyricPosts','phpPosts'));
     }
 
     public function trace()

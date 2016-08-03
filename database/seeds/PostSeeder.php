@@ -12,7 +12,7 @@ class PostSeeder extends Seeder
     public function run()
     {
         $user_ids = User::all()->lists('id')->toArray();
-        $faker = Faker\Factory::create('zh_TW');
+        $faker = Faker\Factory::create('en_EN');
 
         //預設圖片位置，來自http://www.freeimages.com/
         $array_pic_url = [
@@ -31,16 +31,15 @@ class PostSeeder extends Seeder
         ];
 
         DB::table('posts')->delete();
-        foreach (range(1, 50) as $index) {
+        foreach (range(1, 100) as $index) {
             Post::create([
             'user_id' => $faker->randomElement($user_ids),
-            'title' => $faker->unique()->realText(rand(10, 15)),
+            'title' => $faker->unique()->text(15),
             'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
             'tags' => '測試用tag',
             'pic_url' => $faker->randomElement($array_pic_url),
             'slug' => $faker->unique()->slug,
-
-      ]);
+            ]);
         }
     }
 }

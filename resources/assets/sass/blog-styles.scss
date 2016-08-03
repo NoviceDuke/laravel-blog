@@ -41,10 +41,13 @@ html {
 }
 .category-card-fix {
     margin:20px 35px;
-    box-shadow: 0 0 0 0 rgba(0,0,0,.1);
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);
 }
 .category-img-fix {
     max-height: 200px !important;
+}
+.horizontal-img-fix{
+    max-weight: 100px !important;
 }
 .category-video-fix {
     margin: 20px;
