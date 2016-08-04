@@ -58,7 +58,7 @@
 		</div>
 		<div class="row">
 			<div class="card horizontal category-card-fix">
-				<div class="card-image horizontal-img-fix">
+				<div class="card-image">
 					<img src="{{$lyricPosts[1]->pic_url}}">
 				</div>
 				<div class="card-stacked">
@@ -73,7 +73,7 @@
 		</div>
 		<div class="row">
 			<div class="card horizontal category-card-fix">
-				<div class="card-image horizontal-img-fix">
+				<div class="card-image">
 					<img src="{{$lyricPosts[0]->pic_url}}">
 				</div>
 				<div class="card-stacked">
@@ -110,7 +110,7 @@
 		</div>
 		<div class="row">
 			<div class="card horizontal category-card-fix">
-				<div class="card-image horizontal-img-fix">
+				<div class="card-image">
 					<img src="{{$phpPosts[1]->pic_url}}">
 				</div>
 				<div class="card-stacked">
@@ -125,7 +125,7 @@
 		</div>
 		<div class="row">
 		<div class="card horizontal category-card-fix">
-			<div class="card-image horizontal-img-fix">
+			<div class="card-image">
 				<img src="{{$phpPosts[2]->pic_url}}">
 			</div>
 			<div class="card-stacked">

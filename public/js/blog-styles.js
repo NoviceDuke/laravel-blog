@@ -20,7 +20,7 @@ $(document).ready(function() {
     $("#float_previous").animateCss('bounceIn');
     $("#float_menu").animateCss('zoomIn');
     $("h4").animateCss('zoomIn');
-    // $("#post_create_icon").animateCss('pulse');
+    
 });
 
 /* blog.post.create.blade.php */
