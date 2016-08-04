@@ -20,7 +20,7 @@ $(document).ready(function() {
     $("#float_previous").animateCss('bounceIn');
     $("#float_menu").animateCss('zoomIn');
     $("h4").animateCss('zoomIn');
-    
+
 });
 
 /* blog.post.create.blade.php */
@@ -37,6 +37,11 @@ function post_create_submit() {
 $(window).load(function(e) {
     if ($("toast").length)
         Materialize.toast($('toast').data("error"), 4000, 'toast-error');
+});
+
+/* right.blade.php */
+$(document).ready(function() {
+    $('.carousel').carousel();
 });
 
 //# sourceMappingURL=blog-styles.js.map

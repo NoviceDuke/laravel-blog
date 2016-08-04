@@ -7,7 +7,6 @@ $colors: (purple : #7e57c2, red : #e54e7e, blue : #5c6bc0, yellow : #f57f17, gre
     @warn "Unknown `#{$key}` in $colors.";
     @return null;
 }
-
 /*All Page Maybe Used*/
 html {
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
@@ -40,13 +39,13 @@ html {
     padding: 15px 15px 18px;
 }
 .category-card-fix {
-    margin:20px 35px;
-    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.1);
+    margin: 20px 35px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1);
 }
 .category-img-fix {
     max-height: 200px !important;
 }
-.horizontal-img-fix{
+.horizontal-img-fix {
     max-width: 180px !important;
 }
 .category-video-fix {
@@ -56,7 +55,7 @@ html {
 .logo-fix {
     font-size: 25px !important;
 }
-.nav-icon-fix{
+.nav-icon-fix {
     height: 55px !important;
     line-height: 55px !important;
 }
@@ -98,13 +97,26 @@ html {
 .title-fix {
     margin-bottom: -5px;
 }
-.search-input{
-    width:calc(80%) !important;
+.search-input {
+    width: calc(80%) !important;
 }
-.search-icon-fix{
-    top:12px !important;
-    left:20px !important;
+.search-icon-fix {
+    top: 12px !important;
+    left: 20px !important;
 }
 .collection-fix {
     border: !important;
+}
+.carrousel-fix{
+    height: 180px;
+}
+.carrousel-item-fix{
+    margin-top: 45px!important;
+    height: 150px !important;
+    text-align:center !important;
+}
+.carousel-item-container {
+    height: 120px;
+    background: blue;
+    color: white;
 }

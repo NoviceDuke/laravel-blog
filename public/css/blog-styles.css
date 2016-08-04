@@ -54,7 +54,7 @@ html {
 
 .category-card-fix {
   margin: 20px 35px;
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1); }
 
 .category-img-fix {
   max-height: 200px !important; }
@@ -120,5 +120,18 @@ html {
 
 .collection-fix {
   border: !important; }
+
+.carrousel-fix {
+  height: 180px; }
+
+.carrousel-item-fix {
+  margin-top: 45px !important;
+  height: 150px !important;
+  text-align: center !important; }
+
+.carousel-item-container {
+  height: 120px;
+  background: blue;
+  color: white; }
 
 /*# sourceMappingURL=blog-styles.css.map */

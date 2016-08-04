@@ -13,6 +13,22 @@
 	</div>
 </div>
 <!-- Search -->
+<!-- Author Changer -->
+<div class="row">
+	<div class="col s12 m12">
+		<div class="category-container">
+			<h3 class="category-container-title title-fix">Authors</h3>
+            <div class="carousel carrousel-fix">
+            <a class="carousel-item carrousel-item-fix" href="#one!"><div class="carousel-item-container">Author</div></a>
+            <a class="carousel-item carrousel-item-fix" href="#two!"><div class="carousel-item-container">Author</div></a>
+            <a class="carousel-item carrousel-item-fix" href="#three!"><div class="carousel-item-container">Author</div></a>
+            <a class="carousel-item carrousel-item-fix" href="#four!"><div class="carousel-item-container">Author</div></a>
+            <a class="carousel-item carrousel-item-fix" href="#five!"><div class="carousel-item-container">Author</div></a>
+            </div>
+		</div>
+	</div>
+</div>
+<!-- Author Changer -->
 <!-- Categories -->
 <div class="row">
 	<div class="col s12 m12">
