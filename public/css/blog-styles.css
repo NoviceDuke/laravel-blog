@@ -111,6 +111,13 @@ html {
 .title-fix {
   margin-bottom: -5px; }
 
+.search-input {
+  width: calc(80%) !important; }
+
+.search-icon-fix {
+  top: 12px !important;
+  left: 20px !important; }
+
 .collection-fix {
   border: !important; }
 
