@@ -111,16 +111,19 @@ html {
     height: 180px;
 }
 .carrousel-item-fix{
-    margin-top: 45px!important;
-    height: 150px !important;
+    margin-top: 0px!important;
+    height: 130px!important;
+    width: 130px!important;
     text-align:center !important;
 }
 .carousel-item-container {
-    height: 120px;
+    height: 130px;
+    width: 130px;
     background: white;
     color: white;
     box-shadow: 0 5px 9px 0 rgba(0,0,0,.1);
 }
 .carrousel-img{
+    height: 130px!important;
     padding: 5px 8px;
 }
