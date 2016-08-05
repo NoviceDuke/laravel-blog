@@ -1,160 +1,146 @@
-<!--Card-->
-<!-- <div class="card medium hoverable">
-	<div class="card-image waves-effect waves-block waves-light">
-	<img class="activator" src="http://materializecss.com/images/sample-1.jpg">
-	</div>
-	<div class="card-content">
-	<span class="card-title  grey-text text-darken-4 ">Card Title
-	<i class="card-title material-icons right activator">more_vert</i></span>
-
-	</div>
-	<div class="card-reveal">
-	<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-	<p>Static  Here is some more information</p>
-	<a clss="left" href="http://www.google.com">more</a>
-	</div>
-</div> -->
-<!--Card-->
-<div class="slider-section">
-<div class="slider">
-  <ul class="slides">
-    <li>
-      <img src="http://lorempixel.com/580/250/nature/1"> <!-- random image -->
-      <div class="caption center-align">
-        <h3>This is our big Tagline!</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-      </div>
-    </li>
-    <li>
-      <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
-      <div class="caption left-align">
-        <h3>Left Aligned Caption</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-      </div>
-    </li>
-    <li>
-      <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
-      <div class="caption right-align">
-        <h3>Right Aligned Caption</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-      </div>
-    </li>
-    <li>
-      <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
-      <div class="caption center-align">
-        <h3>This is our big Tagline!</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-      </div>
-    </li>
-  </ul>
-</div>
-</div>
-@foreach($posts as $key=>$post)
-
-<div class="row">
-	<div class="col s12 m6">
-        <div class="card small">
-		    <div class="card-image waves-effect waves-block waves-light">
-		    	<img class="activator" src="{{$post->pic_url}}">
-		    </div>
-		    <div class="card-content">
-		    	<span class="card-title activator grey-text text-darken-4">{{$post->title}}<i class="material-icons right">more_vert</i></span>
-		      	<p><a href="{{url($post->path())}}">more</a></p>
-		    </div>
-		    <div class="card-reveal">
-		      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-		      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-		    </div>
+<!-- New Posts -->
+<div class="col s12 m12">
+	<div class="category-container">
+		<h3 class="category-container-title border-top-brown">New Post</h3>
+		<div class="row">
+			<div class="col s12 m6">
+				<div class="card category-card-fix" style="margin-right:0px;">
+				    <div class="card-image waves-effect waves-block waves-light category-img-fix">
+				      <img class="activator" src="{{$newPosts[0]->pic_url}}">
+				    </div>
+				    <div class="card-content">
+				      <span class="card-title grey-text text-darken-4">{{$newPosts[0]->title}}</span>
+				      <p><a href="{{url($newPosts[0]->path())}}">more</a></p>
+				    </div>
+				    <div class="card-reveal">
+				      <span class="card-title grey-text text-darken-4">{{$newPosts[0]->title}}<i class="material-icons right">close</i></span>
+				      <p>{{$newPosts[0]->content}}</p>
+				    </div>
+				</div>
+			</div>
+			<div class="col s12 m6">
+				<div class="card category-card-fix" style="margin-left:0px;">
+					<div class="card-image waves-effect waves-block waves-light category-img-fix">
+					  <img class="activator" src="{{$newPosts[1]->pic_url}}">
+					</div>
+					<div class="card-content">
+					  <span class="card-title grey-text text-darken-4">{{$newPosts[1]->title}}</span>
+					  <p><a href="#">more</a></p>
+					</div>
+					<div class="card-reveal">
+					  <span class="card-title grey-text text-darken-4">{{$newPosts[1]->title}}<i class="material-icons right">close</i></span>
+					  <p>{{$newPosts[1]->content}}</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="col s12 m6">
-        <div class="card-panel teal">
-          <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-          I am convenient because I require little markup to use effectively.
-          </span>
-        </div>
-        <div class="card-panel grey lighten-5 z-depth-1" style="margin-top:25px;">
-          <div class="row valign-wrapper">
-            <div class="col s2">
-              <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
-            </div>
-            <div class="col s10">
-              <span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
-              </span>
-            </div>
-          </div>
-        </div>
+</div>
+<!-- New Posts -->
+<!-- Lyrics -->
+<div class="col s12 m6">
+	<div class="category-container">
+		<h3 class="category-container-title border-top-red">{{$categories[0]->name}}</h3>
+		<div class="row">
+			<div class="card category-card-fix">
+				<div class="card-image waves-effect waves-block waves-light category-img-fix">
+				  <img class="activator" src="{{$lyricPosts[0]->pic_url}}">
+				</div>
+				<div class="card-content">
+				  <span class="card-title grey-text text-darken-4">{{$lyricPosts[0]->title}}</span>
+				  <p><a href="#">more</a></p>
+				</div>
+				<div class="card-reveal">
+				  <span class="card-title grey-text text-darken-4">{{$lyricPosts[0]->title}}<i class="material-icons right">close</i></span>
+				  <p>{{$lyricPosts[0]->content}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="card horizontal category-card-fix">
+				<div class="card-image">
+					<img src="{{$lyricPosts[1]->pic_url}}">
+				</div>
+				<div class="card-stacked">
+					<div class="card-content">
+						<p>{{$lyricPosts[1]->title}}</p>
+					</div>
+					<div class="card-action">
+						<a href="#">This is a link</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="card horizontal category-card-fix">
+				<div class="card-image">
+					<img src="{{$lyricPosts[0]->pic_url}}">
+				</div>
+				<div class="card-stacked">
+					<div class="card-content">
+						<p>{{$lyricPosts[0]->title}}</p>
+					</div>
+					<div class="card-action">
+						<a href="#">This is a link</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Lyrics -->
+<!-- PHP -->
+<div class="col s12 m6">
+	<div class="category-container">
+		<h3 class="category-container-title border-top-yellow">{{$categories[2]->name}}</h3>
+		<div class="row">
+			<div class="card category-card-fix">
+				<div class="card-image waves-effect waves-block waves-light category-img-fix">
+				  <img class="activator" src="{{$phpPosts[0]->pic_url}}">
+				</div>
+				<div class="card-content">
+				  <span class="card-title grey-text text-darken-4">{{$phpPosts[0]->title}}</span>
+				  <p><a href="#">more</a></p>
+				</div>
+				<div class="card-reveal">
+				  <span class="card-title grey-text text-darken-4">{{$phpPosts[0]->title}}<i class="material-icons right">close</i></span>
+				  <p>{{$phpPosts[0]->content}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="card horizontal category-card-fix">
+				<div class="card-image">
+					<img src="{{$phpPosts[1]->pic_url}}">
+				</div>
+				<div class="card-stacked">
+					<div class="card-content">
+						<p>{{$phpPosts[1]->title}}</p>
+					</div>
+					<div class="card-action">
+						<a href="#">This is a link</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		<div class="card horizontal category-card-fix">
+			<div class="card-image">
+				<img src="{{$phpPosts[2]->pic_url}}">
+			</div>
+			<div class="card-stacked">
+				<div class="card-content">
+					<p>{{$phpPosts[2]->title}}</p>
+				</div>
+				<div class="card-action">
+					<a href="#">This is a link</a>
+				</div>
+			</div>
+		</div>
+		</div>
 	</div>
 </div>
 
-@endforeach
 
 
-
-
-
-
-<!--三個一排的Card 垃圾寫法-->
-{{--  @foreach($posts as $key=>$post)
-	 @if($key%3==0)
-	 <div class="row">
-	 <div class="col s12 m4">
-	 		<div class="card medium hoverable">
-		      <div class="card-image waves-effect waves-block waves-light">
-		      <img class="activator" src="{{$post->pic_url}}">
-		      </div>
-		      <div class="card-content">
-		      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
-		      <i class="card-title material-icons right activator">more_vert</i></span>
-
-		      </div>
-		      <div class="card-reveal">
-		      <span class="card-title grey-text text-darken-4">{{$post->title}}<i class="material-icons right">close</i></span>
-		      <p>{{$post->content}} </p>
-		      <a clss="left" href="/hchs">more</a>
-		      </div>
-		    </div>
-	 </div>
-	 @elseif($key%3==1)
-	 <div class="col s12 m4">
-	 <div class="card medium hoverable">
-		      <div class="card-image waves-effect waves-block waves-light">
-		      <img class="activator" src="{{$post->pic_url}}">
-		      </div>
-		      <div class="card-content">
-		      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
-		      <i class="card-title material-icons right activator">more_vert</i></span>
-
-		      </div>
-		      <div class="card-reveal">
-		      <span class="card-title grey-text text-darken-4">{{$post->title}}<i class="material-icons right">close</i></span>
-		      <p>{{$post->content}} </p>
-		      <a clss="left" href="/hchs">more</a>
-		      </div>
-		    </div>
-	 </div>
-	 @else
-	 <div class="col s12 m4">
-	 <div class="card medium hoverable">
-		      <div class="card-image waves-effect waves-block waves-light">
-		      <img class="activator" src="{{$post->pic_url}}">
-		      </div>
-		      <div class="card-content">
-		      <span class="card-title  grey-text text-darken-4 ">{{$post->title}}
-		      <i class="card-title material-icons right activator">more_vert</i></span>
-
-		      </div>
-		      <div class="card-reveal">
-		      <span class="card-title grey-text text-darken-4">{{$post->title}}<i class="material-icons right">close</i></span>
-		      <p>{{$post->content}} </p>
-		      <a clss="left" href="/hchs">more</a>
-		      </div>
-		    </div>
-	 </div>
-	 </div>
-
-	 @endif
- @endforeach --}}
-<!--三個一排的Card 垃圾寫法-->
+<!-- PHP -->
