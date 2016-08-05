@@ -1,4 +1,4 @@
-@extends('blog/app')
+@extends('blog/app')  
 @section('content')
 <div class="row">
     <!--Static Cut Left Panel 75%-->
