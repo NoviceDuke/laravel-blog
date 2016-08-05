@@ -19,11 +19,11 @@
 		<div class="category-container">
 			<h3 class="category-container-title title-fix">Authors</h3>
             <div class="carousel carrousel-fix">
-            <a class="carousel-item carrousel-item-fix" href="#one!"><div class="carousel-item-container">Author</div></a>
-            <a class="carousel-item carrousel-item-fix" href="#two!"><div class="carousel-item-container">Author</div></a>
-            <a class="carousel-item carrousel-item-fix" href="#three!"><div class="carousel-item-container">Author</div></a>
-            <a class="carousel-item carrousel-item-fix" href="#four!"><div class="carousel-item-container">Author</div></a>
-            <a class="carousel-item carrousel-item-fix" href="#five!"><div class="carousel-item-container">Author</div></a>
+            <a class="carousel-item carrousel-item-fix" href="#one!"><div class="carousel-item-container circle"><img class="circle carrousel-img" src="https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/9/26/1411724026290/Kim-Jong-un-012.jpg" /></div></a>
+            <a class="carousel-item carrousel-item-fix" href="#two!"><div class="carousel-item-container circle"><img class="circle carrousel-img" src="https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/9/26/1411724026290/Kim-Jong-un-012.jpg" /></div></a>
+            <a class="carousel-item carrousel-item-fix" href="#three!"><div class="carousel-item-container circle"><img class="circle carrousel-img" src="https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/9/26/1411724026290/Kim-Jong-un-012.jpg" /></div></a>
+            <a class="carousel-item carrousel-item-fix" href="#four!"><div class="carousel-item-container circle"><img class="circle carrousel-img" src="https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/9/26/1411724026290/Kim-Jong-un-012.jpg" /></div></a>
+            <a class="carousel-item carrousel-item-fix" href="#five!"><div class="carousel-item-container circle"><img class="circle carrousel-img" src="https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/9/26/1411724026290/Kim-Jong-un-012.jpg" /></div></a>
             </div>
 		</div>
 	</div>

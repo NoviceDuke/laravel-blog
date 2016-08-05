@@ -117,6 +117,10 @@ html {
 }
 .carousel-item-container {
     height: 120px;
-    background: blue;
+    background: white;
     color: white;
+    box-shadow: 0 5px 9px 0 rgba(0,0,0,.1);
+}
+.carrousel-img{
+    padding: 5px 8px;
 }
