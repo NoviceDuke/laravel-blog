@@ -6,6 +6,6 @@
     <a href="#!" class="collection-item">Whatever<span class="badge">14</span></a>
 	</div>
 	<div style="text-align:center;">
-		   <i class="large material-icons" style="margin-top:50px;">perm_identity</i>
+		   <i class="large material-icons" style="margin-top:50px;">perm_identity</i> 
 	</div>
 </div>
