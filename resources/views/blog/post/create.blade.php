@@ -8,11 +8,17 @@
             <div class="row">
                 <h4>Create A Post</h4>
             </div>
+            
             <div class="row">
                 <div class="input-field col s12">
                     <label for="title">Title</label>
                     <input name="title" id="title" type="text" class="validate">
                 </div>
+            </div>
+            <!-- 文章分類-->
+            <div class="form-group">
+            {!! Form::label('category', 'Category:', ['class' => 'control-label']) !!}
+                {!! Form::text('category', null, ['class' => 'form-control']) !!}
             </div>
             <div class="row">
                 <div class="input-field col s12">
