@@ -9,19 +9,19 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
-*/
+ */
 // blog RESTful route
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
-Route::group(['namespace' => 'Blog'], function () {
-    Route::resource('blog', 'BlogHomeController');
-    Route::resource('post', 'PostController');
-    Route::resource('categories', 'CategoryController',['except'=>['create']]);
+Route::group(['middleware' => 'web', 'namespace' => 'Blog'], function () {
+	Route::resource('blog', 'BlogHomeController');
+	Route::resource('post', 'PostController');
+	Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 });
 // Controllers Within The "App\Http\Controllers\Backend" Namespace
 Route::group(['namespace' => 'backend'], function () {
-    // backen RESTful route
-    Route::resource('/backend', 'BackendController');
+	// backen RESTful route
+	Route::resource('/backend', 'BackendController');
 });
 
 // duke's route
