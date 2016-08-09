@@ -16,6 +16,7 @@
 Route::group(['namespace' => 'Blog'], function () {
     Route::resource('blog', 'BlogHomeController');
     Route::resource('post', 'PostController');
+    Route::resource('categories', 'CategoryController',['except'=>['create']]);
 });
 // Controllers Within The "App\Http\Controllers\Backend" Namespace
 Route::group(['namespace' => 'backend'], function () {
