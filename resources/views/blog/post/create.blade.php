@@ -8,18 +8,29 @@
             <div class="row">
                 <h4>Create A Post</h4>
             </div>
-            
+
             <div class="row">
                 <div class="input-field col s12">
                     <label for="title">Title</label>
                     <input name="title" id="title" type="text" class="validate">
                 </div>
             </div>
-            <!-- 文章分類-->
-            <div class="form-group">
-            {!! Form::label('category', 'Category:', ['class' => 'control-label']) !!}
-                {!! Form::text('category', null, ['class' => 'form-control']) !!}
-            </div>
+            <!-- 文章分類 下拉選單-->
+                <!-- Formbuilder 似乎無法做到動態抓取(可能可以)
+                  先使用一般HTML去抓
+                -->
+                {{ Form::label('category_id', 'Category:') }}
+
+                <select class ="form-control" name="category_id">
+                    @foreach($categories as $category)
+                    <option value = '{{ $category->id }}'>
+                    {{ $category->name }}
+                    </option>
+                    @endforeach
+                </select>
+
+
+
             <div class="row">
                 <div class="input-field col s12">
                     <label for="pic_url">Picture URL</label>
