@@ -18,4 +18,7 @@ elixir(function(mix) {
     mix.scripts([
         'blog-styles.js',
     ],'public/js/blog-styles.js');
+    mix.browserSync({
+        proxy: 'localhost/laravel-blog/public'
+    });
 });

@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-            'user_id', 'title', 'content', 'tags', 'pic_url', 'slug',
+            'user_id',      // ForeignKey
+            'category_id',   // ForeignKey
+            'title',        // 文章標題
+            'content',      // 文章內容
+            'tags',         // 文章tag
+            'pic_url',      // 圖片連結
+            'slug',         // slug
     ];
 
     /**
@@ -29,8 +35,7 @@ class Post extends Model
     }
 
     /**
-     *  反向資料庫關聯 文章屬於使用者
-     *  更改預設的ForeignKey 成 author_email !!!! Laravel關聯預設是user_id.
+     *  反向資料庫關聯 文章屬於使用者.
      */
     public function user()
     {
@@ -38,8 +43,18 @@ class Post extends Model
     }
 
     /**
-     *  反向資料庫關聯 文章屬於使用者
-     *  更改預設的ForeignKey 成 author_email !!!! Laravel關聯預設是user_id.
+     *  資料庫關聯 文章會有一種文章種類 Nullable
+     *  常理判斷不是一定要設定文章種類.
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     *  取得當下的slug，回傳已經串上slug的路徑.
+     *
+     *  @return string
      */
     public function path()
     {

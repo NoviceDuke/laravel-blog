@@ -17,10 +17,10 @@ Route::group(['namespace' => 'Blog'], function () {
     Route::resource('blog', 'BlogHomeController');
     Route::resource('post', 'PostController');
 });
-// Controllers Within The "App\Http\Controllers\Blog" Namespace
+// Controllers Within The "App\Http\Controllers\Backend" Namespace
 Route::group(['namespace' => 'backend'], function () {
     // backen RESTful route
-    Route::resource('backend', 'BackendController');
+    Route::resource('/backend', 'BackendController');
 });
 
 // duke's route

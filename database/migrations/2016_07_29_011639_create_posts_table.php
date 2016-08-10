@@ -13,7 +13,8 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
-            $table->string('title')->unique();
+            $table->integer('category_id')->unsigned()->nullable();
+            $table->string('title');
             $table->text('content');
             $table->string('tags')->nullable();
             $table->string('pic_url')->nullable();
@@ -22,6 +23,7 @@ class CreatePostsTable extends Migration
 
             //foreign Key Set
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
