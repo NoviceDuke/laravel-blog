@@ -13,7 +13,8 @@
 // blog RESTful route
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
-Route::group(['middleware' => 'web', 'namespace' => 'Blog'], function () {
+// Bomb : 'middleware' => 'web' 拔掉了還能作用驗證等功能，加了反而不能動
+Route::group(['namespace' => 'Blog'], function () {
 	Route::resource('blog', 'BlogHomeController');
 	Route::resource('post', 'PostController');
 	Route::resource('categories', 'CategoryController', ['except' => ['create']]);
