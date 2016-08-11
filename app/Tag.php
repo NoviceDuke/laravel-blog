@@ -21,7 +21,8 @@ class Tag extends Model
 
     /**
      *  多篇文章 對 多個標籤
-     *  中間表名稱慣例  aaa_bbbs 底線前後位由首字母排序，這裡是article_tags
+     *  中間表名稱慣例  aaas_bbb 底線前後位由首字母排序，這裡是articles_tag
+     *  laravel 默認的是 article_tag 單數的表名稱
      *  自動維護中間表的時間欄位.
      */
     public function articles()
@@ -32,4 +33,14 @@ class Tag extends Model
     /*------------------------------------------------------------------------**
     ** 自訂函數方法                                                            **
     **------------------------------------------------------------------------*/
+
+    /**
+     *  在當下的Tag新增一個Article.
+     *
+     *  @param Article::Class
+     */
+    public function addArticle(Article $article)
+    {
+        return $this->articles()->save($article);
+    }
 }
