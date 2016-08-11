@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Category;
-use App\Post;
+use App\Article;
 
 class CategorySeeder extends Seeder
 {
@@ -28,10 +28,10 @@ class CategorySeeder extends Seeder
         ]);
 
         // 隨機取得15篇文章，隨機加入某個分類
-        $randPosts = Post::all()->random(15);
-        foreach ($randPosts as $post) {
+        $randArticles = Article::all()->random(35);
+        foreach ($randArticles as $article) {
             $randCategory = Category::all()->random(1);
-            $randCategory->addPost($post);
+            $randCategory->addArticle($article);
         }
     }
 }

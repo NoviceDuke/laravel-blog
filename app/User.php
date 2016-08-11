@@ -6,11 +6,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    /*------------------------------------------------------------------------**
+    ** Entity 定義                                                            **
+    **------------------------------------------------------------------------*/
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -24,21 +22,29 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /*------------------------------------------------------------------------**
+    ** Relation 定義                                                          **
+    **------------------------------------------------------------------------*/
+
     /**
      * 關聯資料庫  一個使用者 對 多個文章.
      */
-    public function posts()
+    public function articles()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany(Article::class);
     }
 
+    /*------------------------------------------------------------------------**
+    ** 自訂功能函數                                                            **
+    **------------------------------------------------------------------------*/
+
     /**
-     * 於當下使用者新增一個Post文章.
+     * 於當下使用者新增一個Article文章.
      *
-     * @param Post::Class
+     * @param Article::Class
      */
-    public function addPost(Post $post)
+    public function addArticle(Article $article)
     {
-        return $this->posts()->save($post);
+        return $this->articles()->save($article);
     }
 }

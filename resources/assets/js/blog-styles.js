@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 });
 
-/* blog.post.create.blade.php */
+/* blog.article.create.blade.php */
 $(document).ready(function() {
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
@@ -40,11 +40,11 @@ $(document).ready(function() {
     });
 
     //動畫
-    $("#post_create_submit").animateCss('zoomIn');
+    $("#article_create_submit").animateCss('zoomIn');
     $("h4").animateCss('zoomIn');
 });
-function post_create_submit() {
-    document.getElementById('post_create_form').submit();
+function article_create_submit() {
+    document.getElementById('article_create_form').submit();
 }
 $(window).load(function(e) {
     if ($("toast").length)

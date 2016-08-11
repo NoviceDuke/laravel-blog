@@ -3,10 +3,10 @@
     <div class="card-panel white">
         <div class="card-panel-container">
         <div class="row">
-        <form class="col s12" method="POST" action="{{url('/post')}}" id="post_create_form">
+        <form class="col s12" method="POST" action="{{url('/article')}}" id="article_create_form">
             {{ csrf_field() }}
             <div class="row">
-                <h4>Create A Post</h4>
+                <h4>Create A Article</h4>
             </div>
 
             <div class="row">

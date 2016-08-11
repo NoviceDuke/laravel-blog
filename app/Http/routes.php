@@ -16,7 +16,7 @@
 // Bomb : 'middleware' => 'web' 拔掉了還能作用驗證等功能，加了反而不能動
 Route::group(['namespace' => 'Blog'], function () {
 	Route::resource('blog', 'BlogHomeController');
-	Route::resource('post', 'PostController');
+	Route::resource('article', 'ArticleController');
 	Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 });
 // Controllers Within The "App\Http\Controllers\Backend" Namespace

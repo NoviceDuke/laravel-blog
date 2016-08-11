@@ -17,11 +17,11 @@ class CreateCommentsTable extends Migration
             $table->string('author');
             $table->string('email');
             $table->string('url');
-            $table->integer('post_id')->unsigned()->default(1);
+            $table->integer('article_id')->unsigned()->default(1);
             $table->timestamps();
 
             //foreign Key Set
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('article_id')->references('id')->on('articles');
         });
     }
 
