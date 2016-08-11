@@ -34,7 +34,7 @@ class Article extends Model
 
     /**
      *  多篇文章 對 多個標籤
-     *  中間表名稱慣例  aaas_bbb 底線前後位由首字母排序，這裡是articles_tag
+     *  中間表名稱慣例  aaas_bbb 底線前後位由首字母排序，這裡是article_tag
      *  laravel 默認的是 article_tag 單數的表名稱
      *  自動維護中間表的時間欄位.
      */
