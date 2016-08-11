@@ -10,7 +10,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UserSeeder::class);
-        $this->call(PostSeeder::class);
+        $this->call(ArticleSeeder::class);
         $this->call(CommentSeeder::class);
         $this->call(TagSeeder::class);
         $this->call(CategorySeeder::class);

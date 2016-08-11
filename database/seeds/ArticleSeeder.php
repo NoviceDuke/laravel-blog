@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\Article;
 use App\User;
 
-class PostSeeder extends Seeder
+class ArticleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -30,9 +30,9 @@ class PostSeeder extends Seeder
          'http://images.freeimages.com/images/previews/626/flashlight-and-led-1-1195025.jpg',
         ];
 
-        DB::table('posts')->delete();
+        DB::table('articles')->delete();
         foreach (range(1, 100) as $index) {
-            Post::create([
+            Article::create([
             'user_id' => $faker->randomElement($user_ids),
             'title' => $faker->unique()->text(15),
             'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
