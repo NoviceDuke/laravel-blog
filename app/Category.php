@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    //對應table
+    protected $table ='categories';
+
     protected $fillable = [
             'name',         //種類名稱
     ];

@@ -8,12 +8,23 @@
             <div class="row">
                 <h4>Create A Post</h4>
             </div>
+
             <div class="row">
                 <div class="input-field col s12">
                     <label for="title">Title</label>
                     <input name="title" id="title" type="text" class="validate">
                 </div>
             </div>
+            <!-- 文章分類 下拉選單-->
+                <!-- Formbuilder 似乎無法做到動態抓取(可能可以)
+                  先使用一般HTML去抓
+                -->
+                {{ Form::label('category_id', 'Category:') }}
+
+                {{ Form::select('category_id',$categories)}}
+
+
+
             <div class="row">
                 <div class="input-field col s12">
                     <label for="pic_url">Picture URL</label>
@@ -37,6 +48,11 @@
 
     {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
     <script>
+    /* Material 的Select標籤 需要在JS裡面初始化，因為他有動畫，這裡槓掉，寫在resource\assets\js\blog-style.js
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    */
     var editor_config = {
         path_absolute : "{{ URL::to('/') }}/",
         selector: "textarea",
