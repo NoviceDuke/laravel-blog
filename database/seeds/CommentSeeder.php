@@ -12,6 +12,7 @@ class CommentSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create('en_EN');
+        $faker->seed(rand(1,999));
         $posts_id = Post::all()->lists('id')->toArray();
         foreach (range(1, 10) as $index) {
             Comment::create([

@@ -28,7 +28,7 @@ class CategorySeeder extends Seeder
         ]);
 
         // 隨機取得15篇文章，隨機加入某個分類
-        $randPosts = Post::all()->random(15);
+        $randPosts = Post::all()->random(35);
         foreach ($randPosts as $post) {
             $randCategory = Category::all()->random(1);
             $randCategory->addPost($post);
