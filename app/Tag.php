@@ -42,11 +42,11 @@ class Tag extends Model
     public function getFrequencyAttribute($frequency)
     {
         if ($frequency != $this->articles()->count()) {
-            $frequency = $this->articles()->count();
-            $this->update(['frequency' => $frequency]);
+            $this->attributes['frequency'] = $this->articles()->count();
+            $this->save();
         }
 
-        return $frequency;
+        return $this->attributes['frequency'];
     }
 
     /*------------------------------------------------------------------------**
