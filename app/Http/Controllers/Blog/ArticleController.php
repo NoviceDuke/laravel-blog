@@ -60,6 +60,7 @@ class ArticleController extends Controller
             'date' => 'required',
             'content' => 'required',
         ]);
+
         $article = new Article($request->all());
         $article->slug = $request->title.'-'.Auth::id();
 

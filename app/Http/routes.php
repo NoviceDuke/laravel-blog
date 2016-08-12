@@ -10,7 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
  */
-// blog RESTful route
+
+
+// hchs trace Route
+Route::get('trace', 'Blog\BlogHomeController@getTrace');
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
 // Bomb : 'middleware' => 'web' 拔掉了還能作用驗證等功能，加了反而不能動

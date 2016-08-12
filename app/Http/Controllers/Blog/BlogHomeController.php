@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Article;
+use App\Tag;
 use App\Category;
 use App\Http\Controllers\Controller;
 
@@ -24,9 +25,10 @@ class BlogHomeController extends Controller
         return view('blog.index', compact('newArticles', 'lyricArticles', 'phpArticles'));
     }
 
-    public function trace()
+    public function getTrace()
     {
-        $articles = Article::all();
+        $tag = Tag::find(1);
+        dd($tag->frequency);
 
         return view('blog.trace', compact('articles'));
     }

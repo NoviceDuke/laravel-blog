@@ -12,7 +12,7 @@ class Tag extends Model
     protected $table = 'tags';
     protected $fillable = [
         'name',            // tag名稱
-        'frenquecy',       // 被使用次數
+        'frequency',       // 被使用次數
     ];
 
     /*------------------------------------------------------------------------**
@@ -28,6 +28,25 @@ class Tag extends Model
     public function articles()
     {
         return $this->belongsToMany(Article::class)->withTimestamps();
+    }
+
+    /*------------------------------------------------------------------------**
+    ** 存取器 Mutators                                                        **
+    **------------------------------------------------------------------------*/
+
+    /**
+     *  自動傳入原始 $frequency
+     *  存取器處理Relation Count，算這個Tag被使用多少次
+     *  如果資料不正確就自動維護欄位內容.
+     */
+    public function getFrequencyAttribute($frequency)
+    {
+        if ($frequency != $this->articles()->count()) {
+            $frequency = $this->articles()->count();
+            $this->update(['frequency' => $frequency]);
+        }
+
+        return $frequency;
     }
 
     /*------------------------------------------------------------------------**
