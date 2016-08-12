@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Blog;
 
+use Event;
+use App\Events\ArticlePosted;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Article;
@@ -65,6 +67,7 @@ class ArticleController extends Controller
         $article->slug = $request->title.'-'.Auth::id();
 
         Auth::user()->addArticle($article);
+        Event::fire(new ArticlePosted($article));
 
         return redirect('/article/'.$article->slug);
     }
