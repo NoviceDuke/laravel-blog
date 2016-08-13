@@ -14,6 +14,7 @@ class ArticleEventListener
         Log::useDailyFiles(storage_path().'/logs/article.log');
         Log::info('文章被建立: '.$event->article);
     }
+
     /**
      * 將事件Class與監聽函數綁定.
      *
