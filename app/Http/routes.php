@@ -11,26 +11,25 @@
 |
  */
 
-
 // hchs trace Route
 Route::get('trace', 'Blog\BlogHomeController@getTrace');
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
 // Bomb : 'middleware' => 'web' 拔掉了還能作用驗證等功能，加了反而不能動
-Route::group(['namespace' => 'Blog'], function () {
-	Route::resource('blog', 'BlogHomeController');
-	Route::resource('article', 'ArticleController');
-	Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {
+    Route::resource('blog', 'BlogHomeController');
+    Route::resource('article', 'ArticleController');
+    Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 });
 // Controllers Within The "App\Http\Controllers\Backend" Namespace
 Route::group(['namespace' => 'backend'], function () {
-	// backen RESTful route
-	Route::resource('/backend', 'BackendController');
+    // backen RESTful route
+    Route::resource('/backend', 'BackendController');
 });
 
 // duke's route
 Route::get('about', 'PagesController@getAbout');
-Route::get('article-backend','ArticleController@show');
+
 // default auth and home route
 Route::auth();
 Route::get('/', 'HomeController@index');
