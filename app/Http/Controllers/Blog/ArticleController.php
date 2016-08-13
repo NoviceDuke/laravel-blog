@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Blog;
 use Event;
 use App\Article;
 use App\Category;
-use App\Events\ArticlePosted;
+use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -69,7 +69,7 @@ class ArticleController extends Controller
         Auth::user()->addArticle($article);
 
         // 觸發事件 -> 文章被新增
-        Event::fire(new ArticlePosted($article));
+        Event::fire(new ArticleEvents($article, 'posted'));
 
         return redirect('/article/'.$article->slug);
     }
