@@ -18,7 +18,7 @@ class EventServiceProvider extends ServiceProvider
      * 註冊事件監聽器.
      */
     protected $subscribe = [
-        'App\Listeners\ArticleEventListener',
+        'App\Listeners\ArticleEventsListener',
     ];
 
     /**

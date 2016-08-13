@@ -13,7 +13,6 @@ class BlogHomeController extends Controller
     {
         $categories = Category::all();
         view()->share(compact('categories'));
-        $this->middleware('auth');
     }
 
     public function index()
