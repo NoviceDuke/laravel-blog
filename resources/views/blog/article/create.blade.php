@@ -54,7 +54,7 @@
     });
     */
     var editor_config = {
-        path_absolute : "/",
+        path_absolute : "{{ URL::to('/') }}/",
         selector: "textarea",
         plugins: [
             "advlist autolink lists link image charmap print preview hr anchor pagebreak",

@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use App\Events\ImageWasUploaded;
+use Unisharp\Laravelfilemanager\Events\ImageWasUploaded;
 use App\Listeners\UploadListener;
 
 class EventServiceProvider extends ServiceProvider
