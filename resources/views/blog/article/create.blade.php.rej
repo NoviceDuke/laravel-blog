@@ -1,0 +1,10 @@
+diff a/resources/views/blog/article/create.blade.php b/resources/views/blog/article/create.blade.php	(rejected hunks)
+@@ -54,7 +54,7 @@
+     });
+     */
+     var editor_config = {
+-        path_absolute : "{{ URL::to('/') }}/",
++        path_absolute : "/",
+         selector: "textarea",
+         plugins: [
+             "advlist autolink lists link image charmap print preview hr anchor pagebreak",
