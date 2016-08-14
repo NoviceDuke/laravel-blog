@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5a8c1a9189a7cef6e43e4d4879dbe5c7",
-    "content-hash": "3013f95d106e8e493d7f4212fc825470",
+    "hash": "f115e43e824289f4a6d38b4aae7f956d",
+    "content-hash": "2d43baed94a9e5add5011bcf5901423c",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -221,16 +221,16 @@
         },
         {
             "name": "hchs/laravel-filemanager",
-            "version": "1.6.0",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hchstera/laravel-filemanager.git",
-                "reference": "8ffe49ae2b0b371c40563c37c0356ec484ff2ee9"
+                "reference": "4245e90b45c3b0c776dfa78c32b6de176f2f7c86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hchstera/laravel-filemanager/zipball/8ffe49ae2b0b371c40563c37c0356ec484ff2ee9",
-                "reference": "8ffe49ae2b0b371c40563c37c0356ec484ff2ee9",
+                "url": "https://api.github.com/repos/hchstera/laravel-filemanager/zipball/4245e90b45c3b0c776dfa78c32b6de176f2f7c86",
+                "reference": "4245e90b45c3b0c776dfa78c32b6de176f2f7c86",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +245,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Unisharp\\Laravelfilemanager\\": "src/"
+                    "Hchs\\Laravelfilemanager\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -273,7 +273,7 @@
                 "tinymce",
                 "upload"
             ],
-            "time": "2016-08-03 12:18:58"
+            "time": "2016-08-14 15:09:04"
         },
         {
             "name": "intervention/image",
