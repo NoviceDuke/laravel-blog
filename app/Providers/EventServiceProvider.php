@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Hchs\Laravelfilemanager\Events\ImageWasUploaded;
+use App\Listeners\UploadListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -12,7 +14,11 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = [];
+    protected $listen = [
+        ImageWasUploaded::class => [
+            UploadListener::class,
+        ],
+    ];
 
     /**
      * 註冊事件監聽器.
