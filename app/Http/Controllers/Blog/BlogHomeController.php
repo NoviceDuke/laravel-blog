@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Post;
+use App\Article;
+use App\Tag;
 use App\Category;
 use App\Http\Controllers\Controller;
 
@@ -12,22 +13,22 @@ class BlogHomeController extends Controller
     {
         $categories = Category::all();
         view()->share(compact('categories'));
-        $this->middleware('auth');
     }
 
     public function index()
     {
-        $newPosts = Post::query()->orderBy('created_at', 'DESC')->take(2)->get();
-        $lyricPosts = Category::where('name', 'Lyrics')->first()->posts()->get();
-        $phpPosts = Category::where('name', 'PHP')->first()->posts()->get();
+        $newArticles = Article::query()->orderBy('created_at', 'DESC')->take(2)->get();
+        $lyricArticles = Category::where('name', 'Lyrics')->first()->articles()->get();
+        $phpArticles = Category::where('name', 'PHP')->first()->articles()->get();
 
-        return view('blog.index', compact('newPosts', 'lyricPosts','phpPosts'));
+        return view('blog.index', compact('newArticles', 'lyricArticles', 'phpArticles'));
     }
 
-    public function trace()
+    public function getTrace()
     {
-        $posts = Post::all();
+        $tag = Tag::find(1);
+        dd($tag->frequency);
 
-        return view('blog.trace', compact('posts'));
+        return view('blog.trace', compact('articles'));
     }
 }

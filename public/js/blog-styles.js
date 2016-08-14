@@ -6,6 +6,13 @@ $.fn.extend({
         });
     }
 });
+
+/* All page used */
+$(document).ready(function() {
+    //materail styleselect 標籤初始化
+    $('select').material_select();
+});
+
 /* app.blade.php  Foating至頂按鈕初始化 */
 $(document).ready(function() {
     $("#btn-floating-green").click(function() {
@@ -16,23 +23,28 @@ $(document).ready(function() {
     $('.slider').slider({
         full_width: true
     });
-    $("#post_create_submit").animateCss('zoomIn');
+
+    // 動畫
+
     $("#float_previous").animateCss('bounceIn');
     $("#float_menu").animateCss('zoomIn');
-    $("h4").animateCss('zoomIn');
+
 
 });
 
-/* blog.post.create.blade.php */
+/* blog.article.create.blade.php */
 $(document).ready(function() {
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 2 // Creates a dropdown of 15 years to control year
     });
-});
 
-function post_create_submit() {
-    document.getElementById('post_create_form').submit();
+    //動畫
+    $("#article_create_submit").animateCss('zoomIn');
+    $("h4").animateCss('zoomIn');
+});
+function article_create_submit() {
+    document.getElementById('article_create_form').submit();
 }
 $(window).load(function(e) {
     if ($("toast").length)

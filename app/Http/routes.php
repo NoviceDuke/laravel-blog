@@ -9,13 +9,17 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
-*/
-// blog RESTful route
+ */
+
+// hchs trace Route
+Route::get('trace', 'Blog\BlogHomeController@getTrace');
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
-Route::group(['namespace' => 'Blog'], function () {
+// Bomb : 'middleware' => 'web' 拔掉了還能作用驗證等功能，加了反而不能動
+Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {
     Route::resource('blog', 'BlogHomeController');
-    Route::resource('post', 'PostController');
+    Route::resource('article', 'ArticleController');
+    Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 });
 // Controllers Within The "App\Http\Controllers\Backend" Namespace
 Route::group(['namespace' => 'backend'], function () {
@@ -25,7 +29,7 @@ Route::group(['namespace' => 'backend'], function () {
 
 // duke's route
 Route::get('about', 'PagesController@getAbout');
-Route::get('article-backend','ArticleController@show');
+
 // default auth and home route
 Route::auth();
 Route::get('/', 'HomeController@index');

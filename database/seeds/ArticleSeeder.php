@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\Article;
 use App\User;
 
-class PostSeeder extends Seeder
+class ArticleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class PostSeeder extends Seeder
     {
         $user_ids = User::all()->lists('id')->toArray();
         $faker = Faker\Factory::create('en_EN');
-
+        $faker->seed(rand(1,999));
         //預設圖片位置，來自http://www.freeimages.com/
         $array_pic_url = [
          'http://images.freeimages.com/images/previews/4a7/around-home-3-1470151.jpg',
@@ -30,9 +30,9 @@ class PostSeeder extends Seeder
          'http://images.freeimages.com/images/previews/626/flashlight-and-led-1-1195025.jpg',
         ];
 
-        DB::table('posts')->delete();
+        DB::table('articles')->delete();
         foreach (range(1, 100) as $index) {
-            Post::create([
+            Article::create([
             'user_id' => $faker->randomElement($user_ids),
             'title' => $faker->unique()->text(15),
             'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),

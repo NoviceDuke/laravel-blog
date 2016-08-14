@@ -90,11 +90,11 @@ html {
 .floating-fix {
   margin-top: 1.0px; }
 
-/*blog.post.show.blade.php*/
+/*blog.article.show.blade.php*/
 .card-image-fix {
   height: 90%; }
 
-/*blog.post.create.blade.php*/
+/*blog.article.create.blade.php*/
 .card-panel-container {
   margin-left: 25px;
   margin-right: 25px; }

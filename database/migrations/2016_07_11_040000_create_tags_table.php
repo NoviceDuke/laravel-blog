@@ -13,7 +13,7 @@ class CreateTagsTable extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('frenquency');
+            $table->integer('frequency')->default(0);
             $table->timestamps();
         });
     }

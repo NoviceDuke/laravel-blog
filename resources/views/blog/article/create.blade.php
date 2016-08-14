@@ -3,17 +3,28 @@
     <div class="card-panel white">
         <div class="card-panel-container">
         <div class="row">
-        <form class="col s12" method="POST" action="{{url('/post')}}" id="post_create_form">
+        <form class="col s12" method="POST" action="{{url('/article')}}" id="article_create_form">
             {{ csrf_field() }}
             <div class="row">
-                <h4>Create A Post</h4>
+                <h4>Create A Article</h4>
             </div>
+
             <div class="row">
                 <div class="input-field col s12">
                     <label for="title">Title</label>
                     <input name="title" id="title" type="text" class="validate">
                 </div>
             </div>
+            <!-- 文章分類 下拉選單-->
+                <!-- Formbuilder 似乎無法做到動態抓取(可能可以)
+                  先使用一般HTML去抓
+                -->
+                {{ Form::label('category_id', 'Category:') }}
+
+                {{ Form::select('category_id',$categories)}}
+
+
+
             <div class="row">
                 <div class="input-field col s12">
                     <label for="pic_url">Picture URL</label>
@@ -37,8 +48,13 @@
 
     {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
     <script>
+    /* Material 的Select標籤 需要在JS裡面初始化，因為他有動畫，這裡槓掉，寫在resource\assets\js\blog-style.js
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    */
     var editor_config = {
-        path_absolute : "{{ URL::to('/') }}/",
+        path_absolute : "/",
         selector: "textarea",
         plugins: [
             "advlist autolink lists link image charmap print preview hr anchor pagebreak",

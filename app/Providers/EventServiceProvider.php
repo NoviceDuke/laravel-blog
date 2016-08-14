@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use App\Events\ImageWasUploaded;
+use App\Listeners\UploadListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -13,16 +15,22 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
+        ImageWasUploaded::class => [
+            UploadListener::class,
         ],
+    ];
+
+    /**
+     * 註冊事件監聽器.
+     */
+    protected $subscribe = [
+        'App\Listeners\ArticleEventsListener',
     ];
 
     /**
      * Register any other events for your application.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
-     * @return void
+     * @param \Illuminate\Contracts\Events\Dispatcher $events
      */
     public function boot(DispatcherContract $events)
     {

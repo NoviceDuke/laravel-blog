@@ -26,6 +26,7 @@
               <a href="{{url('/')}}" class="brand-logo logo-fix">HCHS's Blog</a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{url('/')}}"><i class="material-icons nav-icon-fix">home</i></a></li>
+                <li><a href="{{route('categories.index')}}">Category</a></li>
                 <li><a href="{{url('/logout')}}">Log out</a></li>
               </ul>
 
@@ -46,8 +47,8 @@
 
         <!--  Floating Button -->
         <div class="fixed-action-btn float-position">
-            @if(Request::is('post/create'))
-            <a id="post_create_submit" class="btn-floating btn-large blue" onclick="post_create_submit();">
+            @if(Request::is('article/create'))
+            <a id="article_create_submit" class="btn-floating btn-large blue" onclick="article_create_submit();">
                 <i class="large material-icons floating-fix" >done</i>
             </a>
             @elseif(Request::is('blog'))
@@ -61,7 +62,7 @@
             @endif
 		    <ul>
                 @if(Request::is('blog'))
-		        <li><a class="btn-floating blue" href="{{url('post/create')}}">
+		        <li><a class="btn-floating blue" href="{{url('article/create')}}">
                     <i class="material-icons floating-fix">create</i></a>
                 </li>
                 @endif

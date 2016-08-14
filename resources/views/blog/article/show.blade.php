@@ -6,8 +6,8 @@
           <div class="col s12 m9">
             <div class="card">
               <div class="card-image">
-                <img src="{{$post->pic_url}}">
-                <span class="card-title">{{$post->title}}</span>
+                <img src="{{$article->pic_url}}">
+                <span class="card-title">{{$article->title}}</span>
               </div>
               <div class="card-content">
                 <p>I am a very simple card. I am good at containing small bits of information.
