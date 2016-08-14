@@ -162,7 +162,7 @@ return [
         /*
         ** FileManarger
         */
-        // Hchs\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        Hchs\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
     ],
