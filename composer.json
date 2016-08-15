@@ -8,7 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/html":"5.2.*",
-        "hchs/laravel-filemanager": "^1.6.2"
+        "hchs/laravel-filemanager": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
