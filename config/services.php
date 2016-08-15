@@ -16,7 +16,7 @@ return [
     'facebook' => [
     'client_id' => '1136544709750954',
     'client_secret' => 'efe69c04ffe514046846e2c30f8e903e',
-    'redirect' => 'http://localhost/laravel-blog/public/callback',
+    'redirect' => public_path().'/callback',
     ],
 
     'mailgun' => [
@@ -39,7 +39,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
+        'model' => App\Accounts\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
