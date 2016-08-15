@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 
-use App\Auth\User;
+use App\Accounts\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 use Socialite;
-use App\Auth\FacebookAccountService;
+use App\Accounts\FacebookAccountService;
 
 class AuthController extends Controller
 {
