@@ -9,7 +9,7 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
- */
+*/
 
 // hchs trace Route
 Route::get('trace', 'Blog\BlogHomeController@getTrace');
@@ -19,6 +19,7 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('redirect', 'AuthController@redirectToFacebookProvider');
     Route::get('callback', 'AuthController@handleFacebookProviderCallback');
 });
+
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
 // Bomb : 'middleware' => 'web' 拔掉了還能作用驗證等功能，加了反而不能動
 Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {

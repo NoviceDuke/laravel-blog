@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Auth;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -25,6 +25,14 @@ class User extends Authenticatable
     /*------------------------------------------------------------------------**
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
+
+    /**
+     * 關聯資料庫  一個使用者 對 多個文章.
+     */
+    public function socailAccount()
+    {
+        return $this->hasOne(SocialAccount::class);
+    }
 
     /**
      * 關聯資料庫  一個使用者 對 多個文章.

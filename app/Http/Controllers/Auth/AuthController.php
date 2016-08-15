@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 
-use App\User;
+use App\Auth\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 use Socialite;
-use App\SocialAccountService;
+use App\Auth\FacebookAccountService;
 
 class AuthController extends Controller
 {
@@ -84,7 +84,7 @@ class AuthController extends Controller
         return Socialite::driver('facebook')->redirect();
     }
 
-    public function handleFacebookProviderCallback(SocialAccountService $service)
+    public function handleFacebookProviderCallback(FacebookAccountService $service)
     {
         $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
 
