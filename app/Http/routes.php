@@ -14,6 +14,11 @@
 // hchs trace Route
 Route::get('trace', 'Blog\BlogHomeController@getTrace');
 
+// Facebook Auth Routes
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('redirect', 'AuthController@redirectToFacebookProvider');
+    Route::get('callback', 'AuthController@handleFacebookProviderCallback');
+});
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
 // Bomb : 'middleware' => 'web' 拔掉了還能作用驗證等功能，加了反而不能動
 Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {

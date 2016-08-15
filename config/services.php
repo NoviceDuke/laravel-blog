@@ -13,6 +13,11 @@ return [
     | to have a conventional place to find your various credentials.
     |
     */
+    'facebook' => [
+    'client_id' => '1136544709750954',
+    'client_secret' => 'efe69c04ffe514046846e2c30f8e903e',
+    'redirect' => 'http://localhost/laravel-blog/public/callback',
+    ],
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
