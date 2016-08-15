@@ -22,7 +22,7 @@ return [
     // The database field to identify a user.
     // When set to 'id', the private folder will be named as the user id.
     // NOTE: make sure to use an unique field.
-    'user_field' => 'id',
+    'user_field' => 'name',
 
     'shared_folder_name' => 'shares',
     'thumb_folder_name' => 'thumbs',
