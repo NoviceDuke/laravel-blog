@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use Hchs\Laravelfilemanager\Events\ImageWasUploaded;
+use Unisharp\Laravelfilemanager\Events\ImageWasUploaded;
 
 class UploadListener
 {
