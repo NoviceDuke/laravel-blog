@@ -16,7 +16,7 @@ return [
     'facebook' => [
     'client_id' => '1136544709750954',
     'client_secret' => 'efe69c04ffe514046846e2c30f8e903e',
-    'redirect' => public_path().'/callback',
+    'redirect' => 'http://localhost/laravel-blog/public/callback',
     ],
 
     'mailgun' => [

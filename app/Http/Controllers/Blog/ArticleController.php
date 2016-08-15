@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Blog;
 
 use Event;
-use App\Article;
+use App\Articles\ArticleRepository;
 use App\Category;
 use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
@@ -12,8 +12,9 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    public function __construct()
+    public function __construct(ArticleRepository $articles)
     {
+        $this->articles = $articles;
         $categories = Category::all();
         view()->share(compact('categories'));
     }
@@ -33,7 +34,7 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
-        $article = Article::all()->where('slug', $slug)->first();
+        dd($this->articles->getModel());
         if (!$article) {
             return abort(403, 'Slug位置錯誤');
         }
