@@ -101,5 +101,5 @@
 
 @include('backend.footer')
 </div>
-
+ 
 @endsection
