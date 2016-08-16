@@ -6,9 +6,6 @@ use App\Core\EloquentRepository;
 
 class ArticleRepository extends EloquentRepository
 {
-    /*------------------------------------------------------------------------**
-    ** 自訂函數方法                                                            **
-    **------------------------------------------------------------------------*/
     protected $model;
 
     /**
@@ -19,6 +16,10 @@ class ArticleRepository extends EloquentRepository
     {
         $this->model = $article;
     }
+    /*------------------------------------------------------------------------**
+    ** 自訂函數方法                                                            **
+    **------------------------------------------------------------------------*/
+    
     /**
      *  回傳以Slug為搜尋目標的Article
      *
@@ -28,4 +29,5 @@ class ArticleRepository extends EloquentRepository
     {
         return $this->model->whereSlug($slug)->first();
     }
+
 }

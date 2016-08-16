@@ -46,31 +46,10 @@
 
 
         <!--  Floating Button -->
+        @inject('floatingButtonPresenter', 'App\Presenters\FloatingButtonPresenter')
         <div class="fixed-action-btn float-position">
-            @if(Request::is('article/create'))
-            <a id="article_create_submit" class="btn-floating btn-large blue" onclick="article_create_submit();">
-                <i class="large material-icons floating-fix" >done</i>
-            </a>
-            @elseif(Request::is('blog'))
-		    <a id="float_menu" class="btn-floating btn-large red">
-		        <i class="large material-icons floating-fix" >view_headline</i>
-		    </a>
-            @else
-            <a id="float_previous" href="{{URL::previous()}}" class="btn-floating btn-large green">
-                <i class="large material-icons floating-fix" >chevron_left</i>
-            </a>
-            @endif
-		    <ul>
-                @if(Request::is('blog'))
-		        <li><a class="btn-floating blue" href="{{url('article/create')}}">
-                    <i class="material-icons floating-fix">create</i></a>
-                </li>
-                @endif
-                <li><a class="btn-floating green" id="btn-floating-green">
-                    <i class="material-icons floating-fix">publish</i></a>
-                </li>
-		    </ul>
-    	</div>
+            {!! $floatingButtonPresenter->getFloatinButton() !!}
+       </div>
     	<!--  Floating Button -->
 
 	    <div class="container">
