@@ -28,22 +28,22 @@ class ArticleController extends Controller
     }
 
     /**
-     *   show the article.
+     *   顯示某篇文章 (slug)
      *
-     *   @param string
+     *   @param slug string
      */
     public function show($slug)
     {
-        dd($this->articles->getModel());
+        $article = $this->articles->getFromSlug($slug);
         if (!$article) {
-            return abort(403, 'Slug位置錯誤');
+            return abort(404, 'Slug Not Found');
         }
 
         return view('blog.article.show', compact('article'));
     }
 
     /**
-     *   show the article create view.
+     *  顯示創建文章的頁面
      */
     public function create()
     {
