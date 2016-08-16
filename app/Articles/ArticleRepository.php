@@ -10,6 +10,11 @@ class ArticleRepository extends EloquentRepository
     ** 自訂函數方法                                                            **
     **------------------------------------------------------------------------*/
     protected $model;
+
+    /**
+     *  建構子依賴注入 Article
+     *  @param Article::class
+     */
     public function __construct(Article $article)
     {
         $this->model = $article;

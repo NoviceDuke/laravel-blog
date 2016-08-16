@@ -12,6 +12,10 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
+    /**
+     *  建構子依賴注入.
+     *  @param ArticleRepository:class
+     */
     public function __construct(ArticleRepository $articles)
     {
         $this->articles = $articles;
@@ -28,7 +32,7 @@ class ArticleController extends Controller
     }
 
     /**
-     *   顯示某篇文章 (slug)
+     *   顯示某篇文章 (slug).
      *
      *   @param slug string
      */
@@ -43,7 +47,7 @@ class ArticleController extends Controller
     }
 
     /**
-     *  顯示創建文章的頁面
+     *  顯示創建文章的頁面.
      */
     public function create()
     {
