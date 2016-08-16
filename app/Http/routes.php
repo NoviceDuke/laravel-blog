@@ -16,8 +16,8 @@ Route::get('trace', 'Blog\BlogHomeController@getTrace');
 
 // Facebook Auth Routes
 Route::group(['namespace' => 'Auth'], function () {
-    Route::get('redirect', 'AuthController@redirectToFacebookProvider');
-    Route::get('callback', 'AuthController@handleFacebookProviderCallback');
+    Route::get('redirect_to_fb', 'AuthController@redirectToFacebookProvider');
+    Route::get('callback_from_fb', 'AuthController@handleFacebookProviderCallback');
 });
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace

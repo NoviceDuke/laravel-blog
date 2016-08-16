@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Article;
+use App\Articles\Article;
 use App\Accounts\User;
 
 class ArticleSeeder extends Seeder

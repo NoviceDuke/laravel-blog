@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Comment;
-use App\Article;
+use App\Articles\Article;
 
 class CommentSeeder extends Seeder
 {

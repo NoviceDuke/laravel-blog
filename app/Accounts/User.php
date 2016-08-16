@@ -3,6 +3,7 @@
 namespace App\Accounts;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Article;
 
 class User extends Authenticatable
 {
@@ -54,5 +55,15 @@ class User extends Authenticatable
     public function addArticle(Article $article)
     {
         return $this->articles()->save($article);
+    }
+
+    /**
+     * 於當下使用者新增一個社群帳號.
+     *
+     * @param SocialAccount::Class
+     */
+    public function addSocialAccount(SocialAccount $socialAccount)
+    {
+        return $this->socailAccount()->save($socialAccount);
     }
 }
