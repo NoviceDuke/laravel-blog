@@ -1,8 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Articles;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Articles\ArticleRepository;
 
 class Article extends Model
 {
@@ -63,6 +64,17 @@ class Article extends Model
     /*------------------------------------------------------------------------**
     ** 自訂函數方法                                                            **
     **------------------------------------------------------------------------*/
+
+    /**
+     *  靜態function
+     *  使用 Article::repository()
+     *  細部功能定義於 ArticleRepository
+     *  @return string
+     */
+    // public static function repository()
+    // {
+    //     return new ArticleRepository($this);
+    // }
 
     /**
      *  取得當下的slug，回傳已經串上slug的路徑.

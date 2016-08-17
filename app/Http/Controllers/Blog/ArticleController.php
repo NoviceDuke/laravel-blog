@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Blog;
 
 use Event;
-use App\Article;
+use App\Articles\ArticleRepository;
 use App\Category;
 use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
@@ -12,8 +12,13 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    public function __construct()
+    /**
+     *  建構子依賴注入.
+     *  @param ArticleRepository:class
+     */
+    public function __construct(ArticleRepository $articles)
     {
+        $this->articles = $articles;
         $categories = Category::all();
         view()->share(compact('categories'));
     }
@@ -27,22 +32,22 @@ class ArticleController extends Controller
     }
 
     /**
-     *   show the article.
+     *   顯示某篇文章 (slug).
      *
-     *   @param string
+     *   @param slug string
      */
     public function show($slug)
     {
-        $article = Article::all()->where('slug', $slug)->first();
+        $article = $this->articles->getFromSlug($slug);
         if (!$article) {
-            return abort(403, 'Slug位置錯誤');
+            return abort(404, 'Slug Not Found');
         }
 
         return view('blog.article.show', compact('article'));
     }
 
     /**
-     *   show the article create view.
+     *  顯示創建文章的頁面.
      */
     public function create()
     {
