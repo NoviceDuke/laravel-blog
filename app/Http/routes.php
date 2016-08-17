@@ -27,11 +27,6 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {
     Route::resource('article', 'ArticleController');
     Route::resource('categories', 'CategoryController', ['except' => ['create']]);
 });
-// Controllers Within The "App\Http\Controllers\Backend" Namespace
-Route::group(['namespace' => 'backend'], function () {
-    // backen RESTful route
-    Route::resource('/backend', 'BackendController');
-});
 
 // duke's route
 Route::get('about', 'PagesController@getAbout');
