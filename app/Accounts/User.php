@@ -3,7 +3,7 @@
 namespace App\Accounts;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Article;
+use App\Articles\Article;
 
 class User extends Authenticatable
 {

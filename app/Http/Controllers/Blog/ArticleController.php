@@ -14,6 +14,7 @@ class ArticleController extends Controller
 {
     /**
      *  建構子依賴注入.
+     *
      *  @param ArticleRepository:class
      */
     public function __construct(ArticleRepository $articles)
@@ -67,11 +68,10 @@ class ArticleController extends Controller
             'date' => 'required',
             'content' => 'required',
         ]);
-
-        $article = new Article($request->all());
-        $article->slug = $request->title.'-'.Auth::id();
-
-        Auth::user()->addArticle($article);
+        // 串slug HardCode
+        $articleArray = array_merge($request->all(), ['slug' => $request->title.'-'.Auth::user()->id]);
+        
+        $article = $this->articles->createFromUser($articleArray, Auth::user());
 
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleEvents($article, 'posted'));
