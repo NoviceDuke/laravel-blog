@@ -4,10 +4,12 @@
         <title>HCHS Blog Trace Page</title>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         {!! Html::script('https://code.jquery.com/jquery-2.1.1.min.js')!!}
-        {!! Html::script('materialize/js/materialize.js')!!}
-        {!! Html::style('materialize/css/materialize.css')!!}
+        {!! Html::style(url('materialize/css/materialize.css'))!!}
         {!! Html::style(url('css/blog-styles.css'))!!}
         {!! Html::style(url('css/animate.min.css'))!!}
+        {!! Html::style(url('css/prism.css'))!!}
+        {!! Html::script(url('materialize/js/materialize.js'))!!}
+        {!! Html::script(url('js/prism.js'))!!}
         {!! Html::script(url('js/blog-styles.js'))!!}
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>

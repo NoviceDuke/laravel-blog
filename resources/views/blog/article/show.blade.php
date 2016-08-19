@@ -10,7 +10,9 @@
         <div class="card-content">
             <div class="row">
                 <span class="card-show-category">
+                    @if($article->category)
                     <a href="{{url($article->category->path())}}">{{$article->category->name}}</a>
+                    @endif
                     <span class="right show-date"> {{$articlePresenter->getCreatedAt($article)}} </span>
                 </span>
             </div>
