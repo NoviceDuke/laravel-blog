@@ -69,8 +69,8 @@ class ArticleController extends Controller
             'content' => 'required',
         ]);
         // 串slug HardCode
-        $articleArray = array_merge($request->all(), ['slug' => $request->title.'-'.Auth::user()->id]);
-        
+        $articleArray = array_merge($request->all(), ['slug' => str_slug($request->title, "-")]);
+
         $article = $this->articles->createFromUser($articleArray, Auth::user());
 
         // 觸發事件 -> 文章被新增

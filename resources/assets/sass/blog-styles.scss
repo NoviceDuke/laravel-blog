@@ -9,7 +9,7 @@ $colors: (purple : #7e57c2, red : #e54e7e, blue : #5c6bc0, yellow : #f57f17, gre
 }
 /*All Page Maybe Used*/
 html {
-    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif;
 }
 @each $header,$color in $colors {
     .border-top-#{$header} {
@@ -107,14 +107,14 @@ html {
 .collection-fix {
     border: !important;
 }
-.carrousel-fix{
+.carrousel-fix {
     height: 180px;
 }
-.carrousel-item-fix{
-    margin-top: 0px!important;
+.carrousel-item-fix {
+    margin-top: 0px !important;
     height: 130px!important;
     width: 130px!important;
-    text-align:center !important;
+    text-align: center !important;
 }
 .carousel-item-container {
     height: 130px;
@@ -123,19 +123,19 @@ html {
     color: white;
     box-shadow: 0 5px 9px 0 rgba(0,0,0,.1);
 }
-.carrousel-img{
+.carrousel-img {
     height: 130px!important;
     padding: 5px 8px;
 }
-.module-1{
+.module-1 {
     background: transparent;
-    font-weight:bold;
-    text-align:center !important;
-    text-shadow:0px 0px 12px color(brown);
-    color : white;
-    height:150px;
+    font-weight: bold;
+    text-align: center !important;
+    text-shadow: 0 0 12px color(brown);
+    color: white;
+    height: 150px;
 }
-.module-text{
-    position:relative;
-    left:110px;
+.module-text {
+    position: relative;
+    left: 110px;
 }
