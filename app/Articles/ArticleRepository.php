@@ -39,4 +39,17 @@ class ArticleRepository extends EloquentRepository
 
         return $article;
     }
+
+    public function getNextArticles(Article $article, $count)
+    {
+        $standardId = $article->id;
+        $articles = $this->model->where('id','>',$standardId)->orderBy('id','ASC')->take($count)->get();
+        return $articles;
+    }
+    public function getPreviousArticles(Article $article, $count)
+    {
+        $standardId = $article->id;
+        $articles = $this->model->where('id','<',$standardId)->orderBy('id','DESC')->take($count)->get();
+        return $articles;
+    }
 }

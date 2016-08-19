@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <label for="pic_url">Picture URL</label>
-                    <input id="pic_url" type="text" class="validate">
+                    <input name="pic_url" id="pic_url" type="text" class="validate">
                 </div>
             </div>
                 <input name="date" type="date" class="datepicker">

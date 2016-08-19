@@ -38,4 +38,9 @@ class Category extends Model
     {
         return $this->articles()->save($article);
     }
+
+    public function path()
+    {
+        return '/category/'.$this->name;
+    }
 }

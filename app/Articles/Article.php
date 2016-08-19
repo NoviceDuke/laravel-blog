@@ -4,6 +4,7 @@ namespace App\Articles;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Articles\ArticleRepository;
+use App\Category;
 
 class Article extends Model
 {

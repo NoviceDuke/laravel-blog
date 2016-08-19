@@ -1,5 +1,5 @@
 /*Define All Colors*/
-$colors: (purple : #7e57c2, red : #e54e7e, blue : #5c6bc0, yellow : #f57f17, green : #43a047, brown : #795548,);
+$colors: (text-grey : #424242,purple : #7e57c2, red : #e54e7e, blue : #5c6bc0, yellow : #f57f17, green : #43a047, brown : #795548,);
 @function color($key) {
      @if map-has-key($colors, $key){
         @return map-get($colors, $key);
@@ -10,6 +10,9 @@ $colors: (purple : #7e57c2, red : #e54e7e, blue : #5c6bc0, yellow : #f57f17, gre
 /*All Page Maybe Used*/
 html {
     font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif;
+}
+a {
+    color:color(blue);
 }
 @each $header,$color in $colors {
     .border-top-#{$header} {
@@ -78,7 +81,27 @@ html {
 }
 /*blog.article.show.blade.php*/
 .card-image-fix {
-    height: 90%;
+    height: 500px;
+}
+.card-show-title{
+    color:#212121;
+    margin-top:20px;
+    margin-left:55px;
+    font-size:300%;
+}
+.card-show-category{
+    font-weight : bold;
+    position : relative;
+    bottom:-25px;
+    margin-top:20px;
+    margin-left:55px;
+}
+.show-date{
+    margin-right:15px;
+}
+.card-content-fix{
+    color:color(text-grey);
+    padding:100px !important;
 }
 /*blog.article.create.blade.php*/
 .card-panel-container {

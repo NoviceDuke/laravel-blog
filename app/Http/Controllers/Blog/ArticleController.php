@@ -43,8 +43,10 @@ class ArticleController extends Controller
         if (!$article) {
             return abort(404, 'Slug Not Found');
         }
+        $nextArticle = $this->articles->getNextArticles($article, 1);
+        $previousArticle = $this->articles->getPreviousArticles($article, 1);
 
-        return view('blog.article.show', compact('article'));
+        return view('blog.article.show', compact('article', 'nextArticle', 'previousArticle'));
     }
 
     /**
@@ -69,7 +71,7 @@ class ArticleController extends Controller
             'content' => 'required',
         ]);
         // 串slug HardCode
-        $articleArray = array_merge($request->all(), ['slug' => str_slug($request->title, "-")]);
+        $articleArray = array_merge($request->all(), ['slug' => str_slug($request->title, '-')]);
 
         $article = $this->articles->createFromUser($articleArray, Auth::user());
 
