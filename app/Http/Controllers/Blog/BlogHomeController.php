@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Articles\Article;
-use App\Tag;
-use App\Category;
+use App\Articles\Tag;
+use App\Articles\Category;
 use App\Http\Controllers\Controller;
 
 class BlogHomeController extends Controller

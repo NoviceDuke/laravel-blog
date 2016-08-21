@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Blog;
 
 use Event;
 use App\Articles\ArticleRepository;
-use App\Category;
+use App\Articles\Category;
 use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

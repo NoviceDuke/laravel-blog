@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Category;
+use App\Articles\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
