@@ -1,23 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Articles;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Articles\Article;
 
-class Comment extends Model
+class Category extends Model
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
     **------------------------------------------------------------------------*/
-
-    protected $table = 'comments';
+    protected $table = 'categories';
     protected $fillable = [
-        'content',          // 內容
-        'status',           // 狀態
-        'author',           // 回覆者
-        'email',            // email
-        'url',              // 此文章的url
-        'article_id',          // 關聯至Article
+            'name',         //種類名稱
     ];
 
     /*------------------------------------------------------------------------**
@@ -25,14 +20,27 @@ class Comment extends Model
     **------------------------------------------------------------------------*/
 
     /**
-     * 回覆留言屬於文章.
+     * 一個種類擁有多個文章.
      */
-    public function article()
+    public function articles()
     {
-        return $this->belongsTo(Article::class);
+        return $this->hasMany(Article::class);
     }
 
     /*------------------------------------------------------------------------**
     ** 自訂功能函數                                                            **
     **------------------------------------------------------------------------*/
+
+    /**
+     * 在此類別下新增一筆文章.
+     */
+    public function addArticle(Article $article)
+    {
+        return $this->articles()->save($article);
+    }
+
+    public function path()
+    {
+        return '/category/'.$this->name;
+    }
 }
