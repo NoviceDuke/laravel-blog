@@ -19,7 +19,8 @@
           <tr>
             <td>{{$article->id}}</td>
             <td>{{$article->title}}</td>
-            <td>{{substr($article->content, 0,50)}}</td>
+            <td>{{substr($article->content, 0,50)}}{{strlen($article->content)>50?"..." : ""}}
+            </td>
             <td>{{$article->create_at}}</td>
             <td>
             <a href="#" class="waves-effect waves-light btn red">Edit</a>
