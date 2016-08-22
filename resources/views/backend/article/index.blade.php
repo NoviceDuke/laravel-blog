@@ -9,8 +9,8 @@
           <tr>
               <th data-field="id">ID</th>
               <th data-field="name">Article</th>
+              <th data-field="content">Body</th>
               <th data-field="time">Date</th>
-              <th></th>
           </tr>
         </thead>
 
@@ -19,9 +19,10 @@
           <tr>
             <td>{{$article->id}}</td>
             <td>{{$article->title}}</td>
+            <td>{{$article->content}}</td>
             <td>{{$article->create_at}}</td>
             <td>
-            <a href="#" class="waves-effect waves-light btn">Edit</a>
+            <a href="#" class="waves-effect waves-light btn red">Edit</a>
             <a href="#" class="waves-effect waves-light btn">
             Delete	
             </a></td>
