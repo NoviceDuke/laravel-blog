@@ -28,8 +28,15 @@
               <a href="{{url('/')}}" class="brand-logo logo-fix">HCHS's Blog</a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{url('/')}}"><i class="material-icons nav-icon-fix">home</i></a></li>
-                <li><a href="{{route('categories.index')}}">Category</a></li>
+                <!--  Backend dorpdown trigger  -->
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Management<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href="{{url('/logout')}}">Log out</a></li>
+              </ul>
+               <!--  Backend dorpdown menu  -->
+               <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="{{route('categories.index')}}">Category</a></li>
+                <li><a href="{{route('backend.article.index')}}">Article</a></li>
+                
               </ul>
 
             <!--Mobile DropDown Button-->

@@ -21,11 +21,16 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
-// Bomb : 'middleware' => 'web' 拔掉了還能作用驗證等功能，加了反而不能動
 Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {
     Route::resource('blog', 'BlogHomeController');
     Route::resource('article', 'ArticleController');
     Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+});
+// Controllers Within The "App\Http\Controllers\Backend" Namespace
+
+//backend Management
+Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function () {
+    Route::resource('backend/article', 'ArticleController');
 });
 
 // duke's route
