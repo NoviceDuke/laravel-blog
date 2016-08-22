@@ -58,7 +58,7 @@ class ArticleController extends Controller
         $categories = Category::lists('name', 'id');
 
         //return view('blog.article.create')->withCategories($categories);
-        return view('blog.article.create',compact('article'));
+        return view('blog.article.create',compact('articles'));
     }
 
     /**
