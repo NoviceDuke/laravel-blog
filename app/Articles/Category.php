@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Articles;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Articles\Article;
@@ -37,5 +37,10 @@ class Category extends Model
     public function addArticle(Article $article)
     {
         return $this->articles()->save($article);
+    }
+
+    public function path()
+    {
+        return '/category/'.$this->name;
     }
 }

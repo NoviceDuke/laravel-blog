@@ -10,7 +10,7 @@ use Laravel\Socialite\Contracts\User as ProviderUser;
 class FacebookAccountService
 {
     /**
-     * 創建Facebook ScocialAccount或取得已存在的Blog User
+     * 創建Facebook ScocialAccount或取得已存在的Blog User.
      */
     public function createOrGetUser(ProviderUser $providerUser)
     {
@@ -27,7 +27,6 @@ class FacebookAccountService
         }
     }
 
-
     private function createSocialAccountAndUser(ProviderUser $providerUser)
     {
         $socialAccount = new SocialAccount([
@@ -37,10 +36,12 @@ class FacebookAccountService
 
         // 如果搜尋到此Email已存在於Blog User中，則直接取用，沒有就新建
         $user = User::firstOrCreate(['email' => $providerUser->getEmail()]);
-        $user->name = $providerUser->getName();
+        // 沒有名字的時候才需要將名字寫進資料庫，否則保留原名字
+        if (empty($user->name)) {
+            $user->name = $providerUser->getName();
+        }
         $user->save();
 
-        //
         $user->addSocialAccount($socialAccount);
 
         return $user;

@@ -1,7 +1,14 @@
+@charset "UTF-8";
 /*Define All Colors*/
 /*All Page Maybe Used*/
 html {
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif; }
+  font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif; }
+
+a {
+  color: #5c6bc0; }
+
+.border-top-text-grey {
+  border-top: 2px solid #424242; }
 
 .border-top-purple {
   border-top: 2px solid #7e57c2; }
@@ -20,6 +27,9 @@ html {
 
 .border-top-brown {
   border-top: 2px solid #795548; }
+
+.border-right-text-grey {
+  border-right: 5px solid #424242; }
 
 .border-right-purple {
   border-right: 5px solid #7e57c2; }
@@ -92,7 +102,27 @@ html {
 
 /*blog.article.show.blade.php*/
 .card-image-fix {
-  height: 90%; }
+  height: 500px; }
+
+.card-show-title {
+  color: #212121;
+  margin-top: 20px;
+  margin-left: 55px;
+  font-size: 300%; }
+
+.card-show-category {
+  font-weight: bold;
+  position: relative;
+  bottom: -25px;
+  margin-top: 20px;
+  margin-left: 55px; }
+
+.show-date {
+  margin-right: 15px; }
+
+.card-content-fix {
+  color: #424242;
+  padding: 100px !important; }
 
 /*blog.article.create.blade.php*/
 .card-panel-container {
@@ -145,7 +175,7 @@ html {
   background: transparent;
   font-weight: bold;
   text-align: center !important;
-  text-shadow: 0px 0px 12px #795548;
+  text-shadow: 0 0 12px #795548;
   color: white;
   height: 150px; }
 

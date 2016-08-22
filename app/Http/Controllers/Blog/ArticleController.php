@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Blog;
 
 use Event;
 use App\Articles\ArticleRepository;
-use App\Category;
+use App\Articles\Category;
 use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,8 +43,10 @@ class ArticleController extends Controller
         if (!$article) {
             return abort(404, 'Slug Not Found');
         }
+        $nextArticle = $this->articles->getNextArticles($article, 1);
+        $previousArticle = $this->articles->getPreviousArticles($article, 1);
 
-        return view('blog.article.show', compact('article'));
+        return view('blog.article.show', compact('article', 'nextArticle', 'previousArticle'));
     }
 
     /**
@@ -69,8 +71,8 @@ class ArticleController extends Controller
             'content' => 'required',
         ]);
         // 串slug HardCode
-        $articleArray = array_merge($request->all(), ['slug' => $request->title.'-'.Auth::user()->id]);
-        
+        $articleArray = array_merge($request->all(), ['slug' => str_slug($request->title, '-')]);
+
         $article = $this->articles->createFromUser($articleArray, Auth::user());
 
         // 觸發事件 -> 文章被新增
