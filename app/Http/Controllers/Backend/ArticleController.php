@@ -17,6 +17,7 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        return view('backend.article.index',compact('article'));
     }
 
     /**
