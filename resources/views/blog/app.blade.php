@@ -33,6 +33,7 @@
                <!--  Backend dorpdown menu  -->
                <ul id='dropdown1' class='dropdown-content'>
                 <li><a href="{{route('categories.index')}}">Category</a></li>
+                <li><a href="{{route('article.create')}}">Article</a></li>
                 
               </ul>
 
