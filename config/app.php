@@ -219,6 +219,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        // Laravel Debugbar
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
