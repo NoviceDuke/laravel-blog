@@ -97,8 +97,8 @@ return array(
         'default_request' => false, // Regular or special Symfony request logger
         'symfony_request' => true,  // Only one can be enabled..
         'mail'            => true,  // Catch mail messages
-        'logs'            => true, // Add the latest log messages
-        'files'           => true, // Show the included files
+        'logs'            => false, // Add the latest log messages
+        'files'           => false, // Show the included files
         'config'          => false, // Display config settings
         'auth'            => true, // Display Laravel authentication status
         'gate'            => true, // Display Laravel Gate checks
