@@ -36,10 +36,10 @@
 
             <div class="row">
                 <div class="col s12">
-                    <button type="submit" class="waves-effect waves-light btn">
-                        <i></i> Login
+                    <button name="LOGIN" type="submit" class="waves-effect waves-light btn">
+                        LOGIN
                     </button>
-                    <a href='redirect_to_fb' class="btn waves-effect waves-light" type="submit" name="action">FB Login
+                    <a href='redirect_to_fb' class="btn waves-effect waves-light" type="submit" name="FB Login">FB Login
                         <i class="material-icons left"></i>
                     </a>
                 </div>

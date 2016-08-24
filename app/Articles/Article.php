@@ -5,6 +5,7 @@ namespace App\Articles;
 use Illuminate\Database\Eloquent\Model;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
+use App\Articles\Comment;
 
 class Article extends Model
 {
@@ -17,7 +18,6 @@ class Article extends Model
             'category_id',   // ForeignKey
             'title',        // 文章標題
             'content',      // 文章內容
-            'tags',         // 文章tag
             'pic_url',      // 圖片連結
             'slug',         // slug
     ];
@@ -31,7 +31,7 @@ class Article extends Model
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     /**
