@@ -16,6 +16,7 @@ class LoginPageTest extends TestCase
      */
     public function testRedirectToLogin()
     {
+        $this->printTestStartMessage(__FUNCTION__);
         $this->visit('/')
             ->seePageIs('/login');
 
@@ -27,6 +28,7 @@ class LoginPageTest extends TestCase
     }
     public function testLoginElements()
     {
+        $this->printTestStartMessage(__FUNCTION__);
         $this->visit('/login')
             ->see('e-mail')
             ->see('password')

@@ -37,4 +37,9 @@ abstract class TestCase extends BaseTestCase
         return print( "\r\n[".class_basename($this)."]"." ".$message."\r\n");
     }
 
+    public function printTestStartMessage($functionName)
+    {
+        return print( "\r\n[".class_basename($this)."]"." ".$functionName."...\r\n");
+    }
+
 }
