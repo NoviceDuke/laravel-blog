@@ -3,6 +3,8 @@
 namespace Tests\units\pages;
 
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
  *  登入頁面單元測試.
