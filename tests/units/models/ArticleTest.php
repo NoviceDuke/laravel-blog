@@ -8,11 +8,15 @@ use App\Articles\Comment;
 use App\Articles\Tag;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-
 class ArticleTest extends TestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
+
+    // protected function setUp()
+    // {
+    //     $this->printMessage("setUp");
+    // }
     /**
      * 測試使用factory產生Article.
      *
@@ -22,7 +26,7 @@ class ArticleTest extends TestCase
     {
         // Given
         // 創建隨機數筆Article
-        $random = rand(1, 30);
+        $random = rand(1, 10);
         factory(Article::class, $random)->create();
 
         // When
@@ -39,6 +43,8 @@ class ArticleTest extends TestCase
             $this->assertNotEmpty($article->content);
             $this->assertNotEmpty($article->slug);
         }
+
+        $this->printMessage("testCreateArticlesByFactory() finished");
     }
     /**
      * 測試一篇文章加入一篇回覆
@@ -60,6 +66,8 @@ class ArticleTest extends TestCase
         // 斷言 : 這個文章的所有關聯集合的第一個回復的標題與內容，會同等於回覆
         $this->assertEquals($article->comments()->first()->title , $comment->title);
         $this->assertEquals($article->comments()->first()->content , $comment->content);
+
+        $this->printMessage("testArticleCanAddAComment() finished");
     }
 
     /**
@@ -82,5 +90,7 @@ class ArticleTest extends TestCase
         // 斷言 : 這個文章的所有關聯集合的第一個Tag的名稱與使用頻率，會同等於Tag
         $this->assertEquals($article->tags()->first()->name , $tag->name);
         $this->assertEquals($article->tags()->first()->frequency , $tag->frequency);
+
+        $this->printMessage("testArticleCanAddATag() finished");
     }
 }

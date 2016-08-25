@@ -25,9 +25,16 @@ abstract class TestCase extends BaseTestCase
 
         $app->make(Kernel::class)->bootstrap();
         if(!Storage::disk('test')->has('test_database.sqlite'))
+        {
             Storage::disk('test')->put('test_database.sqlite', '');
-            
+            $this->printMessage("Created test_database.sqlite at laravel-blog/database/");
+        }
         return $app;
+    }
+
+    public function printMessage($message)
+    {
+        return print( "\r\n[".class_basename($this)."]"." ".$message."\r\n");
     }
 
 }
