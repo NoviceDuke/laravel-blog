@@ -7,11 +7,12 @@ use App\Articles\Article;
 use App\Articles\Comment;
 use App\Articles\Tag;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ArticleTest extends TestCase
 {
+    use DatabaseMigrations;
     use DatabaseTransactions;
-
     /**
      * 測試使用factory產生Article.
      *
