@@ -36,7 +36,6 @@ class ArticleSeeder extends Seeder
             'user_id' => $faker->randomElement($user_ids),
             'title' => $faker->unique()->text(15),
             'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-            'tags' => '測試用tag',
             'pic_url' => $faker->randomElement($array_pic_url),
             'slug' => $faker->unique()->slug,
             ]);
