@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() == 'local-hchs') {
+        if ($this->app->environment() == 'local-hchs' ||  $this->app->environment() == 'local-duke') {
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
         }
     }
