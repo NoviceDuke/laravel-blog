@@ -5,8 +5,14 @@ namespace App\Articles;
 use App\Core\EloquentRepository;
 use App\Accounts\User;
 
+/**
+ *  負責處理 Article Query的邏輯.
+ */
 class ArticleRepository extends EloquentRepository
 {
+    /**
+     * @var Article
+     */
     protected $model;
 
     /**
@@ -25,9 +31,9 @@ class ArticleRepository extends EloquentRepository
     /**
      *  回傳以Slug為搜尋目標的Article.
      *
-     *  @return string
+     *  @return Article|Builder|null
      */
-    public function getFromSlug($slug)
+    public function getFromSlug(String $slug)
     {
         return $this->model->whereSlug($slug)->first();
     }
@@ -43,13 +49,15 @@ class ArticleRepository extends EloquentRepository
     public function getNextArticles(Article $article, $count)
     {
         $standardId = $article->id;
-        $articles = $this->model->where('id','>',$standardId)->orderBy('id','ASC')->take($count)->get();
+        $articles = $this->model->where('id', '>', $standardId)->orderBy('id', 'ASC')->take($count)->get();
+
         return $articles;
     }
     public function getPreviousArticles(Article $article, $count)
     {
         $standardId = $article->id;
-        $articles = $this->model->where('id','<',$standardId)->orderBy('id','DESC')->take($count)->get();
+        $articles = $this->model->where('id', '<', $standardId)->orderBy('id', 'DESC')->take($count)->get();
+
         return $articles;
     }
 }
