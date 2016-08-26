@@ -13,6 +13,11 @@ use App\Http\Controllers\Controller;
 class ArticleController extends Controller
 {
     /**
+     * @var ArticleRepository
+     */
+    protected $articles;
+    
+    /**
      *  建構子依賴注入.
      *
      *  @param ArticleRepository:class
@@ -58,7 +63,7 @@ class ArticleController extends Controller
         $categories = Category::lists('name', 'id');
 
         //return view('blog.article.create')->withCategories($categories);
-        return view('blog.article.create',compact('articles'));
+        return view('blog.article.create', compact('articles'));
     }
 
     /**

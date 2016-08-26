@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -24,22 +25,25 @@ abstract class TestCase extends BaseTestCase
         $app = require __DIR__.'/../bootstrap/app.php';
 
         $app->make(Kernel::class)->bootstrap();
-        if(!Storage::disk('test')->has('test_database.sqlite'))
-        {
+        if (!Storage::disk('test')->has('test_database.sqlite')) {
             Storage::disk('test')->put('test_database.sqlite', '');
-            $this->printMessage("Created test_database.sqlite at laravel-blog/database/");
+            $this->printMessage('Created test_database.sqlite at laravel-blog/database/');
         }
+
         return $app;
     }
-
+    /**
+     * 印出某段訊息.
+     */
     public function printMessage($message)
     {
-        return print( "\r\n[".class_basename($this)."]"." ".$message."\r\n");
+        return print  "\r\n[".class_basename($this).']'.' '.$message."\r\n";
     }
-
+    /**
+     * 印出該測試執行開始的通知訊息.
+     */
     public function printTestStartMessage($functionName)
     {
-        return print( "\r\n[".class_basename($this)."]"." ".$functionName."...\r\n");
+        return print  "\r\n[".class_basename($this).']'.' '.$functionName."...\r\n";
     }
-
 }
