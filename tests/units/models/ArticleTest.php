@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\units\features;
+namespace Tests\units\models;
 
 use Tests\TestCase;
 use App\Articles\Article;
@@ -23,9 +23,8 @@ class ArticleTest extends TestCase
     {
         $this->printTestStartMessage(__FUNCTION__);
         // Given
-        // 創建隨機數筆Article
-        $random = rand(1, 10);
-        factory(Article::class, $random)->create();
+        // 創建10筆Article
+        factory(Article::class, 10)->create();
 
         // When
         // 當取得所有Article時
@@ -33,7 +32,7 @@ class ArticleTest extends TestCase
 
         // Then
         // 斷言 : 所有文章數量相等於random數
-        $this->assertCount($random, $articles);
+        $this->assertCount(10, $articles);
 
         //斷言 : 每個Article都有被賦予值
         foreach ($articles as $article) {
