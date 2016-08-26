@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Category;
-use App\Article;
+use App\Articles\Category;
+use App\Articles\Article;
 
 class CategorySeeder extends Seeder
 {

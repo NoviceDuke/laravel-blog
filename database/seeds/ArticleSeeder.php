@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Article;
-use App\User;
+use App\Articles\Article;
+use App\Accounts\User;
 
 class ArticleSeeder extends Seeder
 {
@@ -13,7 +13,7 @@ class ArticleSeeder extends Seeder
     {
         $user_ids = User::all()->lists('id')->toArray();
         $faker = Faker\Factory::create('en_EN');
-        $faker->seed(rand(1,999));
+        $faker->seed(rand(1, 999));
         //預設圖片位置，來自http://www.freeimages.com/
         $array_pic_url = [
          'http://images.freeimages.com/images/previews/4a7/around-home-3-1470151.jpg',
@@ -36,7 +36,6 @@ class ArticleSeeder extends Seeder
             'user_id' => $faker->randomElement($user_ids),
             'title' => $faker->unique()->text(15),
             'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-            'tags' => '測試用tag',
             'pic_url' => $faker->randomElement($array_pic_url),
             'slug' => $faker->unique()->slug,
             ]);

@@ -1,19 +1,18 @@
 <?php
-namespace Tests;
+namespace Tests\units\features;
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class ExampleTest extends TestCase
+class AuthTest extends TestCase
 {
-
     /**
      * A basic functional test example.
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testRedirectToLogin()
     {
         $this->printTestStartMessage(__FUNCTION__);
         $this->visit('/')

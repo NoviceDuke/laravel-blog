@@ -1,17 +1,26 @@
 <?php
 
-namespace App;
+namespace App\Accounts;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Articles\Article;
 
-class Category extends Model
+class User extends Authenticatable
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
     **------------------------------------------------------------------------*/
-    protected $table = 'categories';
     protected $fillable = [
-            'name',         //種類名稱
+        'name', 'email', 'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
     ];
 
     /*------------------------------------------------------------------------**
@@ -19,7 +28,15 @@ class Category extends Model
     **------------------------------------------------------------------------*/
 
     /**
-     * 一個種類擁有多個文章.
+     * 關聯資料庫  一個使用者 對 多個文章.
+     */
+    public function socailAccount()
+    {
+        return $this->hasOne(SocialAccount::class);
+    }
+
+    /**
+     * 關聯資料庫  一個使用者 對 多個文章.
      */
     public function articles()
     {
@@ -31,10 +48,22 @@ class Category extends Model
     **------------------------------------------------------------------------*/
 
     /**
-     * 在此類別下新增一筆文章.
+     * 於當下使用者新增一個Article文章.
+     *
+     * @param Article::Class
      */
     public function addArticle(Article $article)
     {
         return $this->articles()->save($article);
+    }
+
+    /**
+     * 於當下使用者新增一個社群帳號.
+     *
+     * @param SocialAccount::Class
+     */
+    public function addSocialAccount(SocialAccount $socialAccount)
+    {
+        return $this->socailAccount()->save($socialAccount);
     }
 }

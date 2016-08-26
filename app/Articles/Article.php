@@ -1,8 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Articles;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Articles\ArticleRepository;
+use App\Articles\Category;
+use App\Articles\Comment;
 
 class Article extends Model
 {
@@ -15,7 +18,6 @@ class Article extends Model
             'category_id',   // ForeignKey
             'title',        // 文章標題
             'content',      // 文章內容
-            'tags',         // 文章tag
             'pic_url',      // 圖片連結
             'slug',         // slug
     ];
@@ -29,7 +31,7 @@ class Article extends Model
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     /**
@@ -65,6 +67,17 @@ class Article extends Model
     **------------------------------------------------------------------------*/
 
     /**
+     *  靜態function
+     *  使用 Article::repository()
+     *  細部功能定義於 ArticleRepository
+     *  @return string
+     */
+    // public static function repository()
+    // {
+    //     return new ArticleRepository($this);
+    // }
+
+    /**
      *  取得當下的slug，回傳已經串上slug的路徑.
      *
      *  @return string
@@ -83,6 +96,25 @@ class Article extends Model
     {
         return $this->comments()->save($comment);
     }
+    /**
+     *  在當下的Post移除一筆回覆留言的關聯
+     *
+     *  @param Comment::Class
+     */
+    public function removeComment(Comment $comment)
+    {
+        return $comment->update(['article_id' => null]);
+    }
+
+    /**
+     *  在當下的Post刪除除一筆回覆留言
+     *
+     *  @param Comment::Class
+     */
+    public function deleteComment(Comment $comment)
+    {
+        return $comment->delete();
+    }
 
     /**
      *  在當下的Article新增一個tag.
@@ -92,5 +124,15 @@ class Article extends Model
     public function addTag(Tag $tag)
     {
         return $this->tags()->save($tag);
+    }
+
+    /**
+     *  在當下的Article移除一個指定的tag.
+     *
+     *  @param Tag::Class
+     */
+    public function removeTag(Tag $tag)
+    {
+        return $this->tags()->detach($tag);
     }
 }

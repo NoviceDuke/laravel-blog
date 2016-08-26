@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Blog;
 
 use Event;
-use App\Article;
-use App\Category;
+use App\Articles\ArticleRepository;
+use App\Articles\Category;
 use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,8 +12,14 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    public function __construct()
+    /**
+     *  建構子依賴注入.
+     *
+     *  @param ArticleRepository:class
+     */
+    public function __construct(ArticleRepository $articles)
     {
+        $this->articles = $articles;
         $categories = Category::all();
         view()->share(compact('categories'));
     }
@@ -27,29 +33,32 @@ class ArticleController extends Controller
     }
 
     /**
-     *   show the article.
+     *   顯示某篇文章 (slug).
      *
-     *   @param string
+     *   @param slug string
      */
     public function show($slug)
     {
-        $article = Article::all()->where('slug', $slug)->first();
+        $article = $this->articles->getFromSlug($slug);
         if (!$article) {
-            return abort(403, 'Slug位置錯誤');
+            return abort(404, 'Slug Not Found');
         }
+        $nextArticle = $this->articles->getNextArticles($article, 1);
+        $previousArticle = $this->articles->getPreviousArticles($article, 1);
 
-        return view('blog.article.show', compact('article'));
+        return view('blog.article.show', compact('article', 'nextArticle', 'previousArticle'));
     }
 
     /**
-     *   show the article create view.
+     *  顯示創建文章的頁面.
      */
     public function create()
     {
         //grab all of our categories in database;
         $categories = Category::lists('name', 'id');
 
-        return view('blog.article.create')->withCategories($categories);
+        //return view('blog.article.create')->withCategories($categories);
+        return view('blog.article.create',compact('articles'));
     }
 
     /**
@@ -62,11 +71,10 @@ class ArticleController extends Controller
             'date' => 'required',
             'content' => 'required',
         ]);
+        // 串slug HardCode
+        $articleArray = array_merge($request->all(), ['slug' => str_slug($request->title, '-')]);
 
-        $article = new Article($request->all());
-        $article->slug = $request->title.'-'.Auth::id();
-
-        Auth::user()->addArticle($article);
+        $article = $this->articles->createFromUser($articleArray, Auth::user());
 
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleEvents($article, 'posted'));

@@ -1,25 +1,23 @@
 <?php
 
-namespace App;
+namespace App\Articles;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Comment extends Model
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
     **------------------------------------------------------------------------*/
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
+    protected $table = 'comments';
+    protected $fillable = [
+        'content',          // 內容
+        'status',           // 狀態
+        'author',           // 回覆者
+        'email',            // email
+        'url',              // 此文章的url
+        'article_id',          // 關聯至Article
     ];
 
     /*------------------------------------------------------------------------**
@@ -27,24 +25,14 @@ class User extends Authenticatable
     **------------------------------------------------------------------------*/
 
     /**
-     * 關聯資料庫  一個使用者 對 多個文章.
+     * 回覆留言屬於文章.
      */
-    public function articles()
+    public function article()
     {
-        return $this->hasMany(Article::class);
+        return $this->belongsTo(Article::class);
     }
 
     /*------------------------------------------------------------------------**
     ** 自訂功能函數                                                            **
     **------------------------------------------------------------------------*/
-
-    /**
-     * 於當下使用者新增一個Article文章.
-     *
-     * @param Article::Class
-     */
-    public function addArticle(Article $article)
-    {
-        return $this->articles()->save($article);
-    }
 }

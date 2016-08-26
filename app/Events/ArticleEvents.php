@@ -3,7 +3,7 @@
 namespace App\Events;
 
 use Illuminate\Queue\SerializesModels;
-use App\Article;
+use App\Articles\Article;
 
 class ArticleEvents extends Event
 {

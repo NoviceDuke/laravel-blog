@@ -1,28 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Blog;
+namespace App\Http\Controllers\Backend;
 
-use App\Articles\Category;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Session;
+use Event;
+use App\Articles\ArticleRepository;
+use App\Articles\Category;
+use App\Articles\Article;
+use App\Events\ArticleEvents;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class ArticleController extends Controller
 {
-    public function __construct()
-    {
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(ArticleRepository $articles)
+    {
+        $this->articles = $articles;
+        $categories = Category::all();
+        view()->share(compact('categories'));
+    }
     public function index()
     {
-        //dispaly a view of all of our categories
-        $categories = Category::all();
-
-        return view('blog.categories.index')->withCategories($categories);
+        $articles = Article::All();
+        return view('backend.article.index',compact('articles'));
     }
 
     /**
@@ -30,35 +36,26 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //save a new category and redirect to index
-        $this->validate($request, array(
-            'name' => 'required|max:255', ));
-
-        $category = new Category();
-
-        $category->name = $request->name;
-        $category->save();
-
-        Session::flash('success', 'New Category has been created');
-
-        return redirect()->route('categories.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,8 +66,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -81,9 +77,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -94,8 +89,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

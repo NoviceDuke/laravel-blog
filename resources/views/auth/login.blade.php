@@ -36,13 +36,14 @@
 
             <div class="row">
                 <div class="col s12">
-                    <button type="submit" class="waves-effect waves-light btn">
-                        <i></i> Login
+                    <button name="LOGIN" type="submit" class="waves-effect waves-light btn">
+                        LOGIN
                     </button>
-                    <!--     停用Forgot Password
-                    <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-                    -->
+                    <a href='redirect_to_fb' class="btn waves-effect waves-light" type="submit" name="FB Login">FB Login
+                        <i class="material-icons left"></i>
+                    </a>
                 </div>
+
             </div>
         </form>
     </div>
