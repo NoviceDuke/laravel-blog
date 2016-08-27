@@ -38,6 +38,13 @@ class ArticleRepository extends EloquentRepository
         return $this->model->whereSlug($slug)->first();
     }
 
+    /**
+     *  在某一個User下建立Article.並回傳該Article.
+     *
+     *  建立的Article內容值以傳入的data為基準.
+     *  $data = ['title'=>'hello', ... ];
+     *  @return Article
+     */
     public function createFromUser($data, User $user)
     {
         $article = $this->create($data);
@@ -46,6 +53,11 @@ class ArticleRepository extends EloquentRepository
         return $article;
     }
 
+    /**
+     *  回傳以$article為基準的下$count筆Articles.
+     *
+     *  @return array|Builder
+     */
     public function getNextArticles(Article $article, $count)
     {
         $standardId = $article->id;
@@ -53,6 +65,12 @@ class ArticleRepository extends EloquentRepository
 
         return $articles;
     }
+
+    /**
+     *  回傳以$article為基準的上$count筆Articles.
+     *
+     *  @return array|Builder
+     */
     public function getPreviousArticles(Article $article, $count)
     {
         $standardId = $article->id;

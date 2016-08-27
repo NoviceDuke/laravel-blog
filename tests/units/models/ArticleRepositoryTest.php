@@ -23,6 +23,8 @@ class ArticleRepositoryTest extends TestCase
      * @var ArticleRepository
      */
     protected $repository;
+
+
     /**
      * Setup 測試生命週期setUp時建構ArticleRepository.
      * 使用$this->app->make(); 會自動依賴注入.
@@ -30,6 +32,7 @@ class ArticleRepositoryTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+        $this->mockArticle = $this->createMock(Article::class);
         $this->repository = $this->app->make(ArticleRepository::class);
     }
 
@@ -41,6 +44,7 @@ class ArticleRepositoryTest extends TestCase
         $this->repository = null;
         parent::tearDown();
     }
+
     /**
      * 測試 可以透過slug取得文章.
      *
@@ -87,4 +91,30 @@ class ArticleRepositoryTest extends TestCase
         //斷言 透過createFromUse取得的user_id 等同於 Given時的$user->id
         $this->assertEquals($article->user_id, $user->id);
     }
+
+    /**
+     * 測試 可以透過某個article取得接下來的數筆article.
+     *
+     * 斷言 使用Repository取得的數筆文章 等同於 手動創建的數筆文章
+     */
+    public function testRepositoryCanGetNextArticles()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 給予一個user、想創建的article內容
+        $articleIndex = factory(Article::class)->create();
+        $NextArticles = factory(Article::class, 5)->create();
+
+
+        // When
+        // 執行getNextArticles()
+        $articles =$this->repository->getNextArticles($articleIndex, 3);
+
+        // Then
+        // 斷言 透過getNextArticles取得的$articles內的第一筆資烙 等同於 $NextArticles的第一筆資料
+        $this->assertEquals($articles->first()->title, $NextArticles->first()->title);
+
+    }
+
+
 }
