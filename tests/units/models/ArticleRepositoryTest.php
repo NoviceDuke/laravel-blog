@@ -15,9 +15,9 @@ class ArticleRepositoryTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var Mock
+     * @var Prophecy
      */
-    protected $mockArticle;
+    protected $articleProphecy;
 
     /**
      * @var ArticleRepository
@@ -32,16 +32,17 @@ class ArticleRepositoryTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->mockArticle = $this->createMock(Article::class);
+        $this->articleProphecy = $this->prophesize(Article::class);
         $this->repository = $this->app->make(ArticleRepository::class);
     }
 
     /**
-     * Clean 測試生命週期tearDown時，清除mock.
+     * Clean 測試生命週期tearDown時，清除各個資料.
      */
     public function tearDown()
     {
         $this->repository = null;
+        $this->articleProphecy = null;
         parent::tearDown();
     }
 
@@ -102,6 +103,7 @@ class ArticleRepositoryTest extends TestCase
         $this->printTestStartMessage(__FUNCTION__);
         // Given
         // 給予一個user、想創建的article內容
+
         $articleIndex = factory(Article::class)->create();
         $NextArticles = factory(Article::class, 5)->create();
 
@@ -115,6 +117,4 @@ class ArticleRepositoryTest extends TestCase
         $this->assertEquals($articles->first()->title, $NextArticles->first()->title);
 
     }
-
-
 }
