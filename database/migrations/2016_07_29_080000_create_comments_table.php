@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->string('author');
             $table->string('email');
             $table->string('url');
-            $table->integer('article_id')->unsigned()->default(1);
+            $table->integer('article_id')->unsigned()->nullable();
             $table->timestamps();
 
             //foreign Key Set

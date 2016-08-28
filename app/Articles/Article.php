@@ -96,6 +96,25 @@ class Article extends Model
     {
         return $this->comments()->save($comment);
     }
+    /**
+     *  在當下的Post移除一筆回覆留言的關聯
+     *
+     *  @param Comment::Class
+     */
+    public function removeComment(Comment $comment)
+    {
+        return $comment->update(['article_id' => null]);
+    }
+
+    /**
+     *  在當下的Post刪除除一筆回覆留言
+     *
+     *  @param Comment::Class
+     */
+    public function deleteComment(Comment $comment)
+    {
+        return $comment->delete();
+    }
 
     /**
      *  在當下的Article新增一個tag.
@@ -105,5 +124,15 @@ class Article extends Model
     public function addTag(Tag $tag)
     {
         return $this->tags()->save($tag);
+    }
+
+    /**
+     *  在當下的Article移除一個指定的tag.
+     *
+     *  @param Tag::Class
+     */
+    public function removeTag(Tag $tag)
+    {
+        return $this->tags()->detach($tag);
     }
 }
