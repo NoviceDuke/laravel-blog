@@ -76,7 +76,7 @@ class ArticleController extends Controller
         //find the article in the database and save
         $articles = Article::find($id);
         //return the view and pass in we previously created
-        return view('backend.article.edit');
+        return view('backend.article.edit',compact('articles'));
     }
 
     /**
