@@ -24,7 +24,6 @@ class ArticleRepositoryTest extends TestCase
      */
     protected $repository;
 
-
     /**
      * Setup 測試生命週期setUp時建構ArticleRepository.
      * 使用$this->app->make(); 會自動依賴注入.
@@ -106,14 +105,15 @@ class ArticleRepositoryTest extends TestCase
         $articleIndex = factory(Article::class)->create();
         $NextArticles = factory(Article::class, 5)->create();
 
-
         // When
         // 執行getNextArticles()
-        $articles =$this->repository->getNextArticles($articleIndex, 3);
+        $articles = $this->repository->getNextArticles($articleIndex, 3);
+        $nextOneArticle = $this->repository->getNextArticles($articleIndex);
 
         // Then
         // 斷言 透過getNextArticles取得的$articles內的第一筆資烙 等同於 $NextArticles的第一筆資料
         $this->assertEquals($articles->first()->title, $NextArticles->first()->title);
+        $this->assertEquals($nextOneArticle->first()->title, $NextArticles->first()->title);
     }
 
     /**
@@ -130,13 +130,14 @@ class ArticleRepositoryTest extends TestCase
         $privousArticles = factory(Article::class, 5)->create();
         $articleIndex = factory(Article::class)->create();
 
-
         // When
         // 執行getNextArticles()
-        $articles =$this->repository->getPreviousArticles($articleIndex, 5);
+        $articles = $this->repository->getPreviousArticles($articleIndex, 5);
+        $prevousOneArticle = $this->repository->getPreviousArticles($articleIndex);
 
         // Then
         // 斷言 透過getNextArticles取得的$articles內的第一筆資烙 等同於 $NextArticles的第一筆資料
         $this->assertEquals($articles->first()->title, $privousArticles->first()->title);
+        $this->assertEquals($articles->first()->title, $prevousOneArticle->first()->title);
     }
 }

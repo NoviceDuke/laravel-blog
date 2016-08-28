@@ -6,9 +6,11 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\Storage;
 use Tests\units\traits\MessagePrintable;
+
 abstract class TestCase extends BaseTestCase
 {
     use MessagePrintable;
+
     /**
      * The base URL to use while testing the application.
      *
