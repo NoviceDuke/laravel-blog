@@ -58,9 +58,11 @@ class ArticleRepository extends EloquentRepository
      *
      *  @return array|Builder
      */
-    public function getNextArticles(Article $article, $count)
+    public function getNextArticles(Article $article, $count = null)
     {
         $standardId = $article->id;
+
+        $count = ($count) ? $count:1;
         $articles = $this->model->where('id', '>', $standardId)->orderBy('id', 'ASC')->take($count)->get();
 
         return $articles;
@@ -71,11 +73,11 @@ class ArticleRepository extends EloquentRepository
      *
      *  @return array|Builder
      */
-    public function getPreviousArticles(Article $article, $count)
+    public function getPreviousArticles(Article $article, $count = null)
     {
         $standardId = $article->id;
-        $articles = $this->model->where('id', '<', $standardId)->orderBy('id', 'DESC')->take($count)->get();
-
+        $articles = $this->model->where('id', '<', $standardId)->orderBy('id', 'DESC')->take($count)->get()->reverse();
+        
         return $articles;
     }
 }

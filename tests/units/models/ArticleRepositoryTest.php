@@ -103,7 +103,6 @@ class ArticleRepositoryTest extends TestCase
         $this->printTestStartMessage(__FUNCTION__);
         // Given
         // 給予一個user、想創建的article內容
-
         $articleIndex = factory(Article::class)->create();
         $NextArticles = factory(Article::class, 5)->create();
 
@@ -115,6 +114,29 @@ class ArticleRepositoryTest extends TestCase
         // Then
         // 斷言 透過getNextArticles取得的$articles內的第一筆資烙 等同於 $NextArticles的第一筆資料
         $this->assertEquals($articles->first()->title, $NextArticles->first()->title);
+    }
 
+    /**
+     * 測試 可以透過某個article取得前面的數筆article.
+     *
+     * 斷言 使用Repository取得的數筆文章 等同於 手動創建的數筆文章
+     */
+    public function testRepositoryCanGetPreviousArticles()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 給予一個user、想創建的article內容
+
+        $privousArticles = factory(Article::class, 5)->create();
+        $articleIndex = factory(Article::class)->create();
+
+
+        // When
+        // 執行getNextArticles()
+        $articles =$this->repository->getPreviousArticles($articleIndex, 5);
+
+        // Then
+        // 斷言 透過getNextArticles取得的$articles內的第一筆資烙 等同於 $NextArticles的第一筆資料
+        $this->assertEquals($articles->first()->title, $privousArticles->first()->title);
     }
 }
