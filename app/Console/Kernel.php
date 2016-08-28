@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('blog:test --refresh')
-                  ->dailyAt('21:43')
+                  ->dailyAt('21:45')
                   ->sendOutputTo(storage_path('/logs/test/output.log'));
 
                 //
