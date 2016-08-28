@@ -60,7 +60,9 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        //find the article in the database
+        $articles = Article::find($id);
+        return view('backend.article.show',compact('articles'));
     }
 
     /**
@@ -71,7 +73,10 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        //find the article in the database and save
+        $articles = Article::find($id);
+        //return the view and pass in we previously created
+        return view('backend.article.edit');
     }
 
     /**
