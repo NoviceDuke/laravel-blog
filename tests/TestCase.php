@@ -5,9 +5,12 @@ namespace Tests;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Support\Facades\Storage;
+use Tests\units\traits\MessagePrintable;
 
 abstract class TestCase extends BaseTestCase
 {
+    use MessagePrintable;
+
     /**
      * The base URL to use while testing the application.
      *
@@ -31,19 +34,5 @@ abstract class TestCase extends BaseTestCase
         }
 
         return $app;
-    }
-    /**
-     * 印出某段訊息.
-     */
-    public function printMessage($message)
-    {
-        return print  "\r\n[".class_basename($this).']'.' '.$message."\r\n";
-    }
-    /**
-     * 印出該測試執行開始的通知訊息.
-     */
-    public function printTestStartMessage($functionName)
-    {
-        return print  "\r\n[".class_basename($this).']'.' '.$functionName."...\r\n";
     }
 }
