@@ -23,7 +23,7 @@
             </td>
             <td>{{$article->created_at}}</td>
             <td>
-            <a href="#" class="waves-effect waves-light btn red">Show</a>
+            <a href="/backend/article/{{$article->id}}" class="waves-effect waves-light btn red">Show</a>
             <a href="#" class="waves-effect waves-light btn">
             Delete
             </a></td>
