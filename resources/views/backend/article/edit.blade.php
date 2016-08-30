@@ -3,13 +3,18 @@
 @section('title','| Edit Blog Article')
 @section('content')
 
+@if(Session::has('flash_message'))
+  <div class="alert alert-success">
+     {{Session::get('flash_message')}}
 
+  </div>
+@endif
     <div class="row">
   {!! Form::model($articles,['route'=>['backend.article.update',$articles->id]])!!}
       <div class="col s8">
-        {{Form::label('title','Title:')}}
+        {{Form::label('title','Title:',['class'=>'control-label'])}}
         {{Form::text('title',null,['class'=>'form-control input-lg'])}}
-        {{Form::label('content','Content:','form-spacing-top')}}
+        {{Form::label('content','Content:','form-spacing-top',['class'=>'control-label'])}}
         {{Form::textarea('content',null,['class'=>'form-control'])}}
       </div>
       <div class="col s4">

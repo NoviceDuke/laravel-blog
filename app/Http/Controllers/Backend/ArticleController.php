@@ -89,6 +89,12 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $articles = Article::findOrFail($id);
+        $this->validate($request,['title'=>'required','content'=>'required']);
+        $input = $request->all();
+        $articles ->fill($input)->save();
+        Session:flash('flash_message','Article is saved');
+        return redirect();
     }
 
     /**
