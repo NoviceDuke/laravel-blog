@@ -29,7 +29,7 @@
           <hr />
           <div class="row">
             <div class="col s4">
-              {!! Html::linkRoute('backend.article.edit','Edit',array($articles->id),array('class'=>'btn btn-danger waves-effect waves-light btn'))!!}
+              {!! Html::linkRoute('backend.article.edit','Edit',array($articles->id),array('class'=>'btn btn-danger waves-effect waves-light btn red'))!!}
             </div>
             <div class="col s4">
               {!! Html::linkRoute('backend.article.update','Save',array($articles->id),array('class'=>'btn btn-success waves-effect waves-light btn'))!!}
