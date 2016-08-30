@@ -88,12 +88,19 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $articles = Article::findOrFail($id);
-        $articleUpdate = Request::all();
-        $articles->update($articleUpdate);
-        Session:flash('flash_message','Article is saved');
-        return redirect()->route('backend,artircle.show','$articles->id');
+        //validate the data
+        $this->validate($request,array('title'=>'required','content'=>'required'));
+        //find the article id
+        $articles = Article::find($id);
+        //match input
+        $articles->title = $request->input('title');
+        $articles->content = $request->input('content');
+        //save it
+        $articles->save();
+        //flash message
+        //Session:flash('flash_message','Article is saved');
+        //back to showpage
+        return redirect()->route('backend.article.show',$articles->id);
     }
 
     /**

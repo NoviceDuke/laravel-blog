@@ -41,7 +41,8 @@
               {!! Html::linkRoute('backend.article.show','Canceal',array($articles->id),array('class'=>'btn btn-danger waves-effect waves-light btn yellow'))!!}
             </div>
             <div class="col s4">
-              {!! Html::linkRoute('backend.article.update','Save',array($articles->id),array('class'=>'btn btn-success waves-effect waves-light btn'))!!}
+              {{Form::submit('Save',['class'=>'btn btn-success btn-block'])}}
+            
             </div>
           </div>
         </div>
