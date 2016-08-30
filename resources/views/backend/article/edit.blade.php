@@ -2,11 +2,13 @@
 
 @section('title','| Edit Blog Article')
 @section('content')
-  <div >
+
+
     <div class="row">
+  {!! Form::model($articles,['route'=>['backend.article.update',$articles->id]])!!}
       <div class="col s8">
-        <h1>{{$articles->title}}</h1>
-        <p>{{$articles->content}}</p>
+        {{Form::text('title',null,['class'=>'form-control'])}}
+        {{Form::textarea('content',null,['class'=>'form-control'])}}
       </div>
       <div class="col s4">
         <div class="well">
@@ -37,6 +39,8 @@
           </div>
         </div>
       </div>
+      {!!Form::close()!!}
+    </div>
 
 
 @stop
