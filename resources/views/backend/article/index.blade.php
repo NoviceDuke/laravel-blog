@@ -31,4 +31,7 @@
         @endforeach
         </tbody>
       </table>
+			<div class="text-center">
+				{!! $articles->links();!!}
+			</div>
 @endsection
