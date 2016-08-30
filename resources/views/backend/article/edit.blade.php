@@ -10,7 +10,7 @@
   </div>
 @endif
     <div class="row">
-  {!! Form::model($articles,['route'=>['backend.article.update',$articles->id]])!!}
+  {!! Form::model($articles,['method'=>'PATCH','route'=>['backend.article.update',$articles->id]])!!}
       <div class="col s8">
         {{Form::label('title','Title:',['class'=>'control-label'])}}
         {{Form::text('title',null,['class'=>'form-control input-lg'])}}

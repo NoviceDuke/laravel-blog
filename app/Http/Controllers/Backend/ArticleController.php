@@ -90,11 +90,10 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::findOrFail($id);
-        $this->validate($request,['title'=>'required','content'=>'required']);
-        $input = $request->all();
-        $articles ->fill($input)->save();
+        $articleUpdate = Request::all();
+        $articles->update($articleUpdate);
         Session:flash('flash_message','Article is saved');
-        return redirect();
+        return redirect()->route('backend,artircle.show','$articles->id');
     }
 
     /**
