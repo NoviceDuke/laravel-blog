@@ -23,7 +23,7 @@
               Updated At:
             </dt>
             <dd>
-              {{$articles->update_at}}
+              {{$articles->updated_at}}
             </dd>
           </dl>
           <hr />
