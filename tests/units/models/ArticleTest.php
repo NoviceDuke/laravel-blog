@@ -59,7 +59,7 @@ class ArticleTest extends TestCase
         $article->slug = 'hi-my-new-slug';
 
         // Then
-        // 斷言 : 這個文章的所有關聯集合的第一個Tag的名稱與使用頻率，會同等於Tag
+        // 斷言 : 取出的slug路徑同等於預設的路徑
         $this->assertEquals($article->path(), '/article/hi-my-new-slug');
     }
 
