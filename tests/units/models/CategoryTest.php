@@ -41,6 +41,29 @@ class CategoryTest extends TestCase
     }
 
     /**
+     * 測試一個文章種類能夠取得自己的slug路徑.
+     *
+     * 斷言取出的路徑同等於預設的路徑
+     */
+    public function testArticleCanGetAPath()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增文章種類
+        $category = factory(Category::class)->create();
+
+        // When
+        // 當文章種類被賦予name時
+        $category->name = 'helloman';
+
+        // Then
+        // 斷言 : 取出的路徑同等於預設的路徑
+        $this->assertEquals($category->path(), '/category/helloman');
+    }
+
+
+
+    /**
      * 測試一個文章種類加入一篇文章.
      *
      * 斷言經由關聯的方式取出的文章同等於加入的那筆文章
@@ -61,5 +84,6 @@ class CategoryTest extends TestCase
         // 斷言 : 經由關聯的方式取出的文章同等於加入的那筆文章
         $this->assertEquals($category->articles()->first()->title, $article->title);
     }
+
 
 }
