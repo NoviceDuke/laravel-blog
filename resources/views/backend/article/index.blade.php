@@ -23,12 +23,15 @@
             </td>
             <td>{{$article->created_at}}</td>
             <td>
-            <a href="#" class="waves-effect waves-light btn red">Edit</a>
+            <a href="/backend/article/{{$article->id}}" class="waves-effect waves-light btn red">Show</a>
             <a href="#" class="waves-effect waves-light btn">
-            Delete	
+            Delete
             </a></td>
           </tr>
-        @endforeach  
+        @endforeach
         </tbody>
       </table>
+			<div class="text-center">
+				{!! $articles->links();!!}
+			</div>
 @endsection
