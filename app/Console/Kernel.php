@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $now = Carbon::now()->toDateTimeString();
+        $now = Carbon::now()->toDateString();
 
         $schedule->command('blog:test --refresh')
                   ->dailyAt('21:00')
