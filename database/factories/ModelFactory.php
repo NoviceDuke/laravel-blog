@@ -28,6 +28,12 @@ $factory->define(App\Articles\Article::class, function (Faker\Generator $faker) 
     ];
 });
 
+$factory->define(App\Articles\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});
+
 $factory->define(App\Articles\Comment::class, function (Faker\Generator $faker) {
     return [
         'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
@@ -37,6 +43,7 @@ $factory->define(App\Articles\Comment::class, function (Faker\Generator $faker) 
         'email' => $faker->safeEmail,
     ];
 });
+
 $factory->define(App\Articles\Tag::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,

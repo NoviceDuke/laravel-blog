@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
@@ -19,15 +20,14 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-     * @return void
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('blog:test --refresh')
-                  ->dailyAt('21:45')
-                  ->sendOutputTo(storage_path('/logs/test/output.log'));
+        $now = Carbon::now()->toDateString();
 
-                //
+        $schedule->command('blog:test --refresh')
+                  ->dailyAt('21:00')
+                  ->sendOutputTo(storage_path("/logs/test/output_$now.log"));
     }
 }
