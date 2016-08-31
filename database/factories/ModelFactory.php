@@ -37,6 +37,7 @@ $factory->define(App\Articles\Comment::class, function (Faker\Generator $faker) 
         'email' => $faker->safeEmail,
     ];
 });
+
 $factory->define(App\Articles\Tag::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,

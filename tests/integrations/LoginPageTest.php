@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\units\pages;
+namespace Tests\intefrations\pages;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 /**
- *  登入頁面單元測試.
+ *  登入頁面集成測試.
  */
 class LoginPageTest extends TestCase
 {
