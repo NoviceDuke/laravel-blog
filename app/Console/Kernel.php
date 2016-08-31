@@ -27,7 +27,5 @@ class Kernel extends ConsoleKernel
         $schedule->command('blog:test --refresh')
                   ->dailyAt('21:45')
                   ->sendOutputTo(storage_path('/logs/test/output.log'));
-
-                //
     }
 }
