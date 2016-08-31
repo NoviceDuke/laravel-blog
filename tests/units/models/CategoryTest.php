@@ -5,8 +5,6 @@ namespace Tests\units\models;
 use Tests\TestCase;
 use App\Articles\Article;
 use App\Articles\Category;
-use App\Articles\Comment;
-use App\Articles\Tag;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -61,8 +59,6 @@ class CategoryTest extends TestCase
         $this->assertEquals($category->path(), '/category/helloman');
     }
 
-
-
     /**
      * 測試一個文章種類加入一篇文章.
      *
@@ -84,6 +80,4 @@ class CategoryTest extends TestCase
         // 斷言 : 經由關聯的方式取出的文章同等於加入的那筆文章
         $this->assertEquals($category->articles()->first()->title, $article->title);
     }
-
-
 }
