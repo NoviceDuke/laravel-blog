@@ -9,14 +9,16 @@ use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\Alertable;
 
 class ArticleController extends Controller
 {
+    use Alertable;
     /**
      * @var ArticleRepository
      */
     protected $articles;
-    
+
     /**
      *  建構子依賴注入.
      *
@@ -63,7 +65,7 @@ class ArticleController extends Controller
         $categories = Category::lists('name', 'id');
 
         //return view('blog.article.create')->withCategories($categories);
-        return view('blog.article.create', compact('articles'));
+        return view('blog.article.create', compact('articles','categories'));
     }
 
     /**
@@ -83,6 +85,7 @@ class ArticleController extends Controller
 
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleEvents($article, 'posted'));
+        $this->alert('Success','Your article is created successful')->success()->flashIt();
 
         return redirect('/article/'.$article->slug);
     }
