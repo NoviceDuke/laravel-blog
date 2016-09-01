@@ -24,9 +24,15 @@
             <td>{{$article->created_at}}</td>
             <td>
             <a href="/backend/article/{{$article->id}}" class="waves-effect waves-light btn red">Show</a>
-            <a href="#" class="waves-effect waves-light btn">
-            Delete
-            </a></td>
+            </td>
+						<td>
+							{!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['backend.article.destroy', $article->id]
+			        ]) !!}
+			            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+			        {!! Form::close() !!}
+            </td>
           </tr>
         @endforeach
         </tbody>
