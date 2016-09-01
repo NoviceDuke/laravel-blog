@@ -37,4 +37,5 @@
         下一個
     </div>
 </div>
+@include('partials.sweet_alert')
 @endsection

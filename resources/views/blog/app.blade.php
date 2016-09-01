@@ -7,10 +7,10 @@
         {!! Html::style(url('materialize/css/materialize.css'))!!}
         {!! Html::style(url('css/blog-styles.css'))!!}
         {!! Html::style(url('css/animate.min.css'))!!}
-        {!! Html::style(url('css/prism.css'))!!}
+        {!! Html::style(url('css/libs.css'))!!}
         {!! Html::script(url('materialize/js/materialize.js'))!!}
-        {!! Html::script(url('js/prism.js'))!!}
         {!! Html::script(url('js/blog-styles.js'))!!}
+        {!! Html::script(url('js/libs.js'))!!}
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -21,7 +21,7 @@
         <!--Scripts End-->
     </head>
 
-    <body background="png/hchs_background.png">
+    <body background="{{url('png/hchs_background.png')}}">
         <!--  Top Navigation  -->
         <nav class="blue-grey darken-2 nav-height-fix">
             <div class="nav-wrapper blue-grey darken-2 nav-content-fix">
@@ -36,7 +36,7 @@
                <ul id='dropdown1' class='dropdown-content'>
                 <li><a href="{{route('categories.index')}}">Category</a></li>
                 <li><a href="{{route('backend.article.index')}}">Article</a></li>
-                
+
               </ul>
 
             <!--Mobile DropDown Button-->
