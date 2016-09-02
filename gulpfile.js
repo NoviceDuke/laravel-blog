@@ -21,7 +21,6 @@ elixir(function(mix) {
         'blog-styles.js',
     ], 'public/js/blog-styles.js');
 
-
     // 別人的libs
     mix.sass([
         'libs/prism.scss',
@@ -32,7 +31,6 @@ elixir(function(mix) {
         '/libs/prism.js',
         '/libs/sweetalert2.js',
     ], 'public/js/libs.js');
-
 
     mix.browserSync({
         proxy: 'localhost/laravel-blog/public'

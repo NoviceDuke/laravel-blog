@@ -6,7 +6,7 @@
         <form class="col s12" method="POST" action="{{url('/article')}}" id="article_create_form">
             {{ csrf_field() }}
             <div class="row">
-                <h4>Create A Article</h4>
+                <h4>Create Article</h4>
             </div>
 
             <div class="row">
@@ -16,15 +16,8 @@
                 </div>
             </div>
             <!-- 文章分類 下拉選單-->
-                <!-- Formbuilder 似乎無法做到動態抓取(可能可以)
-                  先使用一般HTML去抓
-                -->
-                {{ Form::label('category_id', 'Category:') }}
-
-                {{ Form::select('category_id',$categories)}}
-
-
-
+            {{ Form::label('category_id', 'Category:') }}
+            {{ Form::select('category_id',$categories)}}
             <div class="row">
                 <div class="input-field col s12">
                     <label for="pic_url">Picture URL</label>
@@ -41,10 +34,6 @@
         </div>
         </div>
     </div>
-    @if(count($errors)>0)
-            <toast data-error='{{$errors->first()}}'></toast>
-    @endif
-
 
     {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
     <script>
