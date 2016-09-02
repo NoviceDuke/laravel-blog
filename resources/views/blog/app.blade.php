@@ -8,9 +8,6 @@
         {!! Html::style(url('css/blog-styles.css'))!!}
         {!! Html::style(url('css/animate.min.css'))!!}
         {!! Html::style(url('css/libs.css'))!!}
-        {!! Html::script(url('materialize/js/materialize.js'))!!}
-        {!! Html::script(url('js/blog-styles.js'))!!}
-        {!! Html::script(url('js/libs.js'))!!}
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -66,5 +63,11 @@
          	@yield('content')
 
  		</div>
+
     </body>
+    {!! Html::script(url('materialize/js/materialize.js'))!!}
+    {!! Html::script(url('js/blog-styles.js'))!!}
+    {!! Html::script(url('js/libs.js'))!!}
+    <!--  sweet_alert -->
+    @include('partials.sweet_alert')
 </html>
