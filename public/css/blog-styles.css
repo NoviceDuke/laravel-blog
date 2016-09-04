@@ -1,12 +1,5 @@
 @charset "UTF-8";
 /*Define All Colors*/
-/*All Page Maybe Used*/
-html {
-  font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif; }
-
-a {
-  color: #5c6bc0; }
-
 .border-top-text-grey {
   border-top: 2px solid #424242; }
 
@@ -48,6 +41,16 @@ a {
 
 .border-right-brown {
   border-right: 5px solid #795548; }
+
+.article {
+  margin-top: 35px; }
+
+/*All Page Maybe Used*/
+html {
+  font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif; }
+
+a {
+  color: #5c6bc0; }
 
 .category-container {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
@@ -142,7 +145,8 @@ a {
   margin-bottom: -5px; }
 
 .search-input {
-  width: calc(80%) !important; }
+  display: inline-block;
+  width: calc( 80% - 20px) !important; }
 
 .search-icon-fix {
   top: 12px !important;
@@ -174,13 +178,15 @@ a {
 .module-1 {
   background: transparent;
   font-weight: bold;
-  text-align: center !important;
+  display: inline-block;
+  text-align: center;
   text-shadow: 0 0 12px #795548;
   color: white;
+  width: 100%;
   height: 150px; }
 
 .module-text {
   position: relative;
-  left: 110px; }
+  transform: translateY(170%); }
 
 /*# sourceMappingURL=blog-styles.css.map */

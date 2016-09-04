@@ -1,15 +1,23 @@
 @extends('blog/app')
 @section('content')
 <div class="row">
-    <!--Static Cut Left Panel 75%-->
-    <div class="col s12 m9">
-        @include('blog.leftSide')
+    <div class="container" style="margin-top:30px">
+    <div class="col s12 m6">
+        <section class="article" style="background-color:blue; height:400px;">
+            1
+        </section>
+        <section class="article" style="background-color:yellow; height:400px;">
+            3
+        </section>
     </div>
-    <!--Static Cut Left Panel 75%-->
-    <!--Static Cut Right Panel 25%-->
-    <div class="col s12 m3">
-        @include('blog.rightSide')
+    <div class="col s12 m6">
+        <section class="article" style="background-color:pink; height:400px;">
+            2
+        </section>
+        <section class="article" style="background-color:red; height:400px;">
+            4
+        </section>
     </div>
-    <!--Static Cut Right Panel 25%-->
+    </div>
 </div>
 @endsection

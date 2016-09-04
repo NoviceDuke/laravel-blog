@@ -1,0 +1,23 @@
+/*Define All Colors*/
+$colors: (text-grey : #424242,purple : #7e57c2, red : #e54e7e, blue : #5c6bc0, yellow : #f57f17, green : #43a047, brown : #795548,);
+@function color($key) {
+     @if map-has-key($colors, $key){
+        @return map-get($colors, $key);
+    }
+    @warn "Unknown `#{$key}` in $colors.";
+    @return null;
+}
+@each $header,$color in $colors {
+    .border-top-#{$header} {
+        border-top: 2px solid $color;
+    }
+    // compile to like this
+    // .border-top-purple { border-top: 2px solid #7e57c2; }
+}
+@each $header,$color in $colors {
+    .border-right-#{$header} {
+        border-right: 5px solid $color;
+    }
+    // compile to like this
+    // .border-right-purple { border-right: 5px solid $purple; }
+}

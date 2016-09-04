@@ -37,11 +37,11 @@
 
     {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
     <script>
-    /* Material 的Select標籤 需要在JS裡面初始化，因為他有動畫，這裡槓掉，寫在resource\assets\js\blog-style.js
+    
     $(document).ready(function() {
         $('select').material_select();
     });
-    */
+
     var editor_config = {
         height : "768",
         path_absolute : "{{ URL::to('/') }}/",
