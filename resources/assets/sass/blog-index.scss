@@ -2,5 +2,21 @@
 
 //section class
 .article {
-    margin-top: 35px;
+    margin-top: 65px;
+}
+.panel {
+    border-radius: 2px;
+    border: 0;
+    -webkit-box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+}
+.tags-container{
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom:1px  rgba(80%,80%,90%,0.4);
+    border-style:solid;
 }

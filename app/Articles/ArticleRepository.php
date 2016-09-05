@@ -77,7 +77,27 @@ class ArticleRepository extends EloquentRepository
     {
         $standardId = $article->id;
         $articles = $this->model->where('id', '<', $standardId)->orderBy('id', 'DESC')->take($count)->get()->reverse();
-        
+
         return $articles;
+    }
+
+    /**
+     *  回傳單數的數筆Articles.
+     *
+     *  @return array|Builder
+     */
+    public function getOddArticles()
+    {
+        return $this->model->whereRaw('id%2=1');
+    }
+
+    /**
+     *  回傳偶數的數筆Articles.
+     *
+     *  @return array|Builder
+     */
+    public function getEvenArticles()
+    {
+        return $this->model->whereRaw('id%2=0');
     }
 }

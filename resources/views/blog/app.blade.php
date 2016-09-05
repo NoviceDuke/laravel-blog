@@ -58,11 +58,11 @@
         </div>
     	<!--  Floating Button -->
 
-	    <div class="container">
+
 
          	@yield('content')
 
- 		</div>
+
 
     </body>
     {!! Html::script(url('materialize/js/materialize.js'))!!}

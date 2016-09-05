@@ -1,22 +1,47 @@
 @extends('blog/app')
 @section('content')
 <div class="row">
-    <div class="container" style="margin-top:30px">
+    <div class="container" style="width:60%">
     <div class="col s12 m6">
-        <section class="article" style="background-color:blue; height:400px;">
-            1
-        </section>
-        <section class="article" style="background-color:yellow; height:400px;">
-            3
-        </section>
+        @foreach($oddArticles as  $article)
+            <section class="article">
+                <div class="card" style="margin-right:0px;">
+    			    <div class="card-image waves-effect waves-block waves-light category-img-fix">
+    			      <img class="activator" src="{{$article->pic_url}}">
+    			    </div>
+                    <div class="tags-container">
+                        123456
+                    </div>
+    			    <div class="card-content">
+    			      <span class="card-title grey-text text-darken-4">{{$article->title}}</span>
+    			      <p><a href="{{url($article->path())}}">more</a></p>
+    			    </div>
+    			    <div class="card-reveal">
+    			      <span class="card-title grey-text text-darken-4">{{$article->title}}<i class="material-icons right">close</i></span>
+    			      <p>{{$article->content}}</p>
+    			    </div>
+    			</div>
+            </section>
+        @endforeach
     </div>
     <div class="col s12 m6">
-        <section class="article" style="background-color:pink; height:400px;">
-            2
-        </section>
-        <section class="article" style="background-color:red; height:400px;">
-            4
-        </section>
+        @foreach($evenArticles as  $article)
+            <section class="article">
+                <div class="card" style="margin-right:0px;">
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img class="activator" src="{{$article->pic_url}}">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title grey-text text-darken-4">{{$article->title}}</span>
+                      <p><a href="{{url($article->path())}}">more</a></p>
+                    </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">{{$article->title}}<i class="material-icons right">close</i></span>
+                      <p>{{$article->content}}</p>
+                    </div>
+                </div>
+            </section>
+        @endforeach
     </div>
     </div>
 </div>
