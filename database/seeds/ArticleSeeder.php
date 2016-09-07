@@ -31,7 +31,7 @@ class ArticleSeeder extends Seeder
         ];
 
         DB::table('articles')->delete();
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 15) as $index) {
             Article::create([
             'user_id' => $faker->randomElement($user_ids),
             'title' => $faker->unique()->text(15),

@@ -7,6 +7,18 @@ html {
 a {
     color:color(blue);
 }
+.tag{
+    background-color: #CDEAEA;
+    color : #333333;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-weight: 400;
+}
+.tag:hover{
+    background-color: #2860A0;
+    color : #ffffff;
+}
 .category-container {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
     background: #f9f9f9;
@@ -59,8 +71,14 @@ a {
     margin-top: 1.0px;
 }
 /*blog.article.show.blade.php*/
+.show-container{
+    margin-top: 35px;
+    width: 80%;
+}
 .card-image-fix {
-    height: 500px;
+    overflow: hidden;
+    width: 100%;
+    max-height: 600px !important;
 }
 .card-show-title{
     color:#212121;

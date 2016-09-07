@@ -1,11 +1,11 @@
 @extends('blog/app')
 @section('content')
 @inject('articlePresenter', 'App\Presenters\ArticlePresenter')
+<div class="container show-container">
 <div class="row">
-<div class="col s12">
     <div class="card">
-        <div class="card-image">
-            <img class="card-image-fix" src="{{$article->pic_url}}">
+        <div class="card-image card-image-fix">
+            <img src="{{$article->pic_url}}">
         </div>
         <div class="card-content">
             <div class="row">
@@ -28,7 +28,6 @@
         </div>
     </div>
 </div>
-</div>
 <div class="row">
     <div class="col s6">
         前一個
@@ -36,5 +35,6 @@
     <div class="col s6">
         下一個
     </div>
+</div>
 </div>
 @endsection

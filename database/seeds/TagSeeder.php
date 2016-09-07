@@ -13,7 +13,7 @@ class TagSeeder extends Seeder
     {
         DB::table('tags')->delete();
         $articles = Article::all();
-        foreach (range(1, 20) as $value) {
+        foreach (range(1, 10) as $value) {
             // 產生各Tag
             // firstOrCreate : 搜尋資料庫如，果沒有符合的就建立並存檔，如果有，回傳抓到的第一個結果
             $laravelTag = Tag::firstOrCreate([
