@@ -1,146 +1,73 @@
-<!-- New Articles -->
-<div class="col s12 m12">
-	<div class="category-container">
-		<h3 class="category-container-title border-top-brown">New Article</h3>
-		<div class="row">
-			<div class="col s12 m6">
-				<div class="card category-card-fix" style="margin-right:0px;">
-				    <div class="card-image waves-effect waves-block waves-light category-img-fix">
-				      <img class="activator" src="{{$newArticles[0]->pic_url}}">
-				    </div>
-				    <div class="card-content">
-				      <span class="card-title grey-text text-darken-4">{{$newArticles[0]->title}}</span>
-				      <p><a href="{{url($newArticles[0]->path())}}">more</a></p>
-				    </div>
-				    <div class="card-reveal">
-				      <span class="card-title grey-text text-darken-4">{{$newArticles[0]->title}}<i class="material-icons right">close</i></span>
-				      <p>{{$newArticles[0]->content}}</p>
-				    </div>
-				</div>
-			</div>
-			<div class="col s12 m6">
-				<div class="card category-card-fix" style="margin-left:0px;">
-					<div class="card-image waves-effect waves-block waves-light category-img-fix">
-					  <img class="activator" src="{{$newArticles[1]->pic_url}}">
-					</div>
-					<div class="card-content">
-					  <span class="card-title grey-text text-darken-4">{{$newArticles[1]->title}}</span>
-					  <p><a href="{{url($newArticles[1]->path())}}">more</a></p>
-					</div>
-					<div class="card-reveal">
-					  <span class="card-title grey-text text-darken-4">{{$newArticles[1]->title}}<i class="material-icons right">close</i></span>
-					  <p>{{$newArticles[1]->content}}</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+@inject('articlePresenter', 'App\Presenters\ArticlePresenter')
+<div class="row">
+    <div class="container" style="width:90%">
+    <div class="col s12 m6">
+        @foreach($oddArticles as  $article)
+            <section class="article">
+                <div class="card  hoverable">
+                    @if(!empty($article->pic_url))
+        			    <div class="card-image waves-effect waves-block waves-light category-img-fix">
+        			      <img class="activator" src="{{$article->pic_url}}">
+        			    </div>
+                    @endif
+                    <div class="tags-container">
+                        @foreach($article->tags()->get() as $tag)
+                            <a href="#"><span class="tag tag-element">{{$tag->name}}</span></a>
+                        @endforeach
+                        @if($article->category)
+                            <a href="#"><span class="category new badge bcolor-{{$article->category->css_class}}" data-badge-caption="">{{$article->category->name}}</span></a>
+                        @endif
+                    </div>
+    			    <div class="article-content-container">
+                        <span class="article-title grey-text text-darken-3">{{$article->title}}</span>
+                        <section class="article-content grey-text text-darken-2">{{$article->content}}</section>
+                        <div class="article-footer">
+                            <span class="article-more"><a href="{{url($article->path())}}">More</a></span>
+                            <span class="article-date grey-text right">{{$articlePresenter->getCreatedDate($article)}}</span>
+                        </div>
+    			    </div>
+    			    <div class="card-reveal reveal-container">
+    			      <span class="card-title article-title grey-text text-darken-4">{{$article->title}}<i class="material-icons right">close</i></span>
+    			      <p class="reveal-content">{{$article->content}}</p>
+                      <a href="{{url($article->path())}}" class="reveal-btn waves-effect waves-light btn">Read More</a>
+    			    </div>
+    			</div>
+            </section>
+        @endforeach
+    </div>
+    <div class="col s12 m6">
+        @foreach($evenArticles as  $article)
+            <section class="article">
+                <div class="card  hoverable">
+                    @if(!empty($article->pic_url))
+        			    <div class="card-image waves-effect waves-block waves-light category-img-fix">
+        			      <img class="activator" src="{{$article->pic_url}}">
+        			    </div>
+                    @endif
+                    <div class="tags-container">
+                        @foreach($article->tags()->get() as $tag)
+                            <a href="#"><span class="tag tag-element">{{$tag->name}}</span></a>
+                        @endforeach
+                        @if($article->category)
+                            <a href="#"><span class="category new badge bcolor-{{$article->category->css_class}}" data-badge-caption="">{{$article->category->name}}</span></a>
+                        @endif
+                    </div>
+    			    <div class="article-content-container">
+                        <span class="article-title grey-text text-darken-3">{{$article->title}}</span>
+                        <section class="article-content grey-text text-darken-2">{{$article->content}}</section>
+                        <div class="article-footer">
+                            <span class="article-more"><a href="{{url($article->path())}}">More</a></span>
+                            <span class="article-date grey-text right">{{$articlePresenter->getCreatedDate($article)}}</span>
+                        </div>
+    			    </div>
+    			    <div class="card-reveal reveal-container">
+    			      <span class="card-title article-title grey-text text-darken-4">{{$article->title}}<i class="material-icons right">close</i></span>
+    			      <p class="reveal-content">{{$article->content}}</p>
+                      <a href="{{url($article->path())}}" class="reveal-btn waves-effect waves-light btn">Read More</a>
+    			    </div>
+    			</div>
+            </section>
+        @endforeach
+    </div>
+    </div>
 </div>
-<!-- New Articles -->
-<!-- Lyrics -->
-<div class="col s12 m6">
-	<div class="category-container">
-		<h3 class="category-container-title border-top-red">{{$categories[0]->name}}</h3>
-		<div class="row">
-			<div class="card category-card-fix">
-				<div class="card-image waves-effect waves-block waves-light category-img-fix">
-				  <img class="activator" src="{{$lyricArticles[0]->pic_url}}">
-				</div>
-				<div class="card-content">
-				  <span class="card-title grey-text text-darken-4">{{$lyricArticles[0]->title}}</span>
-				  <p><a href="{{url($lyricArticles[0]->path())}}">more</a></p>
-				</div>
-				<div class="card-reveal">
-				  <span class="card-title grey-text text-darken-4">{{$lyricArticles[0]->title}}<i class="material-icons right">close</i></span>
-				  <p>{{$lyricArticles[0]->content}}</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="card horizontal category-card-fix">
-				<div class="card-image">
-					<img src="{{$lyricArticles[1]->pic_url}}">
-				</div>
-				<div class="card-stacked">
-					<div class="card-content">
-						<p>{{$lyricArticles[1]->title}}</p>
-					</div>
-					<div class="card-action">
-						<a href="{{url($lyricArticles[1]->path())}}">This is a link</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="card horizontal category-card-fix">
-				<div class="card-image">
-					<img src="{{$lyricArticles[2]->pic_url}}">
-				</div>
-				<div class="card-stacked">
-					<div class="card-content">
-						<p>{{$lyricArticles[2]->title}}</p>
-					</div>
-					<div class="card-action">
-						<a href="{{url($lyricArticles[2]->path())}}">This is a link</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Lyrics -->
-<!-- PHP -->
-<div class="col s12 m6">
-	<div class="category-container">
-		<h3 class="category-container-title border-top-yellow">{{$categories[2]->name}}</h3>
-		<div class="row">
-			<div class="card category-card-fix">
-				<div class="card-image waves-effect waves-block waves-light category-img-fix">
-				  <img class="activator" src="{{$phpArticles[0]->pic_url}}">
-				</div>
-				<div class="card-content">
-				  <span class="card-title grey-text text-darken-4">{{$phpArticles[0]->title}}</span>
-				  <p><a href="{{url($phpArticles[0]->path())}}">more</a></p>
-				</div>
-				<div class="card-reveal">
-				  <span class="card-title grey-text text-darken-4">{{$phpArticles[0]->title}}<i class="material-icons right">close</i></span>
-				  <p>{{$phpArticles[0]->content}}</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="card horizontal category-card-fix">
-				<div class="card-image">
-					<img src="{{$phpArticles[1]->pic_url}}">
-				</div>
-				<div class="card-stacked">
-					<div class="card-content">
-						<p>{{$phpArticles[1]->title}}</p>
-					</div>
-					<div class="card-action">
-						<a href="{{url($phpArticles[1]->path())}}">This is a link</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-		<div class="card horizontal category-card-fix">
-			<div class="card-image">
-				<img src="{{$phpArticles[2]->pic_url}}">
-			</div>
-			<div class="card-stacked">
-				<div class="card-content">
-					<p>{{$phpArticles[2]->title}}</p>
-				</div>
-				<div class="card-action">
-					<a href="{{url($phpArticles[2]->path())}}">This is a link</a>
-				</div>
-			</div>
-		</div>
-		</div>
-	</div>
-</div>
-
-
-
-<!-- PHP -->

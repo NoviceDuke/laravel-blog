@@ -123,7 +123,8 @@ class Article extends Model
      */
     public function addTag(Tag $tag)
     {
-        return $this->tags()->save($tag);
+        if(!$this->tags()->find($tag->id))
+            return $this->tags()->attach($tag);
     }
 
     /**

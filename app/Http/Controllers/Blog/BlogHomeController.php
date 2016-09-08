@@ -2,26 +2,31 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Articles\Article;
+use App\Articles\ArticleRepository;
 use App\Articles\Tag;
 use App\Articles\Category;
 use App\Http\Controllers\Controller;
 
 class BlogHomeController extends Controller
 {
-    public function __construct()
+    /**
+     * @var ArticleRepository
+     */
+    protected $articles;
+    public function __construct(ArticleRepository $articles)
     {
+        $this->articles = $articles;
         $categories = Category::all();
         view()->share(compact('categories'));
     }
 
     public function index()
     {
-        $newArticles = Article::query()->orderBy('created_at', 'DESC')->take(2)->get();
-        $lyricArticles = Category::where('name', 'Lyrics')->first()->articles()->get();
+        $oddArticles = $this->articles->getOddArticles()->take(5)->get();
+        $evenArticles = $this->articles->getEvenArticles()->take(5)->get();
         $phpArticles = Category::where('name', 'PHP')->first()->articles()->get();
 
-        return view('blog.index', compact('newArticles', 'lyricArticles', 'phpArticles'));
+        return view('blog.index', compact('oddArticles', 'evenArticles', 'phpArticles'));
     }
 
     public function getTrace()

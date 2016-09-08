@@ -61,6 +61,7 @@ class Tag extends Model
      */
     public function addArticle(Article $article)
     {
-        return $this->articles()->save($article);
+        if(!$this->articles()->find($article->id))
+            return $this->articles()->attach($article);
     }
 }
