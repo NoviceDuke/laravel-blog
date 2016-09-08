@@ -3,7 +3,27 @@
 .article {
     margin-top: 65px;
 }
-
+.article-title{
+    font-weight: 400;
+    font-size: 1.4rem;
+    display: block;
+}
+.article-content-container{
+    padding: 30px;
+}
+.article-content{
+    margin-top: 25px;
+    font-size: 1.0rem;
+    max-height: 110px;
+    overflow: hidden;
+}
+.article-footer{
+    margin-top: 25px;
+}
+.article-more{
+    font-size: 1.0rem;
+    font-weight: 500;
+}
 .tags-container {
     padding-left: 20px;
     padding-top: 5px;
@@ -15,7 +35,17 @@
     border-style: solid;
     min-height: 50px;
 }
-
+.reveal-container{
+    position: relative;
+}
+.reveal-btn{
+    position: absolute;
+    bottom:15px;
+}
+.reveal-content{
+    max-height: 375px;
+    overflow: hidden;
+}
 .tag-element {
     position: relative;
     top: 8px;

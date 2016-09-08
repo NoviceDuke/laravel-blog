@@ -15,4 +15,9 @@ class ArticlePresenter
 
         return $article->created_at->format('l jS \\of F Y h:i:s A');
     }
+    public function getCreatedDate(Article $article)
+    {
+
+        return $article->created_at->format('l jS');
+    }
 }

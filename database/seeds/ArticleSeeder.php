@@ -35,7 +35,7 @@ class ArticleSeeder extends Seeder
             Article::create([
             'user_id' => $faker->randomElement($user_ids),
             'title' => $faker->unique()->text(15),
-            'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+            'content' => $faker->realText($maxNbChars = 2000, $indexSize = 2),
             'pic_url' => $faker->randomElement($array_pic_url),
             'slug' => $faker->unique()->slug,
             ]);
