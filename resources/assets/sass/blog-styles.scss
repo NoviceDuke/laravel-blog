@@ -1,12 +1,5 @@
-/*Define All Colors*/
-$colors: (text-grey : #424242,purple : #7e57c2, red : #e54e7e, blue : #5c6bc0, yellow : #f57f17, green : #43a047, brown : #795548,);
-@function color($key) {
-     @if map-has-key($colors, $key){
-        @return map-get($colors, $key);
-    }
-    @warn "Unknown `#{$key}` in $colors.";
-    @return null;
-}
+@import "blog-define";
+@import "blog-index";
 /*All Page Maybe Used*/
 html {
     font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif;
@@ -14,19 +7,17 @@ html {
 a {
     color:color(blue);
 }
-@each $header,$color in $colors {
-    .border-top-#{$header} {
-        border-top: 2px solid $color;
-    }
-    // compile to like this
-    // .border-top-purple { border-top: 2px solid #7e57c2; }
+.tag{
+    background-color: #CDEAEA;
+    color : #333333;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-weight: 400;
 }
-@each $header,$color in $colors {
-    .border-right-#{$header} {
-        border-right: 5px solid $color;
-    }
-    // compile to like this
-    // .border-right-purple { border-right: 5px solid $purple; }
+.tag:hover{
+    background-color: #2860A0;
+    color : #ffffff;
 }
 .category-container {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
@@ -46,7 +37,7 @@ a {
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1);
 }
 .category-img-fix {
-    max-height: 200px !important;
+    max-height: 300px !important;
 }
 .horizontal-img-fix {
     max-width: 180px !important;
@@ -80,8 +71,14 @@ a {
     margin-top: 1.0px;
 }
 /*blog.article.show.blade.php*/
+.show-container{
+    margin-top: 35px;
+    width: 80%;
+}
 .card-image-fix {
-    height: 500px;
+    overflow: hidden;
+    width: 100%;
+    max-height: 600px !important;
 }
 .card-show-title{
     color:#212121;
@@ -121,7 +118,8 @@ a {
     margin-bottom: -5px;
 }
 .search-input {
-    width: calc(80%) !important;
+    display: inline-block;
+    width: calc( 80% - 20px) !important;
 }
 .search-icon-fix {
     top: 12px !important;
@@ -153,12 +151,14 @@ a {
 .module-1 {
     background: transparent;
     font-weight: bold;
-    text-align: center !important;
+    display: inline-block;
+    text-align: center;
     text-shadow: 0 0 12px color(brown);
     color: white;
+    width: 100%;
     height: 150px;
 }
 .module-text {
     position: relative;
-    left: 110px;
+    transform:translateY(170%);
 }

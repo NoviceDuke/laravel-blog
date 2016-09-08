@@ -55,14 +55,15 @@
         @inject('floatingButtonPresenter', 'App\Presenters\FloatingButtonPresenter')
         <div class="fixed-action-btn float-position">
             {!! $floatingButtonPresenter->getFloatinButton() !!}
-       </div>
+        </div>
     	<!--  Floating Button -->
 
-	    <div class="container">
 
-         	@yield('content')
+        <div class="container">
+            @yield('content')
+        </div>
 
- 		</div>
+
 
     </body>
     {!! Html::script(url('materialize/js/materialize.js'))!!}
@@ -70,4 +71,5 @@
     {!! Html::script(url('js/libs.js'))!!}
     <!--  sweet_alert -->
     @include('partials.sweet_alert')
+    <!--  sweet_alert -->
 </html>

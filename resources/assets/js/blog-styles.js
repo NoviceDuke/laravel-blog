@@ -10,7 +10,7 @@ $.fn.extend({
 /* All page used */
 $(document).ready(function() {
     //materail styleselect 標籤初始化
-    $('select').material_select();
+    // $('select').material_select();
 });
 
 /* app.blade.php  Foating至頂按鈕初始化 */

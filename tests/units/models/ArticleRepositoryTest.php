@@ -125,8 +125,7 @@ class ArticleRepositoryTest extends TestCase
     {
         $this->printTestStartMessage(__FUNCTION__);
         // Given
-        // 給予一個user、想創建的article內容
-
+        // 給予創建的article
         $privousArticles = factory(Article::class, 5)->create();
         $articleIndex = factory(Article::class)->create();
 
@@ -139,5 +138,45 @@ class ArticleRepositoryTest extends TestCase
         // 斷言 透過getNextArticles取得的$articles內的第一筆資烙 等同於 $NextArticles的第一筆資料
         $this->assertEquals($articles->first()->title, $privousArticles->first()->title);
         $this->assertEquals($articles->first()->title, $prevousOneArticle->first()->title);
+    }
+
+    /**
+     * 測試 可以透過某個article取得奇數的數筆article.
+     */
+    public function testRepositoryCanGetOddArticles()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 創建article內容，10筆
+        $articles = factory(Article::class, 10)->create();
+
+        // When
+        // 執行getNextArticles()
+        $articles = $this->repository->getOddArticles()->take(3)->get();
+
+        // Then
+        // 斷言 第一個取得的文章ID = 1  第二筆 = 3
+        $this->assertEquals($articles->first()->id, 1);
+        $this->assertEquals($articles[1]->id, 3);
+    }
+
+    /**
+     * 測試 可以透過某個article取得偶數的數筆article.
+     */
+    public function testRepositoryCanGetEvenArticles()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 創建article內容，10筆
+        $articles = factory(Article::class, 10)->create();
+
+        // When
+        // 執行getNextArticles()
+        $articles = $this->repository->getEvenArticles()->take(5)->get();
+
+        // Then
+        // 斷言 第一個取得的文章ID = 1  第二筆 = 3
+        $this->assertEquals($articles->first()->id, 2);
+        $this->assertEquals($articles[1]->id, 4);
     }
 }
