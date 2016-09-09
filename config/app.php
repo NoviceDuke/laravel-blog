@@ -170,6 +170,11 @@ return [
         */
         Laravel\Socialite\SocialiteServiceProvider::class,
 
+        /*
+        ** Log Viewer
+        */
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+
     ],
 
     /*
