@@ -24,9 +24,8 @@ class BlogHomeController extends Controller
     {
         $oddArticles = $this->articles->getOddArticles()->take(5)->get();
         $evenArticles = $this->articles->getEvenArticles()->take(5)->get();
-        $phpArticles = Category::where('name', 'PHP')->first()->articles()->get();
 
-        return view('blog.index', compact('oddArticles', 'evenArticles', 'phpArticles'));
+        return view('blog.index', compact('oddArticles', 'evenArticles'));
     }
 
     public function getTrace()

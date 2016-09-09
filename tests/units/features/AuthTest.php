@@ -15,7 +15,7 @@ class AuthTest extends TestCase
     public function testRedirectToLogin()
     {
         $this->printTestStartMessage(__FUNCTION__);
-        $this->visit('/')
+        $this->visit('/login')
              ->see('Login');
     }
 }
