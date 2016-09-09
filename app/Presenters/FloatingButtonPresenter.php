@@ -4,7 +4,7 @@ namespace App\Presenters;
 
 use Request;
 use URL;
-
+use Auth;
 class FloatingButtonPresenter
 {
     /**
@@ -45,10 +45,13 @@ class FloatingButtonPresenter
         switch (Request::path()) {
 
             case 'blog': // 這裡沒有brak是因為在首頁的時候兩個按鈕都要
-                $htmlString .= '
-                <li><a class="btn-floating blue" href="article/create">
-                    <i class="material-icons floating-fix">create</i></a>
-                </li>';
+                if(Auth::user())  //創造按鈕要有登入才會顯示
+                {
+                    $htmlString .= '
+                    <li><a class="btn-floating blue" href="article/create">
+                        <i class="material-icons floating-fix">create</i></a>
+                    </li>';
+                }
             default:
                 $htmlString .= '
                 <li><a class="btn-floating green" id="btn-floating-green">

@@ -50,3 +50,13 @@ $factory->define(App\Articles\Tag::class, function (Faker\Generator $faker) {
         'frequency' => 0,
     ];
 });
+$factory->define(App\Accounts\Permission\Role::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});
+$factory->define(App\Accounts\Permission\Permission::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+    ];
+});

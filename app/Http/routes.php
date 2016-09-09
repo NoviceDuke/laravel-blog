@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
-Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {
+Route::group(['namespace' => 'Blog'], function () {
     Route::resource('blog', 'BlogHomeController');
     Route::resource('article', 'ArticleController');
     Route::resource('categories', 'CategoryController', ['except' => ['create']]);
@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {
 
 //backend Management
 Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function () {
+    Route::get('backend/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::resource('backend/article', 'ArticleController');
 });
 

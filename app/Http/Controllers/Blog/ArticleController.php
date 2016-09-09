@@ -26,10 +26,14 @@ class ArticleController extends Controller
      */
     public function __construct(ArticleRepository $articles)
     {
+        // 設定中介層，必須登入，除了Show()不必登入
+        $this->middleware('auth', ['except' => 'show']);
+
         $this->articles = $articles;
         $categories = Category::all();
         view()->share(compact('categories'));
     }
+
     /**
      *   Article index view
      *   not any route to here now.
@@ -65,7 +69,7 @@ class ArticleController extends Controller
         $categories = Category::lists('name', 'id');
 
         //return view('blog.article.create')->withCategories($categories);
-        return view('blog.article.create', compact('articles','categories'));
+        return view('blog.article.create', compact('articles', 'categories'));
     }
 
     /**
@@ -85,7 +89,7 @@ class ArticleController extends Controller
 
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleEvents($article, 'posted'));
-        $this->alert('Success','Your article is created successful')->success()->flashIt();
+        $this->alert('Success', 'Your article is created successful')->success()->flashIt();
 
         return redirect('/article/'.$article->slug);
     }
