@@ -12,10 +12,10 @@
                     @endif
                     <div class="tags-container">
                         @foreach($article->tags()->get() as $tag)
-                            <a href="#"><span class="tag tag-element">{{$tag->name}}</span></a>
+                            <a href="{{url($tag->path())}}"><span class="tag tag-element">{{$tag->name}}</span></a>
                         @endforeach
                         @if($article->category)
-                            <a href="#"><span class="category new badge bcolor-{{$article->category->css_class}}" data-badge-caption="">{{$article->category->name}}</span></a>
+                            <a href="{{url($article->category->path())}}"><span class="category new badge bcolor-{{$article->category->css_class}}" data-badge-caption="">{{$article->category->name}}</span></a>
                         @endif
                     </div>
     			    <div class="article-content-container">
@@ -46,10 +46,10 @@
                     @endif
                     <div class="tags-container">
                         @foreach($article->tags()->get() as $tag)
-                            <a href="#"><span class="tag tag-element">{{$tag->name}}</span></a>
+                            <a href="{{url($tag->path())}}"><span class="tag tag-element">{{$tag->name}}</span></a>
                         @endforeach
                         @if($article->category)
-                            <a href="#"><span class="category new badge bcolor-{{$article->category->css_class}}" data-badge-caption="">{{$article->category->name}}</span></a>
+                            <a href="{{url($article->category->path())}}"><span class="category new badge bcolor-{{$article->category->css_class}}" data-badge-caption="">{{$article->category->name}}</span></a>
                         @endif
                     </div>
     			    <div class="article-content-container">

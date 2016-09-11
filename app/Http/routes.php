@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Blog'], function () {
     Route::resource('blog', 'BlogHomeController');
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController');
+    Route::resource('tag', 'TagController');
 });
 
 //backend Management
