@@ -71,4 +71,13 @@ trait RolePermissionTrait
             return false;
         }
     }
+
+    public function isSuperRoot()
+    {
+        if ($this->roles()->where('name', 'SuperRoot')->first()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

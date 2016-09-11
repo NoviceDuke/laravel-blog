@@ -2,10 +2,9 @@
 
 namespace App\Articles;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Articles\Article;
+use App\Core\Eloquent;
 
-class Category extends Model
+class Category extends Eloquent
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **

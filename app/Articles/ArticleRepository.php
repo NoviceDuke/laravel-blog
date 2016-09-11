@@ -43,6 +43,7 @@ class ArticleRepository extends EloquentRepository
      *
      *  建立的Article內容值以傳入的data為基準.
      *  $data = ['title'=>'hello', ... ];
+     *
      *  @return Article
      */
     public function createFromUser($data, User $user)
@@ -62,7 +63,7 @@ class ArticleRepository extends EloquentRepository
     {
         $standardId = $article->id;
 
-        $count = ($count) ? $count:1;
+        $count = ($count) ? $count : 1;
         $articles = $this->model->where('id', '>', $standardId)->orderBy('id', 'ASC')->take($count)->get();
 
         return $articles;

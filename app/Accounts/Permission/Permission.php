@@ -48,13 +48,4 @@ class Permission extends Eloquent
     {
         return $this->roles()->detach($role);
     }
-
-    /**
-     * 透過名稱直接搜尋一個權限
-     */
-    public static function findName($name)
-    {
-        $instance = new static;
-        return $instance->where('name', $name)->first();
-    }
 }

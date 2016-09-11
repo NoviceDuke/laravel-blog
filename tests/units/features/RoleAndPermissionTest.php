@@ -112,4 +112,21 @@ class RoleAndPermissionTest extends TestCase
         $this->assertEquals($p->name, $target_p->name);
 
     }
+
+    /**
+     * 測試 尋找Nmae.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testCanFindRoleByName()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        $role = factory(Role::class)->create(['name' => 'testRole']);
+
+        $target_role = Role::findName('testRole');
+
+        $this->assertEquals($role->name, $target_role->name);
+
+    }
 }

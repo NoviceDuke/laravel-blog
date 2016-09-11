@@ -2,9 +2,9 @@
 
 namespace App\Articles;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Core\Eloquent;
 
-class Comment extends Model
+class Comment extends Eloquent
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
