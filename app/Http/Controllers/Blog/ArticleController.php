@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Blog;
 
 use Event;
+use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
 use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Alertable;
 
@@ -65,6 +65,13 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        // 權限檢查
+        if (!Auth::user()->isSuperRoot()) {
+            $this->alert('Warning', '你沒有建立文章的權限')->warning()->flashIt();
+
+            return redirect()->route('blog.index');
+        }
+
         //grab all of our categories in database;
         $categories = Category::lists('name', 'id');
 
