@@ -98,6 +98,6 @@ class ArticleController extends Controller
         Event::fire(new ArticleEvents($article, 'posted'));
         $this->alert('Success', 'Your article is created successful')->success()->flashIt();
 
-        return redirect('/article/'.$article->slug);
+        return redirect()->route('article.show', $article->slug);
     }
 }
