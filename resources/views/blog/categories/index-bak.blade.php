@@ -1,4 +1,4 @@
-@extends('blog/app')
+@extends('blog.layouts.app')
 
 @section('title','| All Categories')
 
@@ -26,13 +26,12 @@
 		</div>
 		<div class = "col-md-3">
 			<div class = "well">
-				{!! Form::open(['route'=>'categories.store','method'=>'POST'])!!}
+				{!! Form::open(['route'=>'category.store','method'=>'POST'])!!}
 				<h2>Add New Category</h2>
 				{{Form::label('name','Name:')}}
 				{{Form::text('name',null,['class'=>'form-control'])}}
 				{{Form::submit('Create New Category',['class'=>'btn btn-primary btn block btn-h1-spacing'])}}
 				{!!Form::close()!!}
-
 			</div>
 
 		</div>

@@ -21,24 +21,24 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
-Route::group(['middleware' => 'auth', 'namespace' => 'Blog'], function () {
+Route::group(['namespace' => 'Blog'], function () {
     Route::resource('blog', 'BlogHomeController');
     Route::resource('article', 'ArticleController');
-
+    Route::resource('category', 'CategoryController');
+    Route::resource('tag', 'TagController');
 });
-// Controllers Within The "App\Http\Controllers\Backend" Namespace
 
 //backend Management
-Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function () {
-    //home
-    Route::get('backend','BackendController@index');
-    //
-    Route::resource('backend/article', 'ArticleController');
-    Route::resource('backend/category', 'CategoryController', ['except' => ['create']]);
-    Route::resource('backend/tag', 'TagController');
+Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'namespace' => 'Backend'], function () {
 
+    // logs Viewer
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    // home
+    Route::get('/', 'BackendController@index');
+    Route::resource('article', 'ArticleController');
+    Route::resource('category', 'CategoryController', ['except' => ['create']]);
+    Route::resource('tag', 'TagController');
 });
-
 
 // duke's route
 Route::get('about', 'PagesController@getAbout');

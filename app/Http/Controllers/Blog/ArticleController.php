@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Blog;
 
 use Event;
+use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
 use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Alertable;
 
@@ -26,10 +26,14 @@ class ArticleController extends Controller
      */
     public function __construct(ArticleRepository $articles)
     {
+        // 設定中介層，必須登入，除了Show()不必登入
+        $this->middleware('auth', ['except' => 'show']);
+
         $this->articles = $articles;
         $categories = Category::all();
         view()->share(compact('categories'));
     }
+
     /**
      *   Article index view
      *   not any route to here now.
@@ -61,11 +65,18 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        // 權限檢查
+        if (!(Auth::user()->isSuperRoot() || Auth::user()->hasPermission('CreateArticle'))) {
+            $this->alert('Warning', '你沒有建立文章的權限')->warning()->flashIt();
+
+            return redirect()->route('blog.index');
+        }
+
         //grab all of our categories in database;
         $categories = Category::lists('name', 'id');
 
         //return view('blog.article.create')->withCategories($categories);
-        return view('blog.article.create', compact('articles','categories'));
+        return view('blog.article.create', compact('articles', 'categories'));
     }
 
     /**
@@ -85,7 +96,7 @@ class ArticleController extends Controller
 
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleEvents($article, 'posted'));
-        $this->alert('Success','Your article is created successful')->success()->flashIt();
+        $this->alert('Success', 'Your article is created successful')->success()->flashIt();
 
         return redirect('/article/'.$article->slug);
     }

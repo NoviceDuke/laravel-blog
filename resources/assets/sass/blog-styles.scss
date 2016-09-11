@@ -1,5 +1,6 @@
 @import "blog-define";
 @import "blog-index";
+@import "blog-category";
 /*All Page Maybe Used*/
 html {
     font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif;
@@ -36,7 +37,7 @@ a {
     margin: 20px 35px;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1);
 }
-.category-img-fix {
+.card-img-fix {
     max-height: 300px !important;
 }
 .horizontal-img-fix {

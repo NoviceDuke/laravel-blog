@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 abstract class EloquentRepository
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Model
+     * @var Illuminate\Database\Eloquent\Model
      */
     protected $model;
     protected $lastInstance;
     /**
      *  建構子依賴注入.
      *
-     *  @param ArticleRepository:class
+     *  @param EloquentRepository:class
      */
     public function __construct(Model $model)
     {

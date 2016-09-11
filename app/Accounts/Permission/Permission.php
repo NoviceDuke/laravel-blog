@@ -1,29 +1,31 @@
 <?php
 
-namespace App\Articles;
+namespace App\Accounts\Permission;
 
 use App\Core\Eloquent;
+use App\Accounts\Permission\Role;
 
-class Category extends Eloquent
+class Permission extends Eloquent
 {
+
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
     **------------------------------------------------------------------------*/
-    protected $table = 'categories';
+
+    protected $table = 'permissions';
     protected $fillable = [
-            'name',         //種類名稱
+        'name',                   // 權限名稱
+        'display_name',            // 顯示的名稱
+        'description',            // 權限敘述
     ];
 
     /*------------------------------------------------------------------------**
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
 
-    /**
-     * 一個種類擁有多個文章.
-     */
-    public function articles()
+    public function roles()
     {
-        return $this->hasMany(Article::class);
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
     /*------------------------------------------------------------------------**
@@ -31,15 +33,19 @@ class Category extends Eloquent
     **------------------------------------------------------------------------*/
 
     /**
-     * 在此類別下新增一筆文章.
+     * 關聯特定的Role
      */
-    public function addArticle(Article $article)
+    public function attachRole($role)
     {
-        return $this->articles()->save($article);
+        if(!$this->roles()->find($role->id))
+            return $this->roles()->attach($role);
     }
 
-    public function path()
+    /**
+     * 移除關聯特定的Role
+     */
+    public function detachRole($role)
     {
-        return '/category/'.$this->slug;
+        return $this->roles()->detach($role);
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Articles;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Core\Eloquent;
 use App\Articles\Article;
 
-class Tag extends Model
+class Tag extends Eloquent
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
@@ -63,5 +63,10 @@ class Tag extends Model
     {
         if(!$this->articles()->find($article->id))
             return $this->articles()->attach($article);
+    }
+
+    public function path()
+    {
+        return '/tag/'.$this->slug;
     }
 }

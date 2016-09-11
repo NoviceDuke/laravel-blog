@@ -48,16 +48,39 @@ class TagTest extends TestCase
     {
         $this->printTestStartMessage(__FUNCTION__);
         // Given
-        // 新增文章種類、文章各一筆
+        // 新增tag、文章各一筆
         $tag = factory(Tag::class)->create(['name' => 'newTag']);
         $article = factory(Article::class)->create(['title' => 'hello Article']);
 
         // When
-        // 當文章文章種類新增(關聯)一個文章時
+        // 當文章tag新增(關聯)一個文章時
         $tag->addArticle($article);
 
         // Then
         // 斷言 : 經由關聯的方式取出的文章同等於加入的那筆文章
         $this->assertEquals($tag->articles()->first()->title, $article->title);
+    }
+
+    /**
+     * 測試一個tag能夠取得自己的slug路徑.
+     *
+     * 斷言取出的路徑同等於預設的路徑
+     * @group unit
+     * @group eloquent
+     */
+    public function testTagCanGetAPath()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增tag
+        $tag = factory(Tag::class)->create();
+
+        // When
+        // 當tag被賦予name時
+        $tag->slug = 'helloman';
+
+        // Then
+        // 斷言 : 取出的路徑同等於預設的路徑
+        $this->assertEquals($tag->path(), '/tag/helloman');
     }
 }

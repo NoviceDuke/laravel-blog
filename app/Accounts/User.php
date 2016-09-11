@@ -2,10 +2,10 @@
 
 namespace App\Accounts;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Core\AuthEloquent;
 use App\Articles\Article;
 
-class User extends Authenticatable
+class User extends AuthEloquent
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **

@@ -2,12 +2,9 @@
 
 namespace App\Articles;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Articles\ArticleRepository;
-use App\Articles\Category;
-use App\Articles\Comment;
+use App\Core\Eloquent;
 
-class Article extends Model
+class Article extends Eloquent
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
@@ -69,7 +66,8 @@ class Article extends Model
     /**
      *  靜態function
      *  使用 Article::repository()
-     *  細部功能定義於 ArticleRepository
+     *  細部功能定義於 ArticleRepository.
+     *
      *  @return string
      */
     // public static function repository()
@@ -97,7 +95,7 @@ class Article extends Model
         return $this->comments()->save($comment);
     }
     /**
-     *  在當下的Post移除一筆回覆留言的關聯
+     *  在當下的Post移除一筆回覆留言的關聯.
      *
      *  @param Comment::Class
      */
@@ -123,8 +121,9 @@ class Article extends Model
      */
     public function addTag(Tag $tag)
     {
-        if(!$this->tags()->find($tag->id))
+        if (!$this->tags()->find($tag->id)) {
             return $this->tags()->attach($tag);
+        }
     }
 
     /**

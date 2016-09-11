@@ -175,6 +175,16 @@
   font-weight: 400 !important;
   font-size: 0.85rem !important; }
 
+.category-img-fix {
+  max-height: 400px !important;
+  cursor: default; }
+
+.category-content {
+  margin-top: 25px;
+  font-size: 1.0rem;
+  max-height: 220px;
+  overflow: hidden; }
+
 /*All Page Maybe Used*/
 html {
   font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif; }
@@ -211,7 +221,7 @@ a {
   margin: 20px 35px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1); }
 
-.category-img-fix {
+.card-img-fix {
   max-height: 300px !important; }
 
 .horizontal-img-fix {

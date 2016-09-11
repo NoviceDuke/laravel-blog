@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col s12 m6">
 				<div class="card category-card-fix" style="margin-right:0px;">
-				    <div class="card-image waves-effect waves-block waves-light category-img-fix">
+				    <div class="card-image waves-effect waves-block waves-light card-img-fix">
 				      <img class="activator" src="{{$newArticles[0]->pic_url}}">
 				    </div>
 				    <div class="card-content">
@@ -20,7 +20,7 @@
 			</div>
 			<div class="col s12 m6">
 				<div class="card category-card-fix" style="margin-left:0px;">
-					<div class="card-image waves-effect waves-block waves-light category-img-fix">
+					<div class="card-image waves-effect waves-block waves-light card-img-fix">
 					  <img class="activator" src="{{$newArticles[1]->pic_url}}">
 					</div>
 					<div class="card-content">
@@ -43,7 +43,7 @@
 		<h3 class="category-container-title border-top-red">{{$categories[0]->name}}</h3>
 		<div class="row">
 			<div class="card category-card-fix">
-				<div class="card-image waves-effect waves-block waves-light category-img-fix">
+				<div class="card-image waves-effect waves-block waves-light card-img-fix">
 				  <img class="activator" src="{{$lyricArticles[0]->pic_url}}">
 				</div>
 				<div class="card-content">
@@ -95,7 +95,7 @@
 		<h3 class="category-container-title border-top-yellow">{{$categories[2]->name}}</h3>
 		<div class="row">
 			<div class="card category-card-fix">
-				<div class="card-image waves-effect waves-block waves-light category-img-fix">
+				<div class="card-image waves-effect waves-block waves-light card-img-fix">
 				  <img class="activator" src="{{$phpArticles[0]->pic_url}}">
 				</div>
 				<div class="card-content">

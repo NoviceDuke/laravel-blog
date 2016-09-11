@@ -25,12 +25,12 @@
               <a href="{{url('/')}}" class="brand-logo logo-fix">HCHS's Blog</a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{url('/')}}"><i class="material-icons nav-icon-fix">home</i></a></li>
-                <!--  Backend dorpdown trigger  -->
-
-                <li><a href="{{url('/logout')}}">Log out</a></li>
+                @if(Auth::user())
+                    <li><a href="{{url('logout')}}">登出</a></li>
+                @else
+                    <li><a href="{{url('login')}}">登入</a></li>
+                @endif
               </ul>
-               <!--  Backend dorpdown menu  -->
-               
 
             <!--Mobile DropDown Button-->
             <a class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">
@@ -38,8 +38,12 @@
             <i class="mdi-navigation-arrow-drop-down right"></i>
             </a>
             <ul id='dropdown1' class='dropdown-content'>
-                 <li><a href="{{url('/')}}">Home</a></li>
-                 <li><a href="{{url('logout')}}">Log out</a></li>
+                <li><a href="{{url('/')}}">Home</a></li>
+                @if(Auth::user())
+                    <li><a href="{{url('logout')}}">登出</a></li>
+                @else
+                    <li><a href="{{url('login')}}">登入</a></li>
+                @endif
             </ul>
             <!--Mobile DropDown Button-->
             </div>
