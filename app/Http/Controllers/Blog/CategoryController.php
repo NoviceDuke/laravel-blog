@@ -11,6 +11,8 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
+        $categories = Category::all();
+        view()->share(compact('categories'));
     }
     /**
      * Display a listing of the resource.
@@ -61,9 +63,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $articles = Category::findSlug($slug)->articles()->take(8)->get();
+
+        return view('blog.categories.show', compact('articles'));
     }
 
     /**

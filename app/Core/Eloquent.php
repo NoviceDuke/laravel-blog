@@ -9,11 +9,20 @@ use App;
 abstract class Eloquent extends Model
 {
     /**
-     * 透過名稱直接搜尋一個權限
+     * 透過名稱直接搜尋
      */
     public static function findName($name)
     {
         $instance = new static;
         return $instance->where('name', $name)->first();
+    }
+
+    /**
+     * 透過Slug直接搜尋
+     */
+    public static function findSlug($slug)
+    {
+        $instance = new static;
+        return $instance->where('slug', $slug)->first();
     }
 }

@@ -6,7 +6,7 @@
             <section class="article">
                 <div class="card  hoverable">
                     @if(!empty($article->pic_url))
-        			    <div class="card-image waves-effect waves-block waves-light category-img-fix">
+        			    <div class="card-image waves-effect waves-block waves-light card-img-fix">
         			      <img class="activator" src="{{$article->pic_url}}">
         			    </div>
                     @endif
@@ -40,7 +40,7 @@
             <section class="article">
                 <div class="card  hoverable">
                     @if(!empty($article->pic_url))
-        			    <div class="card-image waves-effect waves-block waves-light category-img-fix">
+        			    <div class="card-image waves-effect waves-block waves-light card-img-fix">
         			      <img class="activator" src="{{$article->pic_url}}">
         			    </div>
                     @endif

@@ -42,8 +42,10 @@ class CategoryTest extends TestCase
      * 測試一個文章種類能夠取得自己的slug路徑.
      *
      * 斷言取出的路徑同等於預設的路徑
+     * @group unit
+     * @group eloquent
      */
-    public function testArticleCanGetAPath()
+    public function testCategoryCanGetAPath()
     {
         $this->printTestStartMessage(__FUNCTION__);
         // Given
@@ -52,7 +54,7 @@ class CategoryTest extends TestCase
 
         // When
         // 當文章種類被賦予name時
-        $category->name = 'helloman';
+        $category->slug = 'helloman';
 
         // Then
         // 斷言 : 取出的路徑同等於預設的路徑
@@ -80,4 +82,5 @@ class CategoryTest extends TestCase
         // 斷言 : 經由關聯的方式取出的文章同等於加入的那筆文章
         $this->assertEquals($category->articles()->first()->title, $article->title);
     }
+
 }

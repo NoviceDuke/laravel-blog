@@ -64,4 +64,9 @@ class Tag extends Eloquent
         if(!$this->articles()->find($article->id))
             return $this->articles()->attach($article);
     }
+
+    public function path()
+    {
+        return '/tag/'.$this->slug;
+    }
 }
