@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Articles\Category;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Session;
+use App\Http\Controllers\Controller;
+use App\Articles\Category;
+use App\Articles\Tag;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     public function __construct()
     {
@@ -21,10 +21,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //dispaly a view of all of our categories
-        $categories = Category::all();
-
-        return view('blog.categories.index')->withCategories($categories);
+        //
     }
 
     /**
@@ -32,6 +29,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,18 +43,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //save a new category and redirect to index
-        $this->validate($request, array(
-            'name' => 'required|max:255', ));
-
-        $category = new Category();
-
-        $category->name = $request->name;
-        $category->save();
-
-        Session::flash('success', 'New Category has been created');
-
-        return redirect()->route('categories.index');
+        //
     }
 
     /**
@@ -65,9 +55,9 @@ class CategoryController extends Controller
      */
     public function show($slug)
     {
-        $articles = Category::findSlug($slug)->articles()->take(8)->get();
+        $articles = Tag::findSlug($slug)->articles()->take(8)->get();
 
-        return view('blog.categories.show', compact('articles'));
+        return view('blog.tags.show', compact('articles'));
     }
 
     /**

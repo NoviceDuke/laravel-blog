@@ -40,6 +40,6 @@ class Category extends Eloquent
 
     public function path()
     {
-        return '/category/'.$this->name;
+        return '/category/'.$this->slug;
     }
 }

@@ -36,7 +36,7 @@
 			<h3 class="category-container-title title-fix">Categories</h3>
 			<div class="collection collection-fix">
                 @foreach($categories as $category)
-                <a href="#!" class="collection-item border-right-{{$category->css_class}} grey-text">{{$category->name}}</a>
+                <a href="{{url($category->path())}}" class="collection-item border-right-{{$category->css_class}} grey-text">{{$category->name}}</a>
                 @endforeach
 			</div>
 		</div>
