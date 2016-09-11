@@ -1,4 +1,4 @@
-@extends('blog/app')
+@extends('blog.layouts.app')
 @section('content')
 @inject('articlePresenter', 'App\Presenters\ArticlePresenter')
 <div class="container show-container">

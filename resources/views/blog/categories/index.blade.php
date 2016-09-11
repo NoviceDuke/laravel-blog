@@ -1,4 +1,4 @@
-@extends('blog/app')
+@extends('blog.layouts.app')
 
 @section('title','| All Categories')
 
