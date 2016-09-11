@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function () {
     //
     Route::resource('backend/article', 'ArticleController');
     Route::resource('backend/category', 'CategoryController', ['except' => ['create']]);
+    Route::resource('backend/tag', 'TagController');
 
 });
 
