@@ -24,14 +24,19 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['namespace' => 'Blog'], function () {
     Route::resource('blog', 'BlogHomeController');
     Route::resource('article', 'ArticleController');
-    Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+
 });
-// Controllers Within The "App\Http\Controllers\Backend" Namespace
 
 //backend Management
-Route::group(['middleware' => 'auth', 'namespace' => 'Backend'], function () {
-    Route::get('backend/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-    Route::resource('backend/article', 'ArticleController');
+Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'namespace' => 'Backend'], function () {
+
+    // logs Viewer
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    // home
+    Route::get('/', 'BackendController@index');
+    Route::resource('article', 'ArticleController');
+    Route::resource('category', 'CategoryController', ['except' => ['create']]);
+    Route::resource('tag', 'TagController');
 });
 
 // duke's route

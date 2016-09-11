@@ -1,4 +1,4 @@
-@extends('blog/app')
+@extends('backend/app')
 
 @section('title','| Edit Blog Article')
 @section('content')
@@ -42,7 +42,7 @@
             </div>
             <div class="col s4">
               {{Form::submit('Save',['class'=>'btn btn-success btn-block'])}}
-            
+
             </div>
           </div>
         </div>

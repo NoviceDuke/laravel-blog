@@ -3,32 +3,24 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use Event;
-use App\Articles\ArticleRepository;
 use App\Articles\Category;
 use App\Articles\Article;
-use App\Events\ArticleEvents;
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
-class ArticleController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(ArticleRepository $articles)
-    {
-        $this->articles = $articles;
-        $categories = Category::all();
-        view()->share(compact('categories'));
-    }
     public function index()
     {
-        $articles = Article::orderBy('id','desc')->paginate(10);
-        return view('backend.article.index',compact('articles'));
+        //
+        $categories = Category::all();
+
+        return view('backend.category.index',compact('categories'));
     }
 
     /**
@@ -50,6 +42,17 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, array(
+            'name' => 'required|max:255', ));
+
+        $category = new Category();
+
+        $category->name = $request->name;
+        $category->save();
+
+        Session::flash('success', 'New Category has been created');
+
+        return redirect()->route('backend.categories.index');
     }
 
     /**
@@ -60,9 +63,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //find the article in the database
-        $articles = Article::find($id);
-        return view('backend.article.show',compact('articles'));
+        //
     }
 
     /**
@@ -73,10 +74,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //find the article in the database and save
-        $articles = Article::find($id);
-        //return the view and pass in we previously created
-        return view('backend.article.edit',compact('articles'));
+        //
     }
 
     /**
@@ -88,19 +86,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //validate the data
-        $this->validate($request,array('title'=>'required','content'=>'required'));
-        //find the article id
-        $articles = Article::find($id);
-        //match input
-        $articles->title = $request->input('title');
-        $articles->content = $request->input('content');
-        //save it
-        $articles->save();
-        //flash message
-        //Session:flash('flash_message','Article is saved');
-        //back to showpage
-        return redirect()->route('backend.article.show',$articles->id);
+        //
     }
 
     /**
@@ -112,8 +98,5 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
-        $articles = Article::find($id);
-        $articles->delete();
-        return redirect()->route('backend.article.index');
     }
 }
