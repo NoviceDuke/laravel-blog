@@ -1,4 +1,4 @@
-@extends('blog/app')
+@extends('backend/app')
 
 @section('title','| Article')
 @section('content')
