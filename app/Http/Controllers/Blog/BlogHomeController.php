@@ -25,7 +25,7 @@ class BlogHomeController extends Controller
         $oddArticles = $this->articles->getOddArticles()->take(5)->get();
         $evenArticles = $this->articles->getEvenArticles()->take(5)->get();
 
-        return view('blog.index', compact('oddArticles', 'evenArticles'));
+        return view('blog.home.index', compact('oddArticles', 'evenArticles'));
     }
 
     public function getTrace()
@@ -33,6 +33,6 @@ class BlogHomeController extends Controller
         $tag = Tag::find(1);
         dd($tag->frequency);
 
-        return view('blog.trace', compact('articles'));
+        return 'trace';
     }
 }

@@ -1,4 +1,4 @@
-@extends('blog/app')
+@extends('blog.layouts.app')
 @section('content')
     <div class="card-panel white">
         <div class="card-panel-container">

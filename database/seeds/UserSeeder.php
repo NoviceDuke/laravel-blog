@@ -21,6 +21,11 @@ class UserSeeder extends Seeder
                 'name' => 'duke',
                 'password' => bcrypt('123456'),
             ]);
+        $author = User::create([
+                    'email' => 'author@gmail.com',
+                    'name' => 'author',
+                    'password' => bcrypt('123456'),
+                ]);
         $user = User::create([
                 'email' => 'user@gmail.com',
                 'name' => 'user',
@@ -29,6 +34,6 @@ class UserSeeder extends Seeder
 
         $hchs->attachRole(Role::findName('SuperRoot'));
         $duke->attachRole(Role::findName('SuperRoot'));
-        $user->attachRole(Role::findName('Author'));
+        $author->attachRole(Role::findName('Author'));
     }
 }

@@ -66,7 +66,7 @@ class ArticleController extends Controller
     public function create()
     {
         // 權限檢查
-        if (!Auth::user()->isSuperRoot()) {
+        if (!(Auth::user()->isSuperRoot() || Auth::user()->hasPermission('CreateArticle'))) {
             $this->alert('Warning', '你沒有建立文章的權限')->warning()->flashIt();
 
             return redirect()->route('blog.index');
