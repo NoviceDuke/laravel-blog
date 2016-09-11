@@ -2,9 +2,9 @@
 
 namespace App\Accounts;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Core\Eloquent;
 
-class SocialAccount extends Model
+class SocialAccount extends Eloquent
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
