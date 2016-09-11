@@ -54,4 +54,6 @@ class Role extends Eloquent
     {
         return $this->permissions()->detach($permission);
     }
+
+    
 }

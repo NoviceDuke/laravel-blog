@@ -70,6 +70,20 @@ class AuthEloquentAndRoleTest extends TestCase
     }
 
     /**
+     * 測試 關聯User是否為超級使用者.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testUserIsSuperRoot()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        $this->role = factory(Role::class)->create(['name' => 'SuperRoot']);
+        $this->user->attachRole($this->role);
+        $this->assertTrue($this->user->isSuperRoot());
+    }
+
+    /**
      * 測試 關聯User是否擁有某些Permission.
      *
      * @group unit
