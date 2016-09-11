@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-
+use App\Articles\Category;
+use App\Articles\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -17,6 +18,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $categories = Category::all();
+
+        return view('backend.category.index',compact('categories'));
     }
 
     /**
@@ -38,6 +42,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, array(
+            'name' => 'required|max:255', ));
+
+        $category = new Category();
+
+        $category->name = $request->name;
+        $category->save();
+
+        Session::flash('success', 'New Category has been created');
+
+        return redirect()->route('backend.categories.index');
     }
 
     /**

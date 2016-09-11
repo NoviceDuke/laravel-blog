@@ -31,7 +31,7 @@
           <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
               <li ><a href="{{route('backend.article.index')}}">Article</a></li>
-              <li><a href="{{route('categories.index')}}">Category</a></li>
+              <li><a href="{{route('backend.category.index')}}">Category</a></li>
               <li><a href="#">Tag</a></li>
 
               <li class="dropdown">
