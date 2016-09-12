@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<table class="table">
+	<table class="table table-hover">
         <thead>
           <tr>
               <th data-field="id">ID </th>
