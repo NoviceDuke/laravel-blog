@@ -4,10 +4,10 @@
 
 @section('content')
 
-	<table>
+	<table class="table">
         <thead>
           <tr>
-              <th data-field="id">ID</th>
+              <th data-field="id">ID </th>
               <th data-field="name">Article</th>
               <th data-field="content">Body</th>
               <th data-field="time">Date</th>
