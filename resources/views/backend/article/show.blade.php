@@ -4,11 +4,11 @@
 @section('content')
   <div >
     <div class="row">
-      <div class="col s8">
+      <div class="col-xs-12 col-sm-6 col-lg-8">
         <h1>{{$articles->title}}</h1>
         <p>{{$articles->content}}</p>
       </div>
-      <div class="col s4">
+      <div class="col-xs-6 col-lg-7">
         <div class="well">
           <dl class="dl-horizontal">
             <dt>
@@ -28,10 +28,10 @@
           </dl>
           <hr />
           <div class="row">
-            <div class="col s4">
+            <div class="col-md-4">
               {!! Html::linkRoute('backend.article.edit','Edit',array($articles->id),array('class'=>'btn btn-danger waves-effect waves-light btn red'))!!}
             </div>
-            <div class="col s4">
+            <div class="col-md-4">
               {!! Html::linkRoute('backend.article.index','Back',array($articles->id),array('class'=>'btn btn-success waves-effect waves-light btn'))!!}
             </div>
           </div>
