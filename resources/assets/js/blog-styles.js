@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     //動畫
     $("#article_create_submit").animateCss('zoomIn');
-    $("h4").animateCss('zoomIn');
+    // $("h4").animateCss('zoomIn');
 });
 function article_create_submit() {
     document.getElementById('article_create_form').submit();

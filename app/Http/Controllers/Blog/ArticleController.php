@@ -8,6 +8,7 @@ use App\Articles\ArticleRepository;
 use App\Articles\Category;
 use App\Events\ArticleEvents;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Alertable;
 
@@ -82,13 +83,8 @@ class ArticleController extends Controller
     /**
      *   store a new article .
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'date' => 'required',
-            'content' => 'required',
-        ]);
         // 串slug HardCode
         $articleArray = array_merge($request->all(), ['slug' => str_slug($request->title, '-')]);
 

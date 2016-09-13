@@ -3,41 +3,47 @@
     <div class="card-panel white">
         <div class="card-panel-container">
         <div class="row">
-        <form class="col s12" method="POST" action="{{url('/article')}}" id="article_create_form">
-            {{ csrf_field() }}
-            <div class="row">
-                <h4>Create Article</h4>
-            </div>
-
+        {!! Form::open(['url' => url('/article'), 'method' => 'POST', 'class' => 'awesome', 'id'=> 'article_create_form']) !!}
+        {{-- <form class="col s12" method="POST" action="{{url('/article')}}" id="article_create_form"> --}}
+            <h4>Create Article</h4>
             <div class="row">
                 <div class="input-field col s12">
-                    <label for="title">Title</label>
-                    <input name="title" id="title" type="text" class="validate">
+                    {!! Form::text('title','' ,['id' => 'title','class'=>'validate']) !!}
+                    {!! Form::label('title', 'Title') !!}
                 </div>
             </div>
-            <!-- 文章分類 下拉選單-->
-            {{ Form::label('category_id', 'Category:') }}
-            {{ Form::select('category_id',$categories)}}
             <div class="row">
                 <div class="input-field col s12">
-                    <label for="pic_url">Picture URL</label>
-                    <input name="pic_url" id="pic_url" type="text" class="validate">
+                    {!! Form::select('category_id', $categories, ['id' => 'category_id']) !!}
+                    {!! Form::label('category_id', 'Category') !!}
                 </div>
             </div>
-                <input name="date" type="date" class="datepicker">
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea name="content" id="content"></textarea>
+                    {!! Form::text('pic_url','' ,['id' => 'pic_url','class'=>'validate']) !!}
+                    {!! Form::label('pic_url', 'Picture URL') !!}
                 </div>
             </div>
-        </form>
+            <div class="row">
+                <div class="input-field col s12">
+                    {!! Form::label('date', 'Date') !!}
+                    {!! Form::date('date', \Carbon\Carbon::now()->format('d F, Y'), ['class' => 'datepicker']) !!}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {!! Form::textarea('content','' ,['id' => 'content']) !!}
+                </div>
+            </div>
+        {!! Form::close() !!}
+        {{-- </form> --}}
         </div>
         </div>
     </div>
 
     {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
     <script>
-    
+
     $(document).ready(function() {
         $('select').material_select();
     });
