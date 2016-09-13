@@ -6,23 +6,32 @@
 
 	<div class = "row">
 		<div class = "col-md-8">
-		<h1>Categories</h1>
-		<table class = "table table-hover">
-			<thead>
-				<tr>
-					<th data-field="id">#</th>
-          <th data-field="name">Name</th>
-				</tr>
-			</thead>
-			<tbody>
-			@foreach($categories as $category)
-				<tr>
-					<th>{{ $category->id }}</th>
-					<th><a href="/backend/category/show" class="btn btn-primary"></a>{{ $category->name }}</th>
-				</tr>
-			@endforeach
-			</tbody>
-		</table>
+			<body>
+
+		<div class="container">
+		  <h2>Category</h2>
+		  <ul class="nav nav-tabs">
+		    @foreach($categories as $category)
+
+
+		    <li><a data-toggle="tab" href="{{ $category->id }}" >{{ $category->name }}</a></li>
+
+				@endforeach
+		  </ul>
+
+		  <div class="tab-content">
+				  @foreach($categories as $category)
+						<div id="{{ $category->id }}" class="tab-pane fade in active">
+				      <h3>HOME</h3>
+				      <p>{{ $category->id }}</p>
+				    </div>
+						@endforeach
+
+
+		  </div>
+		</div>
+
+		</body>
 		</div>
 		<div class = "col-md-3">
 			<div class = "well">
@@ -37,4 +46,5 @@
 
 		</div>
 	</div>
+
 @endsection
