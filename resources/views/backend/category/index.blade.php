@@ -12,13 +12,21 @@
 				<tr>
 					<th data-field="id">#</th>
           <th data-field="name">Name</th>
+					<th data-field="time">Time</th>
 				</tr>
 			</thead>
 			<tbody>
 			@foreach($categories as $category)
 				<tr>
-					<th>{{ $category->id }}</th>
-					<th><a href="/backend/category/show" class="btn btn-primary"></a>{{ $category->name }}</th>
+					<td>{{ $category->id }}</td>
+					<td>{{ $category->name }}</td>
+					<td>
+						{{$category->created_at}}
+					</td>
+					<td>
+						<a href="/backend/category/show" class="btn btn-primary">Edit</a>
+						<a href="/backend/category/show" class="btn btn-primary">Delete</a>
+						</td>
 				</tr>
 			@endforeach
 			</tbody>
