@@ -29,7 +29,7 @@
 	            <td>{{substr($article->content, 0,50)}}{{strlen($article->content)>50?"..." :""}}</td>
 	            <td>{{$article->created_at}}</td>
 	            <td><a href="/backend/article/{{$article->id}}" class="btn btn-info">Show</a></td>
-				<td>
+							<td>
 					{!! Form::open(['method' => 'DELETE','route' => ['backend.article.destroy', $article->id]]) !!}
 				    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 				    {!! Form::close() !!}
