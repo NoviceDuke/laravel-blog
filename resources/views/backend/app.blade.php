@@ -9,7 +9,7 @@
         {!! Html::style(url('css/animate.min.css'))!!}
         {!! Html::style(url('css/libs.css'))!!}
         {!! Html::script(url('js/bootstrap.js'))!!}
-        {!! Html::script(url('js/npm.js'))!!}
+        {{-- {!! Html::script(url('js/npm.js'))!!} --}}
     </head>
     <body>
 
