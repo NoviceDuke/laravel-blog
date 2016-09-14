@@ -25,7 +25,7 @@ trait RolePermissionTrait
             $permissions = $permissions->merge($role->permissions()->get());
         }
 
-        return $permissions;
+        return $permissions->unique('id');
     }
 
     /**

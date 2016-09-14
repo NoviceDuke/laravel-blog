@@ -97,6 +97,32 @@ class ArticleController extends Controller
 
         return redirect()->route('article.show', $article->slug);
     }
+    /**
+     * 顯示Edit頁面 .
+     *
+     * @param slug string
+     */
+    public function edit($slug)
+    {
+        $article = $this->articles->getFromSlug($slug);
+        $categories = Category::lists('name', 'id');
+        return view('blog.article.edit', compact('article', 'categories'));
+    }
+
+    /**
+     * 更新Article .
+     *
+     * @param slug string
+     */
+    public function update(ArticleRequest $request, $slug)
+    {
+        $article = $this->articles->getFromSlug($slug);
+        $article->update($request->all());
+        $this->alert('Success', 'Your article is updated successful')->success()->flashIt();
+
+        return redirect()->route('article.show', $article->slug);
+    }
+
 
     /**
      * 刪除文章 .
