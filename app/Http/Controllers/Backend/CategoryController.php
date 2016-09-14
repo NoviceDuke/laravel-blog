@@ -7,6 +7,7 @@ use App\Articles\Category;
 use App\Articles\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -52,7 +53,7 @@ class CategoryController extends Controller
 
         Session::flash('success', 'New Category has been created');
 
-        return redirect()->route('backend.categories.index');
+        return redirect()->route('backend.category.index');
     }
 
     /**

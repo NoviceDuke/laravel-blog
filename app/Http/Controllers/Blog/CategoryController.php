@@ -24,7 +24,7 @@ class CategoryController extends Controller
         //dispaly a view of all of our categories
         $categories = Category::all();
 
-        return view('blog.category.index')->withCategories($categories);
+        return view('blog.category.index', compact('categories'));
     }
 
     /**
