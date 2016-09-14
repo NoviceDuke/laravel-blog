@@ -5,8 +5,13 @@ namespace App\Presenters;
 use Request;
 use URL;
 use Auth;
+use App\Articles\Article;
 class FloatingButtonPresenter
 {
+    private $article;
+    public function __construct(Article $article){
+        $this->article = $article;
+    }
     /**
      * 輔助View的邏輯處理.
      */
@@ -42,8 +47,14 @@ class FloatingButtonPresenter
          * 次要按鈕樣式判別
          */
         $htmlString .= '<ul>';
+        // 特別做法，在show Route下  如果是登入者，刪除這篇文章的按鈕會出現
+        if (strpos(Request::path(), 'article/') !== false && Auth::user()) {
+            $htmlString .= '<li><a href="'.Request::segment(2).'" data-token="'.csrf_token().'"
+                                class="btn-floating red" data-method="delete" data-confirm="刪除這篇文章?">
+                                <i class="material-icons">delete_forever</i>
+                            </li></a>';
+        }
         switch (Request::path()) {
-
             case 'blog': // 這裡沒有brak是因為在首頁的時候兩個按鈕都要
                 if(Auth::user())  //創造按鈕要有登入才會顯示
                 {

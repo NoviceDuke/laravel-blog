@@ -7,7 +7,6 @@ use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
 use App\Events\ArticleEvents;
-use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Alertable;
@@ -81,7 +80,9 @@ class ArticleController extends Controller
     }
 
     /**
-     *   store a new article .
+     * 儲存文章 .
+     *
+     * @param slug string
      */
     public function store(ArticleRequest $request)
     {
@@ -95,5 +96,19 @@ class ArticleController extends Controller
         $this->alert('Success', 'Your article is created successful')->success()->flashIt();
 
         return redirect()->route('article.show', $article->slug);
+    }
+
+    /**
+     * 刪除文章 .
+     *
+     * @param slug string
+     */
+    public function destroy($slug)
+    {
+        $article = $this->articles->getFromSlug($slug);
+        $article->delete();
+        $this->alert('Success', 'Your article is deleted successful')->success()->flashIt();
+
+        return redirect()->route('blog.index');
     }
 }

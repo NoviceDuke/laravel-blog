@@ -19,6 +19,7 @@ elixir(function(mix) {
     mix.sass('blog-styles.scss', 'public/css/blog-styles.css');
     mix.scripts([
         'blog-styles.js',
+        'a_delete_method.js'
     ], 'public/js/blog-styles.js');
 
     // 別人的libs

@@ -6,6 +6,7 @@ use App\Articles\ArticleRepository;
 use App\Articles\Tag;
 use App\Articles\Category;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmail;
 
 class BlogHomeController extends Controller
 {
@@ -30,8 +31,7 @@ class BlogHomeController extends Controller
 
     public function getTrace()
     {
-        $tag = Tag::find(1);
-        dd($tag->frequency);
+        $this->dispatch(new SendEmail);
 
         return 'trace';
     }
