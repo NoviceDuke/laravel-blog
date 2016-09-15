@@ -57,7 +57,7 @@ class TagController extends Controller
     {
         $articles = Tag::findSlug($slug)->articles()->take(8)->get();
 
-        return view('blog.tags.show', compact('articles'));
+        return view('blog.tag.show', compact('articles'));
     }
 
     /**

@@ -7,7 +7,7 @@ use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
 use App\Events\ArticleEvents;
-use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Alertable;
 
@@ -80,15 +80,12 @@ class ArticleController extends Controller
     }
 
     /**
-     *   store a new article .
+     * 儲存文章 .
+     *
+     * @param slug string
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'date' => 'required',
-            'content' => 'required',
-        ]);
         // 串slug HardCode
         $articleArray = array_merge($request->all(), ['slug' => str_slug($request->title, '-')]);
 
@@ -98,6 +95,46 @@ class ArticleController extends Controller
         Event::fire(new ArticleEvents($article, 'posted'));
         $this->alert('Success', 'Your article is created successful')->success()->flashIt();
 
-        return redirect('/article/'.$article->slug);
+        return redirect()->route('article.show', $article->slug);
+    }
+    /**
+     * 顯示Edit頁面 .
+     *
+     * @param slug string
+     */
+    public function edit($slug)
+    {
+        $article = $this->articles->getFromSlug($slug);
+        $categories = Category::lists('name', 'id');
+        return view('blog.article.edit', compact('article', 'categories'));
+    }
+
+    /**
+     * 更新Article .
+     *
+     * @param slug string
+     */
+    public function update(ArticleRequest $request, $slug)
+    {
+        $article = $this->articles->getFromSlug($slug);
+        $article->update($request->all());
+        $this->alert('Success', 'Your article is updated successful')->success()->flashIt();
+
+        return redirect()->route('article.show', $article->slug);
+    }
+
+
+    /**
+     * 刪除文章 .
+     *
+     * @param slug string
+     */
+    public function destroy($slug)
+    {
+        $article = $this->articles->getFromSlug($slug);
+        $article->delete();
+        $this->alert('Success', 'Your article is deleted successful')->success()->flashIt();
+
+        return redirect()->route('blog.index');
     }
 }

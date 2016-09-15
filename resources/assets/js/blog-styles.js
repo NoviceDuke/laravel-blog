@@ -41,10 +41,14 @@ $(document).ready(function() {
 
     //動畫
     $("#article_create_submit").animateCss('zoomIn');
-    $("h4").animateCss('zoomIn');
+    $("#article_edit_submit").animateCss('zoomIn');
+    // $("h4").animateCss('zoomIn');
 });
 function article_create_submit() {
     document.getElementById('article_create_form').submit();
+}
+function article_edit_submit() {
+    document.getElementById('article_edit_form').submit();
 }
 
 /* right.blade.php */
