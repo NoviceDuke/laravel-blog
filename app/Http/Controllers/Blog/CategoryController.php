@@ -65,7 +65,7 @@ class CategoryController extends Controller
      */
     public function show($slug)
     {
-        $articles = Category::findSlug($slug)->articles()->take(8)->get();
+        $articles = Category::findSlug($slug)->articles()->paginate(6);
 
         return view('blog.category.show', compact('articles'));
     }
