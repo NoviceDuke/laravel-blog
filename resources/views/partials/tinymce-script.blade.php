@@ -8,7 +8,7 @@ $(document).ready(function() {
 });
 
 var editor_config = {
-    height : "768",
+    height : "512",
     path_absolute : "{{ URL::to('/') }}/",
     selector: "textarea",
     plugins: [

@@ -18,7 +18,7 @@
         {{Form::textarea('content',null,['class'=>'form-control'])}}
       </div>
       <div class="col s4">
-        <div class="well">
+        <div class="well" style="margin-top:15px;">
           <dl class="dl-horizontal">
             <dt>
               Created At:
@@ -32,17 +32,16 @@
               Updated At:
             </dt>
             <dd>
-              {{$articles->update_at}}
+              {{$articles->updated_at}}
             </dd>
           </dl>
           <hr />
           <div class="row">
-            <div class="col s4">
-              {!! Html::linkRoute('backend.article.show','Canceal',array($articles->id),array('class'=>'btn btn-danger waves-effect waves-light btn yellow'))!!}
-            </div>
-            <div class="col s4">
+            <div class="col s6 form-group">
               {{Form::submit('Save',['class'=>'btn btn-success btn-block'])}}
-
+            </div>
+            <div class="col s6">
+                {!! Html::linkRoute('backend.article.show','Canceal',array($articles->id),array('class'=>'btn btn-danger btn-block'))!!}
             </div>
           </div>
         </div>
@@ -50,5 +49,5 @@
       {!!Form::close()!!}
     </div>
 
-
+@include('partials.tinymce-script')
 @stop
