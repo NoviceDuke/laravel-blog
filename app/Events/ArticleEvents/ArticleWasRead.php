@@ -1,36 +1,33 @@
 <?php
 
-namespace App\Events;
+namespace App\Events\ArticleEvents;
 
-use Illuminate\Queue\SerializesModels;
+use App\Events\Event;
 use App\Articles\Article;
+use Illuminate\Queue\SerializesModels;
 
-class ArticleEvents extends Event
+class ArticleWasRead extends Event
 {
     use SerializesModels;
 
     /**
-     * 宣告事件處理會使用到的變數.
+     * @var Article
      */
     public $article;
-    public $type;
 
     /**
      * 建立事件實體.
-     * 建立此事件時，必須傳入兩個參數.
+     * 建立此事件時，必須傳入觸發此事件的文章.
      *
      * @param Article::class 觸發此事件的Article
-     * @param $type string 此事件的類別(自定義於 $type_container)
      */
-    public function __construct(Article $article, $type)
+    public function __construct(Article $article)
     {
         $this->article = $article;
-        $this->type = $type;
     }
 
     /**
      * Get the channels the event should be broadcast on.
-     * 廣播的部分，還沒用到.
      *
      * @return array
      */
