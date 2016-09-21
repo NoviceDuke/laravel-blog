@@ -38,7 +38,7 @@ class Category extends Eloquent
     public function setNameAttribute($value)
     {
         // 判斷name是否重複
-        if (($count = $this->where('name', $value)->count()) != 0) {
+        if (($count = $this->where('name', 'like', '%'.$value.'%')->count()) != 0) {
             $this->attributes['name'] = $value.'-'.$count;
         } else {
             $this->attributes['name'] = $value;

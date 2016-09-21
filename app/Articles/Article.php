@@ -66,12 +66,12 @@ class Article extends Eloquent
     /**
      *  在使用Article Model設定title時，會進入此存取器
      *  自動判斷重複的title並給予新的title
-     *  自動填補slug
+     *  自動填補slug.
      */
     public function setTitleAttribute($value)
     {
         // 判斷title是否重複
-        if (($count = $this->where('title', $value)->count()) != 0) {
+        if (($count = $this->where('title', 'like', '%'.$value.'%')->count()) != 0) {
             $this->attributes['title'] = $value.'-'.$count;
         } else {
             $this->attributes['title'] = $value;

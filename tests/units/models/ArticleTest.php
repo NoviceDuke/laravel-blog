@@ -81,12 +81,17 @@ class ArticleTest extends TestCase
 
         // When
         $article2 = factory(Article::class)->create(['title'=>'abc']);
+        $article3 = factory(Article::class)->create(['title'=>'abc']);
+        $article4 = factory(Article::class)->create(['title'=>'abc']);
 
 
         // Then
         // 斷言 : 取出的title不相同
         $this->assertNotEquals($article->title, $article2->title);
         $this->assertEquals("abc-1", $article2->title);
+        $this->assertEquals("abc-2", $article3->title);
+        $this->assertEquals("abc-3", $article4->title);
+
     }
 
     /**
