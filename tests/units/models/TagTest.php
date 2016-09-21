@@ -60,6 +60,51 @@ class TagTest extends TestCase
         // 斷言 : 經由關聯的方式取出的文章同等於加入的那筆文章
         $this->assertEquals($tag->articles()->first()->title, $article->title);
     }
+    /**
+     * 測試一篇Tag能夠自動產生slug.
+     *
+     * 斷言取出的slug不為Null
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testTagCanAutoCreateSlug()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增文章
+        $tag = factory(Tag::class)->create();
+
+        // When
+        $slug = $tag->slug;
+
+        // Then
+        // 斷言 : 取出的slug不為Null
+        $this->assertNotNull($slug);
+    }
+
+    /**
+     * 測試一篇Tag能夠辨別相同的標題，並產出不同的name、slug.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testTagCanAutoChangeNameWhenSameName()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增Catgory
+        $tag = factory(Tag::class)->create(['name'=>'abc']);
+
+        // When
+        $tag2 = factory(Tag::class)->create(['name'=>'abc']);
+
+
+        // Then
+        // 斷言 : 取出的name不相同
+        $this->assertNotEquals($tag->name, $tag2->name);
+        $this->assertEquals("abc-1", $tag2->name);
+    }
 
     /**
      * 測試一個tag能夠取得自己的slug路徑.

@@ -50,6 +50,25 @@ class Tag extends Eloquent
         return $this->attributes['frequency'];
     }
 
+    /**
+     *  在使用Tag Model設定name時，會進入此存取器
+     *  自動判斷重複的name並給予新的name
+     *  自動填補slug
+     */
+    public function setNameAttribute($value)
+    {
+        // 判斷name是否重複
+        if (($count = $this->where('name', $value)->count()) != 0) {
+            $this->attributes['name'] = $value.'-'.$count;
+        } else {
+            $this->attributes['name'] = $value;
+        }
+        // 自動填補slug
+        if (empty($this->slug)) {
+            $this->attributes['slug'] = str_slug($this->attributes['name'], '-');
+        }
+    }
+
     /*------------------------------------------------------------------------**
     ** 自訂函數方法                                                            **
     **------------------------------------------------------------------------*/
