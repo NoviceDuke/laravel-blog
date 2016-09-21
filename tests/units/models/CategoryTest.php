@@ -37,6 +37,51 @@ class CategoryTest extends TestCase
         $category = $categories->first();
         $this->assertNotEmpty($category->name);
     }
+    /**
+     * 測試一篇Category能夠自動產生slug.
+     *
+     * 斷言取出的slug不為Null
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testCategoryCanAutoCreateSlug()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增Category
+        $category = factory(Category::class)->create();
+
+        // When
+        $slug = $category->slug;
+
+        // Then
+        // 斷言 : 取出的slug不為Null
+        $this->assertNotNull($slug);
+    }
+
+    /**
+     * 測試一篇Category能夠辨別相同的標題，並產出不同的name、slug.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testCategoryCanAutoChangeNameWhenSameName()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增Catgory
+        $category = factory(Category::class)->create(['name'=>'abc']);
+
+        // When
+        $category2 = factory(Category::class)->create(['name'=>'abc']);
+
+
+        // Then
+        // 斷言 : 取出的name不相同
+        $this->assertNotEquals($category->name, $category2->name);
+        $this->assertEquals("abc-1", $category2->name);
+    }
 
     /**
      * 測試一個文章種類能夠取得自己的slug路徑.

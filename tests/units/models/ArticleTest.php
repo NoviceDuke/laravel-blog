@@ -67,9 +67,7 @@ class ArticleTest extends TestCase
     }
 
     /**
-     * 測試一篇文章能夠自動產生slug.
-     *
-     * 斷言取出的slug不為Null
+     * 測試一篇文章能夠辨別相同的標題，並產出不同的title、slug.
      *
      * @group unit
      * @group eloquent
