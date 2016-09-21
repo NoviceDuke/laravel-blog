@@ -24,7 +24,6 @@ $factory->define(App\Articles\Article::class, function (Faker\Generator $faker) 
     return [
         'title' => $faker->sentence,
         'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-        'slug' => str_slug($faker->sentence, '-'),
     ];
 });
 
