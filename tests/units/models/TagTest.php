@@ -24,8 +24,8 @@ class TagTest extends TestCase
     {
         $this->printTestStartMessage(__FUNCTION__);
         // Given
-        // 創建10筆Tag
-        factory(Tag::class, 10)->create();
+        // 創建2筆Tag
+        factory(Tag::class, 2)->create();
 
         // When
         // 當取得所有Tag時
@@ -33,7 +33,7 @@ class TagTest extends TestCase
 
         // Then
         // 斷言 : 所有Tag數量相等於10
-        $this->assertCount(10, $tags);
+        $this->assertCount(2, $tags);
 
         //斷言 : 第一個Tag有被賦予值
         $tag = $tags->first();
@@ -98,12 +98,18 @@ class TagTest extends TestCase
 
         // When
         $tag2 = factory(Tag::class)->create(['name'=>'abc']);
+        $tag3 = factory(Tag::class)->create(['name'=>'abc']);
+        $tag4 = factory(Tag::class)->create(['name'=>'abc']);
+        $tag5 = factory(Tag::class)->create(['name'=>'abc']);
 
 
         // Then
         // 斷言 : 取出的name不相同
         $this->assertNotEquals($tag->name, $tag2->name);
         $this->assertEquals("abc-1", $tag2->name);
+        $this->assertEquals("abc-2", $tag3->name);
+        $this->assertEquals("abc-3", $tag4->name);
+        $this->assertEquals("abc-4", $tag5->name);
     }
 
     /**

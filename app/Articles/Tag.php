@@ -3,7 +3,6 @@
 namespace App\Articles;
 
 use App\Core\Eloquent;
-use App\Articles\Article;
 
 class Tag extends Eloquent
 {
@@ -53,12 +52,12 @@ class Tag extends Eloquent
     /**
      *  在使用Tag Model設定name時，會進入此存取器
      *  自動判斷重複的name並給予新的name
-     *  自動填補slug
+     *  自動填補slug.
      */
     public function setNameAttribute($value)
     {
         // 判斷name是否重複
-        if (($count = $this->where('name', $value)->count()) != 0) {
+        if (($count = $this->where('name', 'like', '%'.$value.'%')->count()) != 0) {
             $this->attributes['name'] = $value.'-'.$count;
         } else {
             $this->attributes['name'] = $value;
@@ -80,8 +79,9 @@ class Tag extends Eloquent
      */
     public function addArticle(Article $article)
     {
-        if(!$this->articles()->find($article->id))
+        if (!$this->articles()->find($article->id)) {
             return $this->articles()->attach($article);
+        }
     }
 
     public function path()
