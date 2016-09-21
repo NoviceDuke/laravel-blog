@@ -60,6 +60,28 @@ class Article extends Eloquent
     }
 
     /*------------------------------------------------------------------------**
+    ** 存取器                                                                 **
+    **------------------------------------------------------------------------*/
+
+    /**
+     *  在使用Article Model設定title時，會進入此存取器
+     *  自動判斷重複的title並給予新的title
+     *  自動填補slug.
+     */
+    public function setTitleAttribute($value)
+    {
+        // 判斷title是否重複
+        if (($count = $this->where('title', 'like', '%'.$value.'%')->count()) != 0) {
+            $this->attributes['title'] = $value.'-'.$count;
+        } else {
+            $this->attributes['title'] = $value;
+        }
+        // 自動填補slug
+        if (empty($this->slug)) {
+            $this->attributes['slug'] = str_slug($this->attributes['title'], '-');
+        }
+    }
+    /*------------------------------------------------------------------------**
     ** 自訂函數方法                                                            **
     **------------------------------------------------------------------------*/
 
