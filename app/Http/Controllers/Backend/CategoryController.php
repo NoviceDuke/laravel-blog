@@ -49,6 +49,7 @@ class CategoryController extends Controller
         $category = new Category();
 
         $category->name = $request->name;
+        $category->slug = str_slug($category->name, '-');
         $category->save();
 
         Session::flash('success', 'New Category has been created');
@@ -96,8 +97,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
         //
+        $category = Category::where('slug',$slug)->delete();
+        return redirect()->route('backend.category.index');
     }
 }

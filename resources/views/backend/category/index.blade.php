@@ -16,7 +16,7 @@
 					<th data-field="id">ID</th>
           <th data-field="name">Name</th>
 					<th data-field="time">Time</th>
-				
+
 				</tr>
 			</thead>
 			<tbody>
@@ -31,7 +31,7 @@
 						{!! Html::linkRoute('backend.category.edit','Edit',array($category->id),array('class'=>'btn btn-info'))!!}
 					</td>
 					<td>
-						{!! Form::open(['method' => 'DELETE','route' => ['backend.category.destroy', $category->id]]) !!}
+						{!! Form::open(['method' => 'DELETE','route' => ['backend.category.destroy', $category->slug]]) !!}
 						{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
 						{!! Form::close() !!}
 						</td>
