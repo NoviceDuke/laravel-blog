@@ -33,6 +33,7 @@
             </section>
         @endforeach
         </div>
+        @include('blog.partials.paginate', ['paginator' => $articles])
     </div>
     <!--Static Cut Left Panel 75%-->
     <!--Static Cut Right Panel 25%-->

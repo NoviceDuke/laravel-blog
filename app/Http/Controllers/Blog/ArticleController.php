@@ -6,7 +6,9 @@ use Event;
 use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
-use App\Events\ArticleEvents;
+use App\Events\ArticleEvents\ArticleWasPosted;
+use App\Events\ArticleEvents\ArticleWasDeleted;
+use App\Events\ArticleEvents\ArticleWasUpdated;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\Alertable;
@@ -57,6 +59,9 @@ class ArticleController extends Controller
         $nextArticle = $this->articles->getNextArticles($article, 1);
         $previousArticle = $this->articles->getPreviousArticles($article, 1);
 
+        // 觸發事件 -> 文章被閱讀
+        Event::fire(new ArticleWasUpdated($article));
+
         return view('blog.article.show', compact('article', 'nextArticle', 'previousArticle'));
     }
 
@@ -92,7 +97,7 @@ class ArticleController extends Controller
         $article = $this->articles->createFromUser($articleArray, Auth::user());
 
         // 觸發事件 -> 文章被新增
-        Event::fire(new ArticleEvents($article, 'posted'));
+        Event::fire(new ArticleWasPosted($article));
         $this->alert('Success', 'Your article is created successful')->success()->flashIt();
 
         return redirect()->route('article.show', $article->slug);
@@ -106,6 +111,7 @@ class ArticleController extends Controller
     {
         $article = $this->articles->getFromSlug($slug);
         $categories = Category::lists('name', 'id');
+
         return view('blog.article.edit', compact('article', 'categories'));
     }
 
@@ -118,11 +124,13 @@ class ArticleController extends Controller
     {
         $article = $this->articles->getFromSlug($slug);
         $article->update($request->all());
+
+        // 觸發事件 -> 文章被更新
+        Event::fire(new ArticleWasUpdated($article));
         $this->alert('Success', 'Your article is updated successful')->success()->flashIt();
 
         return redirect()->route('article.show', $article->slug);
     }
-
 
     /**
      * 刪除文章 .
@@ -133,6 +141,9 @@ class ArticleController extends Controller
     {
         $article = $this->articles->getFromSlug($slug);
         $article->delete();
+
+        // 觸發事件 -> 文章被刪除
+        Event::fire(new ArticleWasDeleted($article));
         $this->alert('Success', 'Your article is deleted successful')->success()->flashIt();
 
         return redirect()->route('blog.index');
