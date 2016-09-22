@@ -3,10 +3,18 @@
 @section('title','| All Categories')
 
 @section('content')
-	<div class="panel panel-default">
+	<div class="panel panel-info">
 		<div class="panel-heading">Category</div>
 		<div class="panel-body">
-			<p>Manage all categories.</p>
+			<div class="row">
+				<div class="col-md-8">
+					<p>Manage all categories.</p>
+					</div>
+					<div class="col-md-4 text-right">
+					<button id="btn-add" name="btn-add" class="btn btn-primary btn-lg">Add New Category</button>
+					</div>
+				</div>
+
 		</div>
 
 
@@ -16,7 +24,8 @@
 					<th data-field="id">ID</th>
           <th data-field="name">Name</th>
 					<th data-field="time">Time</th>
-
+					<th></th>
+					<th></th>	
 				</tr>
 			</thead>
 			<tbody>
