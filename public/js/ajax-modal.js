@@ -5,13 +5,13 @@ $(document).ready(function(){
 
     //display modal form for category editing
     $('.open-modal').click(function(){
-        var category_id = $(this).val();
+        var category_slug = $(this).val();
 
-        $.get(url + '/' + category_id, function (data) {
+        $.show(url + '/' + category_slug, function (data) {
             //success data
             console.log(data);
-            $('#category_id').val(data.id);
-            $('#category').val(data.category);
+            $('#category_slug').val(data.slug);
+            $('#category').val(data.name);
             $('#btn-save').val("update");
             $('#myModal').modal('show');
         })
@@ -26,16 +26,16 @@ $(document).ready(function(){
 
     //delete category and remove it from list
     $('.delete-Category').click(function(){
-        var category_id = $(this).val();
+        var category_slug = $(this).val();
 
         $.ajax({
 
             type: "DELETE",
-            url: url + '/' + category_id,
+            url: url + '/' + category_slug,
             success: function (data) {
                 console.log(data);
 
-                $("#category" + category_id).remove();
+                $("#category" + category_slug).remove();
             },
             error: function (data) {
                 console.log('Error:', data);

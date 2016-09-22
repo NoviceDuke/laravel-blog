@@ -37,7 +37,7 @@
 						{{$category->created_at}}
 					</td>
 					<td>
-						<button class="btn btn-info btn-md  open-modal" value="{{$category->id}}">Edit</button>
+						<button class="btn btn-info btn-md  open-modal" value="{{$category->slug}}">Edit</button>
 						<button class="btn btn-danger btn-md  open-modal" value="{{$category->slug}}">Delete</button>
 					</td>
 
@@ -67,8 +67,13 @@
                         </div>
                         <div class="modal-body">
                             <form id="frmCategory" name="frmCategory" class="form-horizontal" novalidate="">
-
-                                <div class="form-group error">
+                                <div class="form-group ">
+                                    <label for="inputCategories" class="col-sm-3 control-label">Slug</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control has-error" id="category-slug" name="Slug" placeholder="" value="">
+                                    </div>
+                                </div>
+																<div class="form-group ">
                                     <label for="inputCategories" class="col-sm-3 control-label">Category</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control has-error" id="category" name="category" placeholder="Category" value="">
