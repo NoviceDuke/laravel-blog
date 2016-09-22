@@ -49,7 +49,6 @@ class CategoryController extends Controller
         $category = new Category();
 
         $category->name = $request->name;
-        $category->slug = str_slug($category->name, '-');
         $category->save();
 
         Session::flash('success', 'New Category has been created');

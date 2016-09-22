@@ -18,6 +18,8 @@ class ArticleTest extends TestCase
      * 測試使用factory產生Article.
      *
      * 斷言所有Article內的欄位都有資料
+     * @group unit
+     * @group eloquent
      */
     public function testCreateArticlesByFactory()
     {
@@ -41,11 +43,64 @@ class ArticleTest extends TestCase
             $this->assertNotEmpty($article->slug);
         }
     }
+    /**
+     * 測試一篇文章能夠自動產生slug.
+     *
+     * 斷言取出的slug不為Null
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testArticleCanAutoCreateSlug()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增文章
+        $article = factory(Article::class)->create();
+
+        // When
+        $slug = $article->slug;
+
+        // Then
+        // 斷言 : 取出的slug不為Null
+        $this->assertNotNull($slug);
+    }
+
+    /**
+     * 測試一篇文章能夠辨別相同的標題，並產出不同的title、slug.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testArticleCanAutoChangeTitleWhenSameTitle()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增文章
+        $article = factory(Article::class)->create(['title'=>'abc']);
+
+        // When
+        $article2 = factory(Article::class)->create(['title'=>'abc']);
+        $article3 = factory(Article::class)->create(['title'=>'abc']);
+        $article4 = factory(Article::class)->create(['title'=>'abc']);
+
+
+        // Then
+        // 斷言 : 取出的title不相同
+        $this->assertNotEquals($article->title, $article2->title);
+        $this->assertEquals("abc-1", $article2->title);
+        $this->assertEquals("abc-2", $article3->title);
+        $this->assertEquals("abc-3", $article4->title);
+
+    }
 
     /**
      * 測試一篇文章能夠取得自己的slug路徑.
      *
      * 斷言取出的slug路徑同等於預設的路徑
+     *
+     * @group unit
+     * @group eloquent
      */
     public function testArticleCanGetAPath()
     {
@@ -67,6 +122,9 @@ class ArticleTest extends TestCase
      * 測試一篇文章加入一篇回覆.
      *
      * 斷言經由關聯的方式取出的回覆同等於加入的那筆回覆
+     *
+     * @group unit
+     * @group eloquent
      */
     public function testArticleCanAddAComment()
     {
@@ -86,9 +144,12 @@ class ArticleTest extends TestCase
         $this->assertEquals($article->comments()->first()->content, $comment->content);
     }
     /**
-     * 測試一篇文章刪除一筆回覆的關聯
+     * 測試一篇文章刪除一筆回覆的關聯.
      *
      * 斷言經由關聯的方式取出的回覆為空值
+     *
+     * @group unit
+     * @group eloquent
      */
     public function testArticleCanRemoveAComment()
     {
@@ -113,10 +174,13 @@ class ArticleTest extends TestCase
     }
 
     /**
-     * 測試一篇文章直接刪除一筆回覆
+     * 測試一篇文章直接刪除一筆回覆.
      *
      * 斷言經由關聯的方式取出的回覆為空值
      * 且被刪除的回覆已不在資料庫中
+     *
+     * @group unit
+     * @group eloquent
      */
     public function testArticleCanDeleteAComment()
     {
@@ -145,6 +209,9 @@ class ArticleTest extends TestCase
      * 測試一篇文章加入一筆Tag.
      *
      * 斷言經由關聯的方式取出的Tag同等於加入的那筆Tag
+     *
+     * @group unit
+     * @group eloquent
      */
     public function testArticleCanAddATag()
     {
@@ -167,6 +234,9 @@ class ArticleTest extends TestCase
      * 測試一篇文章刪除一筆Tag.
      *
      * 斷言經由關聯的方式取出的Tag為空值
+     *
+     * @group unit
+     * @group eloquent
      */
     public function testArticleCanRemoveATag()
     {

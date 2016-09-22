@@ -91,10 +91,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        // 串slug HardCode
-        $articleArray = array_merge($request->all(), ['slug' => str_slug($request->title, '-')]);
-
-        $article = $this->articles->createFromUser($articleArray, Auth::user());
+        $article = $this->articles->createFromUser($request->all(), Auth::user());
 
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleWasPosted($article));

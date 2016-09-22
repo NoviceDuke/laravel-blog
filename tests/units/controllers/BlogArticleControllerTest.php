@@ -121,7 +121,6 @@ class BlogArticleControllerTest extends TestCase
             'title' => 'Sally hi',
             'date' => '2016-08-29',
             'content' => 'content heyhey',
-            'slug' => 'sally-hi',
         ];
         $article = factory(Article::class)->create([
             'title' => 'Sally hi',
