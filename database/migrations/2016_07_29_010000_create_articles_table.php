@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
             $table->timestamps();
 
             //foreign Key Set
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
