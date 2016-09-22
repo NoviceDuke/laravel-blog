@@ -33,6 +33,7 @@
 				<tr>
 					<td>{{ $category->id }}</td>
 					<td>{{ $category->name }}</td>
+
 					<td>
 						{{$category->created_at}}
 					</td>
@@ -89,5 +90,5 @@
                 </div>
             </div>
 		<meta name="_token" content="{{ csrf_token() }}"/>
-		<script src="{{asset('js/ajax-modal.js')}}"></script>
+		<script src="{{asset('js/modal.js')}}"></script>
 @endsection
