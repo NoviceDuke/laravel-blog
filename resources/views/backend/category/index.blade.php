@@ -25,7 +25,7 @@
           <th data-field="name">Name</th>
 					<th data-field="time">Time</th>
 					<th></th>
-					<th></th>	
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,7 +48,7 @@
 			@endforeach
 			</tbody>
 		</table>
-
+<!--
 		<div class = "col-md-3">
 			<div class = "well">
 				{!! Form::open(['route'=>'backend.category.store','method'=>'POST'])!!}
@@ -59,6 +59,7 @@
 				{!!Form::close()!!}
 			</div>
 		</div>
+	-->
 			</div>
 
 @endsection
