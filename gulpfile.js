@@ -41,5 +41,8 @@ elixir(function(mix) {
         'ajax-modal.js',
         'a_delete_method.js',
         ], 'public/js/modal.js');
+    mix.scripts([
+        'a_delete_method.js',
+        ], 'public/js/a_delete_method.js');
 
 });

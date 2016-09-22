@@ -39,5 +39,5 @@
     		</div>
     	</div>
     </div>
-{!! Html::script(asset('js/modal.js'))!!}
+{!! Html::script(asset('js/a_delete_method.js'))!!}
 @endsection

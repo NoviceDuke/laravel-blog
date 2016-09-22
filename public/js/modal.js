@@ -104,7 +104,7 @@ $(document).ready(function(){
 });
 
 // 註冊設定 a button能夠賦予DELETE method
-// <a href="posts/2" data-method="delete" data-confirm="Are you sure?">
+// <a href="posts/2" data-method="delete" data-confirm="Are you sure?" data-token="{{csrf_token()}}">
   var laravel = {
      initialize: function() {
        this.methodLinks = $('a[data-method]');
