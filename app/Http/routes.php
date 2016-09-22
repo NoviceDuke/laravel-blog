@@ -38,6 +38,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'namespace' => 'Bac
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController', ['except' => ['create']]);
     Route::resource('tag', 'TagController');
+    Route::resource('user', 'UserController');
 });
 
 // duke's route
