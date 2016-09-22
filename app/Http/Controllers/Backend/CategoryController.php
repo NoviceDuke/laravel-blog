@@ -76,6 +76,11 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::where('slug',$slug);
+        $category->name = $request->name;
+        $category->save();
+
+        return response()->json($category);
     }
 
     /**

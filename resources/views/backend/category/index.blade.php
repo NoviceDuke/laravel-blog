@@ -17,18 +17,18 @@
 
 		</div>
 
-
+{{ csrf_field() }}
 		<table class = "table table-hover table-striped">
 			<thead>
 				<tr>
 					<th data-field="id">ID</th>
           <th data-field="name">Name</th>
 					<th data-field="time">Time</th>
-					<th></th>
-					<th></th>
+					<th>Action</th>
+
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="category-list" name="category-list">
 			@foreach($categories as $category)
 				<tr>
 					<td>{{ $category->id }}</td>
@@ -37,13 +37,10 @@
 						{{$category->created_at}}
 					</td>
 					<td>
-						{!! Html::linkRoute('backend.category.edit','Edit',array($category->id),array('class'=>'btn btn-info'))!!}
+						<button class="btn btn-info btn-md  open-modal" value="{{$category->id}}">Edit</button>
+						<button class="btn btn-danger btn-md  open-modal" value="{{$category->slug}}">Delete</button>
 					</td>
-					<td>
-						{!! Form::open(['method' => 'DELETE','route' => ['backend.category.destroy', $category->slug]]) !!}
-						{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-						{!! Form::close() !!}
-						</td>
+
 				</tr>
 			@endforeach
 			</tbody>
@@ -61,5 +58,31 @@
 		</div>
 	-->
 			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Category Editor</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="frmCategory" name="frmCategory" class="form-horizontal" novalidate="">
 
+                                <div class="form-group error">
+                                    <label for="inputCategories" class="col-sm-3 control-label">Category</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control has-error" id="category" name="category" placeholder="Category" value="">
+                                    </div>
+                                </div>
+															</form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btn-save" value="add">Save</button>
+                            <input type="hidden" id="Category_id" name="Category_id" value="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+		<meta name="_token" content="{{ csrf_token() }}"/>
+		<script src="{{asset('js/ajax-modal.js')}}"></script>
 @endsection
