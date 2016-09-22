@@ -62,9 +62,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
+        $category = Category::where('slug',$slug);
+        return response()->json($category);
     }
 
     /**
@@ -76,6 +78,11 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::where('slug',$slug);
+        $category->name = $request->name;
+        $category->save();
+
+        return response()->json($category);
     }
 
     /**
