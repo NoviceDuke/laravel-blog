@@ -7,7 +7,7 @@ $(document).ready(function(){
     $('.open-modal').click(function(){
         var category_slug = $(this).val();
 
-        $.show(url + '/' + category_slug, function (data) {
+        $.get(url + '/' + category_slug, function (data) {
             //success data
             console.log(data);
             $('#category_slug').val(data.slug);
