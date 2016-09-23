@@ -24,10 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $now = Carbon::now()->toDateString();
-
-        $schedule->command('blog:test --refresh')
-                  ->dailyAt('21:00')
-                  ->sendOutputTo(storage_path("/logs/test/output_$now.log"));
+        // $now = Carbon::now()->toDateString();
+        //
+        // $schedule->command('blog:test --refresh')
+        //           ->dailyAt('21:00')
+        //           ->sendOutputTo(storage_path("/logs/test/output_$now.log"));
     }
 }
