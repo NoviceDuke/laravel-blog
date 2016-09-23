@@ -71,7 +71,7 @@
                                 <div class="form-group ">
                                     <label for="inputCategories" class="col-sm-3 control-label">Slug</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control has-error" id="category-slug" name="Slug" placeholder="" value="">
+                                        <input type="text" class="form-control has-error" id="category_slug" name="Slug" placeholder="" value="">
                                     </div>
                                 </div>
 																<div class="form-group ">
