@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Blog'], function () {
 //backend Management
 Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'namespace' => 'Backend'], function () {
 
+
     // logs Viewer
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     // home
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'namespace' => 'Bac
     Route::resource('category', 'CategoryController', ['except' => ['create']]);
     Route::resource('tag', 'TagController');
 });
+
 
 // duke's route
 Route::get('about', 'PagesController@getAbout');

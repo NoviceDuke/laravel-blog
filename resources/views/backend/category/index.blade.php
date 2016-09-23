@@ -38,8 +38,8 @@
 						{{$category->created_at}}
 					</td>
 					<td>
-						<button class="btn btn-info btn-md  open-modal" value="{{$category->slug}}">Edit</button>
-						<button class="btn btn-danger btn-md  open-modal" value="{{$category->slug}}">Delete</button>
+						<button class="btn btn-info btn-md  edit-modal" value="{{$category->slug}}">Edit</button>
+						<button class="btn btn-danger btn-md  delete-modal" value="{{$category->slug}}">Delete</button>
 					</td>
 
 				</tr>
@@ -59,7 +59,7 @@
 		</div>
 	-->
 			</div>
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -71,20 +71,21 @@
                                 <div class="form-group ">
                                     <label for="inputCategories" class="col-sm-3 control-label">Slug</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control has-error" id="category-slug" name="Slug" placeholder="" value="">
+                                        <input type="text" class="form-control has-error" id="slug" name="Slug" placeholder="" value="">
                                     </div>
                                 </div>
 																<div class="form-group ">
                                     <label for="inputCategories" class="col-sm-3 control-label">Category</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control has-error" id="category" name="category" placeholder="Category" value="">
+                                        <input type="text" class="form-control has-error" id="name" name="Name" placeholder="Category" value="">
                                     </div>
                                 </div>
+																{!! csrf_field() !!}
 															</form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" id="btn-save" value="add">Save</button>
-                            <input type="hidden" id="Category_id" name="Category_id" value="0">
+                            <input type="hidden" id="category_slug" name="category_slug" value="0">
                         </div>
                     </div>
                 </div>

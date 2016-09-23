@@ -1,19 +1,21 @@
 $(document).ready(function(){
 
 
-    var url ="/backend/category";
+    var url ="/backend/category/";
 
     //display modal form for category editing
-    $('.open-modal').click(function(){
+    $('.edit-modal').click(function(){
         var category_slug = $(this).val();
 
-        $.get(url + '/' + category_slug, function (data) {
+        $.get(url  + category_slug, function (data) {
             //success data
-            console.log(data);
-            $('#category_slug').val(data.slug);
-            $('#category').val(data.name);
-            $('#btn-save').val("update");
-            $('#myModal').modal('show');
+            //console.log(data);
+            console.log(category_slug);
+            //$('#category_slug').text(data.slug);
+          //  $('#category_slug').val(data.slug);
+          //  $('#category').val(data.name);
+          //  $('#btn-save').val("update");
+            $('#categoryModal').modal('show');
         })
     });
 
@@ -21,11 +23,11 @@ $(document).ready(function(){
     $('#btn-add').click(function(){
         $('#btn-save').val("add");
         $('#frmCategory').trigger("reset");
-        $('#myModal').modal('show');
+        $('#categoryModal').modal('show');
     });
 
     //delete category and remove it from list
-    $('.delete-Category').click(function(){
+    $('.delete-modal').click(function(){
         var category_slug = $(this).val();
 
         $.ajax({
@@ -54,8 +56,8 @@ $(document).ready(function(){
         e.preventDefault();
 
         var formData = {
-            Category: $('#category').val(),
 
+            name:$('#name').val(),
         }
 
         //used to determine the http verb to use [add=POST], [update=PUT]
@@ -94,7 +96,7 @@ $(document).ready(function(){
 
                 $('#frmCategory').trigger("reset");
 
-                $('#myModal').modal('hide')
+                $('#categoryModal').modal('hide')
             },
             error: function (data) {
                 console.log('Error:', data);

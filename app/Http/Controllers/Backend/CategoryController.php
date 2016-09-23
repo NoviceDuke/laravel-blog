@@ -43,16 +43,21 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, array(
-            'name' => 'required|max:255', ));
+        $this->validate($request, [
+          'name' => 'required|max:255',
+        ]);
 
         $category = new Category();
-
-        $category->name = $request->name;
+        $category->name = $request->get('name');
+        $category->slug = str_slug($category->name,'-');
         $category->save();
 
-        Session::flash('success', 'New Category has been created');
+        if($request->ajax())
+        {
+          return response()->json($category);
+        }
 
+        Session::flash('success', 'New Category has been created');
         return redirect()->route('backend.category.index');
     }
 
@@ -62,10 +67,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($slug,Request $request)
     {
         //
         $category = Category::where('slug',$slug);
+
+        if($request->ajax())
+        {
+          return response()->json($category);
+        }
         return response()->json($category);
     }
 
@@ -103,10 +113,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy($slug,Request $request)
     {
         //
         $category = Category::where('slug',$slug)->delete();
+        if($request->ajax()){
+        return response()->json($category);  
+        }
+
         return redirect()->route('backend.category.index');
     }
 }
