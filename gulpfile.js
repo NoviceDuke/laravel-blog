@@ -39,10 +39,10 @@ elixir(function(mix) {
     //duke.js
     mix.scripts([
         'ajax-modal.js',
-        'a_delete_method.js',
         ], 'public/js/modal.js');
     mix.scripts([
         'a_delete_method.js',
+        '/libs/sweetalert2.js',
         ], 'public/js/a_delete_method.js');
 
 });

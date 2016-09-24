@@ -26,8 +26,7 @@
     	            <td>{{$user->created_at}}</td>
     	            <td>{{$user->updated_at}}</td>
     	            <td style="text-align:right;">
-                        <a class="btn btn-info" href="#">檢視</a>
-                        <a class="btn btn-primary" href="#">編輯</a>
+                        <a class="btn btn-primary" href="{{route('backend.user.edit', $user->id)}}">編輯</a>
                         <a class="btn btn-danger" href="{{route('backend.user.destroy', $user->id)}}" data-method="delete" data-confirm="確定刪除嗎? 作者的文章將會一併刪除" data-token="{{csrf_token()}}">刪除</a>
                     </td>
     	          </tr>
@@ -40,4 +39,5 @@
     	</div>
     </div>
 {!! Html::script(asset('js/a_delete_method.js'))!!}
+@include('partials.sweet_alert')
 @endsection

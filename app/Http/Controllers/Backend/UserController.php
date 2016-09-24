@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\Accounts\User;
+use App\Http\Helpers\Alertable;
 
 class UserController extends Controller
 {
+    use Alertable;
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +63,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.user.edit');
+        $user = User::find($id);
+        return view('backend.user.edit', compact('user'));
     }
 
     /**
@@ -71,9 +74,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+        if(!empty($request->password))
+        {
+            $user->password = bcrypt($request->password);
+            $user->save();
+        }
+        $this->alert('Success', '成功更新使用者資訊!')->success()->flashIt();
+        return redirect()->route('backend.user.index');
     }
 
     /**
