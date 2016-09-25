@@ -62,7 +62,12 @@ $(document).ready(function(){
             var formData = {
                 name:$('#category_name').val(),
             }
-            $.post(url, formData );
+            $.post(url, formData, function(data) {
+                console.log('Create Success');
+                console.log('Response : ');
+                console.log('name = '+data.name);
+                console.log('slug = '+data.slug); 
+            });
         }
         console.log(formData);
 
