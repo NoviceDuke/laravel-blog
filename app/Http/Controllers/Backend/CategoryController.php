@@ -70,13 +70,18 @@ class CategoryController extends Controller
     public function show($slug,Request $request)
     {
         //
-        $category = Category::where('slug',$slug);
+
+          $category = Category::where('slug',$slug)->first();
 
         if($request->ajax())
         {
           return response()->json($category);
         }
         return response()->json($category);
+
+
+        //return $category->toArray();
+
     }
 
     /**
@@ -118,7 +123,7 @@ class CategoryController extends Controller
         //
         $category = Category::where('slug',$slug)->delete();
         if($request->ajax()){
-        return response()->json($category);  
+        return response()->json($category);
         }
 
         return redirect()->route('backend.category.index');

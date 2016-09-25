@@ -1,7 +1,9 @@
 $(document).ready(function(){
 
 
-    var url ="/backend/category/";
+
+    var url ="category";
+  
 
     //display modal form for category editing
     $('.edit-modal').click(function(){
