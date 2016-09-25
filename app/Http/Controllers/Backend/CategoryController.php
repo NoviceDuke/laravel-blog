@@ -87,14 +87,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug,Request $request)
     {
         //
-        $category = Category::where('slug',$slug);
-        $category->name = $request->name;
+        $category = Category::where('slug',$slug)->first();
+        $category->name = $request->get('name');
+        $category->slug = str_slug($category->name,'-');
         $category->save();
-
+        if($request->ajax())
+        {
         return response()->json($category);
+        }
+
+
     }
 
     /**
@@ -104,9 +109,18 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
         //
+        $category = Category::where('slug',$slug)->first();
+
+        $category->update($request->all());
+        if($request->ajax())
+        {
+
+        return response()->json($category);
+        }
+
     }
 
     /**
@@ -118,9 +132,12 @@ class CategoryController extends Controller
     public function destroy($slug,Request $request)
     {
         //
-        $category = Category::where('slug',$slug)->first()->delete();
+        $category = Category::where('slug',$slug)->first();
+      //  $category->delete();
+        $category->delete($request->all());
+        if($request->ajax())
+        {
 
-        if($request->ajax()){
         return response()->json($category);
         }
 
