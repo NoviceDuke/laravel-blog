@@ -73,14 +73,11 @@ class CategoryController extends Controller
 
           $category = Category::where('slug',$slug)->first();
 
-        if($request->ajax())
+       if($request->ajax())
         {
           return response()->json($category);
-        }
-        return response()->json($category);
+       }
 
-
-        //return $category->toArray();
 
     }
 
@@ -121,7 +118,8 @@ class CategoryController extends Controller
     public function destroy($slug,Request $request)
     {
         //
-        $category = Category::where('slug',$slug)->delete();
+        $category = Category::where('slug',$slug)->first()->delete();
+
         if($request->ajax()){
         return response()->json($category);
         }

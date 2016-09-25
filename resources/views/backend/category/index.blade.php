@@ -30,7 +30,7 @@
 			</thead>
 			<tbody id="category-list" name="category-list">
 			@foreach($categories as $category)
-				<tr>
+				<tr id="category{{$category->slug}}">
 					<td>{{ $category->id }}</td>
 					<td>{{ $category->name }}</td>
 
@@ -39,25 +39,15 @@
 					</td>
 					<td>
 						<button class="btn btn-info btn-md  edit-modal" value="{{$category->slug}}">Edit</button>
-						<button class="btn btn-danger btn-md  delete-modal" value="{{$category->slug}}">Delete</button>
+						<button class="btn btn-danger btn-md  delete-category" value="{{$category->slug}}">Delete</button>
 					</td>
 
 				</tr>
 			@endforeach
 			</tbody>
 		</table>
-<!--
-		<div class = "col-md-3">
-			<div class = "well">
-				{!! Form::open(['route'=>'backend.category.store','method'=>'POST'])!!}
-				<h2>Add New Category</h2>
-				{{Form::label('name','Name:')}}
-				{{Form::text('name',null,['class'=>'form-control'])}}
-				{{Form::submit('Create New Category',['class'=>'btn btn-primary btn block btn-h1-spacing'])}}
-				{!!Form::close()!!}
-			</div>
-		</div>
-	-->
+
+	<!--modal -->
 			</div>
 			<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -68,19 +58,11 @@
                         </div>
                         <div class="modal-body">
                             <form id="frmCategory" name="frmCategory" class="form-horizontal" novalidate="">
-                                <div class="form-group ">
-                                    <label for="inputCategories" class="col-sm-3 control-label">Slug</label>
-                                    <div class="col-sm-9">
 
-
-                              <input type="text" class="form-control has-error" id="category_slug" name="Slug" placeholder="" value="">
-
-                                    </div>
-                                </div>
 																<div class="form-group ">
                                     <label for="inputCategories" class="col-sm-3 control-label">Category</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control has-error" id="name" name="Name" placeholder="Category" value="">
+                                        <input type="text" class="form-control has-error" id="category_name" name="Name" placeholder="" value="">
                                     </div>
                                 </div>
 																{!! csrf_field() !!}

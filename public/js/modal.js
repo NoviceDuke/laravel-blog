@@ -2,8 +2,8 @@ $(document).ready(function(){
 
 
 
-    var url ="category";
-  
+    var url ="category/";
+
 
     //display modal form for category editing
     $('.edit-modal').click(function(){
@@ -13,10 +13,10 @@ $(document).ready(function(){
             //success data
             //console.log(data);
             console.log(category_slug);
-            //$('#category_slug').text(data.slug);
-          //  $('#category_slug').val(data.slug);
-          //  $('#category').val(data.name);
-          //  $('#btn-save').val("update");
+
+            $('#category_slug').val(data.slug);
+            $('#category_name').val(data.name);
+            $('#btn-save').val("update");
             $('#categoryModal').modal('show');
         })
     });
@@ -29,7 +29,7 @@ $(document).ready(function(){
     });
 
     //delete category and remove it from list
-    $('.delete-modal').click(function(){
+    $('.delete-category').click(function(){
         var category_slug = $(this).val();
 
         $.ajax({
@@ -59,19 +59,19 @@ $(document).ready(function(){
 
         var formData = {
 
-            name:$('#name').val(),
+            name:$('#category_name').val(),
         }
 
         //used to determine the http verb to use [add=POST], [update=PUT]
         var state = $('#btn-save').val();
 
         var type = "POST"; //for creating new resource
-        var category_id = $('#category_id').val();;
+        var category_new_name = $('#category_name').val();;
         var my_url = url;
 
         if (state == "update"){
             type = "PUT"; //for updating existing resource
-            my_url += '/' + category_id;
+            my_url +=   category_slug;
         }
 
         console.log(formData);
@@ -85,15 +85,15 @@ $(document).ready(function(){
             success: function (data) {
                 console.log(data);
 
-                var category = '<tr id="category' + data.id + '"><td>' + data.id + '</td><td>' + data.category + '</td><td>' + data.description + '</td><td>' + data.created_at + '</td>';
-                category += '<td><button class="btn btn-warning btn-xs btn-detail open-modal" value="' + data.id + '">Edit</button>';
-                category += '<button class="btn btn-danger btn-xs btn-delete delete-category" value="' + data.id + '">Delete</button></td></tr>';
+                var category = '<tr id="category' + data.slug + '"><td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.created_at + '</td>';
+                category += '<td><button class="btn btn-info btn-md  edit-modal" value="' + data.slug + '">Edit</button>';
+                category += '<button class="btn btn-danger btn-md  delete-category" value="' + data.slug + '">Delete</button></td></tr>';
 
                 if (state == "add"){ //if user added a new record
                     $('#category-list').append(category);
                 }else{ //if user updated an existing record
 
-                    $("#category" + category_id).replaceWith( category );
+                    $("#category" + category_new_name).replaceWith( category );
                 }
 
                 $('#frmCategory').trigger("reset");
