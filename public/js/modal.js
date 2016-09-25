@@ -96,6 +96,7 @@ $(document).ready(function(){
                 $('#frmCategory').trigger("reset");
 
                 $('#categoryModal').modal('hide')
+                
             },
             error: function (data) {
                 console.log('Error:', data);
