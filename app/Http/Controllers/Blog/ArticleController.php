@@ -106,6 +106,12 @@ class ArticleController extends Controller
      */
     public function edit($slug)
     {
+        // 權限檢查
+        if (!(Auth::user()->isSuperRoot() || Auth::user()->hasPermission('EditArticle'))) {
+            $this->alert('Warning', '你沒有修改文章的權限')->warning()->flashIt();
+
+            return redirect()->route('blog.index');
+        }
         $article = $this->articles->getFromSlug($slug);
         $categories = Category::lists('name', 'id');
 
@@ -136,6 +142,13 @@ class ArticleController extends Controller
      */
     public function destroy($slug)
     {
+        // 權限檢查
+        if (!(Auth::user()->isSuperRoot() || Auth::user()->hasPermission('DeleteArticle'))) {
+            $this->alert('Warning', '你沒有刪除文章的權限')->warning()->flashIt();
+
+            return redirect()->route('blog.index');
+        }
+
         $article = $this->articles->getFromSlug($slug);
         $article->delete();
 
