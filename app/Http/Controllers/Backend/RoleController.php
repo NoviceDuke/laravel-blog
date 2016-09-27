@@ -9,9 +9,12 @@ use App\Http\Controllers\Controller;
 use App\Accounts\User;
 use App\Accounts\Permission\Permission;
 use App\Accounts\Permission\Role;
+use App\Http\Helpers\Alertable;
 
 class RoleController extends Controller
 {
+
+    use Alertable;
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +22,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        return view('backend.role.index',compact('roles'));
     }
 
     /**
@@ -62,7 +66,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        return view('backend.role.edit', compact('permissions', 'role'));
     }
 
     /**
@@ -74,9 +80,12 @@ class RoleController extends Controller
      */
      public function update(Request $request, $id)
      {
-        // $user = User::find($id);
-        // $role_ids = ($request->get('role')) ? array_values($request->get('role')): [];
-        // $user->syncRoles($role_ids);
+        $role = Role::find($id);
+        $permission_ids = ($request->get('permission')) ? array_values($request->get('permission')): [];
+        $role->syncPermissions($permission_ids);
+        $this->alert('Success', '成功更新角色!')->success()->flashIt();
+
+        return redirect()->route('backend.role.edit', $id);
      }
 
     /**

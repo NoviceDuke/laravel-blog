@@ -44,6 +44,7 @@
                 @foreach ($roles as $index => $role)
                     {!! Form::checkbox("role[$index]", $role->id, $user->hasRole($role->name)); !!}
                     {!! Form::label($role->name, $role->display_name) !!}
+                    <a href="{{url('/backend/role/'.$role->id.'/edit')}}" style="margin-right:30px;">編輯</a>
                 @endforeach
             </div>
             {!! Form::submit('Update Roles!',['class' => 'btn btn-primary']) !!}
