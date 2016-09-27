@@ -38,6 +38,6 @@
     		</div>
     	</div>
     </div>
-{!! Html::script(asset('js/a_delete_method.js'))!!}
+{!! Html::script(asset('js/hchs_backend.js'))!!}
 @include('partials.sweet_alert')
 @endsection

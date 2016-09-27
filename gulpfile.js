@@ -43,6 +43,6 @@ elixir(function(mix) {
     mix.scripts([
         'a_delete_method.js',
         '/libs/sweetalert2.js',
-        ], 'public/js/a_delete_method.js');
+    ], 'public/js/hchs_backend.js');
 
 });
