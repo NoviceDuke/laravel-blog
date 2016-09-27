@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Blog'], function () {
 });
 
 //backend Management
-Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'namespace' => 'Backend'], function () {
+Route::group(['prefix' => 'backend', 'middleware' => ['auth', 'backend'], 'namespace' => 'Backend'], function () {
 
     // logs Viewer
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
