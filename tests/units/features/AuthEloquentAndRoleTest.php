@@ -29,6 +29,7 @@ class AuthEloquentAndRoleTest extends TestCase
         parent::setUp();
         $this->user = factory(User::class)->create(['name' => 'root']);
         $this->role = factory(Role::class)->create(['name' => 'super']);
+        $this->role2 = factory(Role::class)->create();
         $this->permission = factory(Permission::class)->create(['name' => 'removeRole']);
         $this->role->attachPermission($this->permission);
     }
@@ -54,7 +55,6 @@ class AuthEloquentAndRoleTest extends TestCase
         $this->user->detachRole($this->role);
         $this->assertNull($this->user->roles()->first());
     }
-
     /**
      * 測試 關聯User是否擁有某些Role.
      *
@@ -68,6 +68,23 @@ class AuthEloquentAndRoleTest extends TestCase
         $this->assertTrue($this->user->hasRole('super'));
         $this->assertFalse($this->user->hasRole('super123456'));
     }
+
+    /**
+     * 測試 關聯User與Role.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testCanUserSyncRoleIds()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        $this->user->syncRoles([1, 2]);
+
+        $this->assertTrue($this->user->hasRole('super'));
+
+    }
+
+
 
     /**
      * 測試 關聯User是否為超級使用者.

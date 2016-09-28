@@ -21,19 +21,19 @@ class UserSeeder extends Seeder
                 'name' => 'duke',
                 'password' => bcrypt('123456'),
             ]);
-        $author = User::create([
-                    'email' => 'author@gmail.com',
-                    'name' => 'author',
-                    'password' => bcrypt('123456'),
-                ]);
-        $user = User::create([
-                'email' => 'user@gmail.com',
-                'name' => 'user',
-                'password' => bcrypt('123456'),
-            ]);
+        // $author = User::create([
+        //             'email' => 'author@gmail.com',
+        //             'name' => 'author',
+        //             'password' => bcrypt('123456'),
+        //         ]);
+        // $user = User::create([
+        //         'email' => 'user@gmail.com',
+        //         'name' => 'user',
+        //         'password' => bcrypt('123456'),
+        //     ]);
 
         $hchs->attachRole(Role::findName('SuperRoot'));
         $duke->attachRole(Role::findName('SuperRoot'));
-        $author->attachRole(Role::findName('Author'));
+        // $author->attachRole(Role::findName('Author'));
     }
 }

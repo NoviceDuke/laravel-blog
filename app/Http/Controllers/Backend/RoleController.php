@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Articles\Category;
-use App\Articles\Article;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Session;
+use App\Accounts\User;
+use App\Accounts\Permission\Permission;
+use App\Accounts\Permission\Role;
+use App\Http\Helpers\Alertable;
 
-class CategoryController extends Controller
+class RoleController extends Controller
 {
+
+    use Alertable;
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +22,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
-        $categories = Category::all();
-
-        return view('backend.category.index',compact('categories'));
+        $roles = Role::all();
+        return view('backend.role.index',compact('roles'));
     }
 
     /**
@@ -43,17 +45,6 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, array(
-            'name' => 'required|max:255', ));
-
-        $category = new Category();
-
-        $category->name = $request->name;
-        $category->save();
-
-        Session::flash('success', 'New Category has been created');
-
-        return redirect()->route('backend.category.index');
     }
 
     /**
@@ -62,11 +53,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
         //
-        $category = Category::where('slug',$slug)->first();
-        return $category->toArray();
     }
 
     /**
@@ -77,12 +66,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
-        $category = Category::where('slug',$slug);
-        $category->name = $request->name;
-        $category->save();
-
-        return response()->json($category);
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        return view('backend.role.edit', compact('permissions', 'role'));
     }
 
     /**
@@ -92,10 +78,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+     public function update(Request $request, $id)
+     {
+        $role = Role::find($id);
+        $permission_ids = ($request->get('permission')) ? array_values($request->get('permission')): [];
+        $role->syncPermissions($permission_ids);
+        $this->alert('Success', '成功更新角色!')->success()->flashIt();
+
+        return redirect()->route('backend.role.edit', $id);
+     }
 
     /**
      * Remove the specified resource from storage.
@@ -103,10 +94,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy($id)
     {
         //
-        $category = Category::where('slug',$slug)->delete();
-        return redirect()->route('backend.category.index');
     }
 }

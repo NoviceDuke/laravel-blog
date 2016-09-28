@@ -33,7 +33,17 @@ trait RolePermissionTrait
      */
     public function attachRole($role)
     {
-        return $this->roles()->attach($role);
+        if(!$this->hasRole($role->name))
+            return $this->roles()->attach($role);
+    }
+
+    /**
+     * sync關聯特定的role_ids.
+     *
+     */
+    public function syncRoles($role_ids)
+    {
+        return $this->roles()->sync($role_ids);
     }
 
     /**

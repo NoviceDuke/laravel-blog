@@ -36,4 +36,13 @@ elixir(function(mix) {
     mix.browserSync({
         proxy: 'localhost/laravel-blog/public'
     });
+    //duke.js
+    mix.scripts([
+        'ajax-modal.js',
+        ], 'public/js/modal.js');
+    mix.scripts([
+        'a_delete_method.js',
+        '/libs/sweetalert2.js',
+    ], 'public/js/hchs_backend.js');
+
 });
