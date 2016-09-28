@@ -1,4 +1,5 @@
 @extends('blog.layouts.app')
+@section('title', '- 建立文章')
 @section('content')
     <div class="card-panel white">
         <div class="card-panel-container">

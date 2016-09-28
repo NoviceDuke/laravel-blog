@@ -1,4 +1,5 @@
 @extends('blog.layouts.app')
+@section('title', '- 文章')
 @section('content')
 @inject('articlePresenter', 'App\Presenters\ArticlePresenter')
 <div class="container show-container">
@@ -23,17 +24,6 @@
                 <p>{!!$article->content!!}</p>
             </div>
         </div>
-        <div class="card-action">
-            <a href="#">This is a link</a>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col s6">
-        前一個
-    </div>
-    <div class="col s6">
-        下一個
     </div>
 </div>
 </div>

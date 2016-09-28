@@ -1,5 +1,6 @@
 @inject('articlePresenter', 'App\Presenters\ArticlePresenter')
 @extends('blog.layouts.app')
+@section('title', '- 文章類別')
 @section('content')
 <div class="row">
     <!--Static Cut Left Panel 75%-->

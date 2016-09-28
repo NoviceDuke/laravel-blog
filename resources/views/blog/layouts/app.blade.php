@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>HCHS Blog Trace Page</title>
+        <title>Blog @yield('title')</title>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         {!! Html::script('https://code.jquery.com/jquery-2.1.1.min.js')!!}
         {!! Html::style(url('materialize/css/materialize.css'))!!}
@@ -22,9 +22,8 @@
         <!--  Top Navigation  -->
         <nav class="blue-grey darken-2 nav-height-fix">
             <div class="nav-wrapper blue-grey darken-2 nav-content-fix">
-              <a href="{{url('/')}}" class="brand-logo logo-fix">HCHS's Blog</a>
+              <a href="{{url('/')}}" class="brand-logo logo-fix">Blog Home</a>
               <ul class="right hide-on-med-and-down">
-                <li><a href="{{url('/')}}"><i class="material-icons nav-icon-fix">home</i></a></li>
                 @if(Auth::user())
                     <li><a href="{{url('logout')}}">登出</a></li>
                 @else
