@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Blog'], function () {
 });
 
 //backend Management
-Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'namespace' => 'Backend'], function () {
+Route::group(['prefix' => 'backend', 'middleware' => ['auth', 'backend'], 'namespace' => 'Backend'], function () {
 
     // logs Viewer
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
@@ -38,6 +38,10 @@ Route::group(['prefix' => 'backend', 'middleware' => 'auth', 'namespace' => 'Bac
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController', ['except' => ['create']]);
     Route::resource('tag', 'TagController');
+    Route::resource('user', 'UserController');
+    Route::patch('user/update_roles/{id}', 'UserController@updateRoles')->name('backend.user.update_roles');
+    Route::patch('user/detach_root/{id}', 'UserController@detachRoot')->name('backend.user.detach_root');
+    Route::resource('role', 'RoleController');
 });
 
 // duke's route
