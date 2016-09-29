@@ -26,10 +26,25 @@ class Category extends Eloquent
         return $this->hasMany(Article::class);
     }
 
+    /**
+     * 取得當下Category關聯的Style。
+     */
+    public function style()
+    {
+        return $this->morphOne(Style::class, 'styleable');
+    }
+
     /*------------------------------------------------------------------------**
     ** 存取器                                                                 **
     **------------------------------------------------------------------------*/
-
+    public function getStyleAttribute($style)
+    {
+        if($this->style()->count())
+            return $this->getRelationValue('style');
+        else {
+            return Style::findName('Default');
+        }
+    }
     /**
      *  在使用Category Model設定name時，會進入此存取器
      *  自動判斷重複的name並給予新的name
@@ -59,6 +74,14 @@ class Category extends Eloquent
     public function addArticle(Article $article)
     {
         return $this->articles()->save($article);
+    }
+
+    /**
+     * 在此類別連結一個Style
+     */
+    public function useStyle(Style $style)
+    {
+        return $this->style()->save($style);
     }
 
     public function path()

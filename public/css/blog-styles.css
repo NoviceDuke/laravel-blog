@@ -6,6 +6,12 @@
 .bcolor-text-grey:hover {
   background-color: #e65100 !important; }
 
+.bcolor-default {
+  background-color: #00695c !important; }
+
+.bcolor-default:hover {
+  background-color: #e65100 !important; }
+
 .bcolor-purple {
   background-color: #7e57c2 !important; }
 
@@ -51,6 +57,9 @@
 .text-grey {
   color: #424242 !important; }
 
+.default {
+  color: #00695c !important; }
+
 .purple {
   color: #7e57c2 !important; }
 
@@ -75,6 +84,9 @@
 .border-top-text-grey {
   border-top: 2px solid #424242; }
 
+.border-top-default {
+  border-top: 2px solid #00695c; }
+
 .border-top-purple {
   border-top: 2px solid #7e57c2; }
 
@@ -98,6 +110,9 @@
 
 .border-right-text-grey {
   border-right: 5px solid #424242; }
+
+.border-right-default {
+  border-right: 5px solid #00695c; }
 
 .border-right-purple {
   border-right: 5px solid #7e57c2; }
