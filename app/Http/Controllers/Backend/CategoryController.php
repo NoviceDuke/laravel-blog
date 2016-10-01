@@ -112,13 +112,12 @@ class CategoryController extends Controller
     public function update(Request $request, $slug)
     {
         //
-        $category = Category::where('slug',$slug)->first();
+        $category = Category::where('slug', $slug)->first();
 
         $category->update($request->all());
         if($request->ajax())
         {
-
-        return response()->json($category);
+            return response()->json($category);
         }
 
     }

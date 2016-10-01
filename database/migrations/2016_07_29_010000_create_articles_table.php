@@ -23,7 +23,7 @@ class CreateArticlesTable extends Migration
 
             //foreign Key Set
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
         });
     }
 
