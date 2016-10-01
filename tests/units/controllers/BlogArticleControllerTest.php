@@ -136,7 +136,6 @@ class BlogArticleControllerTest extends TestCase
         $this->call('POST', '/article', $requestValue);
 
         //Then
-        $this->assertRedirectedTo('/article/sally-hi');
         $this->seeInDatabase('articles', ['slug' => 'sally-hi']);
     }
 }

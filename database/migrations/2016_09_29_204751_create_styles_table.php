@@ -14,8 +14,6 @@ class CreateStylesTable extends Migration
     {
         Schema::create('styles', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('styleable_id')->unsigned()->nullable();
-            $table->string('styleable_type')->nullable();
             $table->string('name')->unique()->index();
             $table->string('main_color')->nullable();
             $table->string('support_color')->nullable();

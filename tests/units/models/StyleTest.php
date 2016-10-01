@@ -53,12 +53,13 @@ class StyleTest extends TestCase
         // Given
         // 創建1筆Style、1筆類別
         $style = factory(Style::class)->create();
+        $style2 = factory(Style::class)->create();
         $category = factory(Category::class)->create();
         // When
-        $category->style()->save($style);
-        $category->style()->save($style);
+        $category->useStyle($style);
+        $category->useStyle($style2);
         // Then
-        $this->assertEquals(1, $category->style()->count());
+        $this->assertEquals(1, $category->styles()->count());
     }
 
     /**
@@ -77,7 +78,7 @@ class StyleTest extends TestCase
         // When
         $category->useStyle($style);
         // Then
-        $this->assertEquals($category->name, $style->styleable->name);
+        $this->assertEquals($category->name, $style->categories()->first()->name);
     }
 
 }

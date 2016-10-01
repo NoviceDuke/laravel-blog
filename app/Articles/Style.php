@@ -9,7 +9,18 @@ class Style extends Eloquent
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
     **------------------------------------------------------------------------*/
+
+    /**
+     * 表名稱.
+     */
     protected $table = 'styles';
+
+    /**
+     * 多形中介表名稱.
+     */
+    private $pivot_table = 'styleables';
+
+
     protected $fillable = [
         'name',                 // style名稱
         'main_color',           // 主要顏色
@@ -21,12 +32,12 @@ class Style extends Eloquent
     /*------------------------------------------------------------------------**
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
-    
+
     /**
-    * 取得所有所屬的可擁有圖片的模型。
+    * 取得所有擁有Style的Category模型。
     */
-    public function styleable()
+    public function categories()
     {
-        return $this->morphTo();
+        return $this->morphedByMany(Category::class, $this->pivot_table);
     }
 }
