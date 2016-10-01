@@ -6,6 +6,7 @@ use Event;
 use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
+use App\Articles\Tag;
 use App\Events\ArticleEvents\ArticleWasPosted;
 use App\Events\ArticleEvents\ArticleWasDeleted;
 use App\Events\ArticleEvents\ArticleWasUpdated;
@@ -79,9 +80,10 @@ class ArticleController extends Controller
 
         //grab all of our categories in database;
         $categories = Category::lists('name', 'id');
+        $tags = Tag::all();
 
         //return view('blog.article.create')->withCategories($categories);
-        return view('blog.article.create', compact('articles', 'categories'));
+        return view('blog.article.create', compact('articles', 'categories', 'tags'));
     }
 
     /**
@@ -92,7 +94,7 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request)
     {
         $article = $this->articles->createFromUser($request->all(), Auth::user());
-
+        $article->syncTags(array_values($request->get('tag')));
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleWasPosted($article));
         $this->alert('Success', 'Your article is created successful')->success()->flashIt();
@@ -106,6 +108,12 @@ class ArticleController extends Controller
      */
     public function edit($slug)
     {
+        // 權限檢查
+        if (!(Auth::user()->isSuperRoot() || Auth::user()->hasPermission('EditArticle'))) {
+            $this->alert('Warning', '你沒有修改文章的權限')->warning()->flashIt();
+
+            return redirect()->route('blog.index');
+        }
         $article = $this->articles->getFromSlug($slug);
         $categories = Category::lists('name', 'id');
 
@@ -136,6 +144,13 @@ class ArticleController extends Controller
      */
     public function destroy($slug)
     {
+        // 權限檢查
+        if (!(Auth::user()->isSuperRoot() || Auth::user()->hasPermission('DeleteArticle'))) {
+            $this->alert('Warning', '你沒有刪除文章的權限')->warning()->flashIt();
+
+            return redirect()->route('blog.index');
+        }
+
         $article = $this->articles->getFromSlug($slug);
         $article->delete();
 

@@ -55,5 +55,25 @@ class Role extends Eloquent
         return $this->permissions()->detach($permission);
     }
 
-    
+    /**
+     * sync關聯特定的permission_ids.
+     *
+     */
+    public function syncPermissions($permission_ids)
+    {
+        return $this->permissions()->sync($permission_ids);
+    }
+
+    /**
+     * 判斷有無特定的Permission
+     */
+    public function hasPermission($permission_name)
+    {
+        if ($this->permissions()->where('name', $permission_name)->first()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

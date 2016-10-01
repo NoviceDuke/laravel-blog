@@ -1,4 +1,5 @@
 @extends('blog.layouts.app')
+@section('title', '- 首頁')
 @section('content')
 <div class="row">
     <!--Static Cut Left Panel 75%-->

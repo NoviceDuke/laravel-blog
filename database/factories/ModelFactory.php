@@ -33,6 +33,15 @@ $factory->define(App\Articles\Category::class, function (Faker\Generator $faker)
     ];
 });
 
+$factory->define(App\Articles\Style::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'main_color' => $faker->hexcolor,
+        'support_color' => $faker->hexcolor,
+        'css' => $faker->word,
+    ];
+});
+
 $factory->define(App\Articles\Comment::class, function (Faker\Generator $faker) {
     return [
         'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
