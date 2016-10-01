@@ -15,23 +15,23 @@ class CategorySeeder extends Seeder
         Category::create([
             'name' => 'Lyrics',
             'slug' => str_slug('Lyrics', '-'),
-        ])->useStyle(Style::findName('Red'));
+        ])->useStyle(Style::findName('Pink'));
         Category::create([
             'name' => 'Server',
             'slug' => str_slug('Server', '-'),
-        ])->useStyle(Style::findName('Blue'));
+        ])->useStyle(Style::findName('Cyan'));
         Category::create([
             'name' => 'PHP',
             'slug' => str_slug('PHP', '-'),
-        ])->useStyle(Style::findName('Yellow'));
+        ])->useStyle(Style::findName('Amber'));
         Category::create([
             'name' => 'Android',
             'slug' => str_slug('Android', '-'),
-        ])->useStyle(Style::findName('Green'));
+        ])->useStyle(Style::findName('Deep Orange'));
         Category::create([
             'name' => 'Music',
             'slug' => str_slug('Music', '-'),
-        ])->useStyle(Style::findName('Purple'));
+        ])->useStyle(Style::findName('Deep Purple'));
 
         // 隨機取得15篇文章，隨機加入某個分類
         $randArticles = Article::all();
