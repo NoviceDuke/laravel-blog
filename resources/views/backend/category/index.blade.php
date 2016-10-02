@@ -17,7 +17,7 @@
 
 		</div>
 
-{{ csrf_field() }}
+		{{ csrf_field() }}
 		<table class = "table table-hover table-striped">
 			<thead>
 				<tr>
@@ -46,9 +46,9 @@
 			@endforeach
 			</tbody>
 		</table>
-
+	</div>
 	<!--modal -->
-			</div>
+
 			<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
