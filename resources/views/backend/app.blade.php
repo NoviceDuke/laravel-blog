@@ -34,7 +34,7 @@
               <li><a href="{{route('backend.role.index')}}">Role</a></li>
               <li><a href="{{route('backend.article.index')}}">Article</a></li>
               <li><a href="{{route('backend.category.index')}}">Category</a></li>
-              <li><a href="{{route('backend.tag.index')}}#">Tag</a></li>
+              <li><a href="{{route('backend.tag.index')}}">Tag</a></li>
 
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>

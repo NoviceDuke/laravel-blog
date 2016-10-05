@@ -16,7 +16,9 @@
 
 	</div>
 	</div>
-</div>
+<div class="table-responsive">
+
+
 		{{ csrf_field() }}
 	<table class = "table table-hover table-striped">
 		<thead>
@@ -44,7 +46,38 @@
 				</tr>
 				</tr>
 			@endforeach
-
-	</tbody>
+		</tbody>
 </table>
+</div>
+</div>
+<!--modal -->
+
+		<div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+									<div class="modal-content">
+											<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+													<h4 class="modal-title" id="myModalLabel">Tag Editor</h4>
+											</div>
+											<div class="modal-body">
+													<form id="frmTag" name="frmTag" class="form-horizontal" novalidate="">
+
+															<div class="form-group ">
+																	<label for="inputTags" class="col-sm-3 control-label">Tag</label>
+																	<div class="col-sm-9">
+																			<input type="text" class="form-control has-error" id="tag_name" name="Name" placeholder="" value="">
+																	</div>
+															</div>
+															{!! csrf_field() !!}
+														</form>
+											</div>
+											<div class="modal-footer">
+													<button type="button" class="btn btn-primary" id="btn-save" value="add">Save</button>
+													<input type="hidden" id="tag_id" name="tag_id" value="0">
+											</div>
+									</div>
+							</div>
+					</div>
+	<meta name="_token" content="{{ csrf_token() }}"/>
+	<script src="{{asset('js/modal.js')}}"></script>
 @endsection

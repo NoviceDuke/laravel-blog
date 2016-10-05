@@ -17,8 +17,10 @@
 
 		</div>
 
-		{{ csrf_field() }}
-		<table class = "table table-hover table-striped">
+
+		<div class="table-responsive">
+			{{ csrf_field() }}
+			<table class = "table table-hover table-striped">
 			<thead>
 				<tr>
 					<th data-field="id">ID</th>
@@ -31,21 +33,20 @@
 			<tbody id="category-list" name="category-list">
 			@foreach($categories as $category)
 				<tr id="category{{$category->slug}}">
+					<tr>
 					<td>{{ $category->id }}</td>
 					<td>{{ $category->name }}</td>
-
-					<td>
-						{{$category->created_at}}
-					</td>
+					<td>{{$category->created_at}}</td>
 					<td>
 						<button class="btn btn-info btn-md  edit-modal" value="{{$category->slug}}">Edit</button>
-						<button class="btn btn-danger btn-md  delete-category" value="{{$category->slug}}">Delete</button>
+						<button class="btn btn-danger btn-md  delete-tag" value="{{$category->slug}}">Delete</button>
 					</td>
-
+					</tr>
 				</tr>
 			@endforeach
 			</tbody>
 		</table>
+		</div>
 	</div>
 	<!--modal -->
 

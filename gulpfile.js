@@ -38,7 +38,7 @@ elixir(function(mix) {
     });
     //duke.js
     mix.scripts([
-        'ajax-modal.js',
+        'ajax-modal.js','tag-modal.js',
         ], 'public/js/modal.js');
     mix.scripts([
         'a_delete_method.js',
