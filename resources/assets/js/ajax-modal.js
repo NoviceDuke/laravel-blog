@@ -66,9 +66,11 @@ $(document).ready(function(){
                 console.log('Create Success');
                 console.log('Response : ');
                 console.log('name = '+data.name);
-                console.log('slug = '+data.slug); 
+                console.log('slug = '+data.slug);
+
             });
         }
+      
         console.log(formData);
 
     });

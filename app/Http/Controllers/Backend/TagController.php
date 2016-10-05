@@ -64,9 +64,16 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
         //
+          $tag = Tag::find($id);
+          if($request->ajax())
+          {
+
+          return response()->json($tag);
+          }
+
     }
 
     /**
@@ -90,6 +97,14 @@ class TagController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $tag = Tag::find($id);
+        $tag -> update($request->all());
+        if($request->ajax())
+        {
+
+        return response()->json($tag);
+        }
+
     }
 
     /**
@@ -98,8 +113,14 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         //
+        $tag = Tag::find($id);
+        $tag -> delete();
+        if($request->ajax())
+        {
+          return response()->json($tag);
+        }
     }
 }

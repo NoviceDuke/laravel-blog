@@ -11,16 +11,14 @@
 			All Tags
 			</div>
 			<div class="col-md-4 text-right">
-					<button id="btn-add" name="btn-add" class="btn btn-primary btn-lg">Add New Tags</button>
+					<button id="tag-add" name="tag-add" class="btn btn-primary btn-lg">Add New Tags</button>
 			</div>
 
 	</div>
 	</div>
-<div class="table-responsive">
-
-
-		{{ csrf_field() }}
-	<table class = "table table-hover table-striped">
+<div class="table-responsive" id="tag_table">
+	{{ csrf_field() }}
+	<table class = "table table-hover table-striped" >
 		<thead>
 			<tr>
 				<th data-field="id">ID</th>
@@ -30,7 +28,7 @@
 
 			</tr>
 		</thead>
-		<tbody id="tag-list" name="tag-list">
+		<tbody id="tag_list" name="tag_list">
 			@foreach($tags as $tag)
 			<tr id="tag{{$tag->id}}">
 
@@ -39,7 +37,7 @@
 					<td>{{ $tag->name }}</td>
 					<td>{{ $tag->created_at }}</td>
 					<td>
-						<button class="btn btn-info btn-md  edit-modal" value="{{$tag->id}}">Edit</button>
+						<button class="btn btn-info btn-md  tag-edit" value="{{$tag->id}}">Edit</button>
 						<button class="btn btn-danger btn-md  delete-tag" value="{{$tag->id}}">Delete</button>
 					</td>
 
@@ -72,7 +70,7 @@
 														</form>
 											</div>
 											<div class="modal-footer">
-													<button type="button" class="btn btn-primary" id="btn-save" value="add">Save</button>
+													<button type="button" class="btn btn-primary" id="tag-save" value="add">Save</button>
 													<input type="hidden" id="tag_id" name="tag_id" value="0">
 											</div>
 									</div>
