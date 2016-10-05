@@ -11,15 +11,18 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create('en_EN');
         $hchs = User::create([
                 'email' => 'g9308370@hotmail.com',
                 'name' => 'hchs',
                 'password' => bcrypt('123456'),
+                'about_me' => $faker->realText($maxNbChars = 800, $indexSize = 2),
             ]);
         $duke = User::create([
                 'email' => 'duke00360753@gmail.com',
                 'name' => 'duke',
                 'password' => bcrypt('123456'),
+                'about_me' => $faker->realText($maxNbChars = 800, $indexSize = 2),
             ]);
         // $author = User::create([
         //             'email' => 'author@gmail.com',
