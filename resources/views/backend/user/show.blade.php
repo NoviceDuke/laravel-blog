@@ -1,7 +1,7 @@
 @extends('backend/app')
 @section('content')
     <div class="well well-lg">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
             <div class="panel-heading">{{$user->name}} - 詳細資料</div>
             <div class="panel-body">
                 <div class="row">
@@ -28,13 +28,51 @@
                         <div>
                             Links :
                         </div>
+                        <div>
+                            Roles :
+                            @foreach ($user->roles as $role)
+                                {{$role->display_name}}
+                            @endforeach
+                        </div>
+                        <div>
+                            Permissions :
+                            @foreach ($user->permissions as $permission)
+                                <span style="margin-right:15px;">v-{{$permission->display_name}}</span>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="panel panel-default">
+        <div class="panel panel-info">
+            <div class="panel-heading">{{$user->name}} - 文章列表</div>
             <div class="panel-body">
-                hello2
+                <table class="table table-hover table-striped">
+        	        <thead>
+        	          <tr>
+        	              <th>ID</th>
+        	              <th>title</th>
+        	              <th>slug</th>
+        	              <th>created_at</th>
+        	              <th>updated_at</th>
+        	              <th style="max-width:10px;"></th>
+        	          </tr>
+        	        </thead>
+        	        <tbody>
+                    @foreach ($user->articles as $article)
+        	        <tr>
+        	            <td>{{$article->id}}</td>
+        	            <td>{{$article->title}}</td>
+        	            <td>{{$article->slug}}</td>
+        	            <td>{{$article->created_at}}</td>
+        	            <td>{{$article->updated_at}}</td>
+        	            <td style="text-align:right;">
+                            <a class="btn btn-info" href="{{route('backend.article.show', $article->id)}}">檢視</a>
+                        </td>
+        	        </tr>
+                    @endforeach
+        	        </tbody>
+        	    </table>
             </div>
         </div>
     </div>
