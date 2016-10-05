@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Articles\Category;
 use App\Articles\Article;
+use App\Articles\Style;
 
 class CategorySeeder extends Seeder
 {
@@ -13,29 +14,24 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'name' => 'Lyrics',
-            'css_class' => 'red',
             'slug' => str_slug('Lyrics', '-'),
-        ]);
+        ])->useStyle(Style::findName('Pink'));
         Category::create([
             'name' => 'Server',
-            'css_class' => 'blue',
             'slug' => str_slug('Server', '-'),
-        ]);
+        ])->useStyle(Style::findName('Cyan'));
         Category::create([
             'name' => 'PHP',
-            'css_class' => 'yellow',
             'slug' => str_slug('PHP', '-'),
-        ]);
+        ])->useStyle(Style::findName('Amber'));
         Category::create([
             'name' => 'Android',
-            'css_class' => 'green',
             'slug' => str_slug('Android', '-'),
-        ]);
+        ])->useStyle(Style::findName('Deep Orange'));
         Category::create([
             'name' => 'Music',
-            'css_class' => 'purple',
             'slug' => str_slug('Music', '-'),
-        ]);
+        ])->useStyle(Style::findName('Deep Purple'));
 
         // 隨機取得15篇文章，隨機加入某個分類
         $randArticles = Article::all();

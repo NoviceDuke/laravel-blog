@@ -42,6 +42,20 @@ class TagController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+          'name' => 'required|max:255',
+        ]);
+
+        $tag = new Tag();
+        $tag->name = $request->get('name');
+
+        $tag->save();
+
+        if($request->ajax())
+        {
+          return response()->json($tag);
+        }
+
     }
 
     /**

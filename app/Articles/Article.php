@@ -157,4 +157,14 @@ class Article extends Eloquent
     {
         return $this->tags()->detach($tag);
     }
+
+    /**
+     *  在當下的Article sync指定的tag_ids.
+     *
+     *  @param Tag::Class
+     */
+    public function syncTags($tag_ids)
+    {
+        return $this->tags()->sync($tag_ids);
+    }
 }
