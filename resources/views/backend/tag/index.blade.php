@@ -2,7 +2,7 @@
 @section('title','| All Tags')
 
 @section('content')
-
+	<meta name="_token" content="{{ csrf_token() }}"/>
 	<div class="panel panel-info">
 	<div class="panel-heading">Tags</div>
 	<div class="panel-body">
@@ -18,6 +18,7 @@
 	</div>
 <div class="table-responsive" id="tag_table">
 	{{ csrf_field() }}
+
 	<table class = "table table-hover table-striped" >
 		<thead>
 			<tr>
@@ -29,6 +30,7 @@
 			</tr>
 		</thead>
 		<tbody id="tag_list" name="tag_list">
+
 			@foreach($tags as $tag)
 			<tr id="tag{{$tag->id}}">
 
@@ -39,7 +41,7 @@
 					<td>
 						<button class="btn btn-info btn-md  tag-edit" value="{{$tag->id}}">Edit</button>
 						<button class="btn btn-danger btn-md  delete-tag" value="{{$tag->id}}">Delete</button>
-				
+
 
 				</tr>
 				</tr>
@@ -76,6 +78,6 @@
 									</div>
 							</div>
 					</div>
-	<meta name="_token" content="{{ csrf_token() }}"/>
+
 	<script src="{{asset('js/modal.js')}}"></script>
 @endsection

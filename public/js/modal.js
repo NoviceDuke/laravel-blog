@@ -108,14 +108,19 @@ $(document).ready(function(){
     //delete tag and remove it from list
 
     $(document).on("click",'.delete-tag',function(){
-
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      })
         var tag_id = $(this).val();
         console.log(tag_id);
           $.ajax({
-           type: "DELETE",
+           type: "POST",
+           data:{_method: 'delete'},
            url: url  + tag_id,
            success: function (data) {
-               console.log(data);
+              // console.log(data);
 
                $('#tag' + tag_id).remove();
            },
@@ -140,7 +145,8 @@ $(document).ready(function(){
           name:$('#tag_name').val(),
         }
         // 更新
-        if (state == "update"){  
+        if (state == "update"){
+
             url =url+"/"+old_id;
             type = "PUT";
           }
