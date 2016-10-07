@@ -59,7 +59,7 @@ $(document).ready(function(){
         var formData = {
           name:$('#tag_name').val(),
         }
-        var tag_id = old_id;
+        //var tag_id = old_id;
         var  type ="POST";
         if (state == "update"){
             // 更新
