@@ -118,7 +118,7 @@ class TagController extends Controller
     {
         //
         $tag = Tag::find($id);
-        $tag -> delete();
+        $tag -> delete($request->all());
         if($request->ajax())
         {
           return response()->json($tag);

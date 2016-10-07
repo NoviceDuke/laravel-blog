@@ -54,31 +54,20 @@ $(document).ready(function(){
         })
         e.preventDefault();
         //used to determine the http verb to use [add=POST], [update=PUT]
+
+
         var state = $('#tag-save').val();
-        var tname = $('#tag_name').val()
+        var  type ="POST";
         var formData = {
           name:$('#tag_name').val(),
         }
-
-        var  type ="POST";
-        if (state == "update"){
-            // 更新
+        // 更新
+        if (state == "update"){  
             url =url+"/"+old_id;
             type = "PUT";
-            //$.post(url, formData);
           }
-
-            /*$.post(url, formData, function(data) {
-                console.log('Create Success');
-                console.log('Response : ');
-                console.log('name = '+data.name);
-
-            });*/
-
-
-
         $.ajax({
-        //  $.post(url, formData);
+
           type:type,
           url:url,
           data:formData,
@@ -91,13 +80,15 @@ $(document).ready(function(){
 
             // state condition
             if(state == "add"){
+
+              console.log("# "+data.id+" Add Success!!");
+              console.log("Name: "+data.name);
+              console.log("Slug: "+data.slug);
               $('#tag_list').append(tag);
             }else {
-              console.log(tag_id);
-              console.log(state);
-              console.log(type);
-              console.log(tname);
-
+              console.log("# "+old_id+" Update Success!!");
+              console.log("Name: "+data.name);
+              console.log("Slug: "+data.slug);
               $('#tag'+old_id).replaceWith(tag);
 
             }
@@ -107,12 +98,5 @@ $(document).ready(function(){
           },
 
         });
-
-      //  console.log(formData);
-
-
-
-
-
-    });
+      });
 });
