@@ -59,7 +59,7 @@ $(document).ready(function(){
         var formData = {
           name:$('#tag_name').val(),
         }
-        //var tag_id = old_id;
+
         var  type ="POST";
         if (state == "update"){
             // 更新
@@ -88,6 +88,7 @@ $(document).ready(function(){
             var tag = '<tr id="tag' + data.id + '"><td>' + data.id + '</td><td>' + data.name + '</td><td>' + data.created_at + '</td>';
             tag += '<td><button class="btn btn-info btn-md tag-edit" value="' + data.id + '">Edit</button>';
             tag += '<button class="btn btn-danger btn-md  delete-tag" value="' + data.id + '">Delete</button></td></tr>';
+
             // state condition
             if(state == "add"){
               $('#tag_list').append(tag);
@@ -98,6 +99,7 @@ $(document).ready(function(){
               console.log(tname);
 
               $('#tag'+old_id).replaceWith(tag);
+
             }
 
             $('#frmTag').trigger("reset");

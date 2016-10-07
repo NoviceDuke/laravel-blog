@@ -32,14 +32,14 @@
 			@foreach($tags as $tag)
 			<tr id="tag{{$tag->id}}">
 
-				<tr>
+
 					<td>{{ $tag->id }}</td>
 					<td>{{ $tag->name }}</td>
 					<td>{{ $tag->created_at }}</td>
 					<td>
 						<button class="btn btn-info btn-md  tag-edit" value="{{$tag->id}}">Edit</button>
 						<button class="btn btn-danger btn-md  delete-tag" value="{{$tag->id}}">Delete</button>
-					</td>
+				
 
 				</tr>
 				</tr>
