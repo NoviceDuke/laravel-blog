@@ -13,6 +13,7 @@ class Tag extends Eloquent
     protected $fillable = [
         'name',            // tag名稱
         'frequency',       // 被使用次數
+        'slug',
     ];
 
     /*------------------------------------------------------------------------**
