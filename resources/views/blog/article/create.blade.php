@@ -20,12 +20,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    @foreach ($tags as $index => $tag)
-                    <span class="create-tag-span">
-                    <input type="checkbox" id="{{$tag->id}}" name="{{"tag[$index]"}}" value="{{$tag->id}}" />
-                    <label for="{{$tag->id}}">{{$tag->name}}</label>
-                    </span>
-                    @endforeach
+                    <div class="chips chips-placeholder"></div>
                 </div>
             </div>
             <div class="row">
