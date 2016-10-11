@@ -6,7 +6,7 @@ use Event;
 use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
-use App\Articles\Tag;
+use App\Articles\TagRepository;
 use App\Events\ArticleEvents\ArticleWasPosted;
 use App\Events\ArticleEvents\ArticleWasDeleted;
 use App\Events\ArticleEvents\ArticleWasUpdated;
@@ -23,16 +23,22 @@ class ArticleController extends Controller
     protected $articles;
 
     /**
+     * @var TagRepository
+     */
+    protected $tags;
+
+    /**
      *  建構子依賴注入.
      *
      *  @param ArticleRepository:class
      */
-    public function __construct(ArticleRepository $articles)
+    public function __construct(ArticleRepository $articles, TagRepository $tags)
     {
         // 設定中介層，必須登入，除了Show()不必登入
         $this->middleware('auth', ['except' => 'show']);
 
         $this->articles = $articles;
+        $this->tags = $tags;
         $categories = Category::all();
         view()->share(compact('categories'));
     }
@@ -80,7 +86,7 @@ class ArticleController extends Controller
 
         //grab all of our categories in database;
         $categories = Category::lists('name', 'id');
-        $tags = Tag::all();
+        $tags = $this->tags->getModel()->all();
 
         //return view('blog.article.create')->withCategories($categories);
         return view('blog.article.create', compact('articles', 'categories', 'tags'));
@@ -93,8 +99,10 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
+        // dd($request->get('tags'));
         $article = $this->articles->createFromUser($request->all(), Auth::user());
-        $article->syncTags(array_values($request->get('tag')));
+        $tags = $this->tags->createByNames($request->get('tags'));
+        $article->syncTags($tags);
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleWasPosted($article));
         $this->alert('Success', 'Your article is created successful')->success()->flashIt();

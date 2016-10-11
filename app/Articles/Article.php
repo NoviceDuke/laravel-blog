@@ -86,18 +86,6 @@ class Article extends Eloquent
     **------------------------------------------------------------------------*/
 
     /**
-     *  靜態function
-     *  使用 Article::repository()
-     *  細部功能定義於 ArticleRepository.
-     *
-     *  @return string
-     */
-    // public static function repository()
-    // {
-    //     return new ArticleRepository($this);
-    // }
-
-    /**
      *  取得當下的slug，回傳已經串上slug的路徑.
      *
      *  @return string
@@ -163,8 +151,16 @@ class Article extends Eloquent
      *
      *  @param Tag::Class
      */
-    public function syncTags($tag_ids)
+    public function syncTags($tags)
     {
-        return $this->tags()->sync($tag_ids);
+        if (is_a($tags, "Illuminate\Support\Collection")) {
+            $ids = $tags->map(function ($item, $key) {
+                return $item->id;
+            });
+            return $this->tags()->sync($ids->toArray());
+        }
+        elseif(is_array($tags)){
+            return $this->tags()->sync($tags);
+        }
     }
 }
