@@ -20,7 +20,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <div class="chips chips-placeholder"></div>
+                    <div class="chips chips-placeholder" id="tag">Tag</div>
                 </div>
             </div>
             <div class="row">
@@ -44,5 +44,19 @@
         </div>
         </div>
     </div>
+    @section('javascript')
+    <script>
+    $(document).ready(function() {
+        $('input.input').autocomplete({
+          data: {
+              @foreach ($tags as $tag)
+              "{{$tag->name}}":null,
+              @endforeach
+          }
+        });
+    });
+    </script>
+    @endsection
+
     @include('partials.tinymce-script')
 @stop

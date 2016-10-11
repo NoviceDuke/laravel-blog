@@ -11,11 +11,11 @@ $.fn.extend({
 $(document).ready(function() {
     //materail styleselect 標籤初始化
     // $('select').material_select();
-    $('.chips').material_chip();
     $('.chips-placeholder').material_chip({
         placeholder: 'Enter a tag',
         secondaryPlaceholder: '+Tag',
     });
+    $('.chips').material_chip();
 });
 
 /* app.blade.php  Foating至頂按鈕初始化 */
