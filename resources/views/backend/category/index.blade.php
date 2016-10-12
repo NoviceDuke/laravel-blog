@@ -3,6 +3,7 @@
 @section('title','| All Categories')
 
 @section('content')
+	<meta name="_token" content="{{ csrf_token() }}"/>
 	<div class="panel panel-info">
 		<div class="panel-heading">Category</div>
 		<div class="panel-body">
@@ -39,7 +40,7 @@
 					<td>{{$category->created_at}}</td>
 					<td>
 						<button class="btn btn-info btn-md  edit-modal" value="{{$category->slug}}">Edit</button>
-						<button class="btn btn-danger btn-md  delete-tag" value="{{$category->slug}}">Delete</button>
+						<button class="btn btn-danger btn-md  delete-category" value="{{$category->slug}}">Delete</button>
 					</td>
 					</tr>
 				</tr>
@@ -76,6 +77,5 @@
                     </div>
                 </div>
             </div>
-		<meta name="_token" content="{{ csrf_token() }}"/>
 		<script src="{{asset('js/modal.js')}}"></script>
 @endsection

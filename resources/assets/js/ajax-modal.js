@@ -28,11 +28,13 @@ $(document).ready(function(){
 
     //delete category and remove it from list
     $('.delete-category').click(function(){
+        var url='category/';
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         })
+        console.log(url+category_slug);
         var category_slug = $(this).val();
         $.post(url+category_slug, { _method:'DELETE'});
     });
@@ -70,7 +72,7 @@ $(document).ready(function(){
 
             });
         }
-      
+
         console.log(formData);
 
     });
