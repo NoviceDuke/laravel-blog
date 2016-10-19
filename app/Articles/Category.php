@@ -14,6 +14,11 @@ class Category extends Eloquent
             'name',         //種類名稱
     ];
 
+    /**
+     * 多形中介表名稱.
+     */
+    private $pivot_table = 'styleables';
+
     /*------------------------------------------------------------------------**
     ** Relation 定義                                                          **
     **------------------------------------------------------------------------*/
@@ -26,10 +31,25 @@ class Category extends Eloquent
         return $this->hasMany(Article::class);
     }
 
+    /**
+     * 取得當下Category關聯的Style。
+     */
+    public function styles()
+    {
+        return $this->morphToMany(Style::class, $this->pivot_table);
+    }
+
     /*------------------------------------------------------------------------**
     ** 存取器                                                                 **
     **------------------------------------------------------------------------*/
-
+    public function getStyleAttribute($style)
+    {
+        if($this->styles()->count())
+            return $this->getRelationValue('styles')->first();
+        else {
+            return Style::findName('Default');
+        }
+    }
     /**
      *  在使用Category Model設定name時，會進入此存取器
      *  自動判斷重複的name並給予新的name
@@ -59,6 +79,14 @@ class Category extends Eloquent
     public function addArticle(Article $article)
     {
         return $this->articles()->save($article);
+    }
+
+    /**
+     * 在此類別連結一個Style
+     */
+    public function useStyle(Style $style)
+    {
+        return $this->styles()->sync([$style->id]);
     }
 
     public function path()

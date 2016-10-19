@@ -28,6 +28,11 @@ trait RolePermissionTrait
         return $permissions->unique('id');
     }
 
+    public function getPermissionsAttribute()
+    {
+        return $this->permissions();
+    }
+
     /**
      * 關聯特定的Role.
      */

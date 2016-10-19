@@ -1,19 +1,21 @@
 $(document).ready(function(){
 
 
-    var url ="category";
+
+    var url ="category/";
+    var old_name = "";
 
     //display modal form for category editing
-    $('.open-modal').click(function(){
+    $('.edit-modal').click(function(){
         var category_slug = $(this).val();
 
-        $.get(url + '/' + category_slug, function (data) {
+        $.get(url  + category_slug, function (data) {
             //success data
-            console.log(data);
-            $('#category_slug').val(data.slug);
-            $('#category').val(data.name);
+            console.log(category_slug);
+            $('#category_name').val(data.name);
+            old_slug = category_slug;
             $('#btn-save').val("update");
-            $('#myModal').modal('show');
+            $('#categoryModal').modal('show');
         })
     });
 
@@ -21,84 +23,57 @@ $(document).ready(function(){
     $('#btn-add').click(function(){
         $('#btn-save').val("add");
         $('#frmCategory').trigger("reset");
-        $('#myModal').modal('show');
+        $('#categoryModal').modal('show');
     });
 
     //delete category and remove it from list
-    $('.delete-Category').click(function(){
-        var category_slug = $(this).val();
-
-        $.ajax({
-
-            type: "DELETE",
-            url: url + '/' + category_slug,
-            success: function (data) {
-                console.log(data);
-
-                $("#category" + category_slug).remove();
-            },
-            error: function (data) {
-                console.log('Error:', data);
-            }
-        });
-    });
-
-    //create new category / update existing category
-    $("#btn-save").click(function (e) {
+    $('.delete-category').click(function(){
+        var url='category/';
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         })
+        console.log(url+category_slug);
+        var category_slug = $(this).val();
+        $.post(url+category_slug, { _method:'DELETE'});
+    });
 
-        e.preventDefault();
-
-        var formData = {
-            Category: $('#category').val(),
-
-        }
-
+    //create new category / update existing category
+    $("#btn-save").click(function (e) {
+        var url='category';
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        })
         //used to determine the http verb to use [add=POST], [update=PUT]
         var state = $('#btn-save').val();
 
-        var type = "POST"; //for creating new resource
-        var category_id = $('#category_id').val();;
-        var my_url = url;
-
         if (state == "update"){
-            type = "PUT"; //for updating existing resource
-            my_url += '/' + category_id;
+            // 更新
+            url =url+ '/'+ old_slug;
+            var formData = {
+                _method:'PUT',
+                name:$('#category_name').val(),
+            }
+            console.log('old_slug = '+old_slug);
+            $.post(url, formData);
+        }else{
+            // 新增
+            var formData = {
+                name:$('#category_name').val(),
+            }
+            $.post(url, formData, function(data) {
+                console.log('Create Success');
+                console.log('Response : ');
+                console.log('name = '+data.name);
+                console.log('slug = '+data.slug);
+
+            });
         }
 
         console.log(formData);
 
-        $.ajax({
-
-            type: type,
-            url: my_url,
-            data: formData,
-            dataType: 'json',
-            success: function (data) {
-                console.log(data);
-
-                var category = '<tr id="category' + data.id + '"><td>' + data.id + '</td><td>' + data.category + '</td><td>' + data.description + '</td><td>' + data.created_at + '</td>';
-                category += '<td><button class="btn btn-warning btn-xs btn-detail open-modal" value="' + data.id + '">Edit</button>';
-                category += '<button class="btn btn-danger btn-xs btn-delete delete-category" value="' + data.id + '">Delete</button></td></tr>';
-
-                if (state == "add"){ //if user added a new record
-                    $('#category-list').append(category);
-                }else{ //if user updated an existing record
-
-                    $("#category" + category_id).replaceWith( category );
-                }
-
-                $('#frmCategory').trigger("reset");
-
-                $('#myModal').modal('hide')
-            },
-            error: function (data) {
-                console.log('Error:', data);
-            }
-        });
     });
 });

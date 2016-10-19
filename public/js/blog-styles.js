@@ -11,6 +11,11 @@ $.fn.extend({
 $(document).ready(function() {
     //materail styleselect 標籤初始化
     // $('select').material_select();
+    $('.chips-placeholder').material_chip({
+        placeholder: 'Enter a tag',
+        secondaryPlaceholder: '+Tag',
+    });
+    $('.chips').material_chip();
 });
 
 /* app.blade.php  Foating至頂按鈕初始化 */
@@ -45,6 +50,15 @@ $(document).ready(function() {
     // $("h4").animateCss('zoomIn');
 });
 function article_create_submit() {
+    var tags = $('.chips').material_chip('data');
+    console.log(tags);
+    for (var key in tags) {
+        $('<input />').attr('type', 'hidden')
+        .attr('name', "tags["+key+"]")
+        .attr('value', tags[key].tag)
+        .appendTo('#article_create_form');
+    }
+
     document.getElementById('article_create_form').submit();
 }
 function article_edit_submit() {

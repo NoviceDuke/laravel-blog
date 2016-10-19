@@ -22,7 +22,7 @@ class CommentSeeder extends Seeder
             'email' => $faker->email,
             'url' => $faker->url,
             'article_id' => $faker->randomElement($articles_id),
-              ]);
+            ]);
         }
     }
 }

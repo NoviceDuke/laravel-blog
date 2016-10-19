@@ -68,6 +68,11 @@
     {!! Html::script(url('materialize/js/materialize.js'))!!}
     {!! Html::script(url('js/blog-styles.js'))!!}
     {!! Html::script(url('js/libs.js'))!!}
+    
+    <!--  js section -->
+    @yield('javascript')
+    <!--  js section -->
+
     <!--  sweet_alert -->
     @include('partials.sweet_alert')
     <!--  sweet_alert -->

@@ -13,6 +13,7 @@ class Tag extends Eloquent
     protected $fillable = [
         'name',            // tag名稱
         'frequency',       // 被使用次數
+        'slug',
     ];
 
     /*------------------------------------------------------------------------**
@@ -30,6 +31,13 @@ class Tag extends Eloquent
         return $this->belongsToMany(Article::class)->withTimestamps();
     }
 
+    /**
+     * 取得當下Tag關聯的Style。
+     */
+    public function style()
+    {
+        return $this->morphOne(Style::class, 'styleable');
+    }
     /*------------------------------------------------------------------------**
     ** 存取器 Accessors                                                        **
     **------------------------------------------------------------------------*/
