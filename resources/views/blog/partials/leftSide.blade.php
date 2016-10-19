@@ -19,7 +19,7 @@
                             </div>
                             <div class="col m2">
                             @if($article->category)
-                                <a href="{{url($article->category->path())}}"><span class="category new badge bcolor-{{$article->category->css_class}}" data-badge-caption="">{{$article->category->name}}</span></a>
+                                <a href="{{url($article->category->path())}}"><span class="category new badge bcolor-{{$article->category->style->css}}" data-badge-caption="">{{$article->category->name}}</span></a>
                             @endif
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="col m2">
                             @if($article->category)
-                                <a href="{{url($article->category->path())}}"><span class="category new badge bcolor-{{$article->category->css_class}}" data-badge-caption="">{{$article->category->name}}</span></a>
+                                <a href="{{url($article->category->path())}}"><span class="category new badge bcolor-{{$article->category->style->css}}" data-badge-caption="">{{$article->category->name}}</span></a>
                             @endif
                             </div>
                         </div>

@@ -89,7 +89,7 @@ class ArticleRepository extends EloquentRepository
      */
     public function getOddArticles()
     {
-        return $this->model->whereRaw('id%2=1');
+        return $this->model->whereRaw('id%2=1')->orderBy('id', 'DESC');
     }
 
     /**
@@ -99,6 +99,6 @@ class ArticleRepository extends EloquentRepository
      */
     public function getEvenArticles()
     {
-        return $this->model->whereRaw('id%2=0');
+        return $this->model->whereRaw('id%2=0')->orderBy('id', 'DESC');
     }
 }

@@ -20,6 +20,11 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
+                    <div class="chips chips-placeholder" id="tag">Tag</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
                     {!! Form::text('pic_url', old('pic_url'), ['id' => 'pic_url','class'=>'validate']) !!}
                     {!! Form::label('pic_url', 'Picture URL') !!}
                 </div>
@@ -39,5 +44,19 @@
         </div>
         </div>
     </div>
+    @section('javascript')
+    <script>
+    $(document).ready(function() {
+        $('input.input').autocomplete({
+          data: {
+              @foreach ($tags as $tag)
+              "{{$tag->name}}":null,
+              @endforeach
+          }
+        });
+    });
+    </script>
+    @endsection
+
     @include('partials.tinymce-script')
 @stop

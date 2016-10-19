@@ -11,7 +11,11 @@ class User extends AuthEloquent
     ** Entity 定義                                                            **
     **------------------------------------------------------------------------*/
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'about_me',         //關於我
+        'picture',          //照片
     ];
 
     /**
