@@ -13,7 +13,7 @@ class CommentSeeder extends Seeder
     {
         $faker = Faker\Factory::create('en_EN');
         $faker->seed(rand(1,999));
-        $articles_id = Article::all()->lists('id')->toArray();
+        $articles_id = Article::all()->pluck('id')->all();
         foreach (range(1, 10) as $index) {
             Comment::create([
             'content' => $faker->realText($maxNbChars = 50, $indexSize = 2),
