@@ -20,13 +20,13 @@ abstract class Eloquent extends Model
         $instance = new static;
         return $instance->where('name', $name)->first();
     }
-    
+
     /**
      * 透過Slug直接搜尋
      */
     public static function findSlug($slug)
     {
         $instance = new static;
-        return $instance->where('slug', $slug)->first();
+        return $instance->where('slug', urlencode($slug))->first();
     }
 }

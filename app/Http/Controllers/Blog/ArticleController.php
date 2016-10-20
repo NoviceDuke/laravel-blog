@@ -60,7 +60,7 @@ class ArticleController extends Controller
     public function show($slug)
     {
 
-        $article = $this->articles->getFromSlug(urlencode($slug));
+        $article = $this->articles->getFromSlug($slug);
         if (!$article) {
             return abort(404, 'Slug Not Found');
         }
