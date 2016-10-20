@@ -1,6 +1,7 @@
 <?php
 namespace App\Core;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use App;
 /**
@@ -8,6 +9,9 @@ use App;
  */
 abstract class Eloquent extends Model
 {
+
+    use Searchable;
+
     /**
      * 透過名稱直接搜尋
      */

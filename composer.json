@@ -10,7 +10,9 @@
         "laravelcollective/html":"5.3.*",
         "unisharp/laravel-filemanager": "^1.6",
         "laravel/socialite": "^2.0",
-        "rap2hpoutre/laravel-log-viewer": "^0.7.0"
+        "rap2hpoutre/laravel-log-viewer": "^0.7.0",
+        "laravel/scout": "^1.1",
+        "algolia/algoliasearch-client-php": "^1.11"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
