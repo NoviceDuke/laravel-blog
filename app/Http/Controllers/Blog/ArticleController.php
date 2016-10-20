@@ -85,7 +85,7 @@ class ArticleController extends Controller
         }
 
         //grab all of our categories in database;
-        $categories = Category::lists('name', 'id');
+        $categories = Category::all()->pluck('name', 'id');
         $tags = $this->tags->getModel()->all();
 
         //return view('blog.article.create')->withCategories($categories);
