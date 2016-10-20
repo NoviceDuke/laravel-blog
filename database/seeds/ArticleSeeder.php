@@ -11,7 +11,7 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        $user_ids = User::all()->lists('id')->toArray();
+        $user_ids = User::all()->pluck('id')->all();
         $faker = Faker\Factory::create('en_EN');
         $faker->seed(rand(1, 999));
         //預設圖片位置，來自http://www.freeimages.com/
