@@ -27,10 +27,6 @@ class Kernel extends ConsoleKernel
         // $now = Carbon::now()->toDateString();
         //
         // $schedule->command('blog:test --refresh')
-<<<<<<< HEAD
-        //           ->dailyAt('21:00')
-        //           ->sendOutputTo(storage_path("/logs/test/output_$now.log"));
-=======
         //   ->dailyAt('21:00')
         //   ->sendOutputTo(storage_path("/logs/test/output_$now.log"));
     }
@@ -43,6 +39,6 @@ class Kernel extends ConsoleKernel
     protected function commands()
     {
         require base_path('routes/console.php');
->>>>>>> update_to_5.3
+
     }
 }
