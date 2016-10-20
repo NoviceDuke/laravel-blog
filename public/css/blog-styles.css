@@ -4068,6 +4068,7 @@ a {
 
 .module-text {
   position: relative;
+  -webkit-transform: translateY(170%);
   transform: translateY(170%); }
 
 /*# sourceMappingURL=blog-styles.css.map */
