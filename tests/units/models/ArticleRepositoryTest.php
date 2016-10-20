@@ -156,8 +156,8 @@ class ArticleRepositoryTest extends TestCase
 
         // Then
         // 斷言 第一個取得的文章ID = 1  第二筆 = 3
-        $this->assertEquals($articles->first()->id, 1);
-        $this->assertEquals($articles[1]->id, 3);
+        $this->assertEquals($articles->first()->id, 9);
+        $this->assertEquals($articles[1]->id, 7);
     }
 
     /**
@@ -176,7 +176,7 @@ class ArticleRepositoryTest extends TestCase
 
         // Then
         // 斷言 第一個取得的文章ID = 1  第二筆 = 3
-        $this->assertEquals($articles->first()->id, 2);
-        $this->assertEquals($articles[1]->id, 4);
+        $this->assertEquals($articles->first()->id, 10);
+        $this->assertEquals($articles[1]->id, 8);
     }
 }

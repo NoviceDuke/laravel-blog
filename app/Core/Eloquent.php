@@ -20,7 +20,7 @@ abstract class Eloquent extends Model
         $instance = new static;
         return $instance->where('name', $name)->first();
     }
-
+    
     /**
      * 透過Slug直接搜尋
      */
