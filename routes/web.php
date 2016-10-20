@@ -2,14 +2,16 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
+Route::get('logout', 'Auth\LoginController@logout');
+Auth::routes();
 
 // hchs trace Route
 Route::get('trace', 'Blog\BlogHomeController@getTrace');
@@ -22,6 +24,7 @@ Route::group(['namespace' => 'Auth'], function () {
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
 Route::group(['namespace' => 'Blog'], function () {
+    Route::get('/', 'BlogHomeController@index');
     Route::resource('blog', 'BlogHomeController');
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController');
@@ -36,13 +39,13 @@ Route::group(['prefix' => 'backend', 'middleware' => ['auth', 'backend'], 'names
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     // home
     Route::get('/', 'BackendController@index');
-    Route::resource('article', 'ArticleController');
-    Route::resource('category', 'CategoryController', ['except' => ['create']]);
-    Route::resource('tag', 'TagController');
-    Route::resource('user', 'UserController');
+    Route::resource('article', 'ArticleController', ["as"=>"backend"]);
+    Route::resource('category', 'CategoryController',  ["as"=>"backend"]);
+    Route::resource('tag', 'TagController', ["as"=>"backend"]);
+    Route::resource('user', 'UserController', ["as"=>"backend"]);
     Route::patch('user/update_roles/{id}', 'UserController@updateRoles')->name('backend.user.update_roles');
     Route::patch('user/detach_root/{id}', 'UserController@detachRoot')->name('backend.user.detach_root');
-    Route::resource('role', 'RoleController');
+    Route::resource('role', 'RoleController', ["as"=>"backend"]);
 });
 
 
@@ -50,6 +53,3 @@ Route::group(['prefix' => 'backend', 'middleware' => ['auth', 'backend'], 'names
 Route::get('about', 'PagesController@getAbout');
 
 // default auth and home route
-Route::auth();
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
