@@ -38,11 +38,11 @@ class TagSeeder extends Seeder
             ]);
 
             //各tag跟所有article裡隨機挑一個，並建立一次關聯
-            // $laravelTag->addArticle($articles->random(1));
-            // $rorTag->addArticle($articles->random(1));
-            // $ubuntuTag->addArticle($articles->random(1));
-            // $cssTag->addArticle($articles->random(1));
-            // $htmlTag->addArticle($articles->random(1));
+            $laravelTag->addArticle($articles->random(1));
+            $rorTag->addArticle($articles->random(1));
+            $ubuntuTag->addArticle($articles->random(1));
+            $cssTag->addArticle($articles->random(1));
+            $htmlTag->addArticle($articles->random(1));
         }
     }
 }

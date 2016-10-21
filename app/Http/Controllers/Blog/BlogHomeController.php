@@ -6,6 +6,7 @@ use App\Articles\ArticleRepository;
 use App\Articles\Tag;
 use App\Articles\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Jobs\SendEmail;
 
 class BlogHomeController extends Controller
@@ -27,6 +28,12 @@ class BlogHomeController extends Controller
         $evenArticles = $this->articles->getEvenArticles()->take(5)->get();
 
         return view('blog.home.index', compact('oddArticles', 'evenArticles'));
+    }
+
+    public function filter(Request $request)
+    {
+        $articles = $this->articles->search($request->get('search'))->paginate(8);
+        return view('blog.home.filter', compact('articles'));
     }
 
     public function getTrace()
