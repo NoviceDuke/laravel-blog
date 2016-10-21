@@ -35,7 +35,7 @@ class ArticleRepository extends EloquentRepository
      */
     public function getFromSlug(String $slug)
     {
-        return $this->model->whereSlug($slug)->first();
+        return $this->model->whereSlug(urlencode($slug))->first();
     }
 
     /**

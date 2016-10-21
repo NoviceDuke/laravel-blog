@@ -26,7 +26,7 @@
                     </div>
     			    <div class="article-content-container">
                         <span class="article-title grey-text text-darken-3">{{$article->title}}</span>
-                        <section class="article-content grey-text text-darken-2">{{$article->content}}</section>
+                        <section class="article-content grey-text text-darken-2">{!!$article->content!!}</section>
                         <div class="article-footer">
                             <span class="article-more"><a href="{{url($article->path())}}">More</a></span>
                             <span class="article-date grey-text right">{{$articlePresenter->getCreatedDate($article)}}</span>
@@ -66,7 +66,7 @@
                     </div>
     			    <div class="article-content-container">
                         <span class="article-title grey-text text-darken-3">{{$article->title}}</span>
-                        <section class="article-content grey-text text-darken-2">{{$article->content}}</section>
+                        <section class="article-content grey-text text-darken-2">{!!$article->content!!}</section>
                         <div class="article-footer">
                             <span class="article-more"><a href="{{url($article->path())}}">More</a></span>
                             <span class="article-date grey-text right">{{$articlePresenter->getCreatedDate($article)}}</span>
