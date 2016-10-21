@@ -33,11 +33,11 @@ class CategorySeeder extends Seeder
             'slug' => str_slug('Music', '-'),
         ])->useStyle(Style::findName('Deep Purple'));
 
-        // 隨機取得文章，隨機加入某個分類
-        $randArticles = Article::all();
-        foreach ($randArticles as $article) {
-            $randCategory = Category::all()->random(1);
-            $randCategory->addArticle($article);
-        }
+        // 隨機取得15篇文章，隨機加入某個分類
+        // $randArticles = Article::all();
+        // foreach ($randArticles as $article) {
+        //     $randCategory = Category::all()->random(1);
+        //     $randCategory->addArticle($article);
+        // }
     }
 }

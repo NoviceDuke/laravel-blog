@@ -34,7 +34,7 @@
     			    </div>
     			    <div class="card-reveal reveal-container">
     			      <span class="card-title article-title grey-text text-darken-4">{{$article->title}}<i class="material-icons right">close</i></span>
-    			      <p class="reveal-content">{!!$article->content!!}</p>
+    			      <div class="reveal-content">{!!$article->content!!}</div>
                       <a href="{{url($article->path())}}" class="reveal-btn waves-effect waves-light btn">Read More</a>
     			    </div>
     			</div>
@@ -74,7 +74,7 @@
     			    </div>
     			    <div class="card-reveal reveal-container">
     			      <span class="card-title article-title grey-text text-darken-4">{{$article->title}}<i class="material-icons right">close</i></span>
-    			      <p class="reveal-content">{!!$article->content!!}</p>
+    			      <div class="reveal-content">{!!$article->content!!}</div>
                       <a href="{{url($article->path())}}" class="reveal-btn waves-effect waves-light btn">Read More</a>
     			    </div>
     			</div>

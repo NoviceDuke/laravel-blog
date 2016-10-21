@@ -45,7 +45,7 @@ class BlogTest extends Command
         $this->info('phpunit testing...');
 
         exec('phpunit', $output);
-        
+
         foreach ($output as $line) {
             $this->line($line);
         }
