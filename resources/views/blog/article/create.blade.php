@@ -44,19 +44,27 @@
         </div>
         </div>
     </div>
-    @section('javascript')
-    <script>
-    $(document).ready(function() {
-        $('input.input').autocomplete({
-          data: {
-              @foreach ($tags as $tag)
-              "{{$tag->name}}":null,
-              @endforeach
-          }
-        });
-    });
-    </script>
-    @endsection
 
-    @include('partials.tinymce-script')
 @stop
+@section('javascript')
+@include('partials.tinymce-script')
+<script>
+$(document).ready(function() {
+    //materail styleselect 標籤初始化
+    // $('select').material_select();
+    $('.chips-placeholder').material_chip({
+        placeholder: 'Enter a tag',
+        secondaryPlaceholder: '+Tag',
+    });
+    $('.chips').material_chip();
+
+    $('input.input').autocomplete({
+      data: {
+          @foreach ($tags as $tag)
+          "{{$tag->name}}":null,
+          @endforeach
+      }
+    });
+});
+</script>
+@endsection

@@ -127,7 +127,7 @@ class ArticleController extends Controller
             return redirect()->route('blog.index');
         }
         $article = $this->articles->getFromSlug($slug);
-        $categories = Category::lists('name', 'id');
+        $categories = Category::all()->pluck('name', 'id');
 
         return view('blog.article.edit', compact('article', 'categories'));
     }

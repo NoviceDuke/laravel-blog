@@ -18,7 +18,6 @@ class LoginPageTest extends TestCase
             ->see('e-mail')
             ->see('password')
             ->see('Remember Me')
-            ->see('LOGIN')
-            ->see('FB LOGIN');
+            ->see('LOGIN');
     }
 }
