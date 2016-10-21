@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Auth'], function () {
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
 Route::group(['namespace' => 'Blog'], function () {
-    Route::get('/', 'BlogHomeController@index');
+    Route::get('/', function(){ return redirect('/blog');});
     Route::resource('blog', 'BlogHomeController');
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController');

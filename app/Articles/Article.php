@@ -3,7 +3,7 @@
 namespace App\Articles;
 
 use App\Core\Eloquent;
-
+use Carbon\Carbon;
 class Article extends Eloquent
 {
     /*------------------------------------------------------------------------**
@@ -78,7 +78,10 @@ class Article extends Eloquent
         }
         // 自動填補slug
         if (empty($this->slug)) {
-            $this->attributes['slug'] = str_slug($this->attributes['title'], '-');
+            $slug = str_slug($this->attributes['title'], '-');
+            if(empty($slug))
+                $slug =  urlencode($this->attributes['title']);
+            $this->attributes['slug'] = $slug;
         }
     }
     /*------------------------------------------------------------------------**

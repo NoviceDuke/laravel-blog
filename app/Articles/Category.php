@@ -3,6 +3,7 @@
 namespace App\Articles;
 
 use App\Core\Eloquent;
+use Carbon\Carbon;
 
 class Category extends Eloquent
 {
@@ -12,6 +13,7 @@ class Category extends Eloquent
     protected $table = 'categories';
     protected $fillable = [
             'name',         //種類名稱
+            'slug',
     ];
 
     /**
@@ -65,7 +67,10 @@ class Category extends Eloquent
         }
         // 自動填補slug
         if (empty($this->slug)) {
-            $this->attributes['slug'] = str_slug($this->attributes['name'], '-');
+            $slug = str_slug($this->attributes['name'], '-');
+            if(empty($slug))
+                $slug =  urlencode($this->attributes['name']);
+            $this->attributes['slug'] = $slug;
         }
     }
 

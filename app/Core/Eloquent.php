@@ -27,6 +27,6 @@ abstract class Eloquent extends Model
     public static function findSlug($slug)
     {
         $instance = new static;
-        return $instance->where('slug', $slug)->first();
+        return $instance->where('slug', urlencode($slug))->first();
     }
 }

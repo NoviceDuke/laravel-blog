@@ -59,6 +59,7 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
+
         $article = $this->articles->getFromSlug($slug);
         if (!$article) {
             return abort(404, 'Slug Not Found');
@@ -85,7 +86,7 @@ class ArticleController extends Controller
         }
 
         //grab all of our categories in database;
-        $categories = Category::lists('name', 'id');
+        $categories = Category::all()->pluck('name', 'id');
         $tags = $this->tags->getModel()->all();
 
         //return view('blog.article.create')->withCategories($categories);
@@ -101,8 +102,11 @@ class ArticleController extends Controller
     {
         // dd($request->get('tags'));
         $article = $this->articles->createFromUser($request->all(), Auth::user());
-        $tags = $this->tags->createByNames($request->get('tags'));
-        $article->syncTags($tags);
+        if(is_array($request->get('tags')))
+        {
+            $tags = $this->tags->createByNames($request->get('tags'));
+            $article->syncTags($tags);
+        }
         // 觸發事件 -> 文章被新增
         Event::fire(new ArticleWasPosted($article));
         $this->alert('Success', 'Your article is created successful')->success()->flashIt();
