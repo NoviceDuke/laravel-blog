@@ -5,7 +5,7 @@
 		<h3 class="category-container-title title-fix">Search</h3>
 			<div class="row">
 			  <div class="input-field col s12 m12">
-                {!! Form::open(['url' => url('/filter'), 'method' => 'POST', 'class' => 'awesome', 'id'=> 'search']) !!}
+                {!! Form::open(['url' => url('/filter'), 'method' => 'GET', 'class' => 'awesome', 'id'=> 'search']) !!}
 				<i class="material-icons prefix search-icon-fix">search</i>
 				<input name="search" class="search-input" type="text" id="search">
                 {!! Form::close() !!}

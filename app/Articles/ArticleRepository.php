@@ -101,4 +101,15 @@ class ArticleRepository extends EloquentRepository
     {
         return $this->model->whereRaw('id%2=0')->orderBy('id', 'DESC');
     }
+
+
+    /**
+     *  回傳全域搜尋文章的結果.
+     *
+     *  @return array|Builder
+     */
+    public function search($target)
+    {
+        return $this->model->search($target);
+    }
 }
