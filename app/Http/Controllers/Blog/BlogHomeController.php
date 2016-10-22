@@ -19,7 +19,8 @@ class BlogHomeController extends Controller
     {
         $this->articles = $articles;
         $categories = Category::all();
-        view()->share(compact('categories'));
+        $tags = Tag::all();
+        view()->share(compact('categories','tags'));
     }
 
     public function index()

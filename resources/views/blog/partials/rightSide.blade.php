@@ -29,3 +29,21 @@
 	</div>
 </div>
 <!-- Categories -->
+<!-- TagCloud -->
+<div class="row">
+    <div class="col s12 m12">
+        <div class="category-container">
+            <h3 class="category-container-title title-fix">Tags</h3>
+            <div class="tags-container">
+                <div class="row">
+                    <div class="col s12 m12">
+                    @foreach ($tags as $tag)
+                        <a href="{{url($tag->path())}}"><span class="tag tag-element">{{$tag->name}}</span></a>
+                    @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- TagCloud -->
