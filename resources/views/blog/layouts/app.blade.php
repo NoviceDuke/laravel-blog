@@ -23,8 +23,8 @@
         <span id="app">
         <!--  Top Navigation  -->
         <navbar :islogin="{{$authPresenter->isLogin()}}"
-                baseurl="{{url('')}}"
-        ></navbar>
+                 baseurl="{{url('')}}">
+        </navbar>
 		<!--  Top Navigation  -->
 
         <!--  Floating Button -->
