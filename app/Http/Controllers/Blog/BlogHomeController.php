@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Articles\ArticleRepository;
-use App\Articles\Tag;
-use App\Articles\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Jobs\SendEmail;
@@ -18,9 +16,6 @@ class BlogHomeController extends Controller
     public function __construct(ArticleRepository $articles)
     {
         $this->articles = $articles;
-        $categories = Category::all();
-        $tags = Tag::all();
-        view()->share(compact('categories','tags'));
     }
 
     public function index()
