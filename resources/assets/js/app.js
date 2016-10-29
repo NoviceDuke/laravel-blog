@@ -18,5 +18,8 @@ require('./bootstrap');
 // Vue.component('navbar', require('./components/Navbar.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    mounted(){
+        $('.loader').fadeOut();
+    }
 });
