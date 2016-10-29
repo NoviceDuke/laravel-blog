@@ -1,0 +1,36 @@
+/* loading-nav */
+.loading-nav{
+    position: relative;
+    height: 55px;
+    width: 100%;
+    overflow: hidden;
+    animation: nav-shine 2s infinite;
+}
+@-webkit-keyframes nav-shine {
+    0%   {
+        position: absolute;
+        background-image: linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% );
+        left:0px;
+        top:0px;
+    }
+    100% {
+        position: absolute;
+        background-image: linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% );
+        left:80%;
+        top:0px;
+    }
+}
+@keyframes nav-shine {
+    0%   {
+        position: absolute;
+        background-image: linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% );
+        left:-100%;
+        top:0px;
+    }
+    100% {
+        position: absolute;
+        background-image: linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% );
+        left:100%;
+        top:0px;
+    }
+}

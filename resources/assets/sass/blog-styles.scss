@@ -3,6 +3,7 @@
 @import "blog-category";
 @import "blog-create-article";
 @import "blog-show-article";
+@import "blog-animation";
 /*All Page Maybe Used*/
 html {
     font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif;
@@ -10,10 +11,7 @@ html {
 a {
     color:color(blue);
 }
-.loading-nav{
-    top: 0;
-    position: fixed;
-}
+
 .main-container{
     margin-top: 65px;
 }
