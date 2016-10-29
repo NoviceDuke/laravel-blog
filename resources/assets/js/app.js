@@ -13,9 +13,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
  Vue.component('navbar', function (resolve) {
-   // This special require syntax will instruct Webpack to
-   // automatically split your built code into bundles which
-   // are loaded over Ajax requests.
    require(['./components/Navbar.vue'], resolve)
  })
 // Vue.component('navbar', require('./components/Navbar.vue'));
