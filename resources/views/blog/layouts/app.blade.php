@@ -22,9 +22,13 @@
     <body background="{{url('png/hchs_background.png')}}">
         <span id="app">
         <!--  Top Navigation  -->
-        <navbar :islogin="{{$authPresenter->isLogin()}}"
+        <div class=" loading-nav">
+
+        </div>
+        {{-- <nav class="blue-grey darken-2 nav-height-fix loading-nav"></nav> --}}
+        {{-- <navbar :islogin="{{$authPresenter->isLogin()}}"
                  baseurl="{{url('')}}">
-        </navbar>
+        </navbar> --}}
 		<!--  Top Navigation  -->
 
         <!--  Floating Button -->

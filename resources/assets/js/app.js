@@ -19,7 +19,4 @@ require('./bootstrap');
 
 const app = new Vue({
     el: '#app',
-    mounted(){
-        $('.loader').fadeOut();
-    }
 });

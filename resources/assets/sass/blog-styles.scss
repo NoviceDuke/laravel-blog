@@ -11,8 +11,13 @@ a {
     color:color(blue);
 }
 .loading-nav{
-    top: 0;
-    position: fixed;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    -webkit-animation-name: shine; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: shine;
+    animation-duration: 4s;
 }
 .main-container{
     margin-top: 65px;
@@ -174,4 +179,15 @@ a {
 .module-text {
     position: relative;
     transform:translateY(170%);
+}
+
+@include keyframes(shine) {
+    0% {
+        color: #f8d2c0;
+    }
+
+    100% {
+        color: #0f0;
+
+    }
 }
