@@ -14,9 +14,9 @@ a {
     width: 100px;
     height: 100px;
     background-color: red;
-    -webkit-animation-name: shine; /* Safari 4.0 - 8.0 */
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-    animation-name: shine;
+    animation-name: example;
     animation-duration: 4s;
 }
 .main-container{
@@ -179,15 +179,4 @@ a {
 .module-text {
     position: relative;
     transform:translateY(170%);
-}
-
-@include keyframes(shine) {
-    0% {
-        color: #f8d2c0;
-    }
-
-    100% {
-        color: #0f0;
-
-    }
 }

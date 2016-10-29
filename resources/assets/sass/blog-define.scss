@@ -257,21 +257,7 @@ blue-grey-darken-2 : #455a64,
 blue-grey-darken-3 : #37474f,
 blue-grey-darken-4 : #263238,
 );
-@mixin keyframes( $animationName )
-{
-    @-webkit-keyframes $animationName {
-        @content;
-    }
-    @-moz-keyframes $animationName {
-        @content;
-    }
-    @-o-keyframes $animationName {
-        @content;
-    }
-    @keyframes $animationName {
-        @content;
-    }
-}
+
 @function color($key) {
      @if map-has-key($colors, $key){
         @return map-get($colors, $key);
