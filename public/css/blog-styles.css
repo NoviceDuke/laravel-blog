@@ -3918,6 +3918,13 @@ html {
 a {
   color: #2196f3; }
 
+.loading-nav {
+  top: 0;
+  position: fixed; }
+
+.main-container {
+  margin-top: 65px; }
+
 .tag {
   background-color: #CDEAEA;
   color: #333333;
@@ -3966,7 +3973,10 @@ a {
 
 .nav-height-fix {
   height: 55px;
-  line-height: 55px; }
+  line-height: 55px;
+  z-index: 999;
+  top: 0;
+  position: fixed; }
 
 .nav-content-fix {
   position: absolute;
