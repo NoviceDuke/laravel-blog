@@ -17,58 +17,51 @@
         </script>
         <!--Scripts End-->
     </head>
-
+    <style>
+    .my-loading-nav {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+        animation-name: example;
+        animation-duration: 4s;
+    }
+    </style>
+    @inject('authPresenter', 'App\Presenters\AuthPresenter')
+    @inject('floatingButtonPresenter', 'App\Presenters\FloatingButtonPresenter')
     <body background="{{url('png/hchs_background.png')}}">
+        <span id="app">
         <!--  Top Navigation  -->
-        <nav class="blue-grey darken-2 nav-height-fix">
-            <div class="nav-wrapper blue-grey darken-2 nav-content-fix">
-              <a href="{{url('/')}}" class="brand-logo logo-fix">Blog Home</a>
-              <ul class="right hide-on-med-and-down">
-                @if(Auth::user())
-                    <li><a href="{{url('logout')}}">登出</a></li>
-                @else
-                    <li><a href="{{url('login')}}">登入</a></li>
-                @endif
-              </ul>
 
-            <!--Mobile DropDown Button-->
-            <a class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">
-            <i class="material-icons" style="margin-left:10px;">menu</i>
-            <i class="mdi-navigation-arrow-drop-down right"></i>
-            </a>
-            <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="{{url('/')}}">Home</a></li>
-                @if(Auth::user())
-                    <li><a href="{{url('logout')}}">登出</a></li>
-                @else
-                    <li><a href="{{url('login')}}">登入</a></li>
-                @endif
-            </ul>
-            <!--Mobile DropDown Button-->
-            </div>
+
+        <nav id="loading-nav" class="blue-grey darken-2 nav-height-fix">
+            <span class="loading-nav"></span>
         </nav>
+        <navbar :islogin="{{$authPresenter->isLogin()}}"
+                 baseurl="{{url('')}}">
+        </navbar>
 		<!--  Top Navigation  -->
 
-
         <!--  Floating Button -->
-        @inject('floatingButtonPresenter', 'App\Presenters\FloatingButtonPresenter')
         <div class="fixed-action-btn float-position">
             {!! $floatingButtonPresenter->getFloatinButton() !!}
         </div>
     	<!--  Floating Button -->
 
 
-        <div class="container">
+        <div class="container main-container">
             @yield('content')
         </div>
 
 
-
+    </span>
     </body>
+    {!! Html::script(url('js/app.js'))!!}
     {!! Html::script(url('materialize/js/materialize.js'))!!}
     {!! Html::script(url('js/blog-styles.js'))!!}
     {!! Html::script(url('js/libs.js'))!!}
-    
+
     <!--  js section -->
     @yield('javascript')
     <!--  js section -->

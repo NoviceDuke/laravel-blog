@@ -35,12 +35,10 @@ class ArticleController extends Controller
     public function __construct(ArticleRepository $articles, TagRepository $tags)
     {
         // 設定中介層，必須登入，除了Show()不必登入
-        $this->middleware('auth', ['except' => 'show']);
+        $this->middleware('auth', ['except' => ['show','index']]);
 
         $this->articles = $articles;
         $this->tags = $tags;
-        $categories = Category::all();
-        view()->share(compact('categories'));
     }
 
     /**
@@ -127,7 +125,7 @@ class ArticleController extends Controller
             return redirect()->route('blog.index');
         }
         $article = $this->articles->getFromSlug($slug);
-        $categories = Category::lists('name', 'id');
+        $categories = Category::all()->pluck('name', 'id');
 
         return view('blog.article.edit', compact('article', 'categories'));
     }

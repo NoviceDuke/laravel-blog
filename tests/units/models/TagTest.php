@@ -84,6 +84,31 @@ class TagTest extends TestCase
     }
 
     /**
+     * 測試Tag能夠更新內容.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testTagCanUpdate()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增Tag
+        $tag = factory(Tag::class)->create(['name'=>'first']);
+
+        // When
+        // 當Tag被更新時
+        $tag->update([
+            'name' => 'first',
+        ]);
+
+        // Then
+        // 斷言 : 更新成指定
+        $this->assertEquals($tag->fresh()->name, 'first');
+    }
+
+
+    /**
      * 測試一篇Tag能夠辨別相同的標題，並產出不同的name、slug.
      *
      * @group unit

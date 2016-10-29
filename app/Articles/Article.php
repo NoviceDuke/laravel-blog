@@ -70,8 +70,9 @@ class Article extends Eloquent
      */
     public function setTitleAttribute($value)
     {
-        // 判斷title是否重複
-        if (($count = $this->where('title', 'like', '%'.$value.'%')->count()) != 0) {
+        // 判斷title是否重複  && 自己存不存在
+        $count = $this->where('title', 'like', '%'.$value.'%')->count();
+        if ($count && !$this->exists) {
             $this->attributes['title'] = $value.'-'.$count;
         } else {
             $this->attributes['title'] = $value;
@@ -81,6 +82,7 @@ class Article extends Eloquent
             $slug = str_slug($this->attributes['title'], '-');
             if(empty($slug))
                 $slug =  urlencode($this->attributes['title']);
+            // dd($this->exists);
             $this->attributes['slug'] = $slug;
         }
     }

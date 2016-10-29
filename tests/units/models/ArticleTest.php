@@ -94,6 +94,38 @@ class ArticleTest extends TestCase
 
     }
 
+
+    /**
+     * 測試一篇文章能夠更新內容.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testArticleCanUpdate()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增文章
+        $article = factory(Article::class)->create(['title'=>'first']);
+
+        // When
+        // 當文章被更新時
+        // dd($article);
+        $article->update([
+            'title' => 'first',
+            'content' => 'content'
+        ]);
+
+        // Then
+        // 斷言 : 更新成指定
+        $this->assertEquals($article->fresh()->content, 'content');
+        $this->assertEquals($article->fresh()->title, 'first');
+    }
+
+
+
+
+
     /**
      * 測試一篇文章能夠取得自己的slug路徑.
      *

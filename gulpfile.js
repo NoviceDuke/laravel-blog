@@ -23,6 +23,7 @@ elixir(mix => {
         'blog-styles.js',
         'a_delete_method.js'
     ], 'public/js/blog-styles.js');
+    mix.webpack('app.js');
 
     // 別人的libs
     mix.sass([
@@ -35,9 +36,9 @@ elixir(mix => {
         '/libs/sweetalert2.js',
     ], 'public/js/libs.js');
 
-    mix.browserSync({
-        proxy: 'localhost/laravel-blog/public'
-    });
+    // mix.browserSync({
+    //     proxy: 'localhost/laravel-blog/public'
+    // });
     //duke.js
     mix.scripts([
         'ajax-modal.js','tag-modal.js',

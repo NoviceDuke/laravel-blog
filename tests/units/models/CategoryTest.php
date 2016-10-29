@@ -60,6 +60,32 @@ class CategoryTest extends TestCase
         $this->assertNotNull($slug);
     }
 
+
+    /**
+     * 測試Category能夠更新內容.
+     *
+     * @group unit
+     * @group eloquent
+     */
+    public function testCategoryCanUpdate()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 新增Category
+        $category = factory(Category::class)->create(['name'=>'first']);
+
+        // When
+        // 當Category被更新時
+        $category->update([
+            'name' => 'first',
+        ]);
+
+        // Then
+        // 斷言 : 更新成指定
+        $this->assertEquals($category->fresh()->name, 'first');
+    }
+
+
     /**
      * 測試一篇Category能夠辨別相同的標題，並產出不同的name、slug.
      *

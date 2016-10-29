@@ -12,9 +12,11 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-Vue.component('example', require('./components/Example.vue'));
+ Vue.component('navbar', function (resolve) {
+   require(['./components/Navbar.vue'], resolve)
+ })
+// Vue.component('navbar', require('./components/Navbar.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });
