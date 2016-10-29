@@ -61,7 +61,7 @@
             };
         },
         mounted(){
-            // console.log('Data-Binding Component Ready'+this.message);
+            document.getElementById("loading-nav").remove();
         }
     }
 </script>

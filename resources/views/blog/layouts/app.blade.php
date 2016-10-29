@@ -27,31 +27,20 @@
         animation-name: example;
         animation-duration: 4s;
     }
-
-    /* Safari 4.0 - 8.0 */
-    @-webkit-keyframes example {
-        from {background-color: red;}
-        to {background-color: yellow;}
-    }
-
-    /* Standard syntax */
-    @keyframes example {
-        from {background-color: red;}
-        to {background-color: yellow;}
-    }
     </style>
     @inject('authPresenter', 'App\Presenters\AuthPresenter')
     @inject('floatingButtonPresenter', 'App\Presenters\FloatingButtonPresenter')
     <body background="{{url('png/hchs_background.png')}}">
         <span id="app">
         <!--  Top Navigation  -->
-        <div class="my-loading-nav">
 
-        </div>
-        {{-- <nav class="blue-grey darken-2 nav-height-fix loading-nav"></nav> --}}
-        {{-- <navbar :islogin="{{$authPresenter->isLogin()}}"
+
+        <nav id="loading-nav" class="blue-grey darken-2 nav-height-fix">
+            <span class="loading-nav"></span>
+        </nav>
+        <navbar :islogin="{{$authPresenter->isLogin()}}"
                  baseurl="{{url('')}}">
-        </navbar> --}}
+        </navbar>
 		<!--  Top Navigation  -->
 
         <!--  Floating Button -->
