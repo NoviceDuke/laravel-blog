@@ -11,8 +11,6 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-        $categories = Category::all();
-        view()->share(compact('categories'));
     }
     /**
      * Display a listing of the resource.

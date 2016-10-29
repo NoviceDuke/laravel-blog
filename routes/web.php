@@ -23,7 +23,7 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 // Controllers Within The "App\Http\Controllers\Blog" Namespace
-Route::group(['namespace' => 'Blog'], function () {
+Route::group(['namespace' => 'Blog', 'middleware' => ['blog']], function () {
     Route::get('/', function(){ return redirect('/blog');});
     Route::get('/filter', 'BlogHomeController@filter');
     Route::resource('blog', 'BlogHomeController');
