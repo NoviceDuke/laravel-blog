@@ -16,38 +16,32 @@
 
     <div class="panel panel-body">
 
-      <p>{{$articles->content}}</p>
+        {!! $articles->content !!}
+
+
+
     </div>
+
     <div class="panel panel-footer">
       <div class="row">
-        <div class="col-md-6 text-center">
+        <div class="col-md-4 text-center">
           發表於 {{$articles->created_at}}
         </div>
-          <div class="col-md-6 text-center">
+          <div class="col-md-4 text-center">
             修改於 {{$articles->updated_at}}
           </div>
 
+          <div class="col-md-3 text-right">
+            <a href="/backend/article/{{$articles->id}}/edit" class="btn btn-danger">編輯</a>
+            <a href="/backend/article" class="btn btn-success">返回</a>
 
-      </div>
+          </div>
+        </div>
+
 
     </div>
   </div>
 
 
-          <div class="row">
-            <div class="col-md-4">
-              <a href="/backend/article/{{$articles->id}}/edit" class="btn btn-danger">Edit</a>
-              <!--{!! Html::linkRoute('backend.article.edit','Edit',array($articles->id),array('class'=>'btn btn-danger '))!!}
-              -->
-            </div>
-            <div class="col-md-4">
-              <a href="/backend/article" class="btn btn-success">Back</a>
-              <!--
-              {!! Html::linkRoute('backend.article.index','Back',array($articles->id),array('class'=>'btn btn-success '))!!}
-            -->
-            </div>
-          </div>
-        </div>
-      </div>
 
 @stop
