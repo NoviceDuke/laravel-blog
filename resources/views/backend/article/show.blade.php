@@ -36,7 +36,7 @@
 
           <div class="row">
             <div class="col-md-4">
-              <a href="/backend/article/{{$articles->id}}" class="btn btn-danger">Edit</a>
+              <a href="/backend/article/{{$articles->id}}/edit" class="btn btn-danger">Edit</a>
               <!--{!! Html::linkRoute('backend.article.edit','Edit',array($articles->id),array('class'=>'btn btn-danger '))!!}
               -->
             </div>
