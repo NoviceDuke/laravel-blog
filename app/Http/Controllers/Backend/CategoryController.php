@@ -72,7 +72,7 @@ class CategoryController extends Controller
         //
 
           $category = Category::where('slug',$slug)->first();
-          $articles = Category::findSlug($slug)->articles();
+          $articles = Category::findSlug($slug)->articles()->get();
        if($request->ajax())
         {
           return response()->json($category);

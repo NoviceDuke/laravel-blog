@@ -9,7 +9,7 @@
         </h2>
     </div>
     <div class="panel-body">
-      dd({{$category->slug}})
+
     </div>
     <div class="table-responsive">
       <table class="table table-hover table-striped">
@@ -17,7 +17,7 @@
           <tr>
             <th>ID</th>
             <th>Article</th>
-            <th>Time</th>
+            <th>Date</th>
 
           </tr>
           </thead>
@@ -25,8 +25,8 @@
 
               @foreach ($articles as $article)
                   <tr>
-                <td>({{$article->id}})</td>
-                <td>{{$article->title}}</td>
+                <td>{{$article->id}}</td>
+                <td><a href="/backend/article/{{$article->id}}">{{$article->title}}</a></td>
                 <td>{{$article->created_at}}</td>
                   </tr>
               @endforeach
