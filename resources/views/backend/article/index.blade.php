@@ -14,7 +14,9 @@
 	          <tr>
 	              <th>ID </th>
 	              <th>Article</th>
-	              <th>Body</th>
+								<th>Category</th>
+								<th>Body</th>
+								<th>Author</th>
 	              <th>Date</th>
 				  <th></th>
 				  <th></th>
@@ -26,7 +28,9 @@
 	          <tr>
 	            <td>{{$article->id}}</td>
 	            <td>{{$article->title}}</td>
+							<td>{{$article->category->name}}	</td>
 	            <td>{{substr($article->content, 0,50)}}{{strlen($article->content)>50?"..." :""}}</td>
+							<td>{{$article->user_id}}</td>
 	            <td>{{$article->created_at}}</td>
 	            <td><a href="/backend/article/{{$article->id}}" class="btn btn-info">Show</a></td>
 							<td>
