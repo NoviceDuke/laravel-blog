@@ -30,7 +30,7 @@
 	            <td>{{$article->title}}</td>
 							<td>{{$article->category->name}}	</td>
 	            <td>{{substr($article->content, 0,50)}}{{strlen($article->content)>50?"..." :""}}</td>
-							<td>{{$article->user_id}}</td>
+							<td>{{$article->user->name}}</td>
 	            <td>{{$article->created_at}}</td>
 	            <td><a href="/backend/article/{{$article->id}}" class="btn btn-info">Show</a></td>
 							<td>
