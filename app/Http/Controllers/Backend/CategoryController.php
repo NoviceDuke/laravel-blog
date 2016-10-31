@@ -72,12 +72,12 @@ class CategoryController extends Controller
         //
 
           $category = Category::where('slug',$slug)->first();
-
+          $articles = Category::findSlug($slug)->articles();
        if($request->ajax())
         {
           return response()->json($category);
        }
-
+       return view('backend.category.show',compact('category','articles'));
 
     }
 
