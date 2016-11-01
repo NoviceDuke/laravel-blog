@@ -9,7 +9,7 @@
         <div class="row">
           <div class="text-center">
             {{$articles->title}}
-            <span class="label label-info text-right">{{$articles->category->name}}</span>
+            <span class="label label-info text-right" ><a href="{{route('backend.category.show',$articles->category->slug)}}">{{$articles->category->name}}</a></span>
           </div>
         </div>
 
