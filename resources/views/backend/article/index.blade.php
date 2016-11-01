@@ -27,8 +27,8 @@
 	        @foreach($articles as $article)
 	          <tr>
 	            <td>{{$article->id}}</td>
-	            <td>{{$article->title}}</td>
-							<td>{{$article->category->name}}	</td>
+	            <td><a href="{{route('backend.article.show',$article->id)}}">{{$article->title}}</a></td>
+							<td><a href="{{route('backend.category.show',$article->category->slug)}}">{{$article->category->name}}</a></td>
 	            <td>{{substr($article->content, 0,50)}}{{strlen($article->content)>50?"..." :""}}</td>
 							<td>{{$article->user->name}}</td>
 	            <td>{{$article->created_at}}</td>
