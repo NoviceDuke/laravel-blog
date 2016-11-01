@@ -63,6 +63,17 @@ abstract class EloquentRepository
             return $this->storeArray($data);
         }
     }
+
+    /**
+     *  回傳所有Model.
+     *
+     *  @return array|Builder
+     */
+    public function getAll()
+    {
+        return $this->model->orderBy('id', 'DESC');
+    }
+    
     /*------------------------------------------------------------------------**
     ** protected 輔助方法                                                      **
     **------------------------------------------------------------------------*/
@@ -80,4 +91,5 @@ abstract class EloquentRepository
 
         return $this->storeEloquentModel($model);
     }
+
 }

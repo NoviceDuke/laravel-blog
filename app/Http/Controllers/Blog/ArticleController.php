@@ -35,7 +35,7 @@ class ArticleController extends Controller
     public function __construct(ArticleRepository $articles, TagRepository $tags)
     {
         // 設定中介層，必須登入，除了Show()不必登入
-        $this->middleware('auth', ['except' => ['show','index']]);
+        $this->middleware('auth', ['except' => ['show', 'index']]);
 
         $this->articles = $articles;
         $this->tags = $tags;
@@ -47,7 +47,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return 'this is article index';
+        $articles = $this->articles->getAll()->paginate(8);
+    
+        return view('blog.article.index', compact('articles'));
     }
 
     /**
@@ -57,7 +59,6 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
-
         $article = $this->articles->getFromSlug($slug);
         if (!$article) {
             return abort(404, 'Slug Not Found');
@@ -100,8 +101,7 @@ class ArticleController extends Controller
     {
         // dd($request->get('tags'));
         $article = $this->articles->createFromUser($request->all(), Auth::user());
-        if(is_array($request->get('tags')))
-        {
+        if (is_array($request->get('tags'))) {
             $tags = $this->tags->createByNames($request->get('tags'));
             $article->syncTags($tags);
         }
