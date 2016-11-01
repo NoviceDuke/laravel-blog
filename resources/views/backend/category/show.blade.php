@@ -17,6 +17,7 @@
           <tr>
             <th>ID</th>
             <th>Article</th>
+            <th>Author</th>
             <th>Date</th>
 
           </tr>
@@ -27,8 +28,9 @@
                   <tr>
                 <td>{{$article->id}}</td>
                 <td><a href="/backend/article/{{$article->id}}">{{$article->title}}</a></td>
+                <td>{{$article->user->name}}</td>
                 <td>{{$article->created_at}}</td>
-                  </tr>
+              </tr>
               @endforeach
 
 
