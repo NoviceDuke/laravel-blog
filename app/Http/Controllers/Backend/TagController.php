@@ -69,12 +69,13 @@ class TagController extends Controller
     {
         //
           $tag = Tag::find($id);
+          $articles = Tag::find($id)->articles()->get();
           if($request->ajax())
           {
 
           return response()->json($tag);
           }
-
+            return view('backend.tag.show',compact('tag','articles'));
     }
 
     /**

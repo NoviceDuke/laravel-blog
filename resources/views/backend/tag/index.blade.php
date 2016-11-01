@@ -36,7 +36,7 @@
 
 
 					<td>{{ $tag->id }}</td>
-					<td>{{ $tag->name }}</td>
+					<td><a href="{{route('backend.tag.show',$tag->id)}}">{{ $tag->name }}</a></td>
 					<td>{{ $tag->created_at }}</td>
 					<td>
 						<button class="btn btn-info btn-md  tag-edit" value="{{$tag->id}}">Edit</button>
