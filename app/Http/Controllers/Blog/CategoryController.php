@@ -22,7 +22,7 @@ class CategoryController extends Controller
         //dispaly a view of all of our categories
         $categories = Category::all();
 
-        return view('blog.categories.index')->withCategories($categories);
+        return view('blog.category.index', compact('categories'));
     }
 
     /**
@@ -51,7 +51,7 @@ class CategoryController extends Controller
 
         Session::flash('success', 'New Category has been created');
 
-        return redirect()->route('categories.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -61,9 +61,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $articles = Category::findSlug($slug)->articles()->paginate(6);
+
+        return view('blog.category.show', compact('articles'));
     }
 
     /**

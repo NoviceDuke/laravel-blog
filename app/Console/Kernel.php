@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+        Commands\BlogTest::class,
     ];
 
     /**
@@ -24,7 +24,21 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        // $now = Carbon::now()->toDateString();
+        //
+        // $schedule->command('blog:test --refresh')
+        //   ->dailyAt('21:00')
+        //   ->sendOutputTo(storage_path("/logs/test/output_$now.log"));
+    }
+
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        require base_path('routes/console.php');
+
     }
 }

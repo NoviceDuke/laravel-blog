@@ -1,11 +1,12 @@
-@extends('blog/app')
+@extends('blog.layouts.app')
+@section('title', '- 文章')
 @section('content')
 @inject('articlePresenter', 'App\Presenters\ArticlePresenter')
+<div class="container show-container">
 <div class="row">
-<div class="col s12">
     <div class="card">
-        <div class="card-image">
-            <img class="card-image-fix" src="{{$article->pic_url}}">
+        <div class="card-image card-image-fix">
+            <img src="{{$article->pic_url}}">
         </div>
         <div class="card-content">
             <div class="row">
@@ -23,18 +24,7 @@
                 <p>{!!$article->content!!}</p>
             </div>
         </div>
-        <div class="card-action">
-            <a href="#">This is a link</a>
-        </div>
     </div>
 </div>
-</div>
-<div class="row">
-    <div class="col s6">
-        前一個
-    </div>
-    <div class="col s6">
-        下一個
-    </div>
 </div>
 @endsection

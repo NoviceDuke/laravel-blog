@@ -12,9 +12,10 @@ class AuthTest extends TestCase
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testRedirectToLogin()
     {
-        $this->visit('/')
+        $this->printTestStartMessage(__FUNCTION__);
+        $this->visit('/login')
              ->see('Login');
     }
 }

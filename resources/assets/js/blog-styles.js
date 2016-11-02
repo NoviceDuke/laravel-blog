@@ -10,7 +10,12 @@ $.fn.extend({
 /* All page used */
 $(document).ready(function() {
     //materail styleselect 標籤初始化
-    $('select').material_select();
+    // $('select').material_select();
+    $('.chips-placeholder').material_chip({
+        placeholder: 'Enter a tag',
+        secondaryPlaceholder: '+Tag',
+    });
+    $('.chips').material_chip();
 });
 
 /* app.blade.php  Foating至頂按鈕初始化 */
@@ -41,15 +46,24 @@ $(document).ready(function() {
 
     //動畫
     $("#article_create_submit").animateCss('zoomIn');
-    $("h4").animateCss('zoomIn');
+    $("#article_edit_submit").animateCss('zoomIn');
+    // $("h4").animateCss('zoomIn');
 });
 function article_create_submit() {
+    var tags = $('.chips').material_chip('data');
+    console.log(tags);
+    for (var key in tags) {
+        $('<input />').attr('type', 'hidden')
+        .attr('name', "tags["+key+"]")
+        .attr('value', tags[key].tag)
+        .appendTo('#article_create_form');
+    }
+
     document.getElementById('article_create_form').submit();
 }
-$(window).load(function(e) {
-    if ($("toast").length)
-        Materialize.toast($('toast').data("error"), 4000, 'toast-error');
-});
+function article_edit_submit() {
+    document.getElementById('article_edit_form').submit();
+}
 
 /* right.blade.php */
 $(document).ready(function() {

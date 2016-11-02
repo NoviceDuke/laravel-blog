@@ -2,33 +2,40 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Articles\Article;
-use App\Articles\Tag;
-use App\Articles\Category;
+use App\Articles\ArticleRepository;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Jobs\SendEmail;
 
 class BlogHomeController extends Controller
 {
-    public function __construct()
+    /**
+     * @var ArticleRepository
+     */
+    protected $articles;
+    public function __construct(ArticleRepository $articles)
     {
-        $categories = Category::all();
-        view()->share(compact('categories'));
+        $this->articles = $articles;
     }
 
     public function index()
     {
-        $newArticles = Article::query()->orderBy('created_at', 'DESC')->take(2)->get();
-        $lyricArticles = Category::where('name', 'Lyrics')->first()->articles()->get();
-        $phpArticles = Category::where('name', 'PHP')->first()->articles()->get();
+        $oddArticles = $this->articles->getOddArticles()->take(5)->get();
+        $evenArticles = $this->articles->getEvenArticles()->take(5)->get();
 
-        return view('blog.index', compact('newArticles', 'lyricArticles', 'phpArticles'));
+        return view('blog.home.index', compact('oddArticles', 'evenArticles'));
+    }
+
+    public function filter(Request $request)
+    {
+        $articles = $this->articles->search($request->get('search'))->paginate(8);
+        return view('blog.home.filter', compact('articles'));
     }
 
     public function getTrace()
     {
-        $tag = Tag::find(1);
-        dd($tag->frequency);
+        $this->dispatch(new SendEmail);
 
-        return view('blog.trace', compact('articles'));
+        return 'trace';
     }
 }

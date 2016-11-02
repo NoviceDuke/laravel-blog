@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 abstract class EloquentRepository
 {
     /**
-     * @var \Illuminate\Database\Eloquent\Model
+     * @var Illuminate\Database\Eloquent\Model
      */
     protected $model;
     protected $lastInstance;
     /**
      *  建構子依賴注入.
      *
-     *  @param ArticleRepository:class
+     *  @param EloquentRepository:class
      */
     public function __construct(Model $model)
     {
@@ -63,6 +63,17 @@ abstract class EloquentRepository
             return $this->storeArray($data);
         }
     }
+
+    /**
+     *  回傳所有Model.
+     *
+     *  @return array|Builder
+     */
+    public function getAll()
+    {
+        return $this->model->orderBy('id', 'DESC');
+    }
+    
     /*------------------------------------------------------------------------**
     ** protected 輔助方法                                                      **
     **------------------------------------------------------------------------*/
@@ -80,4 +91,5 @@ abstract class EloquentRepository
 
         return $this->storeEloquentModel($model);
     }
+
 }

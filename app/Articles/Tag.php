@@ -2,10 +2,9 @@
 
 namespace App\Articles;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Articles\Article;
-
-class Tag extends Model
+use App\Core\Eloquent;
+use Carbon\Carbon;
+class Tag extends Eloquent
 {
     /*------------------------------------------------------------------------**
     ** Entity 定義                                                            **
@@ -14,6 +13,7 @@ class Tag extends Model
     protected $fillable = [
         'name',            // tag名稱
         'frequency',       // 被使用次數
+        'slug',
     ];
 
     /*------------------------------------------------------------------------**
@@ -31,6 +31,13 @@ class Tag extends Model
         return $this->belongsToMany(Article::class)->withTimestamps();
     }
 
+    /**
+     * 取得當下Tag關聯的Style。
+     */
+    public function style()
+    {
+        return $this->morphOne(Style::class, 'styleable');
+    }
     /*------------------------------------------------------------------------**
     ** 存取器 Accessors                                                        **
     **------------------------------------------------------------------------*/
@@ -50,6 +57,29 @@ class Tag extends Model
         return $this->attributes['frequency'];
     }
 
+    /**
+     *  在使用Tag Model設定name時，會進入此存取器
+     *  自動判斷重複的name並給予新的name
+     *  自動填補slug.
+     */
+    public function setNameAttribute($value)
+    {
+        // 判斷name是否重複  && 自己存不存在
+        $count = $this->where('name', 'like', '%'.$value.'%')->count();
+        if ($count && !$this->exists) {
+            $this->attributes['name'] = $value.'-'.$count;
+        } else {
+            $this->attributes['name'] = $value;
+        }
+        // 自動填補slug
+        if (empty($this->slug)) {
+            $slug = str_slug($this->attributes['name'], '-');
+            if(empty($slug))
+                $slug =  urlencode($this->attributes['name']);
+            $this->attributes['slug'] = $slug;
+        }
+    }
+
     /*------------------------------------------------------------------------**
     ** 自訂函數方法                                                            **
     **------------------------------------------------------------------------*/
@@ -61,6 +91,13 @@ class Tag extends Model
      */
     public function addArticle(Article $article)
     {
-        return $this->articles()->save($article);
+        if (!$this->articles()->find($article->id)) {
+            return $this->articles()->attach($article);
+        }
+    }
+
+    public function path()
+    {
+        return '/tag/'.$this->slug;
     }
 }

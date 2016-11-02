@@ -6,6 +6,8 @@ use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Unisharp\Laravelfilemanager\Events\ImageWasUploaded;
 use App\Listeners\UploadListener;
+use App\Listeners\ArticleListeners\ArticleLogsListener;
+use App\Events\ArticleEvents;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,23 +20,35 @@ class EventServiceProvider extends ServiceProvider
         ImageWasUploaded::class => [
             UploadListener::class,
         ],
+        ArticleEvents\ArticleWasPosted::class => [
+            ArticleLogsListener::class,
+        ],
+        ArticleEvents\ArticleWasDeleted::class => [
+            ArticleLogsListener::class,
+        ],
+        ArticleEvents\ArticleWasUpdated::class => [
+            ArticleLogsListener::class,
+        ],
+        ArticleEvents\ArticleWasRead::class => [
+            ArticleLogsListener::class,
+        ],
     ];
 
     /**
      * 註冊事件監聽器.
      */
     protected $subscribe = [
-        'App\Listeners\ArticleEventsListener',
+
     ];
 
     /**
-     * Register any other events for your application.
+     * Register any events for your application.
      *
-     * @param \Illuminate\Contracts\Events\Dispatcher $events
+     * @return void
      */
-    public function boot(DispatcherContract $events)
+    public function boot()
     {
-        parent::boot($events);
+        parent::boot();
 
         //
     }

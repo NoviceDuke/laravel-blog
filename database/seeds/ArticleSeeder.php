@@ -11,7 +11,7 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        $user_ids = User::all()->lists('id')->toArray();
+        $user_ids = User::all()->pluck('id')->all();
         $faker = Faker\Factory::create('en_EN');
         $faker->seed(rand(1, 999));
         //預設圖片位置，來自http://www.freeimages.com/
@@ -31,11 +31,11 @@ class ArticleSeeder extends Seeder
         ];
 
         DB::table('articles')->delete();
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 15) as $index) {
             Article::create([
             'user_id' => $faker->randomElement($user_ids),
             'title' => $faker->unique()->text(15),
-            'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+            'content' => $faker->realText($maxNbChars = 2000, $indexSize = 2),
             'pic_url' => $faker->randomElement($array_pic_url),
             'slug' => $faker->unique()->slug,
             ]);

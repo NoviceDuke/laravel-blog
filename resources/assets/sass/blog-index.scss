@@ -1,0 +1,58 @@
+// local define
+//section class
+.article {
+    margin-top: 65px;
+}
+.article-title{
+    font-weight: 400;
+    font-size: 1.4rem;
+    display: block;
+}
+.article-content-container{
+    padding: 30px;
+}
+.article-content{
+    margin-top: 25px;
+    font-size: 1.0rem;
+    max-height: 110px;
+    overflow: hidden;
+}
+.article-footer{
+    margin-top: 25px;
+}
+.article-more{
+    font-size: 1.0rem;
+    font-weight: 500;
+}
+.tags-container {
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px rgba(80%,80%,90%,0.4);
+    border-style: solid;
+    min-height: 50px;
+}
+.reveal-container{
+    position: relative;
+}
+.reveal-btn{
+    position: absolute;
+    bottom:15px;
+}
+.reveal-content{
+    max-height: 375px;
+    overflow: hidden;
+}
+.tag-element {
+    position: relative;
+    top: 8px;
+}
+
+.category {
+    margin-top: 9px;
+    font-weight: 400 !important;
+    font-size: 0.85rem !important;
+}

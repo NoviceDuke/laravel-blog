@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Accounts\User;
+use App\Accounts\Permission\Role;
 
 class UserSeeder extends Seeder
 {
@@ -10,21 +11,34 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $faker = Faker\Factory::create('en_EN');
+        $hchs = User::create([
                 'email' => 'g9308370@hotmail.com',
                 'name' => 'hchs',
-                'password' => '123456',
+                'password' => bcrypt('123456'),
+                'about_me' => $faker->realText($maxNbChars = 800, $indexSize = 2),
             ]);
-        User::create([
+        $duke = User::create([
                 'email' => 'duke00360753@gmail.com',
                 'name' => 'duke',
-                'password' => '123456',
+                'password' => bcrypt('123456'),
+                'about_me' => $faker->realText($maxNbChars = 800, $indexSize = 2),
+            ]);
+        $author = User::create([
+                    'email' => 'author@gmail.com',
+                    'name' => 'author',
+                    'password' => bcrypt('123456'),
+                    'about_me' => $faker->realText($maxNbChars = 800, $indexSize = 2),
+                ]);
+        $user = User::create([
+                'email' => 'user@gmail.com',
+                'name' => 'user',
+                'password' => bcrypt('123456'),
+                'about_me' => $faker->realText($maxNbChars = 800, $indexSize = 2),
             ]);
 
-        foreach (DB::table('users')->get() as $user) {
-            DB::table('users')
-        ->where('id', $user->id)
-        ->update(array('password' => Hash::make($user->password)));
-        }
+        $hchs->attachRole(Role::findName('SuperRoot'));
+        $duke->attachRole(Role::findName('SuperRoot'));
+        $author->attachRole(Role::findName('Author'));
     }
 }

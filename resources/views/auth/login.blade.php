@@ -1,4 +1,4 @@
-@extends('blog.html')
+@extends('layouts.html')
 @section('content')
 <div class="container">
     <div class="row" style="margin-top:50px;">
@@ -39,11 +39,7 @@
                     <button name="LOGIN" type="submit" class="waves-effect waves-light btn">
                         LOGIN
                     </button>
-                    <a href='redirect_to_fb' class="btn waves-effect waves-light" type="submit" name="FB Login">FB Login
-                        <i class="material-icons left"></i>
-                    </a>
                 </div>
-
             </div>
         </form>
     </div>

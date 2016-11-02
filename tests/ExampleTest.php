@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Login');
+        $this->printTestStartMessage(__FUNCTION__);
+        $this->assertEquals(1,1);
     }
 }

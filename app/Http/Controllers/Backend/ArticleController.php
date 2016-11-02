@@ -27,7 +27,7 @@ class ArticleController extends Controller
     }
     public function index()
     {
-        $articles = Article::All();
+        $articles = Article::orderBy('id','desc')->paginate(10);
         return view('backend.article.index',compact('articles'));
     }
 
@@ -60,7 +60,9 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        //find the article in the database
+        $articles = Article::find($id);
+        return view('backend.article.show',compact('articles'));
     }
 
     /**
@@ -71,7 +73,10 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        //find the article in the database and save
+        $articles = Article::find($id);
+        //return the view and pass in we previously created
+        return view('backend.article.edit',compact('articles'));
     }
 
     /**
@@ -83,7 +88,19 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validate the data
+        $this->validate($request,array('title'=>'required','content'=>'required'));
+        //find the article id
+        $articles = Article::find($id);
+        //match input
+        $articles->title = $request->input('title');
+        $articles->content = $request->input('content');
+        //save it
+        $articles->save();
+        //flash message
+        //Session:flash('flash_message','Article is saved');
+        //back to showpage
+        return redirect()->route('backend.article.show',$articles->id);
     }
 
     /**
@@ -95,5 +112,8 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+        $articles = Article::find($id);
+        $articles->delete();
+        return redirect()->route('backend.article.index');
     }
 }

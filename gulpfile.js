@@ -1,4 +1,6 @@
-var elixir = require('laravel-elixir');
+const elixir = require('laravel-elixir');
+
+require('laravel-elixir-vue-2');
 
 /*
  |--------------------------------------------------------------------------
@@ -7,18 +9,43 @@ var elixir = require('laravel-elixir');
  |
  | Elixir provides a clean, fluent API for defining some basic Gulp tasks
  | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
+ | file for your application as well as publishing vendor resources.
  |
  */
 
-elixir(function(mix) {
+elixir(mix => {
     // original elixir mix sass. I don't need this  sass(bootstrap)
     // mix.sass('app.scss');
-    mix.sass('blog-styles.scss','public/css/blog-styles.css');
+
+    // 自己的scss與js
+    mix.sass('blog-styles.scss', 'public/css/blog-styles.css');
     mix.scripts([
         'blog-styles.js',
-    ],'public/js/blog-styles.js');
-    mix.browserSync({
-        proxy: 'localhost/laravel-blog/public'
-    });
+        'a_delete_method.js'
+    ], 'public/js/blog-styles.js');
+    mix.webpack('app.js');
+
+    // 別人的libs
+    mix.sass([
+        'libs/prism.scss',
+        'libs/sweetalert2.scss',
+    ], 'public/css/libs.css');
+
+    mix.scripts([
+        '/libs/prism.js',
+        '/libs/sweetalert2.js',
+    ], 'public/js/libs.js');
+
+    // mix.browserSync({
+    //     proxy: 'localhost/laravel-blog/public'
+    // });
+    //duke.js
+    mix.scripts([
+        'ajax-modal.js','tag-modal.js',
+        ], 'public/js/modal.js');
+    mix.scripts([
+        'a_delete_method.js',
+        '/libs/sweetalert2.js',
+    ], 'public/js/hchs_backend.js');
+
 });
