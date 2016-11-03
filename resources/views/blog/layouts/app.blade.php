@@ -37,6 +37,9 @@
 
         <nav id="loading-nav" class="blue-grey darken-2 nav-height-fix">
             <span class="loading-nav"></span>
+            <div class="progress progress-fix">
+                <div class="indeterminate"></div>
+            </div>
         </nav>
         <navbar :islogin="{{$authPresenter->isLogin()}}"
                  baseurl="{{url('')}}">
@@ -62,6 +65,7 @@
     {!! Html::script(url('js/blog-styles.js'))!!}
     {!! Html::script(url('js/libs.js'))!!}
 
+    @include('blog.partials.footer')
     <!--  js section -->
     @yield('javascript')
     <!--  js section -->
