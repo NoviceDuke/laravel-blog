@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     //display modal form for tag editing
   $(document).on("click",'.edit-modal',function(){
-        var category_slug = $(this).val();``
+        var category_slug = $(this).val();
 
         $.get(url  + category_slug, function (data) {
             //success data
@@ -113,7 +113,7 @@ $(document).ready(function(){
 
     //display modal form for tag editing
   $(document).on("click",'.tag-edit',function(){
-        var tag_id = $(this).val();``
+        var tag_id = $(this).val();
 
         $.get(url  + tag_id, function (data) {
             //success data
