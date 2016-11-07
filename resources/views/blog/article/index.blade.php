@@ -24,6 +24,7 @@
                     </div>
                     <div class="article-content-container">
                         <span class="article-title grey-text text-darken-3">{{$article->title}}</span>
+                        <span class="article-author" style="width:6%"><img src="{{$article->user->picture}}" class="z-depth-1 circle responsive-img"></span>
                         <section class="category-content grey-text text-darken-2">{{$article->content}}</section>
                         <div class="article-footer">
                             <span class="article-more"><a href="{{url($article->path())}}">More</a></span>
