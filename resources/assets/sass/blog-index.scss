@@ -6,7 +6,12 @@
 .article-title{
     font-weight: 400;
     font-size: 1.4rem;
-    display: block;
+}
+.article-author{
+    position: absolute;
+    width: 9%;
+    right: 20px;
+    margin-top: -20px;
 }
 .article-content-container{
     padding: 30px;
