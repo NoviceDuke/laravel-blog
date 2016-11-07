@@ -26,6 +26,7 @@
 				<tr>
 					<th data-field="id">ID</th>
           <th data-field="name">Name</th>
+					<th data-field="slug">Slug</th>
 					<th data-field="time">Time</th>
 					<th>Action</th>
 
@@ -36,7 +37,8 @@
 				<tr id="category{{$category->slug}}">
 					<tr>
 					<td>{{ $category->id }}</td>
-					<td>{{ $category->name }}</td>
+					<td><a href="/backend/category/{{ $category->slug }}">{{ $category->name }}</a></td>
+					<th>{{ $category->slug }}</th>
 					<td>{{$category->created_at}}</td>
 					<td>
 						<button class="btn btn-info btn-md  edit-modal" value="{{$category->slug}}">Edit</button>

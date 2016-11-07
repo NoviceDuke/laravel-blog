@@ -1,11 +1,11 @@
 @extends('backend/app')
 
-@section('title','| Category')
+@section('title','| Tag')
 @section('content')
   <div class="panel panel-warning">
     <div class="panel panel-heading">
       <h2 class="panel-title text-center">
-        {{$category->name}}
+        {{$tag->name}}
         </h2>
     </div>
     <div class="panel-body">

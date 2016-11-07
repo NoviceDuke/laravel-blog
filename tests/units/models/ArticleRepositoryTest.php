@@ -49,6 +49,9 @@ class ArticleRepositoryTest extends TestCase
      * 測試 可以透過slug取得文章.
      *
      * 斷言 使用Repository取得的文章標題 等同於 手動創建的文章標題
+     *
+     * @group unit
+     * @group repository
      */
     public function testRepositoryCanGetAArticleFromSlug()
     {
@@ -68,6 +71,9 @@ class ArticleRepositoryTest extends TestCase
      * 測試 可以透過slug取得文章.
      *
      * 斷言 使用Repository取得的文章標題 等同於 手動創建的文章標題
+     *
+     * @group unit
+     * @group repository
      */
     public function testRepositoryCanCreateArticleFromUser()
     {
@@ -96,6 +102,9 @@ class ArticleRepositoryTest extends TestCase
      * 測試 可以透過某個article取得接下來的數筆article.
      *
      * 斷言 使用Repository取得的數筆文章 等同於 手動創建的數筆文章
+     *
+     * @group unit
+     * @group repository
      */
     public function testRepositoryCanGetNextArticles()
     {
@@ -120,6 +129,9 @@ class ArticleRepositoryTest extends TestCase
      * 測試 可以透過某個article取得前面的數筆article.
      *
      * 斷言 使用Repository取得的數筆文章 等同於 手動創建的數筆文章
+     *
+     * @group unit
+     * @group repository
      */
     public function testRepositoryCanGetPreviousArticles()
     {
@@ -142,6 +154,9 @@ class ArticleRepositoryTest extends TestCase
 
     /**
      * 測試 可以透過某個article取得奇數的數筆article.
+     *
+     * @group unit
+     * @group repository
      */
     public function testRepositoryCanGetOddArticles()
     {
@@ -162,6 +177,9 @@ class ArticleRepositoryTest extends TestCase
 
     /**
      * 測試 可以透過某個article取得偶數的數筆article.
+     *
+     * @group unit
+     * @group repository
      */
     public function testRepositoryCanGetEvenArticles()
     {
@@ -178,5 +196,30 @@ class ArticleRepositoryTest extends TestCase
         // 斷言 第一個取得的文章ID = 1  第二筆 = 3
         $this->assertEquals($articles->first()->id, 10);
         $this->assertEquals($articles[1]->id, 8);
+    }
+
+    /**
+     * 測試 可以取得所有article.
+     *
+     * @group unit
+     * @group repository
+     */
+    public function testRepositoryCanGetAllArticles()
+    {
+        $this->printTestStartMessage(__FUNCTION__);
+        // Given
+        // 創建article內容，10筆
+        $articles = factory(Article::class, 10)->create();
+
+        // When
+        // getAll()
+        $articles = $this->repository->getAll()->get();
+
+        // Then
+        // 斷言 第一個取得的文章ID = 10  最後一筆 = 1
+        $this->assertEquals($articles->first()->id, 10);
+        $this->assertEquals($articles->last()->id, 1);
+        $this->assertEquals($articles->count(), 10);
+
     }
 }

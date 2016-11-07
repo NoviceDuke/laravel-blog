@@ -4,6 +4,7 @@ namespace App\Articles;
 
 use App\Core\Eloquent;
 use Carbon\Carbon;
+use App\Accounts\User;
 class Article extends Eloquent
 {
     /*------------------------------------------------------------------------**
@@ -47,7 +48,7 @@ class Article extends Eloquent
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     /**

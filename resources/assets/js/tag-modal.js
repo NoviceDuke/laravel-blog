@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     //display modal form for tag editing
   $(document).on("click",'.tag-edit',function(){
-        var tag_id = $(this).val();``
+        var tag_id = $(this).val();
 
         $.get(url  + tag_id, function (data) {
             //success data

@@ -2,40 +2,42 @@
 
 @section('title','| Article')
 @section('content')
-  <div >
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-lg-8">
-        <h1>{{$articles->title}}</h1>
-        <p>{{$articles->content}}</p>
-      </div>
-      <div class="col-xs-6 col-lg-7">
-        <div class="well">
-          <dl class="dl-horizontal">
-            <dt>
-              Created At:
-            </dt>
-            <dd>
-              {{$articles->created_at}}
-            </dd>
-          </dl>
-          <dl class="dl-horizontal">
-            <dt>
-              Updated At:
-            </dt>
-            <dd>
-              {{$articles->updated_at}}
-            </dd>
-          </dl>
-          <hr />
-          <div class="row">
-            <div class="col-md-4">
-              {!! Html::linkRoute('backend.article.edit','Edit',array($articles->id),array('class'=>'btn btn-danger waves-effect waves-light btn red'))!!}
-            </div>
-            <div class="col-md-4">
-              {!! Html::linkRoute('backend.article.index','Back',array($articles->id),array('class'=>'btn btn-success waves-effect waves-light btn'))!!}
-            </div>
+  <div class="panel panel-success">
+    <!--Head-->
+    <div class="panel panel-heading">
+      <h3 class="panel-title">
+        <div class="row">
+          <div class="text-center">
+            {{$articles->title}}
+            <span class="label label-info text-right" ><a href="{{route('backend.category.show',$articles->category->slug)}}">{{$articles->category->name}}</a></span>
+          </div>
+        </div>
+
+      </h3>
+    </div>
+    <!--Body-->
+    <div class="panel panel-body">
+      {!! $articles->content !!}
+    </div>
+    <!--Footer-->
+    <div class="panel panel-footer">
+      <div class="row">
+        <!--time-->
+        <div class="col-md-4 text-center">
+          發表於 {{$articles->created_at}}
+        </div>
+          <div class="col-md-4 text-center">
+            修改於 {{$articles->updated_at}}
+          </div>
+          <!--Button-->
+          <div class="col-md-3 text-right">
+            <a href="/backend/article/{{$articles->id}}/edit" class="btn btn-danger">編輯</a>
+            <a href="/backend/article" class="btn btn-success">返回</a>
           </div>
         </div>
       </div>
+  </div>
+
+
 
 @stop
