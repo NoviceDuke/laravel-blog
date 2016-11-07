@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     //display modal form for tag editing
   $(document).on("click",'.edit-modal',function(){
-        var category_slug = $(this).val();``
+        var category_slug = $(this).val();
 
         $.get(url  + category_slug, function (data) {
             //success data
