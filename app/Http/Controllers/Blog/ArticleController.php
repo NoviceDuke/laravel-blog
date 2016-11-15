@@ -48,7 +48,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = $this->articles->getAll()->paginate(8);
-    
+
         return view('blog.article.index', compact('articles'));
     }
 
@@ -86,7 +86,7 @@ class ArticleController extends Controller
 
         //grab all of our categories in database;
         $categories = Category::all()->pluck('name', 'id');
-        $tags = $this->tags->getModel()->all();
+        $tags = $this->tags->getAllForTagSelector();
 
         //return view('blog.article.create')->withCategories($categories);
         return view('blog.article.create', compact('articles', 'categories', 'tags'));

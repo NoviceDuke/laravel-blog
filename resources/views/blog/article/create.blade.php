@@ -20,7 +20,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <div class="chips chips-placeholder" id="tag">Tag</div>
+                    <tag-selector :tags="{{$tags}}"></tag-selector>
                 </div>
             </div>
             <div class="row">
@@ -50,21 +50,7 @@
 @include('partials.tinymce-script')
 <script>
 $(document).ready(function() {
-    //materail styleselect 標籤初始化
-    // $('select').material_select();
-    $('.chips-placeholder').material_chip({
-        placeholder: 'Enter a tag',
-        secondaryPlaceholder: '+Tag',
-    });
-    $('.chips').material_chip();
 
-    $('input.input').autocomplete({
-      data: {
-          @foreach ($tags as $tag)
-          "{{$tag->name}}":null,
-          @endforeach
-      }
-    });
 });
 </script>
 @endsection

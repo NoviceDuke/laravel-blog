@@ -7,7 +7,7 @@
           <!-- <li :class="{ active: isURL('/about') }"><a :href="path('/about')">About</a></li> -->
           <li :class="{ active: isURL('/article') }"><a :href="path('/article')">Articles</a></li>
           <li :class="{ active: isURL('/category') }"><a :href="path('/category')">Categories</a></li>
-          <li :class="{ active: isURL('/tag') }"><a :href="path('/tag')">Tags</a></li>
+          <!-- <li :class="{ active: isURL('/tag') }"><a :href="path('/tag')">Tags</a></li> -->
         </ul>
 
 
