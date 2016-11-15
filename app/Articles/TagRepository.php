@@ -37,4 +37,13 @@ class TagRepository extends EloquentRepository
         }
         return $tags;
     }
+
+    /**
+     *  回傳Vue Tag Selector可用的Json陣列
+     */
+    public function getAllForTagSelector()
+    {
+        $tags = $this->model->all()->pluck(['name'])->toArray();
+        return json_encode($tags);
+    }
 }
