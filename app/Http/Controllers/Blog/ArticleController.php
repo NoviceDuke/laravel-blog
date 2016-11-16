@@ -89,6 +89,7 @@ class ArticleController extends Controller
         $tags = $this->tags->getAllForTagSelector();
 
         //return view('blog.article.create')->withCategories($categories);
+        // dd($categories);
         return view('blog.article.create', compact('articles', 'categories', 'tags'));
     }
 
@@ -99,7 +100,6 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        // dd($request->get('tags'));
         $article = $this->articles->createFromUser($request->all(), Auth::user());
         if (is_array($request->get('tags'))) {
             $tags = $this->tags->createByNames($request->get('tags'));

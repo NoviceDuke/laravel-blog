@@ -18,6 +18,9 @@ require('./bootstrap');
  Vue.component('tag-selector', function (resolve) {
    require(['./components/TagSelector.vue'], resolve)
  });
+ Vue.component('category-selector', function (resolve) {
+   require(['./components/CategorySelector.vue'], resolve)
+ });
 // Vue.component('navbar', require('./components/Navbar.vue'));
 
 const app = new Vue({

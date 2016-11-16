@@ -14,8 +14,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    {!! Form::select('category_id', $categories) !!}
-                    {!! Form::label('category_id', 'Category') !!}
+                    <category-selector :categories="{{$categories}}"></category-selector>
                 </div>
             </div>
             <div class="row">
@@ -48,9 +47,4 @@
 @stop
 @section('javascript')
 @include('partials.tinymce-script')
-<script>
-$(document).ready(function() {
-
-});
-</script>
 @endsection
