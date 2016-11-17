@@ -16,6 +16,7 @@ $(document).ready(function() {
         secondaryPlaceholder: '+Tag',
     });
     $('.chips').material_chip();
+
 });
 
 /* app.blade.php  Foating至頂按鈕初始化 */

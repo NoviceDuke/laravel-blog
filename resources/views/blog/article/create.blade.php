@@ -1,5 +1,8 @@
 @extends('blog.layouts.app')
 @section('title', '- 建立文章')
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
     <div class="card-panel white">
         <div class="card-panel-container">
@@ -14,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <category-selector :categories="{{$categories}}"></category-selector>
+                    <category-selector :categories="{{$categories}}" :styles="{{$styles}}"></category-selector>
                 </div>
             </div>
             <div class="row">

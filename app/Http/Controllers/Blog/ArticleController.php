@@ -6,6 +6,7 @@ use Event;
 use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
+use App\Articles\Style;
 use App\Articles\TagRepository;
 use App\Events\ArticleEvents\ArticleWasPosted;
 use App\Events\ArticleEvents\ArticleWasDeleted;
@@ -85,12 +86,13 @@ class ArticleController extends Controller
         }
 
         //grab all of our categories in database;
-        $categories = Category::all()->pluck('name', 'id');
+        $categories = Category::all();
+        $styles = Style::all();
         $tags = $this->tags->getAllForTagSelector();
 
         //return view('blog.article.create')->withCategories($categories);
         // dd($categories);
-        return view('blog.article.create', compact('articles', 'categories', 'tags'));
+        return view('blog.article.create', compact('articles', 'categories', 'tags', 'styles'));
     }
 
     /**
