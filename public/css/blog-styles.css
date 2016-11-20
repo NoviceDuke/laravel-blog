@@ -4640,7 +4640,6 @@
 .tags-container {
   padding-left: 20px;
   padding-top: 5px;
-  padding-bottom: 5px;
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -4665,6 +4664,13 @@
 
 .category {
   margin-top: 9px;
+  margin-right: -13px;
+  font-weight: 400 !important;
+  font-size: 0.85rem !important; }
+
+.tags-container > a > .category {
+  margin-top: 9px;
+  margin-right: 15px;
   font-weight: 400 !important;
   font-size: 0.85rem !important; }
 
@@ -4741,7 +4747,7 @@ a {
   background-color: #CDEAEA;
   color: #333333;
   font-size: 12px;
-  padding: 2px 12px 2px;
+  padding: 2px 12px 3px;
   border-radius: 16px;
   font-weight: 400; }
 
