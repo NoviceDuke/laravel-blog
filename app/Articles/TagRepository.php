@@ -6,7 +6,7 @@ use App\Core\EloquentRepository;
 use App\Accounts\User;
 
 /**
- *  負責處理 Article Query的邏輯.
+ *  負責處理 Tag Query的邏輯.
  */
 class TagRepository extends EloquentRepository
 {

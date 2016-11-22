@@ -12,7 +12,7 @@
                     @endif
                     <div class="tags-container">
                         <div class="row">
-                            <div class="col m8">
+                            <div class="col m9">
                             @foreach($article->tags()->get() as $tag)
                                 <a href="{{url($tag->path())}}"><span class="tag tag-element">{{$tag->name}}</span></a>
                             @endforeach
@@ -53,7 +53,7 @@
                     @endif
                     <div class="tags-container">
                         <div class="row">
-                            <div class="col m8">
+                            <div class="col m9">
                             @foreach($article->tags()->get() as $tag)
                                 <a href="{{url($tag->path())}}"><span class="tag tag-element">{{$tag->name}}</span></a>
                             @endforeach
