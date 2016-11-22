@@ -7,6 +7,7 @@ use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
 use App\Articles\Style;
+use App\Articles\Tag;
 use App\Articles\TagRepository;
 use App\Events\ArticleEvents\ArticleWasPosted;
 use App\Events\ArticleEvents\ArticleWasDeleted;
@@ -129,8 +130,9 @@ class ArticleController extends Controller
         $article = $this->articles->getFromSlug($slug);
         $categories = Category::all();
         $styles = Style::all();
+        $tags = $this->tags->getAllForTagSelector();
 
-        return view('blog.article.edit', compact('article', 'categories', 'styles'));
+        return view('blog.article.edit', compact('article', 'categories', 'styles', 'tags'));
     }
 
     /**
