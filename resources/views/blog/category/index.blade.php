@@ -16,7 +16,7 @@
                         <div class="collection">
                             @foreach ($category->articles as $article)
                                 <a href="{{$article->path()}}" class="collection-item">{{$article->title}}
-                                    <span class="new badge" data-badge-caption="">{{$articlePresenter->getCreatedDate($article)}}</span>
+                                    <span class="new badge badge-fix" data-badge-caption="custom caption">{{$articlePresenter->getCreatedDate($article)}}</span>
                                 </a>
                             @endforeach
                         </div>
