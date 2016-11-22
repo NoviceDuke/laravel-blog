@@ -1,5 +1,8 @@
 @extends('blog.layouts.app')
 @section('title', '- 修改文章')
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
     <div class="card-panel white">
         <div class="card-panel-container">
@@ -14,8 +17,12 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    {!! Form::select('category_id', $categories, $article->category->id) !!}
-                    {!! Form::label('category_id', 'Category') !!}
+                    <category-selector :categories="{{$categories}}" :styles="{{$styles}}" :selected="{{$article->category_id}}"></category-selector>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <tag-selector :tags="{{$tags}}" :linkednames="{{$article->tags->pluck('name')}}"></tag-selector>
                 </div>
             </div>
             <div class="row">
@@ -39,26 +46,7 @@
         </div>
         </div>
     </div>
-    @include('partials.tinymce-script')
 @stop
 @section('javascript')
-<script>
-$(document).ready(function() {
-    //materail styleselect 標籤初始化
-    // $('select').material_select();
-    $('.chips-placeholder').material_chip({
-        placeholder: 'Enter a tag',
-        secondaryPlaceholder: '+Tag',
-    });
-    $('.chips').material_chip();
-
-    $('input.input').autocomplete({
-      data: {
-          @foreach ($tags as $tag)
-          "{{$tag->name}}":null,
-          @endforeach
-      }
-    });
-});
-</script>
+    @include('partials.tinymce-script')
 @endsection

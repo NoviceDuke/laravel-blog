@@ -1,5 +1,8 @@
 @extends('blog.layouts.app')
 @section('title', '- 建立文章')
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
     <div class="card-panel white">
         <div class="card-panel-container">
@@ -14,13 +17,12 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    {!! Form::select('category_id', $categories) !!}
-                    {!! Form::label('category_id', 'Category') !!}
+                    <category-selector :categories="{{$categories}}" :styles="{{$styles}}"></category-selector>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <div class="chips chips-placeholder" id="tag">Tag</div>
+                    <tag-selector :tags="{{$tags}}"></tag-selector>
                 </div>
             </div>
             <div class="row">
@@ -48,23 +50,4 @@
 @stop
 @section('javascript')
 @include('partials.tinymce-script')
-<script>
-$(document).ready(function() {
-    //materail styleselect 標籤初始化
-    // $('select').material_select();
-    $('.chips-placeholder').material_chip({
-        placeholder: 'Enter a tag',
-        secondaryPlaceholder: '+Tag',
-    });
-    $('.chips').material_chip();
-
-    $('input.input').autocomplete({
-      data: {
-          @foreach ($tags as $tag)
-          "{{$tag->name}}":null,
-          @endforeach
-      }
-    });
-});
-</script>
 @endsection

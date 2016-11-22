@@ -10,7 +10,7 @@
         {!! Html::style(url('css/libs.css'))!!}
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+        @yield('meta')
         <!--Scripts Start-->
         <script type="text/javascript">
             //empty now
@@ -37,6 +37,9 @@
 
         <nav id="loading-nav" class="blue-grey darken-2 nav-height-fix">
             <span class="loading-nav"></span>
+            <div class="progress progress-fix">
+                <div class="indeterminate"></div>
+            </div>
         </nav>
         <navbar :islogin="{{$authPresenter->isLogin()}}"
                  baseurl="{{url('')}}">
@@ -57,9 +60,10 @@
 
     </span>
     </body>
+    @include('blog.partials.footer')
     {!! Html::script(url('js/app.js'))!!}
-    {!! Html::script(url('materialize/js/materialize.js'))!!}
     {!! Html::script(url('js/blog-styles.js'))!!}
+    {!! Html::script(url('materialize/js/materialize.js'))!!}
     {!! Html::script(url('js/libs.js'))!!}
 
     <!--  js section -->

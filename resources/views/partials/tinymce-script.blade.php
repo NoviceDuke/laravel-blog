@@ -3,10 +3,6 @@
 
 <!--初始化 tinymce-->
 <script>
-$(document).ready(function() {
-    $('select').material_select();
-});
-
 var editor_config = {
     height : "512",
     path_absolute : "{{ URL::to('/') }}/",

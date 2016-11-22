@@ -19,7 +19,7 @@ a {
     background-color: #CDEAEA;
     color : #333333;
     font-size: 12px;
-    padding: 2px 12px 2px;
+    padding: 2px 12px 3px;
     border-radius: 16px;
     font-weight: 400;
 }
@@ -54,6 +54,9 @@ a {
     margin: 20px;
 }
 /*blog.app.blade.php*/
+.progress-fix{
+    top: 48px;
+}
 .logo-fix {
     font-size: 25px !important;
 }

@@ -6,7 +6,7 @@ use App\Core\EloquentRepository;
 use App\Accounts\User;
 
 /**
- *  負責處理 Article Query的邏輯.
+ *  負責處理 Tag Query的邏輯.
  */
 class TagRepository extends EloquentRepository
 {
@@ -36,5 +36,14 @@ class TagRepository extends EloquentRepository
             $tags->push($tag);
         }
         return $tags;
+    }
+
+    /**
+     *  回傳Vue Tag Selector可用的Json陣列
+     */
+    public function getAllForTagSelector()
+    {
+        $tags = $this->model->all()->pluck(['name'])->toArray();
+        return json_encode($tags);
     }
 }

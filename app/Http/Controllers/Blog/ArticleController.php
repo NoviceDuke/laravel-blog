@@ -6,6 +6,8 @@ use Event;
 use Auth;
 use App\Articles\ArticleRepository;
 use App\Articles\Category;
+use App\Articles\Style;
+use App\Articles\Tag;
 use App\Articles\TagRepository;
 use App\Events\ArticleEvents\ArticleWasPosted;
 use App\Events\ArticleEvents\ArticleWasDeleted;
@@ -48,7 +50,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = $this->articles->getAll()->paginate(8);
-    
+
         return view('blog.article.index', compact('articles'));
     }
 
@@ -85,11 +87,13 @@ class ArticleController extends Controller
         }
 
         //grab all of our categories in database;
-        $categories = Category::all()->pluck('name', 'id');
-        $tags = $this->tags->getModel()->all();
+        $categories = Category::all();
+        $styles = Style::all();
+        $tags = $this->tags->getAllForTagSelector();
 
         //return view('blog.article.create')->withCategories($categories);
-        return view('blog.article.create', compact('articles', 'categories', 'tags'));
+        // dd($categories);
+        return view('blog.article.create', compact('articles', 'categories', 'tags', 'styles'));
     }
 
     /**
@@ -99,7 +103,6 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        // dd($request->get('tags'));
         $article = $this->articles->createFromUser($request->all(), Auth::user());
         if (is_array($request->get('tags'))) {
             $tags = $this->tags->createByNames($request->get('tags'));
@@ -125,9 +128,11 @@ class ArticleController extends Controller
             return redirect()->route('blog.index');
         }
         $article = $this->articles->getFromSlug($slug);
-        $categories = Category::all()->pluck('name', 'id');
+        $categories = Category::all();
+        $styles = Style::all();
+        $tags = $this->tags->getAllForTagSelector();
 
-        return view('blog.article.edit', compact('article', 'categories'));
+        return view('blog.article.edit', compact('article', 'categories', 'styles', 'tags'));
     }
 
     /**
@@ -139,7 +144,10 @@ class ArticleController extends Controller
     {
         $article = $this->articles->getFromSlug($slug);
         $article->update($request->all());
-
+        if (is_array($request->get('tags'))) {
+            $tags = $this->tags->createByNames($request->get('tags'));
+            $article->syncTags($tags);
+        }
         // 觸發事件 -> 文章被更新
         Event::fire(new ArticleWasUpdated($article));
         $this->alert('Success', 'Your article is updated successful')->success()->flashIt();

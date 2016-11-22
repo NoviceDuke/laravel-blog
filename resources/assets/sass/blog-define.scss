@@ -295,4 +295,7 @@ blue-grey-darken-4 : #263238,
     }
     // compile to like this
     // .border-right-purple { border-right: 5px solid $purple; }
+    .border-left-#{$header} {
+        border-left: 5px solid $color;
+    }
 }
