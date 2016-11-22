@@ -144,7 +144,10 @@ class ArticleController extends Controller
     {
         $article = $this->articles->getFromSlug($slug);
         $article->update($request->all());
-
+        if (is_array($request->get('tags'))) {
+            $tags = $this->tags->createByNames($request->get('tags'));
+            $article->syncTags($tags);
+        }
         // 觸發事件 -> 文章被更新
         Event::fire(new ArticleWasUpdated($article));
         $this->alert('Success', 'Your article is updated successful')->success()->flashIt();
