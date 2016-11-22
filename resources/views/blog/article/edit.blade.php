@@ -14,8 +14,12 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    {!! Form::select('category_id', $categories, $article->category->id) !!}
-                    {!! Form::label('category_id', 'Category') !!}
+                    <category-selector :categories="{{$categories}}" :styles="{{$styles}}" :selected="{{$article->category_id}}"></category-selector>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <tag-selector :tags="{{$tags}}"></tag-selector>
                 </div>
             </div>
             <div class="row">
