@@ -1,7 +1,7 @@
 <template>
     <section>
         <section @click="popModal()">
-            <select id="category_id" name="category_id">
+            <select v-model="selected" id="category_id" name="category_id">
                 <option v-for="(category, index) in real_categories" :value="category.id" v-text="category.name"></option>
                 <optgroup label="+新增分類"></optgroup>
             </select>
@@ -42,6 +42,9 @@
 <script>
     export default{
         props:{
+            selected:{
+                default: () => null,
+            },
             categories: {
                 default: () => null,
             },
@@ -108,6 +111,12 @@
                 console.log('drop');
                 var index = $('.value').text();
                 this.style = this.styles[index];
+            },
+            isSelected(id){
+                if(id == this.selected)
+                    return 'selected';
+                else
+                    return ;
             }
         },
         mounted(){

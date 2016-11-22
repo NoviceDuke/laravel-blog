@@ -1,15 +1,21 @@
 <template>
 <section>
         <input v-model="target_tag" @keydown.enter="addTag()" id="tag_input" type="text">
+
+        <!-- 迴圈已暫存在前端的tags -->
         <span v-for="(tag, index) in save_tags" class="tag-chips">
             <input type="hidden" :name="'tags['+index+']'" :value="tag" />
             <div class="chip"  @click="removeTag(tag)">
             {{tag}}
             </div>
         </span>
+
+
+        <!-- 輸出搜尋的結果  -->
         <ul v-if="isResult" class="collection">
             <li v-for="s in search" v-if="!isAdd(s)" @click="chooseTag(s)" class="cursor collection-item">{{s}}</li>
         </ul>
+
         <label for="tag_input">Tags</label>
 </section>
 </template>
@@ -26,6 +32,9 @@
 <script>
     export default{
         props:{
+            linkednames:{
+                default: () => null,
+            },
             tags: {
                 default: () => null,
             },
@@ -84,13 +93,24 @@
             searchTarget(){
                 var regex = new RegExp(this.target_tag+'.*','i');
                 var save_tags = this.save_tags;
-                this.search = this.tags.filter(function(item) {
+                this.search = this.tags.filter((item) => {
                     return (item.match(regex) != null);
+                });
+            },
+            checkLinked(){
+                if(this.linkednames == null)
+                    return;
+                // 比對傳入的tag_names與全部的tag，用於已經擁有tags的文章
+                this.linkednames.forEach((name) => {
+                    let linkedname = this.tags.filter((item) => {
+                        return (item == name);
+                    });
+                    this.chooseTag(linkedname[0]);
                 });
             }
         },
         mounted(){
-
+            this.checkLinked();
         }
     }
 </script>
