@@ -1,5 +1,8 @@
 @extends('blog.layouts.app')
 @section('title', '- 修改文章')
+@section('meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
     <div class="card-panel white">
         <div class="card-panel-container">
