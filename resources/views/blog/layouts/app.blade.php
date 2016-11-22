@@ -60,12 +60,12 @@
 
     </span>
     </body>
+    @include('blog.partials.footer')
     {!! Html::script(url('js/app.js'))!!}
     {!! Html::script(url('js/blog-styles.js'))!!}
     {!! Html::script(url('materialize/js/materialize.js'))!!}
     {!! Html::script(url('js/libs.js'))!!}
 
-    @include('blog.partials.footer')
     <!--  js section -->
     @yield('javascript')
     <!--  js section -->
