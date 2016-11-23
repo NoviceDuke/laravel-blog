@@ -60,7 +60,7 @@ class Category extends Eloquent
     public function setNameAttribute($value)
     {
         // 判斷name是否重複  && 自己存不存在
-        $count = $this->where('name', 'like', '%'.$value.'%')->count();
+        $count = $this->where('name', $value)->count();
         if ($count && !$this->exists) {
             $this->attributes['name'] = $value.'-'.$count;
         } else {
