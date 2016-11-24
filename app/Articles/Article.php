@@ -72,7 +72,7 @@ class Article extends Eloquent
     public function setTitleAttribute($value)
     {
         // 判斷title是否重複  && 自己存不存在
-        $count = $this->where('title', 'like', '%'.$value.'%')->count();
+        $count = $this->where('title', $value)->count();
         if ($count && !$this->exists) {
             $this->attributes['title'] = $value.'-'.$count;
         } else {
