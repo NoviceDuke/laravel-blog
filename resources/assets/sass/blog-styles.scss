@@ -15,7 +15,7 @@ a {
 .main-container{
     margin-top: 65px;
 }
-.tag{
+a > .tag{
     background-color: #CDEAEA;
     color : #333333;
     font-size: 12px;
@@ -23,12 +23,7 @@ a {
     border-radius: 16px;
     font-weight: 400;
 }
-code > .tag{
-    color: #f8f8f2;
-    background: 0 0;
-    background-color: 0 0;
-}
-.tag:hover{
+a > .tag:hover{
     background-color: #2860A0;
     color : #ffffff;
 }
