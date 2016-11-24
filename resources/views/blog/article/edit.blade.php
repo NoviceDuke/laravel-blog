@@ -21,6 +21,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
+                    <tag-selector :tags="{{$tags}}" :linkednames="{{$article->tags->pluck('name')}}"></tag-selector>
                 </div>
             </div>
             <div class="row">
