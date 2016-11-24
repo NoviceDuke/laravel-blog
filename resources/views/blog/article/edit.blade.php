@@ -17,6 +17,11 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
+                    @if(!empty($article->category_id))
+                        <category-selector :categories="{{$categories}}" :styles="{{$styles}}" :selected="{{$article->category_id}}"></category-selector>
+                    @else
+                        <category-selector :categories="{{$categories}}" :styles="{{$styles}}"></category-selector>
+                    @endif
                 </div>
             </div>
             <div class="row">
