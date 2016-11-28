@@ -27,8 +27,13 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    {!! Form::text('pic_url', old('pic_url'), ['id' => 'pic_url','class'=>'validate']) !!}
-                    {!! Form::label('pic_url', 'Picture URL') !!}
+                     <span class="input-group-btn">
+                       <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn">
+                         <i class="fa fa-picture-o"></i> Choose Image
+                       </a>
+                     </span>
+                     <input id="thumbnail" class="form-control" type="text" id="pic_url" name="pic_url">
+                   <img id="holder" style="margin-top:15px;max-height:100px;">
                 </div>
             </div>
             <div class="row">
