@@ -1,0 +1,40 @@
+@media screen and (max-width: 768px) {
+    .search-input {
+        display: inline-block;
+        width: 80% !important;
+    }
+    .main-container{
+        margin-top: 25px !important;
+    }
+    .article-content-container{
+        padding: 15px;
+    }
+    .article-author {
+        position: absolute;
+        width: 9% !important;
+        right: 20px;
+        margin-top: 0px;
+    }
+    .show-container{
+        margin-top: 85px;
+        width: 100%;
+    }
+    .card-content-fix{
+        color:color(text-grey);
+        padding: 10px 15px 20px !important;
+    }
+    .card-show-category {
+        font-weight: bold;
+        position: relative;
+        left: 0px;
+    }
+    .card-show-title {
+        color: #212121;
+        margin-top: 20px;
+        margin-left: 25px !important;
+        font-size: 300%;
+    }
+    .category-index-container{
+        margin-top: 80px;
+    }
+}
