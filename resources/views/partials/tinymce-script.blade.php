@@ -1,5 +1,6 @@
 <!--引入tinymce js-->
 {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 
 <!--初始化 tinymce-->
 <script>
@@ -35,4 +36,8 @@ var editor_config = {
     }
 };
 tinymce.init(editor_config);
+$(document).ready(function() {
+     $('#lfm').filemanager('image');
+});
+
 </script>
