@@ -17,10 +17,6 @@
         </ul>
 
         <!--Mobile DropDown Button-->
-        <a class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">
-        <i class="material-icons" style="margin-left:10px;">menu</i>
-        <i class="mdi-navigation-arrow-drop-down right"></i>
-        </a>
         <ul id='dropdown1' class='dropdown-content'>
             <li :class="{ active: isURL('/blog') }"><a :href="path('/blog')">Home</a></li>
             <!-- <li :class="{ active: isURL('/about') }"><a :href="path('/about')">About</a></li> -->
@@ -30,6 +26,11 @@
             <li v-if="islogin"><a :href="path('/logout')">登出</a></li>
             <li v-else><a :href="path('/login')">登入</a></li>
         </ul>
+        <a class="dropdown-button hide-on-large-only" href="#!" data-activates="dropdown1">
+        <i class="material-icons" style="margin-left:10px;">menu</i>
+        <i class="mdi-navigation-arrow-drop-down right"></i>
+        </a>
+
         <!--Mobile DropDown Button-->
       </div>
     </nav>
@@ -62,6 +63,7 @@
         },
         mounted(){
             document.getElementById("loading-nav").remove();
+            $(".dropdown-button").dropdown();
         }
     }
 </script>
