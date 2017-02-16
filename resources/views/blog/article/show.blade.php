@@ -12,7 +12,7 @@
             <div class="row">
                 <span class="card-show-category">
                     @if($article->category)
-                    <a href="{{url($article->category->path())}}">{{$article->category->name}}</a>
+                        <a href="{{url($article->category->path())}}"><span class="category fix new badge bcolor-{{$article->category->style->css}}" data-badge-caption="">{{$article->category->name}}</span></a>
                     @endif
                     <span class="right show-date"> {{$articlePresenter->getCreatedAt($article)}} </span>
                 </span>

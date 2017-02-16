@@ -2,7 +2,7 @@
 @extends('blog.layouts.app')
 @section('title', '- 文章類別')
 @section('content')
-<div class="row">
+<div class="row category-index-container">
     <!--Static Cut Left Panel 75%-->
     <div class="col s12 m9">
         <ul class="collapsible popout" data-collapsible="accordion">
@@ -16,7 +16,7 @@
                         <div class="collection">
                             @foreach ($category->articles as $article)
                                 <a href="{{$article->path()}}" class="collection-item">{{$article->title}}
-                                    <span class="new badge badge-fix" data-badge-caption="custom caption">{{$articlePresenter->getCreatedDate($article)}}</span>
+                                    <span class="new badge badge-fix" data-badge-caption=" ">{{$articlePresenter->getCreatedDate($article)}}</span>
                                 </a>
                             @endforeach
                         </div>

@@ -4,6 +4,7 @@
 @import "blog-create-article";
 @import "blog-show-article";
 @import "blog-animation";
+@import "blog-moblie";
 /*All Page Maybe Used*/
 html {
     font-family: 'Roboto', 'Helvetica', '微軟正黑體', 'Microsoft JhengHei' ,'Arial', sans-serif;
@@ -11,10 +12,29 @@ html {
 a {
     color:color(blue);
 }
-
+@media screen and (min-width: 768px) {
+    .search-input {
+        display: inline-block;
+        width: calc( 80% - 20px) !important;
+    }
+    .show-container{
+        margin-top: 35px;
+        width: 80%;
+    }
+    .card-content-fix{
+        color:color(text-grey);
+        padding: 20px 70px 50px !important;
+    }
+    .card-show-category{
+        font-weight : bold;
+        position : relative;
+        left: 45px;
+    }
+}
 .main-container{
     margin-top: 65px;
 }
+
 a > .tag{
     background-color: #CDEAEA;
     color : #333333;
@@ -85,10 +105,6 @@ a > .tag:hover{
     margin-top: 1.0px;
 }
 /*blog.article.show.blade.php*/
-.show-container{
-    margin-top: 35px;
-    width: 80%;
-}
 .card-image-fix {
     overflow: hidden;
     width: 100%;
@@ -100,20 +116,13 @@ a > .tag:hover{
     margin-left:55px;
     font-size:300%;
 }
-.card-show-category{
-    font-weight : bold;
-    position : relative;
-    bottom:-25px;
-    margin-top:20px;
-    margin-left:55px;
+.card-show-category > a > .fix{
+    position : absolute !important;
 }
 .show-date{
     margin-right:15px;
 }
-.card-content-fix{
-    color:color(text-grey);
-    padding:100px !important;
-}
+
 /*blog.article.create.blade.php*/
 .card-panel-container {
     margin-left: 25px;
@@ -131,10 +140,7 @@ a > .tag:hover{
 .title-fix {
     margin-bottom: -5px;
 }
-.search-input {
-    display: inline-block;
-    width: calc( 80% - 20px) !important;
-}
+
 .search-icon-fix {
     top: 12px !important;
     left: 20px !important;

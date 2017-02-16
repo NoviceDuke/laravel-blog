@@ -1,5 +1,6 @@
 <!--引入tinymce js-->
 {!! Html::script('tinymce/js/tinymce/tinymce.min.js')!!}
+<script src="/vendor/laravel-filemanager/js/lfm.js"></script>
 
 <!--初始化 tinymce-->
 <script>
@@ -9,11 +10,11 @@ var editor_config = {
     selector: "textarea",
     plugins: [
         "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "textcolor searchreplace wordcount visualblocks visualchars code fullscreen",
         "insertdatetime media nonbreaking save table contextmenu directionality",
         "emoticons template paste textcolor colorpicker textpattern codesample"
     ],
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media codesample",
+    toolbar: "insertfile undo redo | styleselect | bold italic forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media codesample",
     relative_urls: false,
     file_browser_callback : function(field_name, url, type, win) {
         var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
@@ -35,4 +36,8 @@ var editor_config = {
     }
 };
 tinymce.init(editor_config);
+$(document).ready(function() {
+     $('#lfm').filemanager('image');
+});
+
 </script>
